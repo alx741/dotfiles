@@ -1,0 +1,64 @@
+[global_config]
+  window_state = fullscreen
+  enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  custom_url_handler = firefox
+  title_hide_sizetext = True
+  dbus = True
+  focus = mouse
+  title_transmit_fg_color = "#03ff00"
+  sticky = True
+  use_custom_url_handler = True
+  title_inactive_fg_color = "#00ff00"
+  always_on_top = True
+  suppress_multiple_term_dialog = True
+  borderless = True
+  title_receive_bg_color = "#000000"
+  title_transmit_bg_color = "#000000"
+  title_receive_fg_color = "#00ff00"
+  inactive_color_offset = 0.93
+  title_inactive_bg_color = "#000000"
+[keybindings]
+  switch_to_tab_10 = <Alt>0
+  resize_left = <Primary><Alt>h
+  go_right = <Shift><Alt>l
+  resize_right = <Primary><Alt>l
+  resize_down = <Primary><Alt>j
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  split_vert = <Alt>j
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  go_left = <Shift><Alt>h
+  copy = <Primary><Shift>c
+  paste = <Primary><Shift>v
+  go_up = <Shift><Alt>k
+  resize_up = <Primary><Alt>k
+  split_horiz = <Alt>h
+  go_down = <Shift><Alt>j
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    background_image = None
+    scrollback_lines = 1000
+    use_system_font = False
+    cursor_color = "#00fffd"
+    foreground_color = "#00ff00"
+    icon_bell = False
+    show_titlebar = False
+    font = Terminus 16
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]

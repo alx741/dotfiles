@@ -1,0 +1,17 @@
+./wifi.sh
+setxkbmap us -variant algr-intl
+xbindkeys
+terminator -f&
+firefox &
+syndaemon -t -k -i 1 -d &
+
+while true ; do
+    xsetroot -name "$( acpi -b | awk '{ print $3, $4 }' | tr -d ',' ) ||  $( date "+%F %r" )"
+    sleep 1m
+done &
+
+setxkbmap -option ctrl:swapcaps
+xcape -e 'Control_L=Escape'
+export _JAVA_AWT_WM_NONREPARENTING=1
+unclutter -idle 1&
+exec dwm

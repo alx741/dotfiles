@@ -1,0 +1,127 @@
+"
+" VIM CONFIGURATION
+"
+
+
+"""""""""""""""""""""""""""""""""""
+""""""""""" VUNDLE """"""""""""""""
+"""""""""""""""""""""""""""""""""""
+
+set nocompatible
+filetype off
+set rtp+=/usr/share/vim/vim74/bundle/vundle
+call vundle#rc()
+
+" The plugins that i use
+Plugin 'gmarik/vundle'
+Plugin 'bling/vim-airline'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'wellle/targets.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'thanthese/Tortoise-Typing'
+Plugin 'mbbill/undotree'
+
+
+" We could also add repositories with a ".git" extension
+"Plugin 'scrooloose/nerdtree.git'
+
+" To get plugins from Vim Scripts, you can reference the plugin
+" by name as it appears on the site
+"Plugin 'Buffergator'
+
+" Now we can turn our filetype functionality back on
+filetype plugin indent on
+
+"""""""""""""""""""""""""""""""""""
+""""""""""" / VUNDLE """"""""""""""
+"""""""""""""""""""""""""""""""""""
+
+
+
+
+" vim Airline tab bar enabled
+let g:airline#extensions#tabline#enabled = 1
+
+" Get this from http://www.github.com/alx741/badwolf
+colors badwolf
+
+" Functions keys mappings to some plugins
+nnoremap <F1> :TlistToggle <cr>
+nnoremap <F2> :UndotreeToggle <cr>
+nnoremap <F12> :NERDTreeToggle <cr>
+nnoremap <space> za
+nnoremap j gj
+nnoremap k gk
+" Remove highlights {{FIXME: this brakes previous mappings}}
+" nnoremap <silent><esc> :noh<cr><esc>
+
+
+"OMNICOMPLETE
+set omnifunc=syntaxcomplete#Complete
+
+
+" Check the documentation for this ones
+syntax on
+set lazyredraw
+set textwidth=80
+set colorcolumn=+1
+set timeoutlen=1000 ttimeoutlen=0
+set cursorline
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set showcmd
+set number
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set backspace=2
+set autoindent
+set cindent
+set ruler
+set background=dark
+set wrapscan
+set laststatus=2
+set wildmode=longest,list,full
+set hidden
+set foldenable
+set foldmethod=indent
+set foldnestmax=2
+set foldlevel=3
+let c_no_comment_fold=1
+
+" Mark trailing white spaces as errors
+match ErrorMsg '\s\+$'
+
+" Formatting options:
+"  * Auto wrap text width
+"  * Auto wrap comments
+"  * Auto insert comment leader while inserting
+"  * Allow 'gq' in comments
+"  * Don't auto brake lines
+"  * Join comment lines well
+:set formatoptions=tcrqlj
+
+" Syntastic need this
+let $PYTHONPATH='/usr/lib/python3.4/site-packages'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
+" Config the backup system
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
