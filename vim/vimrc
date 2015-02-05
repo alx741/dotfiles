@@ -41,6 +41,9 @@ Plugin 'mbbill/undotree'
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 
+" Re set format options when filetypes are loaded
+autocmd FileType * set formatoptions=crql
+
 """""""""""""""""""""""""""""""""""
 """"""""""" / VUNDLE """"""""""""""
 """""""""""""""""""""""""""""""""""
@@ -50,19 +53,30 @@ filetype plugin indent on
 
 " vim Airline tab bar enabled
 let g:airline#extensions#tabline#enabled = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
 
-" Get this from http://www.github.com/alx741/badwolf
+" Get this from http://www.github.com/alx741/badwolf (modified version)
 colors badwolf
 
-" Functions keys mappings to some plugins
-nnoremap <F1> :TlistToggle <cr>
-nnoremap <F2> :UndotreeToggle <cr>
-nnoremap <F12> :NERDTreeToggle <cr>
-nnoremap <space> za
+" Move with visual lines
 nnoremap j gj
 nnoremap k gk
-" Remove highlights {{FIXME: this brakes previous mappings}}
-" nnoremap <silent><esc> :noh<cr><esc>
+" Toggle folds
+nnoremap <space> za
+" Remove highlights using escape (this prevent using especial keys mappings!)
+nnoremap <silent><esc> :noh<CR><esc>
+
+""""  LEADER mappings
+" Remove trailing white spaces ( \w )
+map <silent><leader>w :call DeleteTrailingWS() <CR>
+" Toggle spelling ( \s )
+nnoremap <leader>s :set spell! <cr>
+" Trigger TagList plugin ( \t )
+nnoremap <leader>t :TlistToggle <cr>
+" Trigger UndoTree plugin ( \u )
+nnoremap <leader>u :UndotreeToggle <cr>
+" Trigger NerdTree plugin ( \n )
+nnoremap <leader>n :NERDTreeToggle <cr>
 
 
 "OMNICOMPLETE
@@ -71,6 +85,7 @@ set omnifunc=syntaxcomplete#Complete
 
 " Check the documentation for this ones
 syntax on
+syntax spell toplevel
 set lazyredraw
 set textwidth=80
 set colorcolumn=+1
@@ -95,8 +110,11 @@ set ruler
 set background=dark
 set wrapscan
 set laststatus=2
+set wildmenu
 set wildmode=longest,list,full
+set wildignore=*.o,*.class
 set hidden
+set viminfo^=%
 set foldenable
 set foldmethod=indent
 set foldnestmax=2
@@ -107,13 +125,11 @@ let c_no_comment_fold=1
 match ErrorMsg '\s\+$'
 
 " Formatting options:
-"  * Auto wrap text width
 "  * Auto wrap comments
 "  * Auto insert comment leader while inserting
 "  * Allow 'gq' in comments
 "  * Don't auto brake lines
-"  * Join comment lines well
-:set formatoptions=tcrqlj
+set formatoptions=crql
 
 " Syntastic need this
 let $PYTHONPATH='/usr/lib/python3.4/site-packages'
@@ -125,3 +141,10 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
+" Function for removing trailing white spaces
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
