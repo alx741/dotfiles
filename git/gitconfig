@@ -1,0 +1,9 @@
+[user]
+	name = Daniel Campoverde [alx741]
+	email = alx741@riseup.net
+[color]
+	ui = true
+[core]
+	editor = vim
+[push]
+	default = simple
