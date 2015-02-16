@@ -44,11 +44,15 @@
   [[default]]
     scrollbar_position = hidden
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    login_shell = True
+    exit_action = restart
     background_image = None
+    custom_command = tmux -2
     scrollback_lines = 1000
     use_system_font = False
     cursor_color = "#00fffd"
-    foreground_color = "#00ff00"
+    foreground_color = "#00ff73"
+    use_custom_command = True
     icon_bell = False
     show_titlebar = False
     font = Terminus 16
