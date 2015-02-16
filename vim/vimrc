@@ -49,22 +49,24 @@ autocmd FileType * set formatoptions=crql
 """""""""""""""""""""""""""""""""""
 
 
-
-
 " vim Airline tab bar enabled
 let g:airline#extensions#tabline#enabled = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
 
+
 " Get this from http://www.github.com/alx741/badwolf (modified version)
 colors badwolf
+
 
 " Move with visual lines
 nnoremap j gj
 nnoremap k gk
+nnoremap J gJ
 " Toggle folds
 nnoremap <space> za
 " Remove highlights using escape (this prevent using especial keys mappings!)
 nnoremap <silent><esc> :noh<CR><esc>
+
 
 """"  LEADER mappings
 " Remove trailing white spaces ( \w )
@@ -77,6 +79,8 @@ nnoremap <leader>t :TlistToggle <cr>
 nnoremap <leader>u :UndotreeToggle <cr>
 " Trigger NerdTree plugin ( \n )
 nnoremap <leader>n :NERDTreeToggle <cr>
+" Trigger Ctags program for the current directory
+nnoremap <silent><leader>c :!ctags -R . <cr>
 
 
 "OMNICOMPLETE
@@ -114,15 +118,21 @@ set wildmenu
 set wildmode=longest,list,full
 set wildignore=*.o,*.class
 set hidden
-set viminfo^=%
 set foldenable
-set foldmethod=indent
+set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=3
 let c_no_comment_fold=1
 
+
+" Set SDCC paths
+set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
+set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
+
+
 " Mark trailing white spaces as errors
 match ErrorMsg '\s\+$'
+
 
 " Formatting options:
 "  * Auto wrap comments
@@ -131,9 +141,11 @@ match ErrorMsg '\s\+$'
 "  * Don't auto brake lines
 set formatoptions=crql
 
+
 " Syntastic need this
 let $PYTHONPATH='/usr/lib/python3.4/site-packages'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
 
 " Config the backup system
 set backup
@@ -141,6 +153,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
 
 " Function for removing trailing white spaces
 func! DeleteTrailingWS()
