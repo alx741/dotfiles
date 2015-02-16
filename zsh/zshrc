@@ -81,6 +81,10 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+
+
+
+
                                   # ============
                                   # USER CONFIGS
                                   # ============
@@ -95,6 +99,24 @@ PATH="$PATH:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/tools:/home
 export JAVA_HOME="/usr"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export netbeans_jdkhome="/usr/lib/jvm/java-7-openjdk"
+# export TERM="xterm-256color"
+export KEYTIMEOUT=1  # Reduce vi-mode lag
 
 # Deactivate Software flow control
 stty -ixon
+
+
+# Set propper terminal for SCREEN and TMUX
+if [[ -z $TMUX ]]; then
+    if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
+        export TERM='xterm-256color'
+    else
+        export TERM='xterm'
+    fi
+else
+    if [ -e /usr/share/terminfo/s/screen-256color ]; then
+        export TERM='screen-256color'
+    else
+        export TERM='screen'
+    fi
+fi
