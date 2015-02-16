@@ -1,17 +1,29 @@
-./wifi.sh
+# Set us-international-allgr keyboard
 setxkbmap us -variant algr-intl
+# Init special keys
 xbindkeys
+# Init terminator instance
 terminator -f&
+# Init firefox instance
 firefox &
+# Configure appropriate laptop track pad delays and detections
 syndaemon -t -k -i 1 -d &
 
+# Set DWM up bar text with Date and Battery info
 while true ; do
     xsetroot -name "$( acpi -b | awk '{ print $3, $4 }' | tr -d ',' ) ||  $( date "+%F %r" )"
     sleep 1m
 done &
 
+# Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
 xcape -e 'Control_L=Escape'
+
+# Solve java GUI problems in DWM
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Hide mice cursor after 1 second
 unclutter -idle 1&
+
+# Run DWM (window manager)
 exec dwm
