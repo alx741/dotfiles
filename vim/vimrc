@@ -58,10 +58,27 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py
 colors badwolf
 
 
+" Get raid of vim 'exclusivity' madness
+" All movements are now inclusive
+onoremap h vh
+onoremap l vl
+onoremap b vb
+onoremap B vB
+onoremap F vF
+onoremap T vT
+onoremap ^ v^
+onoremap g^ vg^
+onoremap + v+
+onoremap g+ vg+
+onoremap ( v(
+onoremap ` v`
 " Move with visual lines
 nnoremap j gj
 nnoremap k gk
 nnoremap J gJ
+nnoremap 0 g0
+nnoremap ^ g^
+nnoremap $ g$
 " Toggle folds
 nnoremap <space> za
 " Remove highlights using escape (this prevent using especial keys mappings!)
@@ -135,10 +152,9 @@ match ErrorMsg '\s\+$'
 
 
 " Formatting options:
-"  * Auto wrap comments
+"  * Auto wrap comments using textwith
 "  * Auto insert comment leader while inserting
-"  * Allow 'gq' in comments
-"  * Don't auto brake lines
+"  * Allow 'gq' in comments * Don't auto brake lines
 set formatoptions=crql
 
 
