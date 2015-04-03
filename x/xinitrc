@@ -14,10 +14,6 @@ firefox &
 syndaemon -t -k -i 1 -d &
 
 # Set DWM up bar text with Date and Battery info
-while true ; do
-    xsetroot -name "$( acpi -b | awk '{ print $3, $4 }' | tr -d ',' ) ||  $( date "+%F %r" )"
-    sleep 1m
-done &
 
 # Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
