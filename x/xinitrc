@@ -1,8 +1,9 @@
-# Set us-international-allgr keyboard
+# Set us-international-altgr keyboard
 setxkbmap us -variant algr-intl
+
 # Init special keys
 xbindkeys
-# Init terminator instance
+
 # Make output display mode 1024x768 so it fits in my external low resolution
 # display
 xrandr --output LVDS1 --mode 1024x768
@@ -10,10 +11,13 @@ xrandr --output VGA1 --mode 1024x768
 
 # Init firefox instance
 firefox &
+# Init terminator instance
+terminator -f&
+
 # Configure appropriate laptop track pad delays and detections
 syndaemon -t -k -i 1 -d &
-
-# Set DWM up bar text with Date and Battery info
+# Hide mice cursor after 1 second
+unclutter -idle 1 -jitter 2 -root&
 
 # Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
