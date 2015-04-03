@@ -1,0 +1,24 @@
+escape C-g
+
+# Use Terminator instead of xterm
+bind c exec terminator -f
+
+# Banish the mouse pointer in every window change
+addhook switchwin banish
+
+# Put cursor where it was previously
+warp on
+
+startup_message off
+
+bind q only
+
+# Vi keys
+bind j focusdown
+bind h focusleft
+bind k focusup
+bind l focusright
+bind J exchangedown
+bind H exchangeleft
+bind K exchangeup
+bind L exchangeright

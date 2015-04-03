@@ -6,4 +6,5 @@ This is a personal enviroment configuration that includes configuration files fo
 - Terminator
 - Git
 - Dwm
+- Ratpoison
 - X (xinit)
