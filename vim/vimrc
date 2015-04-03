@@ -1,21 +1,15 @@
-"
-" VIM CONFIGURATION
-"
-
-
 """""""""""""""""""""""""""""""""""
 """"""""""" VUNDLE """"""""""""""""
 """""""""""""""""""""""""""""""""""
 
 set nocompatible
 filetype off
-set rtp+=/usr/share/vim/vim74/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " The plugins that i use
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'wellle/targets.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
@@ -26,17 +20,19 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'thanthese/Tortoise-Typing'
 Plugin 'mbbill/undotree'
+Plugin 'alx741/vinfo'
+Plugin 'godlygeek/tabular'
+Plugin 'bruno-/vim-man'
 
+call vundle#end()
 
-" We could also add repositories with a ".git" extension
-"Plugin 'scrooloose/nerdtree.git'
+" Now we can turn our filetype functionality back on
+filetype plugin indent on
 
-" To get plugins from Vim Scripts, you can reference the plugin
-" by name as it appears on the site
-"Plugin 'Buffergator'
+" Re set format options when filetypes are loaded
+autocmd FileType * set formatoptions=crql
 
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
@@ -51,7 +47,6 @@ autocmd FileType * set formatoptions=crql
 
 " vim Airline tab bar enabled
 let g:airline#extensions#tabline#enabled = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
 
 
 " Get this from http://www.github.com/alx741/badwolf (modified version)
@@ -83,6 +78,8 @@ nnoremap $ g$
 nnoremap <space> za
 " Remove highlights using escape (this prevent using especial keys mappings!)
 nnoremap <silent><esc> :noh<CR><esc>
+
+
 
 
 """"  LEADER mappings
