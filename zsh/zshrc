@@ -105,6 +105,10 @@ export KEYTIMEOUT=1  # Reduce vi-mode lag
 stty -ixon
 
 
+# Handy for Internet connection check
+alias p='ping 8.8.8.8'
+
+
 # Set propper terminal for SCREEN and TMUX
 if [[ -z $TMUX ]]; then
     if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
