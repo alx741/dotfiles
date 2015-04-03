@@ -3,7 +3,11 @@ setxkbmap us -variant algr-intl
 # Init special keys
 xbindkeys
 # Init terminator instance
-terminator -f&
+# Make output display mode 1024x768 so it fits in my external low resolution
+# display
+xrandr --output LVDS1 --mode 1024x768
+xrandr --output VGA1 --mode 1024x768
+
 # Init firefox instance
 firefox &
 # Configure appropriate laptop track pad delays and detections
