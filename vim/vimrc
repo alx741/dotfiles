@@ -34,12 +34,6 @@ filetype plugin indent on
 " Re set format options when filetypes are loaded
 autocmd FileType * set formatoptions=crql
 
-" Now we can turn our filetype functionality back on
-filetype plugin indent on
-
-" Re set format options when filetypes are loaded
-autocmd FileType * set formatoptions=crql
-
 """""""""""""""""""""""""""""""""""
 """"""""""" / VUNDLE """"""""""""""
 """""""""""""""""""""""""""""""""""
@@ -80,6 +74,8 @@ nnoremap <space> za
 nnoremap <silent><esc> :noh<CR><esc>
 
 
+" Sudo Write
+command W w !sudo tee % >/dev/null
 
 
 """"  LEADER mappings
