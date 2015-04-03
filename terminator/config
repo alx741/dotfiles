@@ -51,8 +51,8 @@
     use_custom_command = True
     icon_bell = False
     show_titlebar = False
-    font = Terminus 16
-    background_color = "#141414"
+    font = Terminus 13
+    background_color = "#181818"
 [layouts]
   [[default]]
     [[[child1]]]
