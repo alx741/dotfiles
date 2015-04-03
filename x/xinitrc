@@ -23,11 +23,5 @@ done &
 setxkbmap -option ctrl:swapcaps
 xcape -e 'Control_L=Escape'
 
-# Solve java GUI problems in DWM
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Hide mice cursor after 1 second
-unclutter -idle 1&
-
-# Run DWM (window manager)
-exec dwm
+# Run ratpoison (window manager)
+exec ratpoison
