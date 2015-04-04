@@ -59,7 +59,7 @@
 #{{{ Aliases
     alias x='startx'
     alias p='ping 8.8.8.8'
-    alias ls='ls -l --color'
+    alias ls='ls --color'
 #}}}
 
 #{{{ Completion
