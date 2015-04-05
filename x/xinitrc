@@ -1,7 +1,7 @@
 # Set us-international-altgr keyboard
 setxkbmap us -variant algr-intl
 
-# Init special keys
+# Init special keys binding
 xbindkeys
 
 # Make output display mode 1024x768 so it fits in my external low resolution
