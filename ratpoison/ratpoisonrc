@@ -1,7 +1,28 @@
-escape C-g
+#{{{ Bindigs
+    # Escape
+    escape C-g
 
-# Use Terminator instead of xterm
-bind c exec terminator -f
+    # Abort with ESC
+    bind Escape abort
+
+    bind q only
+
+    # Use Terminator instead of xterm
+    bind c exec terminator -f
+
+    # Give temporally control to DWM
+    bind W tmpwm dwm
+
+    # Vi keys
+    bind j focusdown
+    bind h focusleft
+    bind k focusup
+    bind l focusright
+    bind J exchangedown
+    bind H exchangeleft
+    bind K exchangeup
+    bind L exchangeright
+#}}}
 
 # Banish the mouse pointer in every window change
 addhook switchwin banish
@@ -9,16 +30,8 @@ addhook switchwin banish
 # Put cursor where it was previously
 warp on
 
+# Messages config
+msgwait 2
 startup_message off
-
-bind q only
-
-# Vi keys
-bind j focusdown
-bind h focusleft
-bind k focusup
-bind l focusright
-bind J exchangedown
-bind H exchangeleft
-bind K exchangeup
-bind L exchangeright
+set fgcolor green
+set bgcolor black
