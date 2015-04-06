@@ -35,3 +35,6 @@ msgwait 2
 startup_message off
 set fgcolor green
 set bgcolor black
+
+# If there is more than 1 screen, give focus to the second one
+nextscreen
