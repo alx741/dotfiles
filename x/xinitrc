@@ -1,18 +1,11 @@
+# Init terminator instance
+terminator -f&
+
 # Set us-international-altgr keyboard
 setxkbmap us -variant algr-intl
 
 # Init special keys binding
-xbindkeys
-
-# Make output display mode 1024x768 so it fits in my external low resolution
-# display
-xrandr --output LVDS1 --mode 1024x768
-xrandr --output VGA1 --mode 1024x768
-
-# Init firefox instance
-firefox &
-# Init terminator instance
-terminator -f&
+xbindkeys&
 
 # Configure appropriate laptop track pad delays and detections
 syndaemon -t -k -i 1 -d &
@@ -21,7 +14,10 @@ unclutter -idle 1 -jitter 2 -root&
 
 # Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
-xcape -e 'Control_L=Escape'
+xcape -e 'Control_L=Escape'&
+
+# Config monitors and sound setup (Home or No-Home)
+./.setup.sh
 
 # Run ratpoison (window manager)
 exec ratpoison
