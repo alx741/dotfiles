@@ -36,5 +36,8 @@ startup_message off
 set fgcolor green
 set bgcolor black
 
+# More informative date and time
+bind a exec ratpoison -c "echo $( acpi -b | awk '{ print $3, $4 }' | tr -d ',' ) ||  $( date "+%F %r" )"
+
 # If there is more than 1 screen, give focus to the second one
 nextscreen
