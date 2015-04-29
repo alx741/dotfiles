@@ -25,10 +25,13 @@
 #}}}
 
 # Banish the mouse pointer in every window change
-addhook switchwin banish
+addhook key banish
 
 # Put cursor where it was previously
 warp on
+
+# Don't convert cursor in a box while waiting commands
+set waitcursor 0
 
 # Messages config
 msgwait 2
@@ -41,3 +44,5 @@ bind a exec ratpoison -c "echo $( acpi -b | awk '{ print $3, $4 }' | tr -d ',' )
 
 # If there is more than 1 screen, give focus to the second one
 nextscreen
+
+# vim:fdm=marker
