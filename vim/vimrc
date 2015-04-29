@@ -107,6 +107,8 @@
     set autoindent
     set cindent
     set ruler
+    set autoread
+    set nojoinspaces
     set background=dark
     set wrapscan
     set laststatus=2
@@ -117,7 +119,7 @@
     set foldenable
     set foldmethod=syntax
     set foldnestmax=2
-    set foldlevel=3
+    " set foldlevel=3
     let c_no_comment_fold=1
 
     " Formatting options:
@@ -182,3 +184,5 @@
         exe "normal `z"
     endfunc
 "}}}
+
+" vim:fdm=marker
