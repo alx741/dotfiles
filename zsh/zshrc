@@ -47,7 +47,7 @@
     export JAVA_HOME="/usr"
     export _JAVA_AWT_WM_NONREPARENTING=1
     export KEYTIMEOUT=1  # Reduce vi-mode lag
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/opt/opencascade/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/plataform-tools"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/opt/opencascade/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/platform-tools"
     declare -U path
 
     # History
