@@ -76,10 +76,21 @@
     nnoremap <leader>n :NERDTreeToggle <cr>
     " Trigger Ctags program for the current directory
     nnoremap <silent><leader>c :!ctags -R . <cr>
+    " Toggle semantic highlighting
+    nnoremap <silent><leader>h :SemanticHighlightToggle<cr>
 "}}}
 
 
 "{{{ Options and Configurations
+    " Status line
+    set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
+    set statusline+=\ [ft=%Y]\ %r\ %m
+    set statusline+=%=%c:%l/%L\ %P
+
+    " Color column
+    highlight ColorColumn ctermbg=magenta
+    call matchadd('ColorColumn', '\%81v', 100)
+
     " Get this from http://www.github.com/alx741/badwolf (modified version)
     colors solarized
 
@@ -89,7 +100,6 @@
     set t_CO=16
     set lazyredraw
     set textwidth=80
-    set colorcolumn=+1
     set timeoutlen=1000 ttimeoutlen=0
     set cursorline
     set tabstop=4
@@ -98,6 +108,8 @@
     set expandtab
     set smarttab
     set showcmd
+    set completeopt-=preview
+    set completeopt+=longest
     set number
     set showmatch
     set hlsearch
@@ -119,7 +131,7 @@
     set hidden
     set foldenable
     set foldmethod=syntax
-    set foldnestmax=2
+    set foldnestmax=3
     " set foldlevel=3
     let c_no_comment_fold=1
 
@@ -135,19 +147,20 @@
     set backupskip=/tmp/*,/private/tmp/*
     set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
     set writebackup
-
-    "OMNICOMPLETE
-    set omnifunc=syntaxcomplete#Complete
 "}}}
 
 
 "{{{ Plugins configuration
     " Vim Airline tab bar enabled
-    let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#enabled = 1
 
     " Syntastic
     let $PYTHONPATH='/usr/lib/python3.4/site-packages'
     let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
+    " Targets
+    let g:targets_aiAI = 'aIAi'
+
     "}}}
 
 
