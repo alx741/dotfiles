@@ -3,8 +3,9 @@ This is a personal enviroment configuration that includes configuration files fo
 - Vim
 - Tmux
 - Zsh
-- Terminator
+- Tilda
 - Git
 - Dwm
 - Ratpoison
 - X (xinit)
+- Using Solarized Light color scheme

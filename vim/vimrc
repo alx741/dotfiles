@@ -6,7 +6,6 @@
 
     " The plugins that i use
     Plugin 'gmarik/vundle'
-    Plugin 'bling/vim-airline'
     Plugin 'wellle/targets.vim'
     Plugin 'tpope/vim-commentary'
     Plugin 'tpope/vim-surround'
@@ -22,6 +21,7 @@
     Plugin 'alx741/vinfo'
     Plugin 'godlygeek/tabular'
     Plugin 'bruno-/vim-man'
+    Plugin 'altercation/vim-colors-solarized'
 
     call vundle#end()
 
@@ -81,11 +81,12 @@
 
 "{{{ Options and Configurations
     " Get this from http://www.github.com/alx741/badwolf (modified version)
-    colors badwolf
+    colors solarized
 
     " Check the documentation for this ones
     syntax on
     syntax spell toplevel
+    set t_CO=16
     set lazyredraw
     set textwidth=80
     set colorcolumn=+1
@@ -109,7 +110,7 @@
     set ruler
     set autoread
     set nojoinspaces
-    set background=dark
+    set background=light
     set wrapscan
     set laststatus=2
     set wildmenu
