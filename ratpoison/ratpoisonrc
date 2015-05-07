@@ -7,8 +7,8 @@
 
     bind q only
 
-    # Use Terminator instead of xterm
-    bind c exec terminator -f
+    # Start graphical terminal emulator instance
+    bind c exec tilda
 
     # Give temporally control to DWM
     bind W tmpwm dwm
@@ -34,7 +34,7 @@ warp on
 set waitcursor 0
 
 # Messages config
-msgwait 2
+msgwait 1
 startup_message off
 set fgcolor green
 set bgcolor black
