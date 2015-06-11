@@ -24,6 +24,8 @@
     setopt APPEND_HISTORY
     setopt  COMPLETE_IN_WORD
     setopt prompt_subst
+    setopt nohashdirs
+    setopt nohashcmds
     unsetopt FLOW_CONTROL
     unsetopt LIST_AMBIGUOUS
 
@@ -47,7 +49,10 @@
     export JAVA_HOME="/usr"
     export _JAVA_AWT_WM_NONREPARENTING=1
     export KEYTIMEOUT=1  # Reduce vi-mode lag
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/opt/opencascade/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/alx/uc_mobile/adt-bundle-linux-x86_64-20140702/sdk/platform-tools"
+    export ANDROID_HOME="/opt/android-sdk"
+    export ANDROID_SWT="/usr/share/java"
+    export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/opt/opencascade/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$ANDROID_TOOLS"
     declare -U path
 
     # History
@@ -60,6 +65,8 @@
     alias x='startx'
     alias p='ping 8.8.8.8'
     alias ls='ls --color'
+    alias vim='nvim'
+    alias am='alsamixer' alsamixer='alsamixer -g -c 0'
 #}}}
 
 #{{{ Completion
@@ -246,6 +253,15 @@
             export TERM='screen'
         fi
     fi
+
+    # Autorun TMUX (Only when X11 is running)
+    if [[ (-e /tmp/.X0-lock) ]]; then
+        if [[ -n $TMUX ]]; then
+            # Tmux running, do nothing
+        else
+            tmux -2
+        fi
+    fi
 #}}}
 
 #{{{ First Init
@@ -255,3 +271,6 @@
         startx
     fi
 #}}}
+
+
+# vim:fdm=marker
