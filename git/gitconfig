@@ -4,6 +4,6 @@
 [color]
 	ui = true
 [core]
-	editor = vim
+	editor = nvim
 [push]
 	default = simple
