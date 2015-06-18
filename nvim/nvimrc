@@ -17,10 +17,10 @@
     Plug 'godlygeek/tabular'
     Plug 'bruno-/vim-man'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'ervandew/supertab'
     Plug 'junegunn/goyo.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'EinfachToll/DidYouMean'
+    Plug 'tommcdo/vim-exchange'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -111,7 +111,7 @@
     set textwidth=80
     set linebreak
     set timeoutlen=1000 ttimeoutlen=0
-    set cursorline
+    " set cursorline
     set tabstop=4
     set softtabstop=4
     set shiftwidth=4
@@ -205,14 +205,19 @@
     " * Removes trailing white spaces
     " * Removes blank lines at the end of the file
     " * Replaces tabs with spaces
+    " * Re-Indent
     "
-    " * If: C, CPP or JAVA code format using `astyle`
+    " * If: C, CPP, PHP or JAVA code: format using 'astyle'
+    "       * Style: allman
+    "       * Braces in the first column
+    "       * Spaces between operators
+    "
     " * Leaves 'formatprg' option clean so `gq` can be used with the default
     "   behavior
     function! Format()
         silent! execute 'norm! mz'
 
-        if &ft ==? 'c' || &ft ==? 'cpp'
+        if &ft ==? 'c' || &ft ==? 'cpp' || &ft ==? 'php'
             set formatprg=astyle\ --mode=c\ --style=allman\ -j\ -p\ -f\ -xe\ -xC80\ -H
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'java'
@@ -223,6 +228,7 @@
         silent! execute '%s/\s\+$//ge'
         silent! execute 'g/\v^$\n*%$/norm! dd'
         silent! execute 'retab'
+        silent! execute 'gg=G'
         silent! execute 'norm! `z'
         set formatprg=
     endfunction
@@ -252,7 +258,7 @@
     " Marks over length lines and trailing white spaces as errors
     function! StyleMarks()
         highlight OverLength ctermbg=blue ctermfg=white
-        call matchadd('OverLength', '\%80v.\+', 100)
+        call matchadd('OverLength', '\%81v.\+', 100)
 
         highlight Trailing ctermbg=blue ctermfg=white
         call matchadd('Trailing', '\s\+$', 100)
