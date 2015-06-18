@@ -19,8 +19,8 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'ervandew/supertab'
     Plug 'junegunn/goyo.vim'
-    Plug 'aserebryakov/filestyle'
     Plug 'jceb/vim-orgmode'
+    Plug 'EinfachToll/DidYouMean'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -33,10 +33,15 @@
     Plug 'bruno-/vim-man', { 'on': 'Man' }
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
     call plug#end()
+"}}}
 
 
-    " Re set format options when filetypes are loaded
+"{{{ Auto Commands
+    " Reset format options when filetypes are loaded
     autocmd FileType * set formatoptions=tcrql
+
+    " Trigger StyleMarks
+    autocmd VimEnter,BufWinEnter,BufWinLeave * call StyleMarks()
 "}}}
 
 
@@ -75,7 +80,7 @@
 
     """"  LEADER mappings
     " Remove trailing white spaces ( \w )
-    map <silent><leader>w :call DeleteTrailingWS() <CR>
+    map <silent><leader>f :call Format() <CR>
     " Toggle spelling ( \s )
     nnoremap <leader>s :call ToggleSpell() <cr>
     " Trigger TagList plugin ( \t )
@@ -86,8 +91,6 @@
     nnoremap <leader>n :NERDTreeToggle <cr>
     " Trigger Ctags program for the current directory
     nnoremap <silent><leader>c :!ctags -R . <cr>
-    " Toggle semantic highlighting
-    nnoremap <silent><leader>h :SemanticHighlightToggle<cr>
 "}}}
 
 
@@ -97,14 +100,10 @@
     set statusline+=\ [ft=%Y]\ %r\ %m
     set statusline+=%=%c:%l/%L\ %P
 
-    " Color column
-    highlight ColorColumn ctermbg=magenta
-    call matchadd('ColorColumn', '\%81v', 100)
-
-    " Get this from http://www.github.com/alx741/badwolf (modified version)
+    " Color scheme
     colors solarized
 
-    " Check the documentation for this ones
+    " Set various options
     syntax on
     syntax spell toplevel
     set t_CO=16
@@ -147,12 +146,12 @@
     let c_no_comment_fold=1
 
     " Formatting options:
-    "  * Auto wrap text using textwith
-    "  * Auto wrap comments using textwith
+    "  * Auto wrap text using textwidth
+    "  * Auto wrap comments using textwidth
     "  * Auto insert comment leader while inserting
     "  * Auto formatting of paragraphs
     "  * Don't auto brake lines
-    set formatoptions=tcraql
+    set formatoptions=tcrql
 
     " Config the backup system
     set backup
@@ -164,26 +163,22 @@
 
 
 "{{{ Plugins configuration
-    " Vim Airline tab bar enabled
-    " let g:airline#extensions#tabline#enabled = 1
-
     " Syntastic
     let $PYTHONPATH='/usr/lib/python3.4/site-packages'
-    let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+    let g:syntastic_mode_map = {
+        \ 'mode' : 'passive',
+        \ 'active_filetypes' : [],
+        \ 'passive_filetypes' : [] }
 
     " Targets
     " let g:targets_aiAI = 'aIAi'
-
-    "}}}
+"}}}
 
 
 "{{{ Misc
     " Set SDCC paths
     set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
     set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
-
-    " Mark trailing white spaces as errors
-    match ErrorMsg '\s\+$'
 
     " Sudo Write
     command W w !sudo tee % >/dev/null
@@ -205,16 +200,36 @@
     endfunction
 
 
-    " Function for removing trailing white spaces
-    func! DeleteTrailingWS()
-        exe "normal mz"
-        %s/\s\+$//ge
-        exe "normal `z"
-    endfunc
+    " Format document
+    "
+    " * Removes trailing white spaces
+    " * Removes blank lines at the end of the file
+    " * Replaces tabs with spaces
+    "
+    " * If: C, CPP or JAVA code format using `astyle`
+    " * Leaves 'formatprg' option clean so `gq` can be used with the default
+    "   behavior
+    function! Format()
+        silent! execute 'norm! mz'
+
+        if &ft ==? 'c' || &ft ==? 'cpp'
+            set formatprg=astyle\ --mode=c\ --style=allman\ -j\ -p\ -f\ -xe\ -xC80\ -H
+            silent! execute 'norm! gggqG'
+        elseif &ft ==? 'java'
+            set formatprg=astyle\ --mode=java\ --style=allman\ -j\ -p\ -f\ -xe\ -xC80\ -H
+            silent! execute 'norm! gggqG'
+        endif
+
+        silent! execute '%s/\s\+$//ge'
+        silent! execute 'g/\v^$\n*%$/norm! dd'
+        silent! execute 'retab'
+        silent! execute 'norm! `z'
+        set formatprg=
+    endfunction
 
 
     " Alternate between { NOSPELL, EN, ES } spelling
-    func! ToggleSpell()
+    function! ToggleSpell()
         if &spell ==? 0
             set spelllang=en
             set spell
@@ -231,7 +246,17 @@
                 echom "NO Spell"
             endif
         endif
-    endfunc
+    endfunction
+
+
+    " Marks over length lines and trailing white spaces as errors
+    function! StyleMarks()
+        highlight OverLength ctermbg=blue ctermfg=white
+        call matchadd('OverLength', '\%80v.\+', 100)
+
+        highlight Trailing ctermbg=blue ctermfg=white
+        call matchadd('Trailing', '\s\+$', 100)
+    endfunction
 "}}}
 
 " vim:fdm=marker
