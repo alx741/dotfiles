@@ -1,11 +1,13 @@
 This is a personal enviroment configuration that includes configuration files for:
 
-- Vim
+* Using Solarized Light color scheme
+
+- Vim (deprecated. Using NeoVim now)
+- NeoVim
 - Tmux
 - Zsh
 - Tilda
 - Git
-- Dwm
+- Dwm (deprecated. Using Ratpoison now)
 - Ratpoison
 - X (xinit)
-- Using Solarized Light color scheme
