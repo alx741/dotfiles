@@ -1,8 +1,5 @@
 # Start graphical terminal emulator instance
-tilda&
-
-# Set us-international-altgr keyboard
-setxkbmap us -variant algr-intl
+gnome-terminal&
 
 # Init special keys binding
 xbindkeys&
@@ -15,6 +12,12 @@ unclutter -idle 1 -jitter 2 -root&
 # Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
 xcape -e 'Control_L=Escape'&
+# Swap Super_R with Ctrl_R
+setxkbmap -option ctrl:swap_rwin_rctl
+# Set us-international-altgr keyboard
+setxkbmap us -variant algr-intl
+# User Super_L as AltGr
+xmodmap ~/.xmodmaprc
 
 # Config monitors and sound setup (Home or No-Home)
 ./.scripts/setup.sh
