@@ -1,4 +1,4 @@
-This is a personal enviroment configuration that includes configuration files for:
+This is a personal environment configuration that includes configuration files for:
 
 * Using Solarized Light color scheme
 
@@ -11,3 +11,4 @@ This is a personal enviroment configuration that includes configuration files fo
 - Dwm (deprecated. Using Ratpoison now)
 - Ratpoison
 - X (xinit)
+- Astyle

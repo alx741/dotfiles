@@ -1,0 +1,38 @@
+### Artistic Style configuration
+
+# Allman brackets style
+--style=allman
+
+# 4 spaces indentation
+--indent=spaces
+-s4
+
+# Entire class block is indented (C++)
+--indent-classes
+
+# Entire switch-case block is indented
+--indent-switches
+
+# Indent multi-line defines
+--indent-preproc-define
+
+# Indent comments to corresponding indentation level
+--indent-col1-comments
+
+# Space padding around operators
+--pad-oper
+
+# Space padding between header and paren.
+--pad-header
+
+# Remove paren internal padding
+--unpad-paren
+
+# Align pointers operators to variable name (right)
+--align-pointer=name
+
+# One line conditional statement has brackets
+--add-brackets
+
+# Max code length is 80 characters
+--max-code-length=80
