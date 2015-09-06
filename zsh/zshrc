@@ -65,8 +65,11 @@
     alias x='startx'
     alias p='ping 8.8.8.8'
     alias ls='ls --color'
+    alias vi='/usr/bin/vim'
     alias vim='nvim'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
+    alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
+    alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
 #}}}
 
 #{{{ Completion
@@ -161,9 +164,8 @@
 
     bindkey -v
 
-    # allow v to edit the command line
-    autoload -Uz edit-command-line
-    bindkey -M vicmd 'v' edit-command-line
+    # Avoid dropping keystrokes after ESC hit
+    bindkey -as '\e' ''
 
     # allow ctrl-p, ctrl-n, ctrl-r for navigate history (standard behaviour)
     bindkey '^P' up-history
@@ -188,7 +190,7 @@
     # Mode indicator right prompt
     function zle-line-init zle-keymap-select
     {
-        RPS1="${${KEYMAP/vicmd/<<<}/(main|viins)/-- INSERT --}"
+        RPS1="${${KEYMAP/vicmd/}/(main|viins)/-- INSERT --}"
         RPS2=$RPS1
         zle reset-prompt
     }
@@ -255,19 +257,19 @@
     fi
 
     # Autorun TMUX (Only when X11 is running)
-    if [[ (-e /tmp/.X0-lock) ]]; then
-        if [[ -n $TMUX ]]; then
-            # Tmux running, do nothing
-        else
-            tmux -2
-        fi
-    fi
+    # if [[ (-e /tmp/.X0-lock) ]]; then
+    #     if [[ -n $TMUX ]]; then
+    #         # Tmux running, do nothing
+    #     else
+    #         tmux -2
+    #     fi
+    # fi
 #}}}
 
 #{{{ First Init
     # Auto start X11 and Wifi connection
     if [[ ! (-e /tmp/.X0-lock) ]]; then
-        ./.scripts/wifi.sh
+        ~/.scripts/ether.sh
         startx
     fi
 #}}}
