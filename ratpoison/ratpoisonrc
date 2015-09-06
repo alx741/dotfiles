@@ -5,13 +5,19 @@
     # Abort with ESC
     bind Escape abort
 
-    bind q only
+    # Only window
+    unbind q
+    bind o only
 
     # Start graphical terminal emulator instance
-    bind c exec tilda
+    bind c exec gnome-terminal
 
     # Give temporally control to DWM
     bind W tmpwm dwm
+
+    # Close current window
+    unbind C-k
+    bind Q delete
 
     # Vi keys
     bind j focusdown
@@ -22,6 +28,18 @@
     bind H exchangeleft
     bind K exchangeup
     bind L exchangeright
+
+    # Vi splits
+    unbind S
+    bind s vsplit
+    bind v hsplit
+
+    # More informative date and time
+    bind a exec ratpoison -c "echo $( ~/.scripts/date.sh )"
+    bind A exec ratpoison -c "echo $( cal -3 )"
+
+    # Network information
+    bind I exec ratpoison -c "echo $( ~/.scripts/network.sh )"
 #}}}
 
 # Banish the mouse pointer in every window change
@@ -34,13 +52,10 @@ warp on
 set waitcursor 0
 
 # Messages config
-msgwait 1
+msgwait 3
 startup_message off
-set fgcolor green
-set bgcolor black
-
-# More informative date and time
-bind a exec ratpoison -c "echo $( acpi -b | awk '{ print $3, $4 }' | tr -d ',' ) ||  $( date "+%F %r" )"
+set fgcolor black
+set bgcolor papaya whip
 
 # If there is more than 1 screen, give focus to the second one
 nextscreen
