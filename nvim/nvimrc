@@ -19,8 +19,9 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'junegunn/goyo.vim'
     Plug 'jceb/vim-orgmode'
-    Plug 'EinfachToll/DidYouMean'
     Plug 'tommcdo/vim-exchange'
+    Plug '/tpope/vim-dispatch'
+    Plug 'https://github.com/SirVer/ultisnips'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -68,6 +69,12 @@
     nnoremap 0 g0
     nnoremap ^ g^
     nnoremap $ g$
+
+    " Search for visual selected area
+    vnoremap // y/<C-R>"<CR>
+
+    " Viasual select last pasted text
+    nnoremap gp `[v`]
 
     " Terminal mode leaving
     tnoremap <esc> <C-\><C-n>
@@ -181,7 +188,7 @@
     set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
 
     " Sudo Write
-    command W w !sudo tee % >/dev/null
+    command! W w !sudo tee % >/dev/null
 "}}}
 
 
@@ -208,9 +215,6 @@
     " * Re-Indent
     "
     " * If: C, CPP, PHP or JAVA code: format using 'astyle'
-    "       * Style: allman
-    "       * Braces in the first column
-    "       * Spaces between operators
     "
     " * Leaves 'formatprg' option clean so `gq` can be used with the default
     "   behavior
@@ -218,10 +222,10 @@
         silent! execute 'norm! mz'
 
         if &ft ==? 'c' || &ft ==? 'cpp' || &ft ==? 'php'
-            set formatprg=astyle\ --mode=c\ --style=allman\ -j\ -p\ -f\ -xe\ -xC80\ -H
+            set formatprg=astyle\ --mode=c
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'java'
-            set formatprg=astyle\ --mode=java\ --style=allman\ -j\ -p\ -f\ -xe\ -xC80\ -H
+            set formatprg=astyle\ --mode=java
             silent! execute 'norm! gggqG'
         endif
 
@@ -262,6 +266,10 @@
 
         highlight Trailing ctermbg=blue ctermfg=white
         call matchadd('Trailing', '\s\+$', 100)
+
+        highlight Debugme ctermbg=red ctermfg=white
+        call matchadd('Debugme', 'debugme', 100)
+        call matchadd('Debugme', 'DEBUGME', 100)
     endfunction
 "}}}
 
