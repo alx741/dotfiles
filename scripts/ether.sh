@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# Auto ethernet network connection script
+# Necropolis internal network
+#
+# Invoke from Shell very first initialization
+
+amy_addr="192.168.1.50"
+
+sudo ifconfig enp3s0 $amy_addr
+sudo route add default gw 192.168.1.1
+sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf

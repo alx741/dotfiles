@@ -17,7 +17,7 @@ setxkbmap -option ctrl:swapcaps
 xcape -e 'Control_L=Escape'&
 
 # Config monitors and sound setup (Home or No-Home)
-./.setup.sh
+./.scripts/setup.sh
 
 # Run ratpoison (window manager)
 exec ratpoison

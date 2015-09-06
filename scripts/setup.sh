@@ -9,12 +9,16 @@
 #       - Laptop display [1366x768]
 #       - LCD (VGA) monitor [1024x768]
 #       - Laptop above LCD monitor
-#       - Web explorer
 #       - Sound available
+#       - Init:
+#           - Terminal emulator
+#           - Web explorer
 #
 # * No-Home
 #       - Laptop display [1366x768]
 #       - Sound mute
+#       - Init:
+#           - Terminal emulator
 
 
 
@@ -37,8 +41,9 @@ vga_plugedin()
 # Home setup
 if vga_plugedin; then
     xrandr --output VGA1 --mode 1024x768
-    xrandr --output LVDS1 --mode 1366x768 --above VGA1
+    xrandr --output LVDS1 --mode 1024x768 --above VGA1
     amixer set Master unmute
+
     firefox&
 
 # No-Home setup

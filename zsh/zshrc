@@ -267,7 +267,7 @@
 #{{{ First Init
     # Auto start X11 and Wifi connection
     if [[ ! (-e /tmp/.X0-lock) ]]; then
-        ~/.wifi.sh
+        ./.scripts/wifi.sh
         startx
     fi
 #}}}
