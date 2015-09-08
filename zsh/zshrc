@@ -65,6 +65,7 @@
     alias x='startx'
     alias p='ping 8.8.8.8'
     alias ls='ls --color'
+    alias grep='grep --color=auto'
     alias vi='/usr/bin/vim'
     alias vim='nvim'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
