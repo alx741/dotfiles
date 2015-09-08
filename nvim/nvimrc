@@ -1,11 +1,12 @@
 "{{{ VIM-PLUG
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('~/.nvim/plugged')
     Plug 'wellle/targets.vim'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-dispatch'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
@@ -18,10 +19,9 @@
     Plug 'bruno-/vim-man'
     Plug 'altercation/vim-colors-solarized'
     Plug 'junegunn/goyo.vim'
-    Plug 'jceb/vim-orgmode'
     Plug 'tommcdo/vim-exchange'
-    Plug '/tpope/vim-dispatch'
-    Plug 'https://github.com/SirVer/ultisnips'
+    Plug 'SirVer/ultisnips'
+    Plug 'ludovicchabant/vim-gutentags'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -170,15 +170,21 @@
 
 
 "{{{ Plugins configuration
-    " Syntastic
+                                  " Syntastic
     let $PYTHONPATH='/usr/lib/python3.4/site-packages'
     let g:syntastic_mode_map = {
         \ 'mode' : 'passive',
         \ 'active_filetypes' : [],
         \ 'passive_filetypes' : [] }
 
-    " Targets
+
+
+                                   " Targets
     " let g:targets_aiAI = 'aIAi'
+
+
+                                  " UltiSnips
+      let g:UltiSnipsEditSplit="horizontal"
 "}}}
 
 
@@ -193,7 +199,6 @@
 
 
 "{{{ Personal functions
-
     " Help files tags jump
     " [g , ]g
     nmap [g <Plug>unimpairedHelpTagPrevious
