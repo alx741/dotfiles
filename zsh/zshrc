@@ -68,6 +68,7 @@
     alias grep='grep --color=auto'
     alias vi='/usr/bin/vim'
     alias vim='nvim'
+    alias gs="git status"
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
     alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
