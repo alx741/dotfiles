@@ -1,15 +1,20 @@
-snippet html
-<!DOCTYPE html>
+snippet html "HTML 5 squeleton" b
+<!doctype html>
 
-<HTML>
+<html lang"${1:es}">
 
-	<HEAD>
-		<meta charset=utf-8 />
-		<title>$1</title>
-	</HEAD>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href"$2">
+		<title>$3</title>
+	</head>
 
-	<BODY>$0
-	</BODY>
+	<body>$0
+	</body>
 
-</HTML>
+</html>
+endsnippet
+
+snippet link "Browserlink script line"
+<script src='http://127.0.0.1:9001/js/socket.js'></script>
 endsnippet
