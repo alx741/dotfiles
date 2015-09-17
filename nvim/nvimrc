@@ -22,6 +22,12 @@
     Plug 'tommcdo/vim-exchange'
     Plug 'SirVer/ultisnips'
     Plug 'ludovicchabant/vim-gutentags'
+    Plug 'othree/html5.vim'
+    Plug 'jaxbot/browserlink.vim'
+    Plug 'alvan/vim-closetag'
+    Plug 'edsono/vim-matchit'
+    Plug 'fisadev/vim-ctrlp-cmdpalette'
+    Plug 'mihaifm/bufstop'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -36,7 +42,6 @@
     call plug#end()
 "}}}
 
-
 "{{{ Auto Commands
     " Reset format options when filetypes are loaded
     autocmd FileType * set formatoptions=tcrql
@@ -44,7 +49,6 @@
     " Trigger StyleMarks
     autocmd VimEnter,BufWinEnter,BufWinLeave * call StyleMarks()
 "}}}
-
 
 "{{{ Maps
     " Get raid of vim 'exclusivity' madness
@@ -70,6 +74,13 @@
     nnoremap ^ g^
     nnoremap $ g$
 
+    " Keep search matces in the middle of the window
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+
+    " Make [s position in the last char of the misspelled word
+    nnoremap [s [sh
+
     " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
 
@@ -81,6 +92,12 @@
 
     " Toggle folds
     nnoremap <space> za
+
+    " Ofuscate
+    nnoremap <leader><cr> mzggg?G`z
+
+    " Buffers [bufstop]
+    nnoremap <c-n> :BufstopFast<cr>
 
     " Remove highlights using escape (this prevent using especial keys mappings!)
     nnoremap <silent><esc> :noh<CR><esc>
@@ -100,8 +117,7 @@
     nnoremap <silent><leader>c :!ctags -R . <cr>
 "}}}
 
-
-"{{{ Options and Configurations
+"{{{ Status line and Color
     " Status line
     set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
     set statusline+=\ [ft=%Y]\ %r\ %m
@@ -109,22 +125,32 @@
 
     " Color scheme
     colors solarized
+"}}}
+
+"{{{ Options and Configurations
+    " Filetype
+    filetype plugin indent on
 
     " Set various options
     syntax on
     syntax spell toplevel
     set t_CO=16
+    set encoding=utf-8
     set lazyredraw
     set textwidth=80
     set linebreak
-    set timeoutlen=1000 ttimeoutlen=0
+    set timeoutlen=1000
+    set ttimeout
+    set ttimeoutlen=0
     " set cursorline
     set tabstop=4
     set softtabstop=4
     set shiftwidth=4
     set expandtab
     set smarttab
+    set showmode
     set showcmd
+    set complete=.,w,b,u,t
     set completeopt-=preview
     set completeopt+=longest
     set number
@@ -132,11 +158,13 @@
     set hlsearch
     set incsearch
     set ignorecase
+    set gdefault
     set smartcase
     set backspace=2
     set autoindent
     set cindent
     set ruler
+    set shiftround
     set autoread
     set nojoinspaces
     set background=light
@@ -148,8 +176,9 @@
     set hidden
     set foldenable
     set foldmethod=syntax
-    set foldnestmax=2
-    set foldlevel=3
+    set foldnestmax=1
+    set foldlevel=2
+    set foldlevelstart=1
     let c_no_comment_fold=1
 
     " Formatting options:
@@ -159,34 +188,39 @@
     "  * Auto formatting of paragraphs
     "  * Don't auto brake lines
     set formatoptions=tcrql
+"}}}
 
-    " Config the backup system
+"{{{ Backup System
     set backup
-    set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+    set undofile
+    set noswapfile
+    set undodir=~/.nvim/tmp/undo/
+    set backupdir=~/.nvim/tmp/backup/
     set backupskip=/tmp/*,/private/tmp/*
-    set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
     set writebackup
 "}}}
 
-
 "{{{ Plugins configuration
-                                  " Syntastic
+    "{{{ Syntastic
     let $PYTHONPATH='/usr/lib/python3.4/site-packages'
     let g:syntastic_mode_map = {
         \ 'mode' : 'passive',
         \ 'active_filetypes' : [],
         \ 'passive_filetypes' : [] }
+    "}}}
 
-
-
-                                   " Targets
+    "{{{ Targets
     " let g:targets_aiAI = 'aIAi'
+    "}}}
 
-
-                                  " UltiSnips
+    "{{{ UltiSnips
       let g:UltiSnipsEditSplit="horizontal"
-"}}}
+    "}}}
 
+"{{{ GutenTags
+    let g:gutentags_generate_on_missing=0
+"}}}
+"}}}
 
 "{{{ Misc
     " Set SDCC paths
@@ -196,7 +230,6 @@
     " Sudo Write
     command! W w !sudo tee % >/dev/null
 "}}}
-
 
 "{{{ Personal functions
     " Help files tags jump
