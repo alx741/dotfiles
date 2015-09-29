@@ -10,10 +10,14 @@
     bind o only
 
     # Start graphical terminal emulator instance
-    bind c exec gnome-terminal
+    bind c exec urxvt -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
 
-    # Give temporally control to DWM
-    bind W tmpwm dwm
+    # Fast switching
+    bind t exec ratpoison -c "select urxvt"
+    bind e exec ratpoison -c "select firefox"
+
+    # Give temporally control to metacity
+    bind W tmpwm metacity
 
     # Close current window
     unbind C-k
@@ -42,8 +46,6 @@
     bind I exec ratpoison -c "echo $( ~/.scripts/network.sh )"
 #}}}
 
-# Banish the mouse pointer in every window change
-addhook key banish
 
 # Put cursor where it was previously
 warp on
@@ -56,6 +58,8 @@ msgwait 3
 startup_message off
 set fgcolor black
 set bgcolor papaya whip
+
+set winname class
 
 # If there is more than 1 screen, give focus to the second one
 nextscreen
