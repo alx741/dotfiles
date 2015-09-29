@@ -7,6 +7,7 @@
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-dispatch'
+    Plug 'Valloric/YouCompleteMe'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
@@ -28,6 +29,9 @@
     Plug 'edsono/vim-matchit'
     Plug 'fisadev/vim-ctrlp-cmdpalette'
     Plug 'mihaifm/bufstop'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'benekastah/neomake'
+    Plug 'LucHermitte/vim-refactor'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -48,31 +52,35 @@
 
     " Trigger StyleMarks
     autocmd VimEnter,BufWinEnter,BufWinLeave * call StyleMarks()
+
+    " Trigger Neomake on save
+    autocmd! BufWritePost * Neomake
 "}}}
 
 "{{{ Maps
-    " Get raid of vim 'exclusivity' madness
-    " All movements are now inclusive
-    onoremap h vh
-    onoremap l vl
-    onoremap b vb
-    onoremap B vB
-    onoremap F vF
-    onoremap T vT
-    onoremap ^ v^
-    onoremap g^ vg^
-    onoremap + v+
-    onoremap g+ vg+
-    onoremap ( v(
-    onoremap ` v`
+    "{{{ All movements are inclusive
+        onoremap h vh
+        onoremap l vl
+        onoremap b vb
+        onoremap B vB
+        onoremap F vF
+        onoremap T vT
+        onoremap ^ v^
+        onoremap g^ vg^
+        onoremap + v+
+        onoremap g+ vg+
+        onoremap ( v(
+        onoremap ` v`
+    "}}}
 
-    " Move with visual lines
-    nnoremap j gj
-    nnoremap k gk
-    nnoremap J gJ
-    nnoremap 0 g0
-    nnoremap ^ g^
-    nnoremap $ g$
+    "{{{ Move with visual lines
+        nnoremap j gj
+        nnoremap k gk
+        nnoremap J gJ
+        nnoremap 0 g0
+        nnoremap ^ g^
+        nnoremap $ g$
+    "}}}
 
     " Keep search matces in the middle of the window
     nnoremap n nzzzv
@@ -83,6 +91,9 @@
 
     " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
+
+    " Y is y$
+    nnoremap Y y$
 
     " Viasual select last pasted text
     nnoremap gp `[v`]
@@ -97,24 +108,29 @@
     nnoremap <leader><cr> mzggg?G`z
 
     " Buffers [bufstop]
-    nnoremap <c-n> :BufstopFast<cr>
+    " nnoremap <c-h> :BufstopFast<cr>
 
     " Remove highlights using escape (this prevent using especial keys mappings!)
     nnoremap <silent><esc> :noh<CR><esc>
 
-    """"  LEADER mappings
-    " Remove trailing white spaces ( \w )
-    map <silent><leader>f :call Format() <CR>
-    " Toggle spelling ( \s )
-    nnoremap <leader>s :call ToggleSpell() <cr>
-    " Trigger TagList plugin ( \t )
-    nnoremap <leader>t :TlistToggle <cr>
-    " Trigger UndoTree plugin ( \u )
-    nnoremap <leader>u :UndotreeToggle <cr>
-    " Trigger NerdTree plugin ( \n )
-    nnoremap <leader>n :NERDTreeToggle <cr>
-    " Trigger Ctags program for the current directory
-    nnoremap <silent><leader>c :!ctags -R . <cr>
+    "{{{ LEADER mappings
+        " Remove trailing white spaces ( \w )
+        nnoremap <silent><leader>w :call RemoveTrailingSpaces() <CR>
+        " Format document
+        nnoremap <silent><leader>f :call Format() <CR>
+        " Toggle spelling ( \s )
+        nnoremap <leader>s :call ToggleSpell() <cr>
+        " Trigger TagList plugin ( \t )
+        nnoremap <silent><leader>t :TlistToggle <cr>
+        " Trigger UndoTree plugin ( \u )
+        nnoremap <silent><leader>u :UndotreeToggle <cr>
+        " Trigger NerdTree plugin ( \n )
+        nnoremap <silent><leader>n :NERDTreeToggle <cr>
+        " Toggle line number
+        nnoremap <silent><leader>\ :call NumberToggle()<cr>
+        " Trigger Ctags program for the current directory
+        nnoremap <silent><leader>c :!ctags -R . <cr>
+    "}}}
 "}}}
 
 "{{{ Status line and Color
@@ -154,6 +170,7 @@
     set completeopt-=preview
     set completeopt+=longest
     set number
+    set relativenumber
     set showmatch
     set hlsearch
     set incsearch
@@ -202,24 +219,34 @@
 
 "{{{ Plugins configuration
     "{{{ Syntastic
-    let $PYTHONPATH='/usr/lib/python3.4/site-packages'
-    let g:syntastic_mode_map = {
-        \ 'mode' : 'passive',
-        \ 'active_filetypes' : [],
-        \ 'passive_filetypes' : [] }
+        let $PYTHONPATH='/usr/lib/python3.4/site-packages'
+        let g:syntastic_mode_map = {
+            \ 'mode' : 'passive',
+            \ 'active_filetypes' : [],
+            \ 'passive_filetypes' : [] }
     "}}}
 
     "{{{ Targets
-    " let g:targets_aiAI = 'aIAi'
+        " let g:targets_aiAI = 'aIAi'
     "}}}
 
     "{{{ UltiSnips
-      let g:UltiSnipsEditSplit="horizontal"
+        let g:UltiSnipsEditSplit="horizontal"
     "}}}
 
-"{{{ GutenTags
-    let g:gutentags_generate_on_missing=0
-"}}}
+    "{{{ GutenTags
+        let g:gutentags_generate_on_missing=0
+    "}}}
+
+    "{{{ Multiple-cursors
+        let g:multi_cursor_exit_from_visual_mode=0
+        let g:multi_cursor_exit_from_insert_mode=0
+    "}}}
+
+    "{{{ YouCompleteMe
+        let g:ycm_key_list_select_completion=[]
+        let g:ycm_key_list_previous_completion=[]
+    "}}}
 "}}}
 
 "{{{ Misc
@@ -267,8 +294,7 @@
             silent! execute 'norm! gggqG'
         endif
 
-        silent! execute '%s/\s\+$//ge'
-        silent! execute 'g/\v^$\n*%$/norm! dd'
+        silent! call RemoveTrailingSpaces()
         silent! execute 'retab'
         silent! execute 'gg=G'
         silent! execute 'norm! `z'
@@ -276,7 +302,16 @@
     endfunction
 
 
-    " Alternate between { NOSPELL, EN, ES } spelling
+    " Remove trailing white spaces
+    function! RemoveTrailingSpaces()
+        silent! execute 'norm! mz'
+        silent! execute '%s/\s\+$//ge'
+        silent! execute 'g/\v^$\n*%$/norm! dd'
+        silent! execute 'norm! `z'
+    endfunction
+
+
+    " Toggle { NOSPELL, EN, ES } spelling
     function! ToggleSpell()
         if &spell ==? 0
             set spelllang=en
@@ -297,7 +332,7 @@
     endfunction
 
 
-    " Marks over length lines and trailing white spaces as errors
+    " Marks over-length lines and trailing white spaces as errors
     function! StyleMarks()
         highlight OverLength ctermbg=blue ctermfg=white
         call matchadd('OverLength', '\%81v.\+', 100)
@@ -308,6 +343,16 @@
         highlight Debugme ctermbg=red ctermfg=white
         call matchadd('Debugme', 'debugme', 100)
         call matchadd('Debugme', 'DEBUGME', 100)
+    endfunction
+
+
+    " Toggle relative line numbers
+    function! NumberToggle()
+        if &relativenumber ==? 1
+            set norelativenumber
+        else
+            set relativenumber
+        endif
     endfunction
 "}}}
 
