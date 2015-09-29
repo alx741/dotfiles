@@ -1,5 +1,8 @@
+# Load Xresources
+xrdb -load .Xresources
+
 # Start graphical terminal emulator instance
-gnome-terminal&
+urxvt -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"&
 
 # Init special keys binding
 xbindkeys&
@@ -9,17 +12,13 @@ syndaemon -t -k -i 1 -d &
 # Hide mice cursor after 1 second
 unclutter -idle 1 -jitter 2 -root&
 
+# Set us-international-altgr keyboard
+setxkbmap us -variant algr-intl
 # Use 'Caps Lock' key as both 'Control' and 'Esc' keys
 setxkbmap -option ctrl:swapcaps
 xcape -e 'Control_L=Escape'&
-# Swap Super_R with Ctrl_R
-setxkbmap -option ctrl:swap_rwin_rctl
-# Set us-international-altgr keyboard
-setxkbmap us -variant algr-intl
-# User Super_L as AltGr
-xmodmap ~/.xmodmaprc
 
-# Config monitors and sound setup (Home or No-Home)
+# Setup monitors, sound, network (Home or No-Home)
 ./.scripts/setup.sh
 
 # Run ratpoison (window manager)

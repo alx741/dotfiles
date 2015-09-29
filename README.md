@@ -6,9 +6,10 @@ This is a personal environment configuration that includes configuration files f
 - NeoVim
 - Tmux
 - Zsh
-- Tilda
+- Tilda (deprecated. Using urxvt now)
 - Git
 - Dwm (deprecated. Using Ratpoison now)
 - Ratpoison
 - X (xinit)
 - Astyle
+- Urxvt
