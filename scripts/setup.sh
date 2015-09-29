@@ -43,11 +43,13 @@ if vga_plugedin; then
     xrandr --output VGA1 --mode 1024x768
     xrandr --output LVDS1 --mode 1024x768 --above VGA1
     amixer set Master unmute
-
+    ~/.scripts/ether.sh
     firefox&
 
 # No-Home setup
 else
     xrandr --output LVDS1 --mode 1366x768
+    xrandr --output VGA1 --mode 1366x768 --above LVDS1
     amixer set Master mute
+    dhclient enp3s0
 fi
