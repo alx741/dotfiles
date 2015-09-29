@@ -1,6 +1,7 @@
-This is a personal environment configuration that includes configuration files for:
+Dotfiles
+========
 
-* Using Solarized Light color scheme
+*Using Solarized Light color scheme*
 
 - Vim (deprecated. Using NeoVim now)
 - NeoVim
