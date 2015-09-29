@@ -68,10 +68,12 @@
     alias grep='grep --color=auto'
     alias vi='/usr/bin/vim'
     alias vim='nvim'
-    alias gs="git status"
+    alias mysql='mysql -u $USER -p --sigint-ignore'
+    alias gs='git status'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
     alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
+    alias rr='~/.scripts/restore_ratpoison.sh' # Restore ratpoison
 #}}}
 
 #{{{ Completion
@@ -269,9 +271,8 @@
 #}}}
 
 #{{{ First Init
-    # Auto start X11 and Wifi connection
+    # Auto start X11
     if [[ ! (-e /tmp/.X0-lock) ]]; then
-        ~/.scripts/ether.sh
         startx
     fi
 #}}}
