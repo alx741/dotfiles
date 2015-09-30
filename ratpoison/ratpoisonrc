@@ -44,6 +44,9 @@
 
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network.sh )"
+
+    # Turn off the display
+    bind Return exec xset dpms force off
 #}}}
 
 
