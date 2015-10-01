@@ -235,8 +235,6 @@
 
     "{{{ UltiSnips
         let g:UltiSnipsEditSplit="horizontal"
-        let g:UltiSnipsSnippetDirectories=[".snippets"]
-        let g:UltiSnipsSnippetsDir="~/.snippets"
     "}}}
 
     "{{{ GutenTags
