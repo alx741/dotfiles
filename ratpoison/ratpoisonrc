@@ -1,4 +1,11 @@
 #{{{ Bindigs
+    #{{{ Unbindings
+        unbind q
+        unbind C-k
+        unbind S
+        unbind c
+    #}}}
+
     # Escape
     escape C-g
 
@@ -6,21 +13,16 @@
     bind Escape abort
 
     # Only window
-    unbind q
     bind o only
 
-    # Start graphical terminal emulator instance
-    bind c exec urxvt -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
-
     # Fast switching
-    bind t exec ratpoison -c "select urxvt"
-    bind e exec ratpoison -c "select firefox"
+    bind t exec ~/.scripts/select.sh terminal
+    bind e exec ~/.scripts/select.sh firefox
 
     # Give temporally control to metacity
     bind W tmpwm metacity
 
     # Close current window
-    unbind C-k
     bind Q delete
 
     # Vi keys
@@ -34,7 +36,6 @@
     bind L exchangeright
 
     # Vi splits
-    unbind S
     bind s vsplit
     bind v hsplit
 
