@@ -7,6 +7,7 @@ read -n1 -r -p "Ratpoison is about to be restarted, are you sure? [y/n]" key
 
 if [ "$key" = 'y' ]; then
     killall metacity
+    sleep 1
     ratpoison -c restart
 else
     echo
