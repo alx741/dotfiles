@@ -1,16 +1,29 @@
 Dotfiles
 ========
 
-*Using Solarized Light color scheme*
+**Using Solarized Light color scheme**
 
-- Vim (deprecated. Using NeoVim now)
 - NeoVim
 - Tmux
 - Zsh
-- Tilda (deprecated. Using urxvt now)
 - Git
-- Dwm (deprecated. Using Ratpoison now)
 - Ratpoison
-- X (xinit)
+- X11
 - Astyle
 - Urxvt
+
+
+Deprecated
+----------
+
+- ~~Vim~~
+- ~~Dwm~~
+- ~~Tilda~~
+
+
+Installation
+============
+
+Use GNU `stow` for install each config like this:
+
+        $ stow -d ~ nvim
