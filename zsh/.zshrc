@@ -44,7 +44,7 @@
 #}}}
 
 #{{{ Variables
-    export EDITOR=vim
+    export EDITOR=nvim
     export PAGER=less
     export JAVA_HOME="/usr"
     export _JAVA_AWT_WM_NONREPARENTING=1
@@ -52,7 +52,13 @@
     export ANDROID_HOME="/opt/android-sdk"
     export ANDROID_SWT="/usr/share/java"
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/opt/opencascade/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$ANDROID_TOOLS"
+
+    # Path
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:"
+    PATH+="/usr/lib/jvm/default/bin:/opt/opencascade/bin:"
+    PATH+="/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:"
+    PATH+="$ANDROID_TOOLS:"
+    export PATH
     declare -U path
 
     # History
@@ -130,17 +136,18 @@
         vcs_info
     }
 
-    PROMPT='%{$fg[blue]%}%B%n%b%{$reset_color%}@%{$fg[magenta]%}%B%M%b%{$reset_color%} %1~ ${vcs_info_msg_0_}%{$reset_color%}%# '
+    PROMPT="%{$fg[blue]%}%B%n%b%{$reset_color%}@%{$fg[magenta]%}%B%M%b%"
+    PROMPT+="{$reset_color%} %1~ ${vcs_info_msg_0_}%{$reset_color%}%# "
 #}}}
 
 #{{{ Vi-mode
     # From `oh-my-zsh` vi-mode plugin
 
-    # Ensures that $terminfo values are valid and updates editor information when
-    # the keymap changes.
+    # Ensures that $terminfo values are valid and updates editor information
+    # when the keymap changes.
     function zle-keymap-select zle-line-init zle-line-finish {
-      # The terminal must be in application mode when ZLE is active for $terminfo
-      # values to be valid.
+      # The terminal must be in application mode when ZLE is active for
+      # $terminfo values to be valid.
       if (( ${+terminfo[smkx]} )); then
         printf '%s' ${terminfo[smkx]}
       fi
@@ -180,7 +187,8 @@
     bindkey -M vicmd "/" history-incremental-search-backward
     bindkey -M vicmd "?" history-incremental-search-forward
 
-    # allow ctrl-h, ctrl-w, ctrl-? for char and word deletion (standard behaviour)
+    # allow ctrl-h, ctrl-w, ctrl-? for char and word deletion
+    # (standard behaviour)
     bindkey '^?' backward-delete-char
     bindkey '^h' backward-delete-char
     bindkey '^w' backward-kill-word
