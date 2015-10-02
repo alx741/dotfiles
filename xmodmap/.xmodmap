@@ -1,0 +1,14 @@
+! Caps lock is Left control
+keycode 66 = Control_L
+clear Lock
+add control = Control_L
+
+! Control left is mode switch
+keycode 37 = NoSymbol NoSymbol
+keycode 37 = Mode_switch
+
+! Use control left + {hjkl} as cursor arrows
+keysym h = h H Left  NoSymbol NoSymbol NoSymbol
+keysym j = j J Down  NoSymbol NoSymbol NoSymbol
+keysym k = k K Up    NoSymbol NoSymbol NoSymbol
+keysym l = l L Right NoSymbol lstroke  Lstroke
