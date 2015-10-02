@@ -77,6 +77,7 @@
     alias mysql='mysql -u $USER -p --sigint-ignore'
     alias gs='git status'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
+    alias md='~/.scripts/md.sh'
     alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
     alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
     alias rr='~/.scripts/restore_ratpoison.sh' # Restore ratpoison
