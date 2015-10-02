@@ -39,8 +39,8 @@
     bind s vsplit
     bind v hsplit
 
-    # More informative date and time
-    bind a exec ratpoison -c "echo $( ~/.scripts/date.sh )"
+    # Print information
+    bind a exec ratpoison -c "echo $( ~/.scripts/info.sh )"
     bind A exec ratpoison -c "echo $( cal -3 )"
 
     # Network information
