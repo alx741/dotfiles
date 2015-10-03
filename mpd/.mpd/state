@@ -1,0 +1,32 @@
+sw_volume: 1
+audio_device_state:1:audio
+state: stop
+current: 0
+random: 1
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Anywhere But Home - live/01 - HAUNTED.mp3
+1:Ingles/01 - Bohemian Rapsody.mp3
+2:Ingles/02 Complicated.wma
+3:Ingles/02 Sexy back.wma
+4:Ingles/02 Yofo.wma
+5:Ingles/03 Pista 3.mp3
+6:Ingles/03 Sk8er boi.wma
+7:Ingles/05 - Bycicle Race.mp3
+8:Ingles/11 Hit Me.wma
+9:Ingles/14 Hold On.wma
+10:Ingles/16 - We Will Rock You.mp3
+11:Ingles/ALL STAR.mp3
+12:Ingles/HILARY DUFF - So yesterday.mp3
+13:Ingles/HILARY DUFF - Wake up.mp3
+14:mejor/01 No, No, No, Pt. 2 [Extended Version].wma
+15:mejor/02 Emotion [The Neptunes Remix].wma
+16:mejor/02 Get Together.wma
+17:mejor/02 Maneater.wma
+18:mejor/02 Maneater.wma
+playlist_end
