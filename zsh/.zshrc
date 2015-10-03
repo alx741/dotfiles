@@ -79,6 +79,9 @@
     alias gp='~/.scripts/git_push-fancy.sh'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias md='~/.scripts/md.sh'
+    alias addio='~/.scripts/addio.sh'
+    alias poweroff='~/.scripts/addio.sh'
+    alias reboot='~/.scripts/addio.sh'
     alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
     alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
     alias rr='~/.scripts/restore_ratpoison.sh' # Restore ratpoison
