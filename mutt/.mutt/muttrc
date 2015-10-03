@@ -1,0 +1,41 @@
+# General settings
+set send_charset = "utf-8"
+set assumed_charset = "utf-8"
+set autoedit
+set copy=yes
+set edit_headers
+set sort=threads
+set pager=less
+set editor = "nvim -c 'set syntax=mail ft=mail enc=utf-8'"
+set menu_scroll = "yes"
+set mail_check=30
+set imap_keepalive=300
+set imap_passive = no
+set imap_servernoise = no
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+unset use_domain
+unset user_agent
+unset use_from
+
+# Personal settings
+set from = "alx741@riseup.net"
+set realname = "Daniel Campoverde Carrión [Alx741]"
+set imap_user = "alx741@riseup.net"
+set smtp_url = "smtp://alx741@mail.riseup.net:587/"
+set imap_pass = `pass riseup/mail/alx741@riseup.net`
+set smtp_pass = `pass riseup/mail/alx741@riseup.net`
+set folder = "imaps://mail.riseup.net:993"
+set spoolfile = "imaps://mail.riseup.net/INBOX"
+set signature = "~/.mutt/signature"
+
+# Vim like bindings
+bind pager G bottom
+
+# GPG sign
+source ~/.mutt/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 12622B78
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes

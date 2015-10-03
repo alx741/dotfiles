@@ -1,5 +1,6 @@
+tags
 mpd/.mpd/pid
 mpd/.mpd/log
 mpd/.mpd/state
 mpd/.mpd/sticker.sql
-tags
+mutt/.mutt/cache
