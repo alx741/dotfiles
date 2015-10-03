@@ -1,6 +1,9 @@
 # Load Xresources
 xrdb -load .Xresources
 
+# Music daemon
+mpd&
+
 # Setup monitors, sound, network (Home or No-Home)
 ./.scripts/setup.sh
 
