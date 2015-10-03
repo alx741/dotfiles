@@ -9,24 +9,37 @@
 #       - Laptop display [1366x768]
 #       - LCD (VGA) monitor [1024x768]
 #       - Laptop above LCD monitor
-#       - Sound available
+#       - Sound unmute
+#       - Ethernet static configuration
 #       - Init:
-#           - Terminal emulator
 #           - Web explorer
 #
 # * No-Home
 #       - Laptop display [1366x768]
+#       - LCD (VGA) monitor [1024x768] (if any)
+#       - Laptop below LCD monitor (if any)
 #       - Sound mute
-#       - Init:
-#           - Terminal emulator
+#       - Ethernet dhcp client
 
 
 
-# Return TRUE if VGA is connected
-#
-# VGA plugedin: Home
-# VGA NO plugedin: No-Home
-vga_plugedin()
+function am_i_at_home
+{
+    # At home i have my Ducky Shine 3 keyboard connected
+    # so use that in order to identify if i'm at home
+    usb_keyboard_entry=$(lsusb | grep -i "holtek semiconductor" | \
+        awk '{print $7}')
+
+    if [[ $usb_keyboard_entry == "Holtek" ]]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+function is_vga_plugedin
 {
     VGASTATE=$(xrandr | grep -i 'vga' | awk '{print $2 }')
 
@@ -37,19 +50,19 @@ vga_plugedin()
     fi
 }
 
-
-# Home setup
-if vga_plugedin; then
+if am_i_at_home
+then
     xrandr --output VGA1 --mode 1024x768
     xrandr --output LVDS1 --mode 1024x768 --above VGA1
     amixer set Master unmute
     ~/.scripts/ether.sh
     firefox&
-
-# No-Home setup
 else
-    xrandr --output LVDS1 --mode 1366x768
-    xrandr --output VGA1 --mode 1366x768 --above LVDS1
+    if is_vga_plugedin
+    then
+        xrandr --output LVDS1 --mode 1366x768
+        xrandr --output VGA1 --mode 1366x768 --above LVDS1
+    fi
     amixer set Master mute
     dhclient enp3s0
 fi
