@@ -22,7 +22,6 @@
     Plug 'junegunn/goyo.vim'
     Plug 'tommcdo/vim-exchange'
     Plug 'SirVer/ultisnips'
-    Plug 'ludovicchabant/vim-gutentags'
     Plug 'othree/html5.vim'
     Plug 'jaxbot/browserlink.vim'
     Plug 'alvan/vim-closetag'
@@ -32,6 +31,8 @@
     Plug 'terryma/vim-multiple-cursors'
     Plug 'benekastah/neomake'
     Plug 'LucHermitte/vim-refactor'
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-easytags'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -235,10 +236,6 @@
 
     "{{{ UltiSnips
         let g:UltiSnipsEditSplit="horizontal"
-    "}}}
-
-    "{{{ GutenTags
-        let g:gutentags_generate_on_missing=0
     "}}}
 
     "{{{ Multiple-cursors
