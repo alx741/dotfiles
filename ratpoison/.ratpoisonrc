@@ -25,6 +25,9 @@
     # Close current window
     bind Q delete
 
+    # Close current window
+    bind m exec ~/.scripts/music_control.sh
+
     # Vi keys
     bind j focusdown
     bind h focusleft
