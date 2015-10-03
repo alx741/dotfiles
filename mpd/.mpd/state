@@ -1,8 +1,9 @@
 sw_volume: 1
 audio_device_state:1:audio
-state: stop
-current: 0
-random: 1
+state: play
+current: 17
+time: 69.124000
+random: 0
 repeat: 0
 single: 0
 consume: 0
