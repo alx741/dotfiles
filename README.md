@@ -11,6 +11,9 @@ Dotfiles
 - X11
 - Astyle
 - Urxvt
+- Xmodmap
+- Mpd
+- Ncmpcpp
 
 
 Deprecated
