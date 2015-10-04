@@ -28,6 +28,9 @@
     # Close current window
     bind Q delete
 
+    # Screen shots
+    bind bar exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
+
     # Backblight control
     bind braceright exec ~/.scripts/backlight_control.sh +
     bind braceleft exec ~/.scripts/backlight_control.sh -
