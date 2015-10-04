@@ -2,5 +2,7 @@ tags
 mpd/.mpd/pid
 mpd/.mpd/log
 mpd/.mpd/state
+mpd/.mpd/database
+mpd/.mpd/playlists
 mpd/.mpd/sticker.sql
 mutt/.mutt/cache

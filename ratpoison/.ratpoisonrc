@@ -65,13 +65,15 @@
 
     #{{{ Music control
         newkmap music
-        definekey music p exec ~/.scripts/music_control.sh p
-        definekey music s exec ~/.scripts/music_control.sh s
-        definekey music i exec ~/.scripts/music_control.sh i
-        definekey music n exec ~/.scripts/music_control.sh n
-        definekey music N exec ~/.scripts/music_control.sh N
-        definekey music period exec ~/.scripts/music_control.sh +
-        definekey music comma exec ~/.scripts/music_control.sh -
+        definekey music space exec ~/.scripts/music_control.sh toggle
+        definekey music p exec ~/.scripts/music_control.sh select_song
+        definekey music P exec ~/.scripts/music_control.sh select_playlist
+        definekey music s exec ~/.scripts/music_control.sh stop
+        definekey music i exec ~/.scripts/music_control.sh information
+        definekey music n exec ~/.scripts/music_control.sh next
+        definekey music N exec ~/.scripts/music_control.sh previous
+        definekey music period exec ~/.scripts/music_control.sh seek+
+        definekey music comma exec ~/.scripts/music_control.sh seek-
         bind m readkey music
     #}}}
 #}}}
