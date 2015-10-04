@@ -14,10 +14,13 @@ Dotfiles
 - Xmodmap
 - Mpd
 - Ncmpcpp
+- Mutt
 
 
 Deprecated
 ----------
+
+These dotfiles are abandoned
 
 - ~~Vim~~
 - ~~Dwm~~
