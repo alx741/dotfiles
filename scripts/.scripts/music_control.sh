@@ -1,22 +1,28 @@
 #! /bin/sh
 
 
-val=$(ratpoison -c "prompt <music> ")
-
-case "$val" in
+case "$1" in
     'p')
         mpc toggle
         ;;
     's')
         mpc stop
         ;;
-    'c')
+    'i')
         ~/.scripts/echo_song.sh
         ;;
     'n')
         mpc next
+        ~/.scripts/echo_song.sh
         ;;
     'N')
         mpc prev
+        ~/.scripts/echo_song.sh
+        ;;
+    '+')
+        mpc seek +10
+        ;;
+    '-')
+        mpc seek -10
         ;;
 esac

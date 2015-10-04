@@ -25,22 +25,23 @@
     # Close current window
     bind Q delete
 
-    # Close current window
-    bind m exec ~/.scripts/music_control.sh
+    # Volume control
+    bind bracketright exec ~/.scripts/volume_control.sh +
+    bind bracketleft exec ~/.scripts/volume_control.sh -
+    bind backslash  exec ~/.scripts/volume_control.sh m
 
-    # Vi keys
-    bind j focusdown
-    bind h focusleft
-    bind k focusup
-    bind l focusright
-    bind J exchangedown
-    bind H exchangeleft
-    bind K exchangeup
-    bind L exchangeright
-
-    # Vi splits
-    bind s vsplit
-    bind v hsplit
+    #{{{ Vi like bindings
+        bind j focusdown
+        bind h focusleft
+        bind k focusup
+        bind l focusright
+        bind J exchangedown
+        bind H exchangeleft
+        bind K exchangeup
+        bind L exchangeright
+        bind s vsplit
+        bind v hsplit
+    #}}}
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/info.sh )"
@@ -51,6 +52,18 @@
 
     # Turn off the display
     bind Return exec xset dpms force off
+
+    #{{{ Music control
+        newkmap music
+        definekey music p exec ~/.scripts/music_control.sh p
+        definekey music s exec ~/.scripts/music_control.sh s
+        definekey music i exec ~/.scripts/music_control.sh i
+        definekey music n exec ~/.scripts/music_control.sh n
+        definekey music N exec ~/.scripts/music_control.sh N
+        definekey music period exec ~/.scripts/music_control.sh +
+        definekey music comma exec ~/.scripts/music_control.sh -
+        bind m readkey music
+    #}}}
 #}}}
 
 

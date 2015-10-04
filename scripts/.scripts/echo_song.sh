@@ -2,4 +2,4 @@
 
 current_song=$(mpc current)
 
-ratpoison -c "echo <Music> $current_song"
+ratpoison -c "echo $current_song"

@@ -1,10 +1,10 @@
 # Increase Volume
-"amixer set Master 3%+"
+"amixer set Master 5%+"
     m:0x0 + c:123
     XF86AudioRaiseVolume
 
 # Decrease Volume
-"amixer set Master 3%-"
+"amixer set Master 5%-"
     m:0x0 + c:122
     XF86AudioLowerVolume
 
