@@ -28,6 +28,10 @@
     # Close current window
     bind Q delete
 
+    # Backblight control
+    bind braceright exec ~/.scripts/backlight_control.sh +
+    bind braceleft exec ~/.scripts/backlight_control.sh -
+
     # Volume control
     bind bracketright exec ~/.scripts/volume_control.sh +
     bind bracketleft exec ~/.scripts/volume_control.sh -
