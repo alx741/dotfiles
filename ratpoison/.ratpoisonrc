@@ -22,6 +22,9 @@
     # Give temporally control to metacity
     bind W tmpwm metacity
 
+    # Use ratmen window selection
+    bind w exec ~/.scripts/window_select.sh
+
     # Close current window
     bind Q delete
 
