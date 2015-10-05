@@ -35,13 +35,6 @@
     bind braceright exec ~/.scripts/backlight_control.sh +
     bind braceleft exec ~/.scripts/backlight_control.sh -
 
-    # Volume control
-    bind parenright exec ~/.scripts/volume_control.sh high
-    bind parenleft exec ~/.scripts/volume_control.sh low
-    bind bracketright exec ~/.scripts/volume_control.sh inc
-    bind bracketleft exec ~/.scripts/volume_control.sh dec
-    bind backslash  exec ~/.scripts/volume_control.sh mute
-
     #{{{ Vi like bindings
         bind j focusdown
         bind h focusleft
@@ -64,6 +57,16 @@
 
     # Turn off the display
     bind Return exec xset dpms force off
+
+    #{{{ Volume control
+        bind parenright exec ~/.scripts/volume_control.sh high
+        bind parenleft exec ~/.scripts/volume_control.sh low
+        bind underscore exec ~/.scripts/volume_control.sh medium
+        bind slash exec ~/.scripts/volume_control.sh ask
+        bind bracketright exec ~/.scripts/volume_control.sh inc
+        bind bracketleft exec ~/.scripts/volume_control.sh dec
+        bind backslash  exec ~/.scripts/volume_control.sh mute
+    #}}}
 
     #{{{ Music control
         newkmap music

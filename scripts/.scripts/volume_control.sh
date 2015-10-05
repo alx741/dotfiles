@@ -1,6 +1,16 @@
 #! /bin/sh
 
 
+function read_volume_value
+{
+    vol_level=`ratpoison -c "prompt volume? "`
+
+    if [[ $vol_level -le 100 && $vol_level -ge 0 ]]
+    then
+        amixer set Master $vol_level%
+    fi
+}
+
 case "$1" in
     'inc')
         amixer set Master 5%+
@@ -16,6 +26,12 @@ case "$1" in
         ;;
     'low')
         amixer set Master 15%
+        ;;
+    'medium')
+        amixer set Master 50%
+        ;;
+    'ask')
+        read_volume_value
         ;;
 esac
 
