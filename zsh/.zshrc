@@ -44,6 +44,7 @@
 #}}}
 
 #{{{ Variables
+    export NECROPOLIS="necropolis.crabdance.com"
     export EDITOR=nvim
     export PAGER=less
     export JAVA_HOME="/usr"
@@ -82,9 +83,10 @@
     alias addio='~/.scripts/addio.sh'
     alias poweroff='~/.scripts/addio.sh'
     alias reboot='~/.scripts/addio.sh'
-    alias pubip='~/.scripts/pubip.sh' # Retrieve public IP
-    alias labip='~/.scripts/labip.sh' # Retrieve necropolis IP
-    alias rr='~/.scripts/restore_ratpoison.sh' # Restore ratpoison
+    alias pubip='~/.scripts/pubip.sh'
+    alias labip='~/.scripts/labip.sh'
+    alias et='~/.scripts/et_phone_home.sh'
+    alias rr='~/.scripts/restore_ratpoison.sh'
 #}}}
 
 #{{{ Completion
