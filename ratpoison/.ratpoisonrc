@@ -29,11 +29,11 @@
     bind Q delete
 
     # Screen shots
-    bind bar exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
+    bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
 
     # Backblight control
-    bind braceright exec ~/.scripts/backlight_control.sh +
-    bind braceleft exec ~/.scripts/backlight_control.sh -
+    bind parenright exec ~/.scripts/backlight_control.sh +
+    bind parenleft exec ~/.scripts/backlight_control.sh -
 
     #{{{ Vi like bindings
         bind j focusdown
@@ -59,9 +59,9 @@
     bind Return exec xset dpms force off
 
     #{{{ Volume control
-        bind parenright exec ~/.scripts/volume_control.sh high
-        bind parenleft exec ~/.scripts/volume_control.sh low
-        bind underscore exec ~/.scripts/volume_control.sh medium
+        bind braceright  exec ~/.scripts/volume_control.sh high
+        bind braceleft exec ~/.scripts/volume_control.sh low
+        bind bar exec ~/.scripts/volume_control.sh medium
         bind slash exec ~/.scripts/volume_control.sh ask
         bind bracketright exec ~/.scripts/volume_control.sh inc
         bind bracketleft exec ~/.scripts/volume_control.sh dec
