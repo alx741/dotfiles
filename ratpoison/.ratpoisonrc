@@ -36,9 +36,11 @@
     bind braceleft exec ~/.scripts/backlight_control.sh -
 
     # Volume control
-    bind bracketright exec ~/.scripts/volume_control.sh +
-    bind bracketleft exec ~/.scripts/volume_control.sh -
-    bind backslash  exec ~/.scripts/volume_control.sh m
+    bind parenright exec ~/.scripts/volume_control.sh high
+    bind parenleft exec ~/.scripts/volume_control.sh low
+    bind bracketright exec ~/.scripts/volume_control.sh inc
+    bind bracketleft exec ~/.scripts/volume_control.sh dec
+    bind backslash  exec ~/.scripts/volume_control.sh mute
 
     #{{{ Vi like bindings
         bind j focusdown
