@@ -19,8 +19,8 @@ mpd&
 
     # Configure keys
     setxkbmap -option ctrl:swapcaps&
-    xmodmap .xmodmap&
     xcape -e 'Control_L=Escape'&
+    xmodmap .xmodmap&
 #}}}
 
 #{{{ Mouse
