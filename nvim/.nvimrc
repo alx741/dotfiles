@@ -26,13 +26,13 @@
     Plug 'jaxbot/browserlink.vim'
     Plug 'alvan/vim-closetag'
     Plug 'edsono/vim-matchit'
-    Plug 'fisadev/vim-ctrlp-cmdpalette'
     Plug 'mihaifm/bufstop'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'benekastah/neomake'
     Plug 'LucHermitte/vim-refactor'
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-easytags'
+    Plug 'jiangmiao/auto-pairs'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -109,7 +109,7 @@
     nnoremap <leader><cr> mzggg?G`z
 
     " Buffers [bufstop]
-    " nnoremap <c-h> :BufstopFast<cr>
+    nnoremap <c-\> :BufstopFast<cr>
 
     " Remove highlights using escape (this prevent using especial keys mappings!)
     nnoremap <silent><esc> :noh<CR><esc>
