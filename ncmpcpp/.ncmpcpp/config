@@ -16,7 +16,7 @@ now_playing_suffix = ""
 #}}}
 
 #{{{ various settings
-execute_on_song_change = "~/.scripts/echo_song.sh"
+execute_on_song_change = "~/.scripts/music_control.sh information"
 autocenter_mode = yes
 centered_cursor = yes
 progressbar_look = =>

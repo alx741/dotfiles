@@ -53,6 +53,22 @@ function select_song_from_current_playlist
 }
 
 
+function echo_information
+{
+    info=`mpc status | head -n 2`
+    lines=`echo "$info" | wc -l`
+
+    if [[ $lines -lt 2 ]]
+    then
+        ratpoison -c "echo [stopped]"
+        echo no
+    else
+        ratpoison -c "echo $info"
+        echo si
+    fi
+}
+
+
 
 case "$1" in
     'toggle')
@@ -68,15 +84,15 @@ case "$1" in
         mpc stop
         ;;
     'information')
-        ~/.scripts/echo_song.sh
+        echo_information
         ;;
     'next')
         mpc next
-        ~/.scripts/echo_song.sh
+        echo_information
         ;;
     'previous')
         mpc prev
-        ~/.scripts/echo_song.sh
+        echo_information
         ;;
     'seek+')
         mpc seek +10
