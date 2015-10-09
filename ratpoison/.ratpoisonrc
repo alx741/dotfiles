@@ -16,7 +16,7 @@
     bind o only
 
     # Fast switching
-    bind t exec ~/.scripts/select.sh terminal
+    bind c exec ~/.scripts/select.sh terminal
     bind e exec ~/.scripts/select.sh firefox
 
     # Give temporally control to metacity
