@@ -7,7 +7,6 @@
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-dispatch'
-    Plug 'Valloric/YouCompleteMe'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'scrooloose/syntastic'
     Plug 'scrooloose/nerdtree'
@@ -33,6 +32,7 @@
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-easytags'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'kennykaye/vim-relativity'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -243,9 +243,8 @@
         let g:multi_cursor_exit_from_insert_mode=0
     "}}}
 
-    "{{{ YouCompleteMe
-        let g:ycm_key_list_select_completion=[]
-        let g:ycm_key_list_previous_completion=[]
+    "{{{ AutoPairs
+        let g:AutoPairs = {'{': '}'}
     "}}}
 "}}}
 
