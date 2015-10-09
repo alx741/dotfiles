@@ -1,0 +1,19 @@
+#{{{ General
+    data.location=~/.task
+#}}}
+
+#{{{ Color
+    color=on
+    include /usr/share/doc/task/rc/solarized-light-256.theme
+#}}}
+
+#{{{ Sync
+    taskd.server=freecinc.com:53589
+    taskd.key=\/home\/alx\/.task\/freecinc_d3127e42.key.pem
+    taskd.ca=\/home\/alx\/.task\/freecinc_d3127e42.ca.pem
+    taskd.credentials=FreeCinc\/freecinc_d3127e42\/daea9807-f391-4f87-9eb7-6b336eb3aea8
+    taskd.certificate=\/home\/alx\/.task\/freecinc_d3127e42.cert.pem
+#}}}
+
+
+# vim:fdm=marker
