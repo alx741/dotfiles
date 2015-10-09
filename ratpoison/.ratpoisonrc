@@ -80,6 +80,10 @@
         definekey music N exec ~/.scripts/music_control.sh previous
         definekey music period exec ~/.scripts/music_control.sh seek+
         definekey music comma exec ~/.scripts/music_control.sh seek-
+        definekey music r exec ~/.scripts/music_control.sh playback repeat
+        definekey music z exec ~/.scripts/music_control.sh playback random
+        definekey music y exec ~/.scripts/music_control.sh playback single
+        definekey music c exec ~/.scripts/music_control.sh playback consume
         bind m readkey music
     #}}}
 #}}}

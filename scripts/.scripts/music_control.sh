@@ -1,7 +1,7 @@
 #! /bin/sh
 
 
-status=`mpc status`
+status=""
 crafted_status=""
 
 
@@ -115,7 +115,7 @@ function craft_status_info
         playing_time=`echo "$playing_time" | sed -e 's/\[.*\] //'`
 
         playback_modes=`echo "$status" | tail -n 1 | sed -e 's/volume:[^r]*//'`
-        playback_modes=`echo "$playback_modes" | sed -e 's/: on/[*]/g'`
+        playback_modes=`echo "$playback_modes" | sed -e 's/: on/ [*]/g'`
         playback_modes=`echo "$playback_modes" | sed -e 's/: off/ [ ]/g'`
 
         crafted_status="$playing_status
@@ -128,8 +128,29 @@ function craft_status_info
 
 function echo_information
 {
+
+    status=`mpc status`
     craft_status_info
     ratpoison -c "echo $crafted_status"
+}
+
+
+function toggle_playback
+{
+    case "$1" in
+        'repeat')
+            mpc repeat
+            ;;
+        'random')
+            mpc random
+            ;;
+        'single')
+            mpc single
+            ;;
+        'consume')
+            mpc consume
+            ;;
+    esac
 }
 
 
@@ -163,5 +184,9 @@ case "$1" in
         ;;
     'seek-')
         mpc seek -10
+        ;;
+    'playback')
+        toggle_playback $2
+        echo_information
         ;;
 esac
