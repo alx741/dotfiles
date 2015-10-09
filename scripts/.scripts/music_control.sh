@@ -1,6 +1,11 @@
 #! /bin/sh
 
 
+status=`mpc status`
+crafted_status=""
+
+
+
 function select_playlist
 {
     playlists=`mpc lsplaylists`
@@ -53,19 +58,78 @@ function select_song_from_current_playlist
 }
 
 
-function echo_information
+function is_stopped
 {
-    info=`mpc status | head -n 2`
-    lines=`echo "$info" | wc -l`
+    lines=`echo "$status" | wc -l`
 
     if [[ $lines -lt 2 ]]
     then
-        ratpoison -c "echo [stopped]"
-        echo no
+        return 0
     else
-        ratpoison -c "echo $info"
-        echo si
+        return 1
     fi
+}
+
+
+function is_paused
+{
+    if [[ `echo "$status" | grep "\[paused\]"` != "" ]]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+function craft_status_info
+{
+    playing_symbol=">"
+    paused_symbol="|"
+    stopped_symbol="stopped"
+
+    playing_status=""
+    song=""
+    playing_time=""
+    playback_modes=""
+
+    if is_stopped
+    then
+        # Stopped
+        playing_status="[$stopped_symbol]"
+
+        crafted_status="$playing_status"
+    else
+        if is_paused
+        then
+            # Paused
+            playing_status="[$paused_symbol]"
+        else
+            # Playing
+            playing_status="[$playing_symbol]"
+        fi
+
+        song=`echo "$status" | head -n 1`
+
+        playing_time=`echo "$status" | head -n 2 | tail -n 1`
+        playing_time=`echo "$playing_time" | sed -e 's/\[.*\] //'`
+
+        playback_modes=`echo "$status" | tail -n 1 | sed -e 's/volume:[^r]*//'`
+        playback_modes=`echo "$playback_modes" | sed -e 's/: on/[*]/g'`
+        playback_modes=`echo "$playback_modes" | sed -e 's/: off/ [ ]/g'`
+
+        crafted_status="$playing_status
+        $song
+        $playing_time
+        $playback_modes"
+    fi
+}
+
+
+function echo_information
+{
+    craft_status_info
+    ratpoison -c "echo $crafted_status"
 }
 
 
