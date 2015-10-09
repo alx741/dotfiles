@@ -84,6 +84,8 @@
         definekey music z exec ~/.scripts/music_control.sh playback random
         definekey music y exec ~/.scripts/music_control.sh playback single
         definekey music c exec ~/.scripts/music_control.sh playback consume
+
+        definekey music question help music
         bind m readkey music
     #}}}
 #}}}
