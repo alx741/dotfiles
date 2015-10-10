@@ -84,9 +84,16 @@
         definekey music z exec ~/.scripts/music_control.sh playback random
         definekey music y exec ~/.scripts/music_control.sh playback single
         definekey music c exec ~/.scripts/music_control.sh playback consume
-
         definekey music question help music
         bind m readkey music
+    #}}}
+
+    #{{{ Taskwarrior control
+        newkmap task
+        definekey task l exec ~/.scripts/task_control.sh list
+        definekey task p exec ~/.scripts/task_control.sh list_projects
+        definekey task question help task
+        bind t readkey task
     #}}}
 #}}}
 
