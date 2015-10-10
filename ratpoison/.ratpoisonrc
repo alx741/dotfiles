@@ -51,7 +51,7 @@
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/info.sh )"
-    bind A exec ratpoison -c "echo $( cal -3 )"
+    bind A exec ratpoison -c "echo $( cal -3 -m )"
 
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network.sh )"
