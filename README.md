@@ -16,6 +16,7 @@ Dotfiles
 - Ncmpcpp
 - Mutt
 - Taskwarrior
+- Weechat
 
 
 Deprecated
