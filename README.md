@@ -15,6 +15,7 @@ Dotfiles
 - Mpd
 - Ncmpcpp
 - Mutt
+- Taskwarrior
 
 
 Deprecated
@@ -32,4 +33,4 @@ Installation
 
 Use GNU `stow` for install each config like this:
 
-        $ stow -d ~ nvim
+        $ stow -t ~ nvim
