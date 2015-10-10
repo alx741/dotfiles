@@ -1,5 +1,18 @@
-#{{{ General
+#{{{ Files
     data.location=~/.task
+#}}}
+
+#{{{ Terminal
+    editor=nvim
+#}}}
+
+#{{{ Misc
+    indent.annotation=4
+    undo.style=diff
+#}}}
+
+#{{{ Dates
+    weekstart=Monday
 #}}}
 
 #{{{ Color
