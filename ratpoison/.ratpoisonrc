@@ -4,6 +4,7 @@
         unbind C-k
         unbind S
         unbind c
+        unbind C-c
     #}}}
 
     # Escape
