@@ -37,3 +37,6 @@ set pgp_sign_as = 12622B78
 set pgp_timeout = 3600
 set crypt_autosign = yes
 set crypt_replyencrypt = yes
+
+# Color
+source ~/.mutt/color-solarized-light.rc
