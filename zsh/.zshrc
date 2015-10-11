@@ -112,6 +112,25 @@
     alias labip='~/.scripts/labip.sh'
     alias et='~/.scripts/et_phone_home.sh'
     alias rr='~/.scripts/restore_ratpoison.sh'
+
+    #{{{ Global
+        alias -g gpi='| grep -i'
+        alias -g gp='| grep'
+    #}}}
+
+    #{{{ Sufix
+        alias -s md=md
+        alias -s c=vim
+        alias -s cpp=vim
+        alias -s h=vim
+        alias -s hpp=vim
+        alias -s java=vim
+        alias -s py=vim
+        alias -s php=vim
+        alias -s html=vim
+        alias -s css=vim
+        alias -s js=vim
+    #}}}
 #}}}
 
 #{{{ Completion
