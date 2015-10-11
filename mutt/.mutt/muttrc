@@ -1,10 +1,11 @@
 # General settings
 set send_charset = "utf-8"
 set assumed_charset = "utf-8"
+set sort=reverse-date
+set sort_browser=reverse-date
 set autoedit
 set copy=yes
 set edit_headers
-set sort=threads
 set pager=less
 set editor = "nvim -c 'set syntax=mail ft=mail enc=utf-8'"
 set menu_scroll = "yes"
@@ -27,8 +28,12 @@ set folder = 'imaps://mail.riseup.net:993'
 set spoolfile = 'imaps://mail.riseup.net/INBOX'
 set signature = '~/.mutt/signature'
 
-# Vim like bindings
-bind pager G bottom
+# Vi like bindings
+bind index L bottom-page
+bind index G last-entry
+bind index gg first-entry
+bind index R group-reply
+bind index * recall-message
 
 # GPG sign
 source ~/.mutt/gpg.rc
