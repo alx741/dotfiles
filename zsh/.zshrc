@@ -34,6 +34,7 @@
 #{{{ Options
     # See `man zshoptions`
 
+    setopt AUTO_PUSHD
     setopt CORRECT
     setopt GLOB_COMPLETE
     setopt RM_STAR_WAIT
