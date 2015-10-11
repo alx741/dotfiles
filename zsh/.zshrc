@@ -1,3 +1,27 @@
+#{{{ Antigen
+    source ~/.zsh/antigen/antigen.zsh
+
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle tarruda/zsh-autosuggestions
+    antigen bundle zsh-users/zsh-history-substring-search
+
+    antigen apply
+#}}}
+
+#{{{ Plugins configuration
+    #{{{ autoseuggestions
+        zle-line-init() {
+            zle autosuggest-start
+        }
+        zle -N zle-line-init
+    #}}}
+
+    #{{{ history-substring-search
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
+    #}}}
+#}}}
+
 #{{{ ZSH Modules
     autoload -U compinit promptinit zcalc zsh-mime-setup
     autoload -U colors && colors
@@ -93,6 +117,9 @@
     # See `man zshcompsys
 
     zstyle ':completion::complete:*' use-cache 1
+    zstyle ':completion:*' accept-exact '*(N)'
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ~/.zsh/cache
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
     zstyle ':completion:*' verbose yes
     zstyle ':completion:*:descriptions' format '%B%d%b'
