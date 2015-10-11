@@ -23,9 +23,9 @@ progressbar_look = =>
 default_place_to_search_in = database
 user_interface = classic
 media_library_primary_tag = artist
-header_visibility = no
+header_visibility = yes
 statusbar_visibility = yes
-titles_visibility = no
+titles_visibility = yes
 allow_for_physical_item_deletion = no
 lastfm_preferred_language = en
 startup_screen = playlist

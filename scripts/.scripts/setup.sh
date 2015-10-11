@@ -6,9 +6,10 @@
 # 2 different setups are available:
 #
 # * Home
-#       - Laptop display [1366x768]
+#       - Laptop display off
+#       - LCD (HDMI) monitor [1360x768]
 #       - LCD (VGA) monitor [1024x768]
-#       - Laptop above LCD monitor
+#       - HDMI left of VGA
 #       - Sound unmute
 #       - Ethernet static configuration
 #       - Init:
@@ -52,8 +53,9 @@ function is_vga_plugedin
 
 if am_i_at_home
 then
-    xrandr --output VGA1 --mode 1024x768
-    xrandr --output LVDS1 --mode 1024x768 --above VGA1
+    xrandr --output LVDS1 --off
+    xrandr --output HDMI1 --mode 1360x768
+    xrandr --output VGA1 --mode 1024x768 --left-of HDMI1
     amixer set Master unmute
     ~/.scripts/ether.sh
     firefox&
