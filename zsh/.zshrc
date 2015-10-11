@@ -100,6 +100,7 @@
     alias vi='/usr/bin/vim'
     alias vim='nvim'
     alias mysql='mysql -u $USER -p --sigint-ignore'
+    alias git='hub'
     alias gs='git status'
     alias gp='~/.scripts/git_push-fancy.sh'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
