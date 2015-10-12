@@ -17,14 +17,14 @@
     bind o only
 
     # Fast switching
-    bind c exec ~/.scripts/select.sh terminal
-    bind e exec ~/.scripts/select.sh firefox
+    bind c exec ~/.scripts/ratpoison/app_select.sh terminal
+    bind e exec ~/.scripts/ratpoison/app_select.sh firefox
 
     # Give temporally control to metacity
     bind W tmpwm metacity
 
     # Use ratmen window selection
-    bind w exec ~/.scripts/window_select.sh
+    bind w exec ~/.scripts/ratpoison/window_select.sh
 
     # Close current window
     bind Q delete
@@ -32,10 +32,10 @@
     # Screen shots
     bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
 
-    # Backblight control
-    bind parenright exec ~/.scripts/backlight_control.sh inc
-    bind parenleft exec ~/.scripts/backlight_control.sh dec
-    bind underscore exec ~/.scripts/backlight_control.sh toggle
+    # Backlight control
+    bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
+    bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
+    bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
 
     #{{{ Vi like bindings
         bind j focusdown
@@ -51,48 +51,48 @@
     #}}}
 
     # Print information
-    bind a exec ratpoison -c "echo $( ~/.scripts/info.sh )"
+    bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
     bind A exec ratpoison -c "echo $( cal -3 -m )"
 
     # Network information
-    bind I exec ratpoison -c "echo $( ~/.scripts/network.sh )"
+    bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
 
     # Turn off the display
     bind Return exec xset dpms force off
 
     #{{{ Volume control
-        bind braceright  exec ~/.scripts/volume_control.sh high
-        bind braceleft exec ~/.scripts/volume_control.sh low
-        bind bar exec ~/.scripts/volume_control.sh medium
-        bind slash exec ~/.scripts/volume_control.sh ask
-        bind bracketright exec ~/.scripts/volume_control.sh inc
-        bind bracketleft exec ~/.scripts/volume_control.sh dec
-        bind backslash  exec ~/.scripts/volume_control.sh mute
+        bind braceright  exec ~/.scripts/ratpoison/volume_control.sh high
+        bind braceleft exec ~/.scripts/ratpoison/volume_control.sh low
+        bind bar exec ~/.scripts/ratpoison/volume_control.sh medium
+        bind slash exec ~/.scripts/ratpoison/volume_control.sh ask
+        bind bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
+        bind bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
+        bind backslash  exec ~/.scripts/ratpoison/volume_control.sh mute
     #}}}
 
     #{{{ Music control
         newkmap music
-        definekey music space exec ~/.scripts/music_control.sh toggle
-        definekey music p exec ~/.scripts/music_control.sh select_song
-        definekey music P exec ~/.scripts/music_control.sh select_playlist
-        definekey music s exec ~/.scripts/music_control.sh stop
-        definekey music i exec ~/.scripts/music_control.sh information
-        definekey music n exec ~/.scripts/music_control.sh next
-        definekey music N exec ~/.scripts/music_control.sh previous
-        definekey music period exec ~/.scripts/music_control.sh seek+
-        definekey music comma exec ~/.scripts/music_control.sh seek-
-        definekey music r exec ~/.scripts/music_control.sh playback repeat
-        definekey music z exec ~/.scripts/music_control.sh playback random
-        definekey music y exec ~/.scripts/music_control.sh playback single
-        definekey music c exec ~/.scripts/music_control.sh playback consume
+        definekey music space exec ~/.scripts/ratpoison/music_control.sh toggle
+        definekey music p exec ~/.scripts/ratpoison/music_control.sh select_song
+        definekey music P exec ~/.scripts/ratpoison/music_control.sh select_playlist
+        definekey music s exec ~/.scripts/ratpoison/music_control.sh stop
+        definekey music i exec ~/.scripts/ratpoison/music_control.sh information
+        definekey music n exec ~/.scripts/ratpoison/music_control.sh next
+        definekey music N exec ~/.scripts/ratpoison/music_control.sh previous
+        definekey music period exec ~/.scripts/ratpoison/music_control.sh seek+
+        definekey music comma exec ~/.scripts/ratpoison/music_control.sh seek-
+        definekey music r exec ~/.scripts/ratpoison/music_control.sh playback repeat
+        definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
+        definekey music y exec ~/.scripts/ratpoison/music_control.sh playback single
+        definekey music c exec ~/.scripts/ratpoison/music_control.sh playback consume
         definekey music question help music
         bind m readkey music
     #}}}
 
     #{{{ Taskwarrior control
         newkmap task
-        definekey task l exec ~/.scripts/task_control.sh list
-        definekey task p exec ~/.scripts/task_control.sh list_projects
+        definekey task l exec ~/.scripts/ratpoison/task_control.sh list
+        definekey task p exec ~/.scripts/ratpoison/task_control.sh list_projects
         definekey task question help task
         bind t readkey task
     #}}}

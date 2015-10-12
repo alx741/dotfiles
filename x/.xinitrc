@@ -5,7 +5,7 @@ xrdb -load .Xresources&
 ./.scripts/setup.sh
 
 # Start graphical terminal emulator instance
-~/.scripts/select.sh terminal
+~/.scripts/ratpoison/app_select.sh terminal
 
 # Music daemon
 mpd&

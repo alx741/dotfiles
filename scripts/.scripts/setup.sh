@@ -60,7 +60,7 @@ then
     xrandr --output VGA1 --mode 1024x768 --left-of HDMI1
     amixer set Master unmute
     amixer set Master 50%
-    ~/.scripts/ether.sh
+    ~/.scripts/network/configure_ether.sh
     firefox&
 else
     if is_vga_plugedin

@@ -109,10 +109,10 @@
     alias addio='~/.scripts/addio.sh'
     alias poweroff='~/.scripts/addio.sh'
     alias reboot='~/.scripts/addio.sh'
-    alias pubip='~/.scripts/pubip.sh'
-    alias labip='~/.scripts/labip.sh'
-    alias et='~/.scripts/et_phone_home.sh'
-    alias rr='~/.scripts/restore_ratpoison.sh'
+    alias pubip='~/.scripts/network/echo_pub_ip.sh'
+    alias labip='~/.scripts/network/echo_lab_ip.sh'
+    alias et='~/.scripts/network/et_phone_home.sh'
+    alias rr='~/.scripts/ratpoison/restore_ratpoison.sh'
 
     #{{{ Global
         alias -g gpi='| grep -i'
