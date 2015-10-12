@@ -17,6 +17,7 @@ Dotfiles
 - Mutt
 - Taskwarrior
 - Weechat
+- Nethack
 
 
 Deprecated
