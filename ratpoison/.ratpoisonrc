@@ -1,3 +1,17 @@
+#{{{ Settings
+    startup_message off
+    msgwait 3
+    nextscreen
+#}}}
+
+#{{{ Variables
+    set wingravity c
+    set winname class
+    set fgcolor black
+    set bgcolor papaya whip
+    set waitcursor 0
+#}}}
+
 #{{{ Bindigs
     #{{{ Unbindings
         unbind q
@@ -6,59 +20,6 @@
         unbind c
         unbind C-c
     #}}}
-
-    # Escape
-    escape C-g
-
-    # Abort with ESC
-    bind Escape abort
-
-    # Only window
-    bind o only
-
-    # Fast switching
-    bind c exec ~/.scripts/ratpoison/app_select.sh terminal
-    bind e exec ~/.scripts/ratpoison/app_select.sh firefox
-
-    # Give temporally control to metacity
-    bind W tmpwm metacity
-
-    # Use ratmen window selection
-    bind w exec ~/.scripts/ratpoison/window_select.sh
-
-    # Close current window
-    bind Q delete
-
-    # Screen shots
-    bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
-
-    # Backlight control
-    bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
-    bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
-    bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
-
-    #{{{ Vi like bindings
-        bind j focusdown
-        bind h focusleft
-        bind k focusup
-        bind l focusright
-        bind J exchangedown
-        bind H exchangeleft
-        bind K exchangeup
-        bind L exchangeright
-        bind s vsplit
-        bind v hsplit
-    #}}}
-
-    # Print information
-    bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
-    bind A exec ratpoison -c "echo $( cal -3 -m )"
-
-    # Network information
-    bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
-
-    # Turn off the display
-    bind Return exec xset dpms force off
 
     #{{{ Volume control
         bind braceright  exec ~/.scripts/ratpoison/volume_control.sh high
@@ -99,24 +60,60 @@
         definekey task question help task
         bind t readkey task
     #}}}
+
+    #{{{ Vi like bindings
+        bind j focusdown
+        bind h focusleft
+        bind k focusup
+        bind l focusright
+        bind J exchangedown
+        bind H exchangeleft
+        bind K exchangeup
+        bind L exchangeright
+        bind s vsplit
+        bind v hsplit
+    #}}}
+
+    # Escape
+    escape C-g
+
+    # Abort with ESC
+    bind Escape abort
+
+    # Only window
+    bind o only
+
+    # Fast switching
+    bind c exec ~/.scripts/ratpoison/app_select.sh terminal
+    bind e exec ~/.scripts/ratpoison/app_select.sh firefox
+
+    # Give temporally control to metacity
+    bind W tmpwm metacity
+
+    # Use ratmen window selection
+    bind w exec ~/.scripts/ratpoison/window_select.sh
+
+    # Close current window
+    bind Q delete
+
+    # Screen shots
+    bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
+
+    # Backlight control
+    bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
+    bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
+    bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
+
+    # Print information
+    bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
+    bind A exec ratpoison -c "echo $( cal -3 -m )"
+
+    # Network information
+    bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
+
+    # Turn off the display
+    bind Return exec xset dpms force off
 #}}}
 
-
-# Put cursor where it was previously
-warp on
-
-# Don't convert cursor in a box while waiting commands
-set waitcursor 0
-
-# Messages config
-msgwait 3
-startup_message off
-set fgcolor black
-set bgcolor papaya whip
-
-set winname class
-
-# If there is more than 1 screen, give focus to the second one
-nextscreen
 
 # vim:fdm=marker
