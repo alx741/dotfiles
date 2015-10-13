@@ -31,6 +31,11 @@ function select_song_from_current_playlist
 {
     current_song=`mpc current -f "[%artist% - %title%]|[%file%]" | tr -d '!-.' | sed -e 's/mp3//'`
     songs=`mpc playlist -f "[%artist% - %title%]|[%file%]" | tr -d '!-.' | sed -e 's/mp3//'`
+    if [[ $songs == "" ]]
+    then
+        ratpoison -c "echo [No playlist selected]"
+        return 0
+    fi
 
     ratmen_cmd="ratmen --title Songs -p "
     counter=1
@@ -69,7 +74,7 @@ function search_song
     search_results=$(mpc search any "$search_text" | sed "s/'/\\\'/g;s/\`/\\\\\`/g")
     if [[ $search_results == "" ]]
     then
-        ratpoison -c "echo No search results"
+        ratpoison -c "echo [No search results]"
         return 0
     fi
 
