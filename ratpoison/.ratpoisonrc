@@ -73,14 +73,17 @@
     #{{{ Music control
         newkmap music
         definekey music space exec ~/.scripts/ratpoison/music_control.sh toggle
-        definekey music p exec ~/.scripts/ratpoison/music_control.sh select_song
-        definekey music P exec ~/.scripts/ratpoison/music_control.sh select_playlist
+        definekey music l exec ~/.scripts/ratpoison/music_control.sh select_song
+        definekey music L exec ~/.scripts/ratpoison/music_control.sh select_playlist
         definekey music s exec ~/.scripts/ratpoison/music_control.sh stop
         definekey music i exec ~/.scripts/ratpoison/music_control.sh information
         definekey music n exec ~/.scripts/ratpoison/music_control.sh next
-        definekey music N exec ~/.scripts/ratpoison/music_control.sh previous
+        definekey music p exec ~/.scripts/ratpoison/music_control.sh previous
         definekey music period exec ~/.scripts/ratpoison/music_control.sh seek+
         definekey music comma exec ~/.scripts/ratpoison/music_control.sh seek-
+        definekey music greater exec ~/.scripts/ratpoison/music_control.sh seek++
+        definekey music less exec ~/.scripts/ratpoison/music_control.sh seek--
+        definekey music slash exec ~/.scripts/ratpoison/music_control.sh search
         definekey music r exec ~/.scripts/ratpoison/music_control.sh playback repeat
         definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
         definekey music y exec ~/.scripts/ratpoison/music_control.sh playback single

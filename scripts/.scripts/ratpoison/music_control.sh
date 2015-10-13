@@ -58,6 +58,38 @@ function select_song_from_current_playlist
 }
 
 
+function search_song
+{
+    search_text=`ratpoison -c "prompt song? "`
+    if [[ $search_text == "" ]]
+    then
+        return 0
+    fi
+
+    search_results=`mpc search any "$search_text" | sed "s/'/\\\'/g"`
+    if [[ $search_results == "" ]]
+    then
+        ratpoison -c "echo No search results"
+        return 0
+    fi
+
+    ratmen_cmd="ratmen --title Search -pd: "
+    while read -r line;
+    do
+        ratmen_cmd+="\"$line\" "
+    done <<< "$search_results"
+
+    selected_song=`eval $ratmen_cmd`
+
+    if [[ $selected_song != "" ]]
+    then
+        mpc clear
+        mpc add "$selected_song"
+        mpc play
+    fi
+}
+
+
 function is_stopped
 {
     lines=`echo "$status" | wc -l`
@@ -182,11 +214,20 @@ case "$1" in
     'seek+')
         mpc seek +10
         ;;
+    'seek++')
+        mpc seek +50
+        ;;
     'seek-')
         mpc seek -10
+        ;;
+    'seek--')
+        mpc seek -50
         ;;
     'playback')
         toggle_playback $2
         echo_information
+        ;;
+    'search')
+        search_song
         ;;
 esac
