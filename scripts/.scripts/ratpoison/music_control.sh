@@ -66,7 +66,7 @@ function search_song
         return 0
     fi
 
-    search_results=`mpc search any "$search_text" | sed "s/'/\\\'/g"`
+    search_results=$(mpc search any "$search_text" | sed "s/'/\\\'/g;s/\`/\\\\\`/g")
     if [[ $search_results == "" ]]
     then
         ratpoison -c "echo No search results"
