@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-mpc stop > /dev/null
 clear
 echo
 echo
