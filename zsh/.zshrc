@@ -325,15 +325,6 @@
             export TERM='screen'
         fi
     fi
-
-    # Autorun TMUX (Only when X11 is running)
-    # if [[ (-e /tmp/.X0-lock) ]]; then
-    #     if [[ -n $TMUX ]]; then
-    #         # Tmux running, do nothing
-    #     else
-    #         tmux -2
-    #     fi
-    # fi
 #}}}
 
 #{{{ First Init
