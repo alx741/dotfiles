@@ -19,6 +19,6 @@ if [[ "$0" == "adhoc" ]]; then
     sudo ifconfig wlp2s0 192.168.5.1
     sudo iptables -t nat -A POSTROUTING -o enp3s0 -j MASQUERADE
     sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
-    sudo systemctl start dhcpd
+    sudo dhclient wlp2s0
 fi
 

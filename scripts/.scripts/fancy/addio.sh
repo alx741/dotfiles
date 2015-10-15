@@ -11,9 +11,9 @@ echo
 
 case "$1" in
     'halt')
-        systemctl poweroff
+        poweroff
         ;;
     'reboot')
-        systemctl reboot
+        reboot
         ;;
 esac
