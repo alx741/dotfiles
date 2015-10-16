@@ -80,7 +80,7 @@
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
     # Path
-    PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:"
+    PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/lib/jvm/default/bin:/opt/opencascade/bin:"
     PATH+="/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:"
     PATH+="$ANDROID_TOOLS:"
