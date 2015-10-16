@@ -24,8 +24,8 @@ URxvt.reverseVideo: false
 
 ! Fonts
 urxvt.allow_bold: true
-urxvt.font: xft:DejavuSansMono:pixelsize=16:syle=book
-urxvt.boldFont: xft:DejavuSansMono:pixelsize=16:style=bold
+urxvt*font: xft:DejaVuSansMono:pixelsize=16:syle=book
+urxvt*boldFont: xft:DejaVuSansMono:pixelsize=16:style=bold
 
 ! Fix font space
 URxvt*letterSpace: -1
