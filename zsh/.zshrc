@@ -118,8 +118,8 @@
     alias x='startx'
 
     #{{{ Global
-        alias -g gpi='| grep -i'
-        alias -g gp='| grep'
+        alias -g grepi='| grep -i'
+        alias -g grep='| grep'
     #}}}
 
     #{{{ Sufix
