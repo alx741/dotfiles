@@ -15,7 +15,7 @@ mpd&
     xbindkeys&
 
     # Set us-international-altgr keyboard
-    setxkbmap us -variant algr-intl
+    setxkbmap us -variant altgr-intl
 
     # Configure keys
     setxkbmap -option ctrl:swapcaps&
