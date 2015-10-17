@@ -6,7 +6,7 @@ set sort_browser=reverse-date
 set autoedit
 set copy=yes
 set edit_headers
-set pager=less
+set pager="/usr/share/nvim/runtime/macros/less.sh"
 set editor = "nvim -c 'set syntax=mail ft=mail enc=utf-8'"
 set menu_scroll = "yes"
 set mail_check=30
