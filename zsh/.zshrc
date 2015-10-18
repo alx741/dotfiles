@@ -6,7 +6,6 @@
         echo "Creating a zgen save"
 
         zgen load zsh-users/zsh-syntax-highlighting
-        zgen load tarruda/zsh-autosuggestions
         zgen load zsh-users/zsh-history-substring-search
 
         zgen save
@@ -319,16 +318,6 @@
 #}}}
 
 #{{{ Plugins configuration
-    #{{{ autosuggestions
-        zle-line-init() {
-            zle autosuggest-start
-        }
-        zle -N zle-line-init
-
-        # Use ^f to accept suggestions
-        bindkey '^f' vi-forward-blank-word
-    #}}}
-
     #{{{ history-substring-search
         bindkey -M vicmd 'k' history-substring-search-up
         bindkey -M vicmd 'j' history-substring-search-down
