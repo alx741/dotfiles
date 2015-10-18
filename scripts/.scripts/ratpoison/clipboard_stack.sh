@@ -72,8 +72,7 @@ function purge
 
 function get_snippet_preview
 {
-    snippet=`cat "$1"`
-    snippet=$(echo "$snippet" | sed "s/'/\\\'/g;s/\`/\\\\\`/g" | tr "\n" "  ")
+    snippet=$(cat "$1" | sed "s/\"/\\\\\"/g;s/\`/\\\\\`/g" | tr "\n" "  ")
     connector="[...]"
 
     if [[ `echo "$snippet" | wc -c` -le 80 ]]
@@ -104,8 +103,8 @@ function snippet_menu
         if [ ! -e $snippet_file ];then continue; fi
 
         preview=`get_snippet_preview "$snippet_file"`
-        ratmen_cmd+="'$preview' "
-        ratmen_cmd+="'$snippet_file' "
+        ratmen_cmd+="\"$preview\""
+        ratmen_cmd+=" '$snippet_file' "
     done
     selected_snippet=`eval $ratmen_cmd`
 
