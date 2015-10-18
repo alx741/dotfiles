@@ -1,25 +1,16 @@
-#{{{ Antigen
-    source ~/.zsh/antigen/antigen.zsh
+#{{{ Zgen
+    source "${HOME}/.zsh/zgen/zgen.zsh"
 
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle tarruda/zsh-autosuggestions
-    antigen bundle zsh-users/zsh-history-substring-search
+    if ! zgen saved
+    then
+        echo "Creating a zgen save"
 
-    antigen apply
-#}}}
+        zgen load zsh-users/zsh-syntax-highlighting
+        zgen load tarruda/zsh-autosuggestions
+        zgen load zsh-users/zsh-history-substring-search
 
-#{{{ Plugins configuration
-    #{{{ autoseuggestions
-        zle-line-init() {
-            zle autosuggest-start
-        }
-        zle -N zle-line-init
-    #}}}
-
-    #{{{ history-substring-search
-        bindkey -M vicmd 'k' history-substring-search-up
-        bindkey -M vicmd 'j' history-substring-search-down
-    #}}}
+        zgen save
+    fi
 #}}}
 
 #{{{ ZSH Modules
@@ -325,6 +316,23 @@
             export TERM='screen'
         fi
     fi
+#}}}
+
+#{{{ Plugins configuration
+    #{{{ autosuggestions
+        zle-line-init() {
+            zle autosuggest-start
+        }
+        zle -N zle-line-init
+
+        # Use ^f to accept suggestions
+        bindkey '^f' vi-forward-blank-word
+    #}}}
+
+    #{{{ history-substring-search
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
+    #}}}
 #}}}
 
 #{{{ First Init
