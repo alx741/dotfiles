@@ -108,11 +108,6 @@
     alias vim='nvim'
     alias x='startx'
 
-    #{{{ Global
-        alias -g grepi='| grep -i'
-        alias -g grep='| grep'
-    #}}}
-
     #{{{ Sufix
         alias -s md=md
         alias -s c=vim
