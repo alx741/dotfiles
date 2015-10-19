@@ -20,6 +20,7 @@ function launch_firefox
     then
         ratpoison -c "select firefox"
     else
+        ratpoison -c "echo Started"
         firefox&
     fi
 }
@@ -31,7 +32,9 @@ function launch_terminal
     then
         ratpoison -c "select urxvt"
     else
-    urxvt -e bash -c "tmux -q has-session &>/dev/null && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"&
+        urxvt -e bash -c "tmux -q has-session &>/dev/null && exec tmux \
+            attach-session -d || exec tmux new-session -n$USER \
+            -s$USER@$HOSTNAME"&
     fi
 }
 
