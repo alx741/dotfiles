@@ -60,7 +60,7 @@
 #}}}
 
 #{{{ Variables
-    export NECROPOLIS="necropolis.crabdance.com"
+    export HADES="hades.alx.mooo.com"
     export EDITOR=nvim
     export PAGER=less
     export JAVA_HOME="/usr"

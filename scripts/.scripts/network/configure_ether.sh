@@ -1,7 +1,6 @@
 #! /bin/bash
 
 # Auto ethernet network connection script
-# Necropolis internal network
 #
 # Invoke from Shell very first initialization
 
