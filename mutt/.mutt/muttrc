@@ -15,6 +15,7 @@ set imap_passive = no
 set imap_servernoise = no
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
+set record=~/.mail/sent
 
 # Personal settings
 set from = 'alx741@riseup.net'
