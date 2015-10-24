@@ -106,31 +106,31 @@
     nnoremap <space> za
 
     " Ofuscate
-    nnoremap <leader><cr> mzggg?G`z
+    nnoremap <leader><CR> mzggg?G`z
 
     " Buffers [bufstop]
-    nnoremap <c-\> :BufstopFast<cr>
+    nnoremap <c-\> :BufstopFast<CR>
 
     " Remove highlights using escape (this prevent using especial keys mappings!)
     nnoremap <silent><esc> :noh<CR><esc>
 
     "{{{ LEADER mappings
         " Remove trailing white spaces ( \w )
-        nnoremap <silent><leader>w :call RemoveTrailingSpaces() <CR>
+        nnoremap <silent><leader>w :call RemoveTrailingSpaces()<CR>
         " Format document
-        nnoremap <silent><leader>f :call Format() <CR>
+        nnoremap <silent><leader>f :call Format(<CR>
         " Toggle spelling ( \s )
-        nnoremap <leader>s :call ToggleSpell() <cr>
+        nnoremap <leader>s :call ToggleSpell()<CR>
         " Trigger TagList plugin ( \t )
-        nnoremap <silent><leader>t :TlistToggle <cr>
+        nnoremap <silent><leader>t :TlistToggle<CR>
         " Trigger UndoTree plugin ( \u )
-        nnoremap <silent><leader>u :UndotreeToggle <cr>
+        nnoremap <silent><leader>u :UndotreeToggle<CR>
         " Trigger NerdTree plugin ( \n )
-        nnoremap <silent><leader>n :NERDTreeToggle <cr>
+        nnoremap <silent><leader>n :NERDTreeToggle<CR>
         " Toggle line number
-        nnoremap <silent><leader>\ :call NumberToggle()<cr>
+        nnoremap <silent><leader>\ :call NumberToggle()<CR>
         " Trigger Ctags program for the current directory
-        nnoremap <silent><leader>c :!ctags -R . <cr>
+        nnoremap <silent><leader>c :!ctags -R .<CR>
     "}}}
 "}}}
 
@@ -257,20 +257,7 @@
     command! W w !sudo tee % >/dev/null
 "}}}
 
-"{{{ Personal functions
-    " Help files tags jump
-    " [g , ]g
-    nmap [g <Plug>unimpairedHelpTagPrevious
-    nmap ]g <Plug>unimpairedHelpTagNext
-
-    nnoremap <silent> <Plug>unimpairedHelpTagPrevious :call <SID>HelpTag(1)<CR>
-    nnoremap <silent> <Plug>unimpairedHelpTagNext     :call <SID>HelpTag(0)<CR>
-
-    function! s:HelpTag(reverse)
-      call search('|\S\+|', a:reverse ? 'bW' : 'W')
-    endfunction
-
-
+"{{{ General Functions
     " Format document
     "
     " * Removes trailing white spaces
@@ -332,6 +319,7 @@
 
 
     " Marks over-length lines and trailing white spaces as errors
+    " Highlight "DEBUGME" keyword
     function! StyleMarks()
         highlight OverLength ctermbg=blue ctermfg=white
         call matchadd('OverLength', '\%81v.\+', 100)
@@ -354,5 +342,47 @@
         endif
     endfunction
 "}}}
+
+"{{{ File Specific
+    "{{{ HELP
+        augroup ft_help
+            au!
+            au FileType help nnoremap <buffer><silent>[g :call Help_tag(1)<CR>
+            au FileType help nnoremap <buffer><silent>]g :call Help_tag(0)<CR>
+        augroup END
+
+        function! Help_tag(reverse)
+            call search('|\S\+|', a:reverse ? 'bW' : 'W')
+        endfunction
+    "}}}
+
+    "{{{ HTML
+        augroup ft_html
+            au!
+            au FileType html nnoremap <buffer><silent><localleader>o :call Firefox_open()<CR>
+        augroup END
+
+        function! Firefox_open()
+            let s:html_file = expand('%:p')
+            exe "silent !firefox " . s:html_file
+            exe "silent redraw!"
+        endfunction
+    "}}}
+
+    "{{{ CSS
+        augroup ft_css
+            au!
+            au FileType css setlocal foldmethod=marker
+            au FileType css setlocal foldmarker={,}
+            au FileType css nnoremap <buffer><localleader>S :call Sort_properties()<CR>
+        augroup END
+
+        function! Sort_properties()
+            exe "norm! vi{\<ESC>"
+            exe "'<,'>sort"
+        endfunction
+    "}}}
+"}}}
+
 
 " vim:fdm=marker
