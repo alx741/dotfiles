@@ -22,6 +22,7 @@
     Plug 'tommcdo/vim-exchange'
     Plug 'SirVer/ultisnips'
     Plug 'othree/html5.vim'
+    Plug 'hail2u/vim-css3-syntax'
     Plug 'jaxbot/browserlink.vim'
     Plug 'alvan/vim-closetag'
     Plug 'edsono/vim-matchit'
@@ -33,6 +34,8 @@
     Plug 'xolox/vim-easytags'
     Plug 'jiangmiao/auto-pairs'
     Plug 'kennykaye/vim-relativity'
+    Plug 'rking/ag.vim'
+    Plug 'ggVGc/vim-fuzzysearch'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
