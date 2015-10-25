@@ -107,6 +107,7 @@
     alias vi='/usr/bin/vim'
     alias vim='nvim'
     alias x='startx'
+    alias yd='~/.scripts/youtube_music_download.sh'
 
     #{{{ Sufix
         alias -s md=md
