@@ -29,11 +29,17 @@ then
     exit 1
 fi
 
-read -p "Artist? " artist
-read -p "Title? " title
+vid_title=`youtube-dl -q --no-warnings -e "$URL"`
+default_artist=$(echo "$vid_title" | cut -d "-" -f1 | sed 's/ $//')
+default_title=$(echo "$vid_title" | cut -d "-" -f2 | sed 's/^ //;s/\[.*\]//;s/(.*)//;s/ $//')
+
+read -p "Artist? [$default_artist] " artist
+read -p "Title? [$default_title] " title
 read -p "Album? [none] " album
 read -p "Comment? [none] " comment
 
+if [[ "$artist" == "" ]]; then artist="$default_artist"; fi
+if [[ "$title" == "" ]]; then title="$default_title"; fi
 if [[ "$album" == "" ]]; then album=" "; fi
 if [[ "$comment" == "" ]]; then comment=" "; fi
 id3v2 -t "$title" -a "$artist" -A "$album" -c "$comment" "$TMP_FINAL_FILE"
