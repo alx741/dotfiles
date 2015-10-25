@@ -261,14 +261,6 @@
       }
 
       zle_cut_widgets=(
-        vi-backward-delete-char
-        vi-change
-        vi-change-eol
-        vi-change-whole-line
-        vi-delete
-        vi-delete-char
-        vi-kill-eol
-        vi-substitute
         vi-yank
         vi-yank-eol
       )
