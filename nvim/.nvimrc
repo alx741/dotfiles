@@ -347,6 +347,14 @@
 "}}}
 
 "{{{ File Specific
+    "{{{ SH
+        augroup ft_sh
+            au!
+            au FileType sh setlocal foldmethod=marker
+            au FileType sh setlocal foldmarker={,}
+        augroup END
+    "}}}
+
     "{{{ HELP
         augroup ft_help
             au!
