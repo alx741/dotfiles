@@ -105,6 +105,9 @@
     # Screen shots
     bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
 
+    # Calculator
+    bind C exec ~/.scripts/ratpoison/calculator.sh
+
     # Backlight control
     bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
