@@ -121,7 +121,7 @@
         " Remove trailing white spaces ( \w )
         nnoremap <silent><leader>w :call RemoveTrailingSpaces()<CR>
         " Format document
-        nnoremap <silent><leader>f :call Format(<CR>
+        nnoremap <silent><leader>f :call Format()<CR>
         " Toggle spelling ( \s )
         nnoremap <leader>s :call ToggleSpell()<CR>
         " Trigger TagList plugin ( \t )
