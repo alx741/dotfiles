@@ -11,6 +11,9 @@ xrdb -load .Xresources&
 mpd&
 
 #{{{ Keyboard
+    # Repeat rate
+    xset r rate 250 30
+
     # Init special keys binding
     xbindkeys&
 
