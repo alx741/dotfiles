@@ -249,6 +249,10 @@
     "{{{ AutoPairs
         let g:AutoPairs = {'{': '}'}
     "}}}
+
+    "{{{ CtrlP
+        let g:ctrlp_cmd = 'CtrlPBuffer'
+    "}}}
 "}}}
 
 "{{{ Misc
