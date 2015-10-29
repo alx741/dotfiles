@@ -1,41 +1,42 @@
 "{{{ VIM-PLUG
     call plug#begin('~/.nvim/plugged')
-    Plug 'wellle/targets.vim'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-dispatch'
-    Plug 'michaeljsmith/vim-indent-object'
-    Plug 'scrooloose/syntastic'
-    Plug 'scrooloose/nerdtree'
-    Plug 'vim-scripts/taglist.vim'
-    Plug 'kien/ctrlp.vim'
-    Plug 'thanthese/Tortoise-Typing'
-    Plug 'mbbill/undotree'
-    Plug 'alx741/vinfo'
-    Plug 'godlygeek/tabular'
-    Plug 'bruno-/vim-man'
-    Plug 'altercation/vim-colors-solarized'
-    Plug 'junegunn/goyo.vim'
-    Plug 'tommcdo/vim-exchange'
+    Plug 'LucHermitte/vim-refactor'
     Plug 'SirVer/ultisnips'
-    Plug 'othree/html5.vim'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'alvan/vim-closetag'
+    Plug 'alx741/vinfo'
+    Plug 'benekastah/neomake'
+    Plug 'bruno-/vim-man'
+    Plug 'edsono/vim-matchit'
+    Plug 'ggVGc/vim-fuzzysearch'
+    Plug 'godlygeek/tabular'
     Plug 'hail2u/vim-css3-syntax'
     Plug 'jaxbot/browserlink.vim'
-    Plug 'alvan/vim-closetag'
-    Plug 'edsono/vim-matchit'
-    Plug 'mihaifm/bufstop'
-    Plug 'terryma/vim-multiple-cursors'
-    Plug 'benekastah/neomake'
-    Plug 'LucHermitte/vim-refactor'
-    Plug 'xolox/vim-misc'
-    Plug 'xolox/vim-easytags'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/goyo.vim'
     Plug 'kennykaye/vim-relativity'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mbbill/undotree'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'mihaifm/bufstop'
+    Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
-    Plug 'ggVGc/vim-fuzzysearch'
+    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/syntastic'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'thanthese/Tortoise-Typing'
+    Plug 'tommcdo/vim-exchange'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'vim-scripts/filestyle'
+    Plug 'vim-scripts/taglist.vim'
+    Plug 'wellle/targets.vim'
+    Plug 'xolox/vim-easytags'
+    Plug 'xolox/vim-misc'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -53,9 +54,6 @@
 "{{{ Auto Commands
     " Reset format options when filetypes are loaded
     autocmd FileType * set formatoptions=tcrql
-
-    " Trigger StyleMarks
-    autocmd VimEnter,BufWinEnter,BufWinLeave * call StyleMarks()
 
     " Trigger Neomake on save
     autocmd! BufWritePost * Neomake
@@ -253,6 +251,10 @@
     "{{{ CtrlP
         let g:ctrlp_cmd = 'CtrlPBuffer'
     "}}}
+
+    "{{{ FileStyle
+        let g:filestyle_ignore = ['man', 'info', 'help', 'gitcommit']
+    "}}}
 "}}}
 
 "{{{ Misc
@@ -322,21 +324,6 @@
                 echom "NO Spell"
             endif
         endif
-    endfunction
-
-
-    " Marks over-length lines and trailing white spaces as errors
-    " Highlight "DEBUGME" keyword
-    function! StyleMarks()
-        highlight OverLength ctermbg=blue ctermfg=white
-        call matchadd('OverLength', '\%81v.\+', 100)
-
-        highlight Trailing ctermbg=blue ctermfg=white
-        call matchadd('Trailing', '\s\+$', 100)
-
-        highlight Debugme ctermbg=red ctermfg=white
-        call matchadd('Debugme', 'debugme', 100)
-        call matchadd('Debugme', 'DEBUGME', 100)
     endfunction
 
 
