@@ -1,0 +1,24 @@
+#{{{ General options
+    msgcolor=no
+    msglevel="all=1"
+    really-quiet=yes
+#}}}
+
+#{{{ Stream
+    cache=50000
+    cache-min=5
+#}}}
+
+#{{{ Audio
+    ao=alsa
+#}}}
+
+#{{{ Video
+    border=no
+    fs=yes
+    name=mplayer
+    title=mplayer
+#}}}
+
+
+# vim:fdm=marker

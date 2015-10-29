@@ -3,21 +3,22 @@ Dotfiles
 
 **Using Solarized Light color scheme**
 
-- NeoVim
-- Tmux
-- Zsh
-- Git
-- Ratpoison
-- X11
 - Astyle
-- Urxvt
-- Xmodmap
+- Git
 - Mpd
-- Ncmpcpp
+- Mplayer
 - Mutt
-- Taskwarrior
-- Weechat
+- Ncmpcpp
+- NeoVim
 - Nethack
+- Ratpoison
+- Taskwarrior
+- Tmux
+- Urxvt
+- Weechat
+- X11
+- Xmodmap
+- Zsh
 
 
 Deprecated
@@ -25,9 +26,9 @@ Deprecated
 
 These dotfiles are abandoned
 
-- ~~Vim~~
 - ~~Dwm~~
 - ~~Tilda~~
+- ~~Vim~~
 
 
 Installation
