@@ -88,8 +88,10 @@ function search_song
 
     if [[ $selected_song != "" ]]
     then
+        song=$(echo "$selected_song" | sed 's/\\//')
+        echo "$song"
         mpc clear
-        mpc add "$selected_song"
+        mpc add "$song"
         mpc play
     fi
 }
