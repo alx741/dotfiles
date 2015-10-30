@@ -7,6 +7,7 @@ mpd/.mpd/playlists
 mpd/.mpd/sticker.sql
 ncmpcpp/.ncmpcpp/error.log
 mutt/.mutt/cache
+mutt/.mutt/pass
 weechat/.weechat/sec.conf
 weechat/.weechat/weechat.log
 weechat/.weechat/logs
