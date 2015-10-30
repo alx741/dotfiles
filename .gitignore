@@ -11,3 +11,6 @@ weechat/.weechat/sec.conf
 weechat/.weechat/weechat.log
 weechat/.weechat/logs
 weechat/.weechat/weechat_fifo*
+newsbeuter/.newsbeuter/cache.db
+newsbeuter/.newsbeuter/history.cmdline
+newsbeuter/.newsbeuter/history.search

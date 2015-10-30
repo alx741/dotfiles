@@ -1,0 +1,29 @@
+#{{{ General
+    refresh-on-startup yes
+    auto-reload yes
+    browser firefox
+#}}}
+
+#{{{ Vi like
+    bind-key k up
+    bind-key j down
+    bind-key ^U pageup
+    bind-key ^D pagedown
+#}}}
+
+#{{{ Color
+    color background   default   default
+    color listnormal   default   default
+    color listnormal_unread   default   default
+    color listfocus    white     yellow bold
+    color listfocus_unread    white     yellow bold
+    color info         default   white
+    color article      default   default
+
+    highlight article "^(Title):.*$" blue default
+    highlight article "https?://[^ ]+" red default
+    highlight article "\\[image\\ [0-9]+\\]" green default
+#}}}
+
+
+# vim:fdm=marker

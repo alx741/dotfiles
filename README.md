@@ -11,6 +11,7 @@ Dotfiles
 - Ncmpcpp
 - NeoVim
 - Nethack
+- Newsbeuter
 - Ratpoison
 - Taskwarrior
 - Tmux
