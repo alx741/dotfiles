@@ -86,6 +86,9 @@
     # Abort with ESC
     bind Escape abort
 
+    # Send C-g to application
+    bind g meta C-g
+
     # Only window
     bind o only
 
