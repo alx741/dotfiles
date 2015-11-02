@@ -4,6 +4,7 @@ Dotfiles
 **Using Solarized Light color scheme**
 
 - Astyle
+- Emacs
 - Git
 - Mpd
 - Mplayer
