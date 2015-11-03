@@ -60,6 +60,7 @@
         newkmap task
         definekey task l exec ~/.scripts/ratpoison/task_control.sh list
         definekey task p exec ~/.scripts/ratpoison/task_control.sh list_projects
+        definekey task a exec ~/.scripts/ratpoison/task_control.sh add
         definekey task question help task
         bind t readkey task
     #}}}
