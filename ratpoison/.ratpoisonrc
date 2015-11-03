@@ -101,6 +101,9 @@
     # Select frame
     bind F fselect
 
+    # ET phone home
+    bind E exec ~/.scripts/ratpoison/et_phone_home.sh
+
     # Send C-g to application
     bind g meta C-g
 
