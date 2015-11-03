@@ -5,12 +5,13 @@
 #}}}
 
 #{{{ Variables
-    set wingravity c
-    set maxsizegravity c
-    set winname class
-    set fgcolor black
     set bgcolor papaya whip
+    set border 0
+    set fgcolor black
+    set maxsizegravity c
     set waitcursor 0
+    set wingravity c
+    set winname class
 #}}}
 
 #{{{ Bindigs
@@ -86,6 +87,12 @@
     # Abort with ESC
     bind Escape abort
 
+    # Show current frame
+    bind f curframe
+
+    # Select frame
+    bind F fselect
+
     # Send C-g to application
     bind g meta C-g
 
@@ -115,6 +122,11 @@
     bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
+    bind S exec xset dpms force off
+
+    # Change screens
+    bind Return nextscreen
+    bind C-Return prevscreen
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
@@ -123,8 +135,6 @@
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
 
-    # Turn off the display
-    bind Return exec xset dpms force off
 #}}}
 
 
