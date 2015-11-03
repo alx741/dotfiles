@@ -5,9 +5,10 @@
 #}}}
 
 #{{{ Variables
-    set bgcolor papaya whip
-    set border 0
-    set fgcolor black
+    set bgcolor #fdf6e3
+    set barborder 2
+    set border 1
+    set fgcolor #657b83
     set maxsizegravity c
     set waitcursor 0
     set wingravity c
