@@ -91,6 +91,13 @@
     # Show current frame
     bind f curframe
 
+    # Select next/previous window with same resource class
+    bind N inext
+    bind P iprev
+
+    # Show last message
+    bind semicolon lastmsg
+
     # Select frame
     bind F fselect
 
