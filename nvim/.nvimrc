@@ -37,6 +37,8 @@
     Plug 'wellle/targets.vim'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
+    Plug 'kana/vim-textobj-user'
+    Plug 'Julian/vim-textobj-variable-segment'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -160,7 +162,8 @@
     set lazyredraw
     set textwidth=80
     set linebreak
-    set timeoutlen=1000
+    set timeout
+    set timeoutlen=500
     set ttimeout
     set ttimeoutlen=0
     " set cursorline
