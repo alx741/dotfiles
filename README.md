@@ -14,6 +14,7 @@ Dotfiles
 - NeoVim
 - Nethack
 - Newsbeuter
+- Openbox
 - Ratpoison
 - Taskwarrior
 - Tmux
