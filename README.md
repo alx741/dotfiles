@@ -3,6 +3,7 @@ Dotfiles
 
 **Using Solarized Light color scheme**
 
+- Apvlv
 - Astyle
 - Emacs
 - Git
