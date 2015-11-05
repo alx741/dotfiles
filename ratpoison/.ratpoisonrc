@@ -115,8 +115,8 @@
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
 
-    # Give temporally control to metacity
-    bind W tmpwm metacity
+    # Give temporally control to openbox
+    bind W tmpwm openbox
 
     # Use ratmen window selection
     bind w exec ~/.scripts/ratpoison/window_select.sh
