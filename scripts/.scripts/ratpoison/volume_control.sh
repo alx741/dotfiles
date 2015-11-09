@@ -11,6 +11,9 @@ function read_volume_value
     fi
 }
 
+
+amixer set PCM 100%
+
 case "$1" in
     'inc')
         amixer set Master 5%+
