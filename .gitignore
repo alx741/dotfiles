@@ -15,3 +15,6 @@ weechat/.weechat/weechat_fifo*
 newsbeuter/.newsbeuter/cache.db
 newsbeuter/.newsbeuter/history.cmdline
 newsbeuter/.newsbeuter/history.search
+w3m/.w3m/cookie
+w3m/.w3m/history
+w3m/.w3m/passwd

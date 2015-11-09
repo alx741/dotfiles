@@ -19,6 +19,7 @@ Dotfiles
 - Taskwarrior
 - Tmux
 - Urxvt
+- W3M
 - Weechat
 - X11
 - Xmodmap
