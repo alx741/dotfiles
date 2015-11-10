@@ -11,6 +11,7 @@
 
 #{{{ Audio
     ao=alsa
+    mixer-channel="Master"
 #}}}
 
 #{{{ Video
