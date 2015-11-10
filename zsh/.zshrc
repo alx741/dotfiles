@@ -63,8 +63,6 @@
     export HADES="hades.alx.mooo.com"
     export EDITOR=nvim
     export PAGER=less
-    export JAVA_HOME="/usr"
-    export _JAVA_AWT_WM_NONREPARENTING=1
     export KEYTIMEOUT=1  # Reduce vi-mode lag
     export ANDROID_HOME="/opt/android-sdk"
     export ANDROID_SWT="/usr/share/java"
@@ -77,6 +75,11 @@
     PATH+="$ANDROID_TOOLS:"
     export PATH
     declare -U path
+
+    # Java
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export CLASSPATH="${CLASSPATH}:.:$(java-config -p tomcat-8,tomcat-servlet-api-3.1)"
+    export JAVA_HOME="$(java-config -O)"
 
     # History
     HISTFILE=~/.history
@@ -305,6 +308,12 @@
         else
             export TERM='screen'
         fi
+    fi
+
+    # Take me home to the place I belong, take me home, country roads...
+    if [[ `pwd` == "/" ]]
+    then
+        cd ~
     fi
 #}}}
 
