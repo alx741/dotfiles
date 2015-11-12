@@ -1,5 +1,5 @@
 "{{{ VIM-PLUG
-    call plug#begin('~/.nvim/plugged')
+    call plug#begin('~/.config/nvim/plugged')
     Plug 'LucHermitte/vim-refactor'
     Plug 'SirVer/ultisnips'
     Plug 'altercation/vim-colors-solarized'
@@ -219,8 +219,8 @@
     set backup
     set undofile
     set noswapfile
-    set undodir=~/.nvim/tmp/undo/
-    set backupdir=~/.nvim/tmp/backup/
+    set undodir=~/.config/nvim/tmp/undo/
+    set backupdir=~/.config/nvim/tmp/backup/
     set backupskip=/tmp/*,/private/tmp/*
     set writebackup
 "}}}
@@ -257,6 +257,10 @@
 
     "{{{ FileStyle
         let g:filestyle_ignore = ['man', 'info', 'help', 'gitcommit']
+    "}}}
+
+    "{{{ Easytags
+        let g:easytags_async = 1
     "}}}
 "}}}
 
