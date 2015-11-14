@@ -119,6 +119,10 @@
     " Remove highlights using escape (this prevent using especial keys mappings!)
     nnoremap <silent><esc> :noh<CR><esc>
 
+    " Listify
+    nnoremap <silent> gl :set opfunc=Listify<CR>g@
+    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
+
     "{{{ LEADER mappings
         " Remove trailing white spaces ( \w )
         nnoremap <silent><leader>w :call RemoveTrailingSpaces()<CR>
@@ -347,6 +351,16 @@
             set norelativenumber
         else
             set relativenumber
+        endif
+    endfunction
+
+
+    function! Listify(type, ...)
+        if a:0
+            exe "'<,'>norm! I- "
+        else
+            exe "norm! '[V']\<esc>"
+            exe "'<,'>norm! ^i- "
         endif
     endfunction
 "}}}
