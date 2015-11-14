@@ -1,5 +1,6 @@
 "{{{ VIM-PLUG
     call plug#begin('~/.config/nvim/plugged')
+    Plug 'Julian/vim-textobj-variable-segment'
     Plug 'LucHermitte/vim-refactor'
     Plug 'SirVer/ultisnips'
     Plug 'altercation/vim-colors-solarized'
@@ -9,11 +10,12 @@
     Plug 'bruno-/vim-man'
     Plug 'edsono/vim-matchit'
     Plug 'ggVGc/vim-fuzzysearch'
-    Plug 'godlygeek/tabular'
     Plug 'hail2u/vim-css3-syntax'
     Plug 'jaxbot/browserlink.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'kana/vim-textobj-user'
     Plug 'kennykaye/vim-relativity'
     Plug 'kien/ctrlp.vim'
     Plug 'mbbill/undotree'
@@ -37,8 +39,6 @@
     Plug 'wellle/targets.vim'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
-    Plug 'kana/vim-textobj-user'
-    Plug 'Julian/vim-textobj-variable-segment'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -53,12 +53,14 @@
     call plug#end()
 "}}}
 
-"{{{ Auto Commands
-    " Reset format options when filetypes are loaded
-    autocmd FileType * set formatoptions=tcrql
-
-    " Trigger Neomake on save
-    autocmd! BufWritePost * Neomake
+"{{{ Global Auto Commands
+    augroup global_au
+        au!
+        " Reset format options when filetypes are loaded
+        au FileType * set formatoptions=tcrql
+        " Trigger Neomake on save
+        au BufWritePost * Neomake
+    augroup END
 "}}}
 
 "{{{ Maps
@@ -261,6 +263,11 @@
 
     "{{{ Easytags
         let g:easytags_async = 1
+    "}}}
+
+    "{{{ EasyAlign
+        nmap ga <Plug>(EasyAlign)
+        xmap ga <Plug>(EasyAlign)
     "}}}
 "}}}
 
