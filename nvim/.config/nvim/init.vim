@@ -417,6 +417,33 @@
             exe "'<,'>sort"
         endfunction
     "}}}
+
+    "{{{ MARKDOWN
+        augroup ft_markdown
+            au!
+            au FileType markdown nnoremap <buffer><silent>gmth :call Create_header("h1")<CR>
+            au FileType markdown nnoremap <buffer><silent>gmh :call Create_header("h2")<CR>
+            au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
+            au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+        augroup END
+
+        function! Next_header(invert)
+            if a:invert == 0
+                exe "norm! /\\v^[=-]+$\<cr>\<esc>"
+            else
+                exe "norm! ?\\v^[=-]+$\<cr>\<esc>"
+            endif
+            exe "norm! ztkj"
+        endfunction
+
+        function! Create_header(header)
+            if a:header ==? "h1"
+                exe "norm! yypVr="
+            elseif a:header ==? "h2"
+                exe "norm! yypVr-"
+            endif
+        endfunction
+    "}}}
 "}}}
 
 
