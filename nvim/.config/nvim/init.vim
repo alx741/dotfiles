@@ -366,6 +366,13 @@
 "}}}
 
 "{{{ File Specific
+    "{{{ VIM
+        augroup ft_vim
+            au!
+            au FileType vim setlocal foldmethod=indent
+        augroup END
+    "}}}
+
     "{{{ SH
         augroup ft_sh
             au!
