@@ -36,6 +36,7 @@
 
     #{{{ Music control
         newkmap music
+        bind space exec ~/.scripts/ratpoison/music_control.sh toggle
         definekey music space exec ~/.scripts/ratpoison/music_control.sh toggle
         definekey music l exec ~/.scripts/ratpoison/music_control.sh select_song
         definekey music L exec ~/.scripts/ratpoison/music_control.sh select_playlist
