@@ -47,8 +47,6 @@
     Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
     Plug 'alx741/vinfo', { 'on': 'Vinfo' }
-    Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
-    Plug 'bruno-/vim-man', { 'on': 'Man' }
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
     call plug#end()
 "}}}
