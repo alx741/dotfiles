@@ -467,7 +467,7 @@
         augroup ft_po
             au!
             au FileType po setlocal tw=76
-            au FileType po vnoremap <buffer><silent>gs :call Toggle_str()<CR>
+            au FileType po nnoremap <buffer><silent>gs :call Toggle_str()<CR>
             au FileType po nnoremap <buffer><silent>]] :call Next_msgstr(0)<CR>
             au FileType po nnoremap <buffer><silent>[[ :call Next_msgstr(1)<CR>
         augroup END
@@ -484,15 +484,20 @@
         function! Toggle_str()
             let save_fo = &fo
             set fo-=t
-            exe "norm! ^"
-            let cur_char = getline(".")[col(".")-1]
 
+            exe "norm! ?\\v^msgstr.+$\\n[[:print:]]\<cr>jV}ko\<esc>^"
+
+            let cur_char = getline(".")[col(".")-1]
             if cur_char ==? "\""
-                exe "norm! x$x"
-                exe '.s/\s\+$//e'
+                exe "norm! gv\<esc>"
+                exe "'<,'>norm! ^x$x"
+                exe "'<,'>s/\\s\\+$//e"
             else
-                exe "norm! I\"\<esc>"
-                exe "norm! A \"\<esc>"
+                exe "norm! gv\<esc>"
+                exe "'<,'>norm! I\"\<esc>"
+                exe "norm! gvok\<esc>"
+                exe "'<,'>norm! A \"\<esc>"
+                exe "norm! jA\"\<esc>"
             endif
 
             let &fo = save_fo
