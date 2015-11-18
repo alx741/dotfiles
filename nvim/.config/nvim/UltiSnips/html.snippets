@@ -1,4 +1,4 @@
-snippet html "HTML 5 squeleton" b
+snippet html "HTML 5 skeleton" b
 <!doctype html>
 
 <html lang"${1:es}">
@@ -28,4 +28,15 @@ endsnippet
 snippet jquery "JQuery scripts"
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+endsnippet
+
+snippet jqs "JQuery Script skeleton" b
+<script>
+    function main()
+    {
+		$1
+    }
+
+    $(document).ready(main());
+</script>
 endsnippet
