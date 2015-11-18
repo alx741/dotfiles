@@ -20,7 +20,6 @@
     Plug 'kien/ctrlp.vim'
     Plug 'mbbill/undotree'
     Plug 'michaeljsmith/vim-indent-object'
-    Plug 'mihaifm/bufstop'
     Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
     Plug 'scrooloose/nerdtree'
@@ -86,41 +85,6 @@
         nnoremap $ g$
     "}}}
 
-    " Keep search matces in the middle of the window
-    nnoremap n nzzzv
-    nnoremap N Nzzzv
-
-    " Make [s position in the last char of the misspelled word
-    nnoremap [s [sh
-
-    " Search for visual selected area
-    vnoremap // y/<C-R>"<CR>
-
-    " Y is y$
-    nnoremap Y y$
-
-    " Viasual select last pasted text
-    nnoremap gp `[v`]
-
-    " Terminal mode leaving
-    tnoremap <esc> <C-\><C-n>
-
-    " Toggle folds
-    nnoremap <space> za
-
-    " Ofuscate
-    nnoremap <leader><CR> mzggg?G`z
-
-    " Buffers [bufstop]
-    nnoremap <c-\> :BufstopFast<CR>
-
-    " Remove highlights using escape (this prevent using especial keys mappings!)
-    nnoremap <silent><esc> :noh<CR><esc>
-
-    " Listify
-    nnoremap <silent> gl :set opfunc=Listify<CR>g@
-    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
-
     "{{{ LEADER mappings
         " Remove trailing white spaces ( \w )
         nnoremap <silent><leader>w :call RemoveTrailingSpaces()<CR>
@@ -139,6 +103,52 @@
         " Trigger Ctags program for the current directory
         nnoremap <silent><leader>c :!ctags -R .<CR>
     "}}}
+
+    " Keep search matces in the middle of the window
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+
+    " Make [s position in the last char of the misspelled word
+    nnoremap [s [sh
+
+    " Search for visual selected area
+    vnoremap // y/<C-R>"<CR>
+
+    " Y is y$
+    nnoremap Y y$
+
+    " Visual select last pasted text
+    nnoremap gp `[v`]
+
+    " Terminal mode leaving
+    tnoremap <esc> <C-\><C-n>
+
+    " Toggle folds
+    nnoremap <space> za
+
+    " Ofuscate
+    nnoremap <leader><CR> mzggg?G`z
+
+    " Ctrl-p buffers
+    nnoremap <cr> :CtrlPBuffer<CR>
+
+    " Remove highlights using escape
+    nnoremap <silent><esc> :noh<CR><esc>
+
+    " Listify
+    nnoremap <silent> gl :set opfunc=Listify<CR>g@
+    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
+
+    " Move trough splits
+    nnoremap <c-k> <c-w>k
+    nnoremap <c-j> <c-w>j
+    nnoremap <c-l> <c-w>l
+    nnoremap <BS> <C-W>h
+    " Some day C-H vs <BS> will be fixed, i hope...
+    " nnoremap <c-h> <c-w>h
+
+    " Avoid SIGTSTP
+    nnoremap <c-z> <c-x>
 "}}}
 
 "{{{ Status line and Color
@@ -256,11 +266,11 @@
     "}}}
 
     "{{{ CtrlP
-        let g:ctrlp_cmd = 'CtrlPBuffer'
+        let g:ctrlp_cmd = 'CtrlP'
     "}}}
 
     "{{{ FileStyle
-        let g:filestyle_ignore = ['man', 'info', 'help', 'gitcommit']
+        let g:filestyle_ignore = ['man', 'info', 'help', 'gitcommit', 'po']
     "}}}
 
     "{{{ Easytags
@@ -382,8 +392,8 @@
     "{{{ HELP
         augroup ft_help
             au!
-            au FileType help nnoremap <buffer><silent>[g :call Help_tag(1)<CR>
-            au FileType help nnoremap <buffer><silent>]g :call Help_tag(0)<CR>
+            au FileType help nnoremap <buffer><silent>[[ :call Help_tag(1)<CR>
+            au FileType help nnoremap <buffer><silent>]] :call Help_tag(0)<CR>
         augroup END
 
         function! Help_tag(reverse)
@@ -394,7 +404,7 @@
     "{{{ HTML
         augroup ft_html
             au!
-            au FileType html nnoremap <buffer><silent><localleader>o :call Firefox_open()<CR>
+            au FileType html nnoremap <buffer><silent>go :call Firefox_open()<CR>
         augroup END
 
         function! Firefox_open()
@@ -409,7 +419,7 @@
             au!
             au FileType css setlocal foldmethod=marker
             au FileType css setlocal foldmarker={,}
-            au FileType css nnoremap <buffer><localleader>S :call Sort_properties()<CR>
+            au FileType css nnoremap <buffer>gs :call Sort_properties()<CR>
         augroup END
 
         function! Sort_properties()
@@ -418,11 +428,19 @@
         endfunction
     "}}}
 
+    "{{{ JS
+        augroup ft_js
+            au!
+            au FileType javascript setlocal foldmethod=marker
+            au FileType javascript setlocal foldmarker={,}
+        augroup END
+    "}}}
+
     "{{{ MARKDOWN
         augroup ft_markdown
             au!
-            au FileType markdown nnoremap <buffer><silent>gmth :call Create_header("h1")<CR>
-            au FileType markdown nnoremap <buffer><silent>gmh :call Create_header("h2")<CR>
+            au FileType markdown nnoremap <buffer><silent>gH :call Create_header("h1")<CR>
+            au FileType markdown nnoremap <buffer><silent>gh :call Create_header("h2")<CR>
             au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
             au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
         augroup END
@@ -442,6 +460,42 @@
             elseif a:header ==? "h2"
                 exe "norm! yypVr-"
             endif
+        endfunction
+    "}}}
+
+    "{{{ PO
+        augroup ft_po
+            au!
+            au FileType po setlocal tw=76
+            au FileType po vnoremap <buffer><silent>gs :call Toggle_str()<CR>
+            au FileType po nnoremap <buffer><silent>]] :call Next_msgstr(0)<CR>
+            au FileType po nnoremap <buffer><silent>[[ :call Next_msgstr(1)<CR>
+        augroup END
+
+        function! Next_msgstr(invert)
+            if a:invert == 0
+                exe "norm! /\\v^msgstr\<cr>\<esc>"
+            else
+                exe "norm! ?\\v^msgstr\<cr>\<esc>"
+            endif
+            exe "norm! zz"
+        endfunction
+
+        function! Toggle_str()
+            let save_fo = &fo
+            set fo-=t
+            exe "norm! ^"
+            let cur_char = getline(".")[col(".")-1]
+
+            if cur_char ==? "\""
+                exe "norm! x$x"
+                exe '.s/\s\+$//e'
+            else
+                exe "norm! I\"\<esc>"
+                exe "norm! A \"\<esc>"
+            endif
+
+            let &fo = save_fo
         endfunction
     "}}}
 "}}}
