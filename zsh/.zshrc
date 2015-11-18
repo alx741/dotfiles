@@ -113,6 +113,8 @@
     alias x='startx'
     alias yt='~/.scripts/youtube_mplayer.sh'
     alias ymd='~/.scripts/youtube_music_download.sh'
+    alias tts='trans -b -t es'
+    alias tte='trans -b -t en'
 
     #{{{ Sufix
         alias -s md=md
@@ -126,6 +128,13 @@
         alias -s html=vim
         alias -s css=vim
         alias -s js=vim
+    #}}}
+
+    #{{{ Edit Dotfiles
+        alias ev="$EDITOR ~/.config/nvim/init.vim"
+        alias et="$EDITOR ~/.tmux.conf"
+        alias er="$EDITOR ~/.ratpoisonrc"
+        alias ez="$EDITOR ~/.zshrc"
     #}}}
 #}}}
 
