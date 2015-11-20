@@ -139,6 +139,10 @@
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
 
+    " Translate
+    nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
+    nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
+
     " Move trough splits
     nnoremap <c-k> <c-w>k
     nnoremap <c-j> <c-w>j
@@ -323,7 +327,6 @@
     endfunction
 
 
-    " Remove trailing white spaces
     function! RemoveTrailingSpaces()
         silent! execute 'norm! mz'
         silent! execute '%s/\s\+$//ge'
@@ -332,7 +335,6 @@
     endfunction
 
 
-    " Toggle { NOSPELL, EN, ES } spelling
     function! ToggleSpell()
         if &spell ==? 0
             set spelllang=en
@@ -353,7 +355,6 @@
     endfunction
 
 
-    " Toggle relative line numbers
     function! NumberToggle()
         if &relativenumber ==? 1
             set norelativenumber
@@ -369,6 +370,16 @@
         else
             exe "norm! '[V']\<esc>"
             exe "'<,'>norm! ^i- "
+        endif
+    endfunction
+
+
+    " Needs https://github.com/soimort/translate-shell
+    function! Translate(text, to_lang)
+        if a:to_lang ==? "es"
+            exe "!trans -b en:es \"" . a:text . "\""
+        else
+            exe "!trans -b es:en \"" . a:text . "\""
         endif
     endfunction
 "}}}
