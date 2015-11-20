@@ -454,6 +454,8 @@
             au FileType markdown nnoremap <buffer><silent>gh :call Create_header("h2")<CR>
             au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
             au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+            au FileType markdown setlocal spell
+            au FileType markdown setlocal spelllang=en
         augroup END
 
         function! Next_header(invert)
@@ -513,6 +515,14 @@
 
             let &fo = save_fo
         endfunction
+    "}}}
+
+    "{{{ GITCOMMIT
+        augroup ft_gitcommit
+            au!
+            au FileType gitcommit setlocal spell
+            au FileType gitcommit setlocal spelllang=en
+        augroup END
     "}}}
 "}}}
 
