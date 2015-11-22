@@ -64,22 +64,21 @@
     export EDITOR=nvim
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
-    export ANDROID_HOME="/opt/android-sdk"
-    export ANDROID_SWT="/usr/share/java"
+    export ANDROID_HOME="/opt/android-sdk-update-manager"
+    export ANDROID_SWT="/usr/share/swt-3.7/lib"
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
-
-    # Path
-    PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
-    PATH+="/usr/lib/jvm/default/bin:/opt/opencascade/bin:"
-    PATH+="/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:"
-    PATH+="$ANDROID_TOOLS:"
-    export PATH
-    declare -U path
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
     export CLASSPATH="${CLASSPATH}:.:$(java-config -p tomcat-8,tomcat-servlet-api-3.1)"
     export JAVA_HOME="$(java-config -O)"
+
+    # Path
+    PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
+    PATH+="$ANDROID_TOOLS:"
+    PATH+="$JAVA_HOME/bin:"
+    export PATH
+    declare -U path
 
     # History
     HISTFILE=~/.history
