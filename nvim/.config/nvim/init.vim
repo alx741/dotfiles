@@ -102,6 +102,13 @@
         nnoremap <silent><leader>\ :call NumberToggle()<CR>
         " Trigger Ctags program for the current directory
         nnoremap <silent><leader>c :!ctags -R .<CR>
+
+        "{{{ Dotfiles editing
+            nnoremap <silent><leader>ev :e ~/.config/nvim/init.vim<CR>
+            nnoremap <silent><leader>et :e ~/.tmux.conf<CR>
+            nnoremap <silent><leader>er :e ~/.ratpoisonrc<CR>
+            nnoremap <silent><leader>ez :e ~/.zshrc<CR>
+        "}}}
     "}}}
 
     " Keep search matces in the middle of the window
@@ -153,6 +160,9 @@
 
     " Avoid SIGTSTP
     nnoremap <c-z> <c-x>
+
+    " Use the first spell suggestion
+    nnoremap 1<space> 1z=
 "}}}
 
 "{{{ Status line and Color
@@ -205,7 +215,6 @@
     set smartcase
     set backspace=2
     set autoindent
-    set cindent
     set ruler
     set shiftround
     set autoread
@@ -483,6 +492,9 @@
             au FileType po nnoremap <buffer><silent>gs :call Toggle_str()<CR>
             au FileType po nnoremap <buffer><silent>]] :call Next_msgstr(0)<CR>
             au FileType po nnoremap <buffer><silent>[[ :call Next_msgstr(1)<CR>
+            au FileType po nnoremap <buffer><silent>]a :call Next_a_tag(0)<CR>
+            au FileType po nnoremap <buffer><silent>[a :call Next_a_tag(1)<CR>
+            au FileType po nnoremap <buffer><space> 1z=
         augroup END
 
         function! Next_msgstr(invert)
@@ -514,6 +526,16 @@
             endif
 
             let &fo = save_fo
+        endfunction
+
+        function! Next_a_tag(invert)
+            if a:invert == 0
+                exe "norm! /\\v\\<a\<esc>v"
+                exe "norm! /\\v\\</a\\>\<cr>f\>"
+            else
+                exe "norm! ?\\v\\<a\<esc>v"
+                exe "norm! /\\v\\</a\\>\<cr>f\>o"
+            endif
         endfunction
     "}}}
 
