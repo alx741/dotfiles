@@ -90,7 +90,7 @@
     alias addio='~/.scripts/fancy/addio.sh'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias dot='dot -Tpng -O'
-    alias et='~/.scripts/network/et_phone_home.sh'
+    alias eT='~/.scripts/network/et_phone_home.sh'
     alias ga='git add'
     alias git='hub'
     alias gl='git log'
