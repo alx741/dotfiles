@@ -115,9 +115,6 @@
     nnoremap n nzzzv
     nnoremap N Nzzzv
 
-    " Make [s position in the last char of the misspelled word
-    nnoremap [s [sh
-
     " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
 
