@@ -107,7 +107,8 @@
     alias reboot='sudo ~/.scripts/fancy/addio.sh reboot'
     alias rr='~/.scripts/ratpoison/restore_ratpoison.sh'
     alias suod='sudo'
-    alias vi='/usr/bin/vim'
+    alias v='/usr/bin/nvim'
+    alias vi='/usr/bin/nvim'
     alias vim='nvim'
     alias x='startx'
     alias yt='~/.scripts/youtube_mplayer.sh'
@@ -134,6 +135,14 @@
         alias et="$EDITOR ~/.tmux.conf"
         alias er="$EDITOR ~/.ratpoisonrc"
         alias ez="$EDITOR ~/.zshrc"
+    #}}}
+
+    #{{{ Fast directory access
+        alias opta="cd ~/u/optativa/2/"
+        alias ope="cd ~/u/operativos/2/"
+        alias web="cd ~/u/progra/web/"
+        alias bd="cd ~/u/bases_datos/2/"
+        alias inv="cd ~/u/invest_operaciones/"
     #}}}
 #}}}
 
