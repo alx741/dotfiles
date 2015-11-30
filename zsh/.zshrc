@@ -115,6 +115,9 @@
     alias ymd='~/.scripts/youtube_music_download.sh'
     alias tts='trans -b -t es'
     alias tte='trans -b -t en'
+    alias l='ls -l'
+    alias mem='sudo mount /dev/sdb1 /mnt/mem'
+    alias eje='sudo eject /mnt/mem'
 
     #{{{ Sufix
         alias -s md=md
@@ -138,11 +141,15 @@
     #}}}
 
     #{{{ Fast directory access
+        alias ..='cd ..'
+        alias ...='cd ../..'
+        alias ....='cd ../../..'
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
         alias web="cd ~/u/progra/web/"
         alias bd="cd ~/u/bases_datos/2/"
         alias inv="cd ~/u/invest_operaciones/"
+        alias silly="cd ~/lab/silly-bytes/"
     #}}}
 #}}}
 
