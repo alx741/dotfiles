@@ -79,7 +79,6 @@
     "{{{ Move with visual lines
         nnoremap j gj
         nnoremap k gk
-        nnoremap J gJ
         nnoremap 0 g0
         nnoremap ^ g^
         nnoremap $ g$
@@ -191,7 +190,6 @@
     set timeoutlen=500
     set ttimeout
     set ttimeoutlen=0
-    " set cursorline
     set tabstop=4
     set softtabstop=4
     set shiftwidth=4
@@ -201,6 +199,7 @@
     set showcmd
     set complete=.,w,b,u,t
     set completeopt-=preview
+    set completeopt-=noinsert
     set completeopt+=longest
     set number
     set relativenumber
@@ -372,10 +371,10 @@
 
     function! Listify(type, ...)
         if a:0
-            exe "'<,'>norm! I- "
+            exe "'<,'>norm! I* "
         else
             exe "norm! '[V']\<esc>"
-            exe "'<,'>norm! ^i- "
+            exe "'<,'>norm! ^i* "
         endif
     endfunction
 
@@ -523,6 +522,17 @@
             endif
 
             let &fo = save_fo
+        endfunction
+
+        function! To_txt()
+            exe "g/^\"/norm x"
+            exe "g/\"$/norm $x"
+            exe "call RemoveTrailingSpaces()"
+            exe "g/^#/norm dd"
+            exe "g/^msgid \"$/norm cc\r"
+            exe "g/^msgstr \"$/norm cc--------------------"
+            exe "%s/^msgid \"/\r/"
+            exe "%s/^msgstr \"/---------------------\r/"
         endfunction
 
         function! Next_a_tag(invert)
