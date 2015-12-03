@@ -85,21 +85,11 @@
     "}}}
 
     "{{{ LEADER mappings
-        " Remove trailing white spaces ( \w )
-        nnoremap <silent><leader>w :call RemoveTrailingSpaces()<CR>
-        " Format document
-        nnoremap <silent><leader>f :call Format()<CR>
-        " Toggle spelling ( \s )
         nnoremap <leader>s :call ToggleSpell()<CR>
-        " Trigger TagList plugin ( \t )
         nnoremap <silent><leader>t :TlistToggle<CR>
-        " Trigger UndoTree plugin ( \u )
         nnoremap <silent><leader>u :UndotreeToggle<CR>
-        " Trigger NerdTree plugin ( \n )
         nnoremap <silent><leader>n :NERDTreeToggle<CR>
-        " Toggle line number
         nnoremap <silent><leader>\ :call NumberToggle()<CR>
-        " Trigger Ctags program for the current directory
         nnoremap <silent><leader>c :!ctags -R .<CR>
 
         "{{{ Dotfiles editing
@@ -116,6 +106,8 @@
 
     " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
+
+    nnoremap <silent>g= :call Format()<CR>
 
     " Y is y$
     nnoremap Y y$
@@ -461,6 +453,7 @@
             au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
             au FileType markdown setlocal spell
             au FileType markdown setlocal spelllang=en
+            au FileType markdown nnoremap <buffer><space> 1z=
         augroup END
 
         function! Next_header(invert)
@@ -530,9 +523,11 @@
             exe "call RemoveTrailingSpaces()"
             exe "g/^#/norm dd"
             exe "g/^msgid \"$/norm cc\r"
-            exe "g/^msgstr \"$/norm cc--------------------"
+            exe "g/^msgstr \"$/norm cc\<esc>"
             exe "%s/^msgid \"/\r/"
-            exe "%s/^msgstr \"/---------------------\r/"
+            exe "%s/^msgstr \"/\r/"
+            exe "norm ggO\<esc>72i-\<esc>"
+            exe "norm Go\<esc>72i-\<esc>"
         endfunction
 
         function! Next_a_tag(invert)
@@ -551,6 +546,7 @@
             au!
             au FileType gitcommit setlocal spell
             au FileType gitcommit setlocal spelllang=en
+            au FileType gitcommit nnoremap <buffer><space> 1z=
         augroup END
     "}}}
 "}}}
