@@ -60,7 +60,7 @@ then
     xrandr --output HDMI1 --mode 1360x768
     xrandr --output VGA1 --mode 1024x768 --left-of HDMI1
     xbacklight -set 0
-    xset dpms 0 0 0
+    xset -dpms
     amixer set Master unmute
     amixer set Master 50%
     ~/.scripts/network/configure_ether.sh
@@ -72,7 +72,7 @@ else
         xrandr --output VGA1 --mode 1366x768 --above LVDS1
     fi
     xbacklight -set 100
-    xset dpms 100 200 250
+    xset -dpms
     amixer set Master 0%
     amixer set Master mute
     dhclient enp3s0
