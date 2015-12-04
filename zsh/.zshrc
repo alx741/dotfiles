@@ -142,6 +142,7 @@
         alias et="$EDITOR ~/.tmux.conf"
         alias er="$EDITOR ~/.ratpoisonrc"
         alias ez="$EDITOR ~/.zshrc"
+        alias ex="$EDITOR ~/.xinitrc"
     #}}}
 
     #{{{ Fast directory access

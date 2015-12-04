@@ -97,6 +97,7 @@
             nnoremap <silent><leader>et :e ~/.tmux.conf<CR>
             nnoremap <silent><leader>er :e ~/.ratpoisonrc<CR>
             nnoremap <silent><leader>ez :e ~/.zshrc<CR>
+            nnoremap <silent><leader>ex :e ~/.xinitrc<CR>
         "}}}
     "}}}
 
