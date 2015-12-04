@@ -61,7 +61,7 @@
 "}}}
 
 "{{{ Maps
-    "{{{ All movements are inclusive
+    "{{{ Inclusive movements
         onoremap h vh
         onoremap l vl
         onoremap b vb
@@ -101,45 +101,6 @@
         "}}}
     "}}}
 
-    " Keep search matces in the middle of the window
-    nnoremap n nzzzv
-    nnoremap N Nzzzv
-
-    " Search for visual selected area
-    vnoremap // y/<C-R>"<CR>
-
-    nnoremap <silent>g= :call Format()<CR>
-
-    " Y is y$
-    nnoremap Y y$
-
-    " Visual select last pasted text
-    nnoremap gp `[v`]
-
-    " Terminal mode leaving
-    tnoremap <esc> <C-\><C-n>
-
-    " Toggle folds
-    nnoremap <space> za
-
-    " Ofuscate
-    nnoremap <leader><CR> mzggg?G`z
-
-    " Ctrl-p buffers
-    nnoremap <cr> :CtrlPBuffer<CR>
-
-    " Remove highlights using escape
-    nnoremap <silent><esc> :noh<CR><esc>
-
-    " Listify
-    nnoremap <silent> gl :set opfunc=Listify<CR>g@
-    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
-
-    " Translate
-    nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
-    nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
-
-    " Move trough splits
     nnoremap <c-k> <c-w>k
     nnoremap <c-j> <c-w>j
     nnoremap <c-l> <c-w>l
@@ -147,88 +108,89 @@
     " Some day C-H vs <BS> will be fixed, i hope...
     " nnoremap <c-h> <c-w>h
 
-    " Avoid SIGTSTP
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
     nnoremap <c-z> <c-x>
-
-    " Use the first spell suggestion
     nnoremap 1<space> 1z=
+    nnoremap <silent>g= :call Format()<CR>
+    nnoremap Y y$
+    nnoremap <space> za
+    nnoremap <leader><CR> mzggg?G`z
+    nnoremap <cr> :CtrlPBuffer<CR>
+    nnoremap <silent><esc> :noh<CR><esc>
+    nnoremap <silent> gl :set opfunc=Listify<CR>g@
+    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
+    nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
+    nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
+    " Visual select last pasted text
+    nnoremap gp `[v`]
+    " Search for visual selected area
+    vnoremap // y/<C-R>"<CR>
+    " Terminal mode leaving
+    tnoremap <esc> <C-\><C-n>
 "}}}
 
 "{{{ Status line and Color
-    " Status line
     set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
     set statusline+=\ [ft=%Y]\ %r\ %m
     set statusline+=%=%c:%l/%L\ %P
 
-    " Color scheme
     colors solarized
 "}}}
 
-"{{{ Options and Configurations
-    "Runtimepath
-    set runtimepath+=~/,
-
-    " Filetype
+"{{{ Options
     filetype plugin indent on
-
-    " Set various options
-    syntax on
-    syntax spell toplevel
-    set t_CO=16
-    set encoding=utf-8
-    set lazyredraw
-    set textwidth=80
-    set linebreak
-    set timeout
-    set timeoutlen=500
-    set ttimeout
-    set ttimeoutlen=0
-    set tabstop=4
-    set softtabstop=4
-    set shiftwidth=4
-    set expandtab
-    set smarttab
-    set showmode
-    set showcmd
-    set complete=.,w,b,u,t
-    set completeopt-=preview
-    set completeopt-=noinsert
-    set completeopt+=longest
-    set number
-    set relativenumber
-    set showmatch
-    set hlsearch
-    set incsearch
-    set ignorecase
-    set gdefault
-    set smartcase
-    set backspace=2
+    let c_no_comment_fold=1
     set autoindent
-    set ruler
-    set shiftround
     set autoread
-    set nojoinspaces
     set background=light
-    set wrapscan
-    set laststatus=2
-    set wildmenu
-    set wildmode=longest,list,full
-    set wildignore=*.o,*.class
-    set hidden
+    set backspace=2
+    set complete=.,w,b,u,t
+    set completeopt+=longest
+    set completeopt-=noinsert
+    set completeopt-=preview
+    set encoding=utf-8
+    set expandtab
     set foldenable
-    set foldmethod=syntax
-    set foldnestmax=1
     set foldlevel=2
     set foldlevelstart=1
-    let c_no_comment_fold=1
-
-    " Formatting options:
-    "  * Auto wrap text using textwidth
-    "  * Auto wrap comments using textwidth
-    "  * Auto insert comment leader while inserting
-    "  * Auto formatting of paragraphs
-    "  * Don't auto brake lines
+    set foldmethod=syntax
+    set foldnestmax=1
     set formatoptions=tcrql
+    set gdefault
+    set hidden
+    set hlsearch
+    set ignorecase
+    set incsearch
+    set laststatus=2
+    set lazyredraw
+    set linebreak
+    set noesckeys
+    set nojoinspaces
+    set number
+    set relativenumber
+    set ruler
+    set shiftround
+    set shiftwidth=4
+    set showcmd
+    set showmatch
+    set showmode
+    set smartcase
+    set smarttab
+    set softtabstop=4
+    set t_CO=16
+    set tabstop=4
+    set textwidth=80
+    set timeout
+    set timeoutlen=250
+    set ttimeout
+    set ttimeoutlen=0
+    set wildignore=*.o,*.class
+    set wildmenu
+    set wildmode=longest,list,full
+    set wrapscan
+    syntax on
+    syntax spell toplevel
 "}}}
 
 "{{{ Backup System
@@ -285,28 +247,27 @@
     "}}}
 "}}}
 
-"{{{ Misc
-    " Set SDCC paths
+"{{{ Path
+    " SDCC
     set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
     set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
+"}}}
 
-    " Sudo Write
+"{{{ Global Commands
     command! W w !sudo tee % >/dev/null
 "}}}
 
-"{{{ General Functions
-    " Format document
-    "
-    " * Removes trailing white spaces
-    " * Removes blank lines at the end of the file
-    " * Replaces tabs with spaces
-    " * Re-Indent
-    "
-    " * If: C, CPP, PHP or JAVA code: format using 'astyle'
-    "
-    " * Leaves 'formatprg' option clean so `gq` can be used with the default
-    "   behavior
+"{{{ Global Functions
     function! Format()
+        " * Removes trailing white spaces
+        " * Removes blank lines at the end of the file
+        " * Replaces tabs with spaces
+        " * Re-Indent
+        "
+        " * If: C, CPP, PHP or JAVA code: format using 'astyle'
+        "
+        " * Leaves 'formatprg' option clean so `gq` can be used with the default
+        "   behavior
         silent! execute 'norm! mz'
 
         if &ft ==? 'c' || &ft ==? 'cpp' || &ft ==? 'php'
