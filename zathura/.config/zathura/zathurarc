@@ -1,0 +1,48 @@
+#{{{ Settings
+    set adjust-open "width"
+    set incremental-search true
+    set page-padding 15
+    set page-cache-size 50
+    set guioptions ""
+#}}}
+
+#{{{ Mappings
+    map = zoom in
+    map - zoom out
+    map i toggle_statusbar
+    unmap d
+#}}}
+
+#{{{ Color
+    set default-fg "#073642"
+    set default-bg "#FDF6E3"
+    set completion-bg "#FDF6E3"
+    set completion-fg "#073642"
+    set completion-group-bg "#FDF6E3"
+    set completion-group-fg "#073642"
+    set completion-highlight-fg "#FDF6E3"
+    set completion-highlight-bg "#B58900"
+    set inputbar-bg "#FDF6E3"
+    set inputbar-fg "#073642"
+    set notification-bg "#FDF6E3"
+    set notification-fg "#073642"
+    set notification-error-bg "#FDF6E3"
+    set notification-error-fg "#DC322F"
+    set notification-warning-bg "#FDF6E3"
+    set notification-warning-fg "#CB4B16"
+    set tabbar-bg "#FDF6E3"
+    set tabbar-fg "#073642"
+    set tabbar-focus-bg "#B58900"
+    set tabbar-focus-fg "#FDF6E3"
+    set index-bg "#FDF6E3"
+    set index-fg "#073642"
+    set index-active-fg "#FDF6E3"
+    set index-active-bg "#B58900"
+    set statusbar-bg "#FDF6E3"
+    set statusbar-fg "#073642"
+    set highlight-color "#B58900"
+    set highlight-active-color "#268BD2"
+#}}}
+
+
+" vim:fdm=marker

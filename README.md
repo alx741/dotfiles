@@ -3,7 +3,6 @@ Dotfiles
 
 **Using Solarized Light color scheme**
 
-- Apvlv
 - Astyle
 - Emacs
 - Git
@@ -23,6 +22,7 @@ Dotfiles
 - Weechat
 - X11
 - Xmodmap
+- Zathura
 - Zsh
 
 
@@ -31,6 +31,7 @@ Deprecated
 
 These dotfiles are abandoned
 
+- ~~Apvlv~~
 - ~~Dwm~~
 - ~~Tilda~~
 - ~~Vim~~

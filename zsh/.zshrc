@@ -87,7 +87,7 @@
 #}}}
 
 #{{{ Aliases
-    alias a='apvlv'
+    alias z='zathura'
     alias addio='~/.scripts/fancy/addio.sh'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias clip='xclip -selection clipboard -i'
@@ -103,7 +103,6 @@
     alias l='ls -l'
     alias labip='~/.scripts/network/echo_lab_ip.sh'
     alias ls='ls --color'
-    alias m='mupdf'
     alias md='~/.scripts/md.sh'
     alias mem='sudo mount /dev/sdb1 /mnt/mem'
     alias mysql='mysql -u $USER -p --sigint-ignore'
