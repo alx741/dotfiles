@@ -134,6 +134,7 @@
         alias -s html=vim
         alias -s css=vim
         alias -s js=vim
+        alias -s pdf=zathura
     #}}}
 
     #{{{ Edit Dotfiles
