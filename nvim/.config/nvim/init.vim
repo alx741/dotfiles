@@ -39,6 +39,7 @@
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
+    Plug 'rhysd/clever-f.vim'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -117,6 +118,7 @@
     nnoremap <space> za
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <cr> :CtrlPBuffer<CR>
+    nnoremap <silent> J :call Join()<CR>
     nnoremap <silent><esc> :noh<CR><esc>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
@@ -339,6 +341,15 @@
             exe "!trans -b en:es \"" . a:text . "\""
         else
             exe "!trans -b es:en \"" . a:text . "\""
+        endif
+    endfunction
+
+    function! Join()
+        let next_line = getline(line('.')+1)
+        if next_line =~? "^$"
+            exec "silent norm! gJ"
+        else
+            exec "silent norm! J"
         endif
     endfunction
 "}}}
