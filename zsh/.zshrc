@@ -87,7 +87,6 @@
 #}}}
 
 #{{{ Aliases
-    alias z='zathura'
     alias addio='~/.scripts/fancy/addio.sh'
     alias am='alsamixer' alsamixer='alsamixer -g -c 0'
     alias clip='xclip -selection clipboard -i'
@@ -108,6 +107,7 @@
     alias mysql='mysql -u $USER -p --sigint-ignore'
     alias p='ping 8.8.8.8'
     alias poweroff='sudo ~/.scripts/fancy/addio.sh halt'
+    alias pro='~/.scripts/configure_projector.sh'
     alias pubip='~/.scripts/network/echo_pub_ip.sh'
     alias reboot='sudo ~/.scripts/fancy/addio.sh reboot'
     alias rr='~/.scripts/ratpoison/restore_ratpoison.sh'
@@ -121,6 +121,7 @@
     alias x='startx'
     alias ymd='~/.scripts/youtube_music_download.sh'
     alias yt='~/.scripts/youtube_mplayer.sh'
+    alias z='zathura'
 
     #{{{ Sufix
         alias -s md=md
