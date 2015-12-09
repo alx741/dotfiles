@@ -61,6 +61,7 @@
 
 #{{{ Variables
     export HADES="hades.alx.mooo.com"
+    export SCRIPTS="~/.scripts"
     export EDITOR=nvim
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
@@ -87,41 +88,44 @@
 #}}}
 
 #{{{ Aliases
-    alias addio='~/.scripts/fancy/addio.sh'
-    alias am='alsamixer' alsamixer='alsamixer -g -c 0'
-    alias clip='xclip -selection clipboard -i'
-    alias dot='dot -Tpng -O'
-    alias eT='~/.scripts/network/et_phone_home.sh'
-    alias eje='sudo eject /mnt/mem'
-    alias ga='git add'
-    alias git='hub'
-    alias gl='git log'
-    alias gp='~/.scripts/fancy/git_push.sh'
-    alias grep='grep --color=auto'
-    alias gs='git status'
-    alias l='ls -l'
-    alias labip='~/.scripts/network/echo_lab_ip.sh'
-    alias ls='ls --color'
-    alias md='~/.scripts/md.sh'
-    alias mem='sudo mount /dev/sdb1 /mnt/mem'
-    alias mysql='mysql -u $USER -p --sigint-ignore'
-    alias p='ping 8.8.8.8'
-    alias poweroff='sudo ~/.scripts/fancy/addio.sh halt'
-    alias pro='~/.scripts/configure_projector.sh'
-    alias pubip='~/.scripts/network/echo_pub_ip.sh'
-    alias reboot='sudo ~/.scripts/fancy/addio.sh reboot'
-    alias rr='~/.scripts/ratpoison/restore_ratpoison.sh'
-    alias s='sudo'
-    alias suod='sudo'
-    alias tte='trans -b -t en'
-    alias tts='trans -b -t es'
-    alias v='/usr/bin/nvim'
-    alias vi='/usr/bin/nvim'
-    alias vim='nvim'
-    alias x='startx'
-    alias ymd='~/.scripts/youtube_music_download.sh'
-    alias yt='~/.scripts/youtube_mplayer.sh'
-    alias z='zathura'
+    alias am="alsamixer" alsamixer='alsamixer -g -c 0'
+    alias clip="xclip -selection clipboard -i"
+    alias dot="dot -Tpng -O"
+    alias eje="sudo eject /mnt/mem"
+    alias ga="git add"
+    alias git="hub"
+    alias gl="git log"
+    alias grep="grep --color=auto"
+    alias gs="git status"
+    alias l="ls -l"
+    alias ls="ls --color"
+    alias mem="sudo mount /dev/sdb1 /mnt/mem"
+    alias mysql="mysql -u $USER -p --sigint-ignore"
+    alias p="ping 8.8.8.8"
+    alias s="sudo"
+    alias suod="sudo"
+    alias tte="trans -b -t en"
+    alias tts="trans -b -t es"
+    alias v="/usr/bin/nvim"
+    alias vi="/usr/bin/nvim"
+    alias vim="nvim"
+    alias x="startx"
+    alias z="zathura"
+
+    #{{{ Scripts
+        alias addio="$SCRIPTS/fancy/addio.sh"
+        alias eT="$SCRIPTS/network/et_phone_home.sh"
+        alias gp="$SCRIPTS/fancy/git_push.sh"
+        alias labip="$SCRIPTS/network/echo_lab_ip.sh"
+        alias md="$SCRIPTS/md.sh"
+        alias poweroff="sudo $SCRIPTS/fancy/addio.sh halt"
+        alias pro="$SCRIPTS/configure_projector.sh"
+        alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
+        alias reboot="sudo $SCRIPTS/fancy/addio.sh reboot"
+        alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
+        alias ymd="$SCRIPTS/youtube_music_download.sh"
+        alias yt="$SCRIPTS/youtube_mplayer.sh"
+    #}}}
 
     #{{{ Sufix
         alias -s md=md
@@ -150,6 +154,7 @@
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
+        alias dot="cd ~/lab/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
         alias web="cd ~/u/progra/web/"
