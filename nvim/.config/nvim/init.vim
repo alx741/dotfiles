@@ -40,6 +40,7 @@
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
     Plug 'rhysd/clever-f.vim'
+    Plug 'mhinz/vim-startify'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
