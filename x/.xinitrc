@@ -30,7 +30,7 @@ mpd&
     # Configure appropriate laptop track pad delays and detections
     syndaemon -t -k -i 1 -d &
     # Hide mice cursor after 1 second
-    unclutter -idle 1 -jitter 2 -root&
+    unclutter -idle 1 -jitter 10 -root&
 #}}}
 
 # Window manager
