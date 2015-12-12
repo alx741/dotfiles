@@ -9,4 +9,9 @@ cat ~/.ascii_art/gnu
 echo
 figlet Arrivederci
 echo
-poweroff
+if [[ "$1" == "halt" ]]
+then
+    sudo poweroff
+else
+    sudo reboot
+fi

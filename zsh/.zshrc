@@ -99,6 +99,7 @@
     alias gs="git status"
     alias l="ls -l"
     alias ls="ls --color"
+    alias m="mplayer"
     alias mem="sudo mount /dev/sdb1 /mnt/mem"
     alias mysql="mysql -u $USER -p --sigint-ignore"
     alias p="ping 8.8.8.8"
@@ -113,15 +114,15 @@
     alias z="zathura"
 
     #{{{ Scripts
-        alias addio="$SCRIPTS/fancy/addio.sh"
+        alias addio="$SCRIPTS/fancy/addio.sh halt"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias gp="$SCRIPTS/fancy/git_push.sh"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias md="$SCRIPTS/md.sh"
-        alias poweroff="sudo $SCRIPTS/fancy/addio.sh halt"
+        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
         alias pro="$SCRIPTS/configure_projector.sh"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
-        alias reboot="sudo $SCRIPTS/fancy/addio.sh reboot"
+        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
@@ -140,6 +141,8 @@
         alias -s css=vim
         alias -s js=vim
         alias -s pdf=zathura
+        alias -s jpg=sxiv
+        alias -s png=sxiv
     #}}}
 
     #{{{ Edit Dotfiles
