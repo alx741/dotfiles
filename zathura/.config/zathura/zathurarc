@@ -1,16 +1,20 @@
 #{{{ Settings
     set adjust-open "width"
     set incremental-search true
-    set page-padding 15
+    set page-padding 0
     set page-cache-size 50
     set guioptions ""
 #}}}
 
 #{{{ Mappings
+    unmap d
     map = zoom in
     map - zoom out
     map i toggle_statusbar
-    unmap d
+    map d scroll half-down
+    map u scroll half-up
+    map f scroll full-down
+    map b scroll full-up
 #}}}
 
 #{{{ Color
