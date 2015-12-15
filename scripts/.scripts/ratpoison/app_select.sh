@@ -39,11 +39,25 @@ function launch_terminal
 }
 
 
+function launch_zathura
+{
+    if is_running 'zathura';
+    then
+        ratpoison -c "select zathura"
+    else
+        zathura&
+    fi
+}
+
+
 case "$1" in
     'firefox')
         launch_firefox
         ;;
     'terminal')
         launch_terminal
+        ;;
+    'zathura')
+        launch_zathura
         ;;
 esac
