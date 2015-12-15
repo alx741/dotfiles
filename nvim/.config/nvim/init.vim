@@ -41,6 +41,7 @@
     Plug 'vimwiki/vimwiki'
     Plug 'rhysd/clever-f.vim'
     Plug 'mhinz/vim-startify'
+    Plug 'tfnico/vim-gradle'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
