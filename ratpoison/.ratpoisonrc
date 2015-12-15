@@ -116,6 +116,7 @@
     # Fast switching
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
+    bind i exec ~/.scripts/ratpoison/app_select.sh zathura
 
     # Give temporally control to openbox
     bind W tmpwm openbox
