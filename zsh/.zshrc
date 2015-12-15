@@ -71,13 +71,19 @@
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
-    export CLASSPATH="${CLASSPATH}:.:$(java-config -p tomcat-8,tomcat-servlet-api-3.1)"
+    export CLASSPATH="${CLASSPATH}:.:$(java-config -p tomcat-7,tomcat-servlet-api-3.1)"
+    export CLASSPATH="${CLASSPATH}:.:$(java-config -p myfaces-api)"
+    export CLASSPATH="${CLASSPATH}:/usr/share/primefaces/lib/primefaces-5.3.jar"
     export JAVA_HOME="$(java-config -O)"
+
+    # Gradle
+    export GRADLE_HOME="/opt/gradle-2.9"
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="$ANDROID_TOOLS:"
     PATH+="$JAVA_HOME/bin:"
+    PATH+="$GRADLE_HOME/bin:"
     export PATH
     declare -U path
 
@@ -89,6 +95,7 @@
 
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
+    alias auto="$EDITOR configure.ac Makefile.am config.h.in"
     alias clip="xclip -selection clipboard -i"
     alias dot="dot -Tpng -O"
     alias eje="sudo eject /mnt/mem"
@@ -107,6 +114,7 @@
     alias suod="sudo"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
+    alias unet="sudo dhclient enp3s0"
     alias v="/usr/bin/nvim"
     alias vi="/usr/bin/nvim"
     alias vim="nvim"
