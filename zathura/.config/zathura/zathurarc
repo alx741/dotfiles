@@ -1,7 +1,7 @@
 #{{{ Settings
     set adjust-open "width"
     set incremental-search true
-    set page-padding 0
+    set page-padding 10
     set page-cache-size 50
     set guioptions ""
 #}}}
