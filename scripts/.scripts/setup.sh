@@ -68,8 +68,8 @@ then
 else
     if is_vga_plugedin
     then
-        xrandr --output LVDS1 --mode 1366x768
-        xrandr --output VGA1 --mode 1366x768 --above LVDS1
+        xrandr --output LVDS1 --mode 1366x768 --below VGA1
+        xrandr --output VGA1 --mode 1024x768 --above LVDS1
     fi
     xbacklight -set 100
     xset -dpms
