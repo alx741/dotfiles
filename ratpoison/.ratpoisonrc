@@ -72,6 +72,10 @@
         bind equal  exec ~/.scripts/ratpoison/clipboard_stack.sh select
     #}}}
 
+    #{{{ Snippets
+        bind plus  exec ~/.scripts/ratpoison/snippets.sh
+    #}}}
+
     #{{{ Vi like bindings
         bind j focusdown
         bind h focusleft
