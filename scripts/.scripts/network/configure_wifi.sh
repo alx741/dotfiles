@@ -1,14 +1,16 @@
 #! /bin/bash
 
-# Auto wifi network connection script
-#
-# Invoke from Shell very first initialization
+source ../utility.sh
 
-# If no parameters are given connect to home network
-if [[ "$#" -eq 0 ]]; then
+
+if am_i_at_home
+then
     sudo ifconfig wlp2s0 up
     sudo wpa_supplicant -i wlp2s0 -c /etc/wpa_supplicant/wifi.h.conf -B
-    sleep 1
+    sudo dhclient -nw wlp2s0
+else
+    sudo ifconfig wlp2s0 up
+    sudo iwconfig wlp2s0 essid UCWIFI ap any
     sudo dhclient -nw wlp2s0
 fi
 
