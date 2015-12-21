@@ -1,16 +1,6 @@
 #! /bin/bash
 
-
-function is_vga_plugedin
-{
-    VGASTATE=$(xrandr | grep -i 'vga' | awk '{print $2 }')
-
-    if [[ $VGASTATE == "connected" ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
+source utility.sh
 
 
 if is_vga_plugedin
