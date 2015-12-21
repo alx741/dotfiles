@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source utility.sh
+source "$(dirname "$0")/utility.sh"
 
 
 if is_vga_plugedin

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source utility.sh
+source "$(dirname "$0")/utility.sh"
 
 # Auto setup configuration script
 # [!] Execute this AFTER ratpoison

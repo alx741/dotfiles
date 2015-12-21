@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source ../utility.sh
+source "$(dirname "$0")/../utility.sh"
 
 
 if am_i_at_home
