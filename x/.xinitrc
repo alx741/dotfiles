@@ -24,6 +24,12 @@ mpd&
     setxkbmap -option ctrl:swapcaps&
     xcape -e 'Control_L=Escape'&
     xmodmap .xmodmap&
+
+    # Ibus
+    export GTK_IM_MODULE=ibus
+    export XMODIFIERS=@im=ibus
+    export QT_IM_MODULE=ibus
+    ibus-daemon -drx
 #}}}
 
 #{{{ Mouse
