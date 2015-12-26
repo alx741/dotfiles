@@ -1,6 +1,6 @@
 #{{{ Settings
     startup_message off
-    msgwait 3
+    msgwait 10
     nextscreen
 #}}}
 
@@ -149,7 +149,7 @@
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
-    bind A exec ratpoison -c "echo $( cal -3 -m )"
+    bind A exec ratpoison -c "echo $( ~/.scripts/echo_cal.sh )"
 
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
