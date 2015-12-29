@@ -165,6 +165,9 @@
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
+        alias ,,='cd .. && ls -l'
+        alias ,,,='cd ../.. && ls -l'
+        alias ,,,,='cd ../../.. && ls -l'
         alias dot="cd ~/lab/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
