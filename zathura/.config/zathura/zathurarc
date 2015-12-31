@@ -8,6 +8,8 @@
 
 #{{{ Mappings
     unmap d
+    unmap q
+    map Q quit
     map = zoom in
     map - zoom out
     map i toggle_statusbar
