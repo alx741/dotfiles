@@ -524,6 +524,15 @@
             au FileType gitcommit nnoremap <buffer><space> 1z=
         augroup END
     "}}}
+
+    "{{{ JAVA
+        augroup ft_java
+            au!
+            au FileType java setlocal foldlevel=2
+            au FileType java setlocal foldlevelstart=1
+            au FileType java setlocal foldnestmax=2
+        augroup END
+    "}}}
 "}}}
 
 
