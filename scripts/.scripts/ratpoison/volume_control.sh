@@ -39,3 +39,4 @@ case "$1" in
 esac
 
 ratpoison -c "echo ($(~/.scripts/echo_volume.sh))"
+tmux refresh-client -S
