@@ -13,6 +13,8 @@
     map = zoom in
     map - zoom out
     map i toggle_statusbar
+    map e scroll down
+    map y scroll up
     map d scroll half-down
     map u scroll half-up
     map f scroll full-down
