@@ -25,12 +25,14 @@
     #}}}
 
     #{{{ Volume control
+        bind bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
+        bind bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
+        bind C-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
+        bind C-bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
         bind braceright  exec ~/.scripts/ratpoison/volume_control.sh high
         bind braceleft exec ~/.scripts/ratpoison/volume_control.sh low
         bind bar exec ~/.scripts/ratpoison/volume_control.sh medium
         bind slash exec ~/.scripts/ratpoison/volume_control.sh ask
-        bind bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
-        bind bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
         bind backslash  exec ~/.scripts/ratpoison/volume_control.sh mute
     #}}}
 
