@@ -4,6 +4,9 @@ xrdb -load .Xresources&
 # Setup monitors, sound, network (Home or No-Home)
 ./.scripts/setup.sh
 
+# Disable DPMS
+xset s off -dpms
+
 # Start graphical terminal emulator instance
 ~/.scripts/ratpoison/app_select.sh terminal
 
