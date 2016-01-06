@@ -7,6 +7,9 @@ xrdb -load .Xresources&
 # Disable DPMS
 xset s off -dpms
 
+# Fix Java GUI's
+wmname LG3D
+
 # Start graphical terminal emulator instance
 ~/.scripts/ratpoison/app_select.sh terminal
 
