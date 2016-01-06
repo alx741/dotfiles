@@ -1,5 +1,6 @@
 #! /bin/sh
 
-day=$( date "+%d")
+day=$(date "+%_d" | tr -d " ")
 
-cal -3 -m | sed -e 's/ '$day' /<25>/'
+echo "$day"
+cal -3 -m | sed -e 's/ '$day' /<'$day'>/'
