@@ -179,8 +179,6 @@
 #}}}
 
 #{{{ Completion
-    # See `man zshcompsys
-
     zstyle ':completion::complete:*' use-cache 1
     zstyle ':completion:*' accept-exact '*(N)'
     zstyle ':completion:*' use-cache on
@@ -200,6 +198,12 @@
     zstyle ':completion::*:(rm|vi):*' ignore-line true
     zstyle ':completion:*' ignore-parents parent pwd
     zstyle ':completion::approximate*:*' prefix-needed false
+
+    #{{{ Ignore
+        zstyle ':completion:*:(all-|)files' ignored-patterns "(*.pyc|*~|*.o|*.class)"
+        zstyle ':completion:*:ls:*:(all-|)files' ignored-patterns
+        zstyle ':completion:*:rm:*:(all-|)files' ignored-patterns
+    #}}}
 #}}}
 
 #{{{ Key bindings
