@@ -124,7 +124,8 @@
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
-        alias gp="$SCRIPTS/fancy/git_push.sh"
+        alias gpull="$SCRIPTS/fancy/git.sh pull"
+        alias gpush="$SCRIPTS/fancy/git.sh push"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias md="$SCRIPTS/md.sh"
         alias poweroff="$SCRIPTS/fancy/addio.sh halt"
