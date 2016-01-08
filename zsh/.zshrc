@@ -114,7 +114,7 @@
     alias suod="sudo"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
-    alias unet="sudo dhclient enp3s0"
+    alias dhcp="sudo dhclient enp3s0"
     alias v="/usr/bin/nvim"
     alias vi="/usr/bin/nvim"
     alias vim="nvim"
