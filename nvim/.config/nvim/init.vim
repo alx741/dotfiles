@@ -39,7 +39,6 @@
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
-    Plug 'rhysd/clever-f.vim'
     Plug 'mhinz/vim-startify'
     Plug 'tfnico/vim-gradle'
 
