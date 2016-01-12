@@ -31,7 +31,7 @@ if am_i_at_home
 then
     xrandr --output LVDS1 --off
     xrandr --output HDMI1 --mode 1360x768
-    xrandr --output VGA1 --mode 1024x768 --left-of HDMI1
+    xrandr --output VGA1 --mode 1366x768 --left-of HDMI1
     xbacklight -set 0
     amixer set Master unmute
     amixer set Master 50%
