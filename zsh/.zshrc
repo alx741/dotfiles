@@ -137,6 +137,7 @@
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
         alias reboot="$SCRIPTS/fancy/addio.sh reboot"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
+        alias wifi="$SCRIPTS/network/configure_wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
     #}}}
