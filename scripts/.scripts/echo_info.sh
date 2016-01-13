@@ -1,6 +1,6 @@
 #! /bin/sh
 
-date=$( date "+%l:%M %b %d" )
+date=$( date "+%l:%M %b %d %a" )
 
 battery_state=$(~/.scripts/echo_battery.sh)
 sound_state=$(~/.scripts/echo_volume.sh)
