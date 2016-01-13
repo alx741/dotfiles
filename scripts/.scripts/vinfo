@@ -1,0 +1,2 @@
+#! /bin/sh
+$EDITOR -c "Vinfo $1" -c 'silent only'
