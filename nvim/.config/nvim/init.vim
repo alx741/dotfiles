@@ -90,8 +90,7 @@
         nnoremap <leader>s :call ToggleSpell()<CR>
         nnoremap <silent><leader>t :TlistToggle<CR>
         nnoremap <silent><leader>u :UndotreeToggle<CR>
-        nnoremap <silent><leader>n :NERDTreeToggle<CR>
-        nnoremap <silent><leader>\ :call NumberToggle()<CR>
+        nnoremap <silent><leader>\ :NERDTreeToggle<CR>
         nnoremap <silent><leader>c :!ctags -R .<CR>
 
         "{{{ Dotfiles editing
