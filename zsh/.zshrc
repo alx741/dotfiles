@@ -116,6 +116,7 @@
     alias mysql="mysql -u $USER -p --sigint-ignore"
     alias p="ping 8.8.8.8"
     alias s="sudo"
+    alias ser="sudo service"
     alias suod="sudo"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
