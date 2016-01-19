@@ -109,7 +109,7 @@
     alias gl="git log"
     alias grep="grep --color=auto"
     alias gs="git status"
-    alias l="ls -l"
+    alias l="ls -lL"
     alias ls="ls --color"
     alias m="mplayer"
     alias mem="sudo mount /dev/sdb1 /mnt/mem"
@@ -173,9 +173,9 @@
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
-        alias ,,='cd .. && ls -l'
-        alias ,,,='cd ../.. && ls -l'
-        alias ,,,,='cd ../../.. && ls -l'
+        alias ,,='cd .. && ls -lL'
+        alias ,,,='cd ../.. && ls -lL'
+        alias ,,,,='cd ../../.. && ls -lL'
         alias dot="cd ~/lab/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
