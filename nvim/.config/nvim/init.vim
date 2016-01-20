@@ -181,7 +181,7 @@
     set tabstop=4
     set textwidth=80
     set timeout
-    set timeoutlen=250
+    set timeoutlen=400
     set ttimeout
     set ttimeoutlen=0
     set wildignore=*.o,*.class
