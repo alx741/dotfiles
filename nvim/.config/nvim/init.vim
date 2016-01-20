@@ -58,7 +58,7 @@
         " Reset format options when filetypes are loaded
         au FileType * set formatoptions=tcrql
         " Trigger Neomake on save
-        au BufWritePost * Neomake
+        " au BufWritePost * Neomake
     augroup END
 "}}}
 
