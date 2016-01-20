@@ -111,6 +111,7 @@
 
     nnoremap Q :CtrlP<CR>
     nnoremap gs :w<CR>
+    nnoremap gb :w<CR> :Neomake<CR>
     nnoremap <c-z> <c-x>
     nnoremap 1<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
