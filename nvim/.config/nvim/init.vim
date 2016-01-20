@@ -109,6 +109,7 @@
     " Some day C-H vs <BS> will be fixed, i hope...
     " nnoremap <c-h> <c-w>h
 
+    nnoremap Q :CtrlP <CR>
     nnoremap <c-z> <c-x>
     nnoremap 1<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
@@ -229,7 +230,7 @@
     "}}}
 
     "{{{ CtrlP
-        let g:ctrlp_cmd = 'CtrlP'
+        let g:ctrlp_cmd = 'CtrlPBuffer'
     "}}}
 
     "{{{ FileStyle
