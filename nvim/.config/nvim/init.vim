@@ -109,7 +109,8 @@
     " Some day C-H vs <BS> will be fixed, i hope...
     " nnoremap <c-h> <c-w>h
 
-    nnoremap Q :CtrlP <CR>
+    nnoremap Q :CtrlP<CR>
+    nnoremap gs :w<CR>
     nnoremap <c-z> <c-x>
     nnoremap 1<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
