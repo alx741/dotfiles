@@ -109,15 +109,12 @@
     " Some day C-H vs <BS> will be fixed, i hope...
     " nnoremap <c-h> <c-w>h
 
-    nnoremap n nzzzv
-    nnoremap N Nzzzv
     nnoremap <c-z> <c-x>
     nnoremap 1<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
     nnoremap Y y$
     nnoremap <space> za
     nnoremap <leader><CR> mzggg?G`z
-    nnoremap <cr> :CtrlPBuffer<CR>
     nnoremap <silent> J :call Join()<CR>
     nnoremap <silent><esc> :noh<CR><esc>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
