@@ -191,6 +191,8 @@
     set wildmenu
     set wildmode=longest,list,full
     set wrapscan
+    set exrc
+    set secure
     syntax on
     syntax spell toplevel
 "}}}
