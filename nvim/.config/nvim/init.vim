@@ -39,7 +39,6 @@
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
-    Plug 'mhinz/vim-startify'
     Plug 'tfnico/vim-gradle'
 
     " On-demand loading
@@ -111,7 +110,8 @@
 
     nnoremap Q :CtrlP<CR>
     nnoremap gs :w<CR>
-    nnoremap gb :w<CR> :Neomake<CR>
+    nnoremap gS :wq<CR>
+    nnoremap gb :w<CR> :Neomake!<CR>
     nnoremap <c-z> <c-x>
     nnoremap 1<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
@@ -193,6 +193,7 @@
     set wrapscan
     set exrc
     set secure
+    set shortmess+=I
     syntax on
     syntax spell toplevel
 "}}}
