@@ -9,7 +9,8 @@
 #{{{ Mappings
     unmap d
     unmap q
-    map Q quit
+    unmap <Space>
+    map q quit
     map = zoom in
     map - zoom out
     map i toggle_statusbar
