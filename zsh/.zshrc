@@ -112,7 +112,7 @@
     alias l="ls -lL"
     alias ls="ls --color"
     alias m="mplayer"
-    alias mem="sudo mount /dev/sdb1 /mnt/mem"
+    alias mem="sudo mount /dev/sdc1 /mnt/mem"
     alias mysql="mysql -u $USER -p --sigint-ignore"
     alias p="ping 8.8.8.8"
     alias s="sudo"
