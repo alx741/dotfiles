@@ -90,6 +90,7 @@
         nnoremap <silent><leader>t :TlistToggle<CR>
         nnoremap <silent><leader>u :UndotreeToggle<CR>
         nnoremap <silent><leader>\ :NERDTreeToggle<CR>
+        nnoremap <silent><leader>g :call Getter_and_setter()<CR>
         nnoremap <silent><leader>c :!ctags -R .<CR>
 
         "{{{ Dotfiles editing
@@ -357,7 +358,7 @@
     endfunction
 "}}}
 
-"{{{ File Specific
+"{{{ File Type Specific
     "{{{ VIM
         augroup ft_vim
             au!
@@ -533,6 +534,20 @@
             au FileType java setlocal foldlevelstart=1
             au FileType java setlocal foldnestmax=2
         augroup END
+
+        function! Getter_and_setter()
+            exe "norm! 0ww\"tyiWw\"vyt;"
+
+            exe "norm! O\<esc>j"
+            exe "norm! 0C\<tab>public \<esc>\"tpa get\<esc>\"vp"
+            exe "norm! Blll~A()\<cr>{\<cr>return this.\<esc>\"vpa;\<esc>"
+            exe "norm! o}\<cr>"
+
+            exe "norm! o\<esc>"
+            exe "norm! 0C\<tab>public void set\<esc>\"vpBlll~A(\<esc>\"tp"
+            exe "norm! a \<esc>\"vpa)\<cr>{\<cr>this.\<esc>\"vpa = \<esc>"
+            exe "norm! \"vpa;\<cr>}\<esc>j"
+        endfunction
     "}}}
 "}}}
 
