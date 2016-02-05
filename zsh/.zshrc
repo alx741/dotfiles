@@ -81,6 +81,7 @@
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
+    PATH+="/usr/games/bin:"
     PATH+="$ANDROID_TOOLS:"
     PATH+="$JAVA_HOME/bin:"
     PATH+="$GRADLE_HOME/bin:"
