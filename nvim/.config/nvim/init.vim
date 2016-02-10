@@ -140,7 +140,46 @@
 "{{{ Status line and Color
     set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
     set statusline+=\ [ft=%Y]\ %r\ %m
+
+    set statusline+=\ \ \ \ %#error#
+    set statusline+=%{StatuslineTabWarning()}
+    set statusline+=%*
+
+    set statusline+=\ \ \ \ %#error#
+    set statusline+=%{StatuslineTrailingSpaceWarning()}
+    set statusline+=%*
+
     set statusline+=%=%c:%l/%L\ %P
+
+
+    augroup statusline
+        au!
+        au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+        au cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+    augroup END
+
+    function! StatuslineTrailingSpaceWarning()
+        if !exists("b:statusline_trailing_space_warning")
+            if search('\s\+$', 'nw') != 0
+                let b:statusline_trailing_space_warning='[Trailing Whitespaces]'
+            else
+                let b:statusline_trailing_space_warning=''
+            endif
+        endif
+        return b:statusline_trailing_space_warning
+    endfunction
+
+    function! StatuslineTabWarning()
+        if !exists("b:statusline_tab_warning")
+            let tabs = search('^\t', 'nw') != 0
+            if tabs
+                let b:statusline_tab_warning =  '[Mixed Indenting]'
+            else
+                let b:statusline_tab_warning = ''
+            endif
+        endif
+        return b:statusline_tab_warning
+    endfunction
 
     colors solarized
 "}}}
