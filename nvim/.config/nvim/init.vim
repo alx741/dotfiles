@@ -336,10 +336,8 @@
 
 
     function! RemoveTrailingSpaces()
-        silent! execute 'norm! mz'
         silent! execute '%s/\s\+$//ge'
         silent! execute 'g/\v^$\n*%$/norm! dd'
-        silent! execute 'norm! `z'
     endfunction
 
 
