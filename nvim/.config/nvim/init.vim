@@ -133,8 +133,11 @@
     nnoremap gp `[v`]
     " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
+
     " Terminal mode leaving
-    tnoremap <esc> <C-\><C-n>
+    if has('nvim')
+        tnoremap <esc> <C-\><C-n>
+    endif
 "}}}
 
 "{{{ Status line and Color
@@ -240,6 +243,10 @@
     set shortmess+=I
     syntax on
     syntax spell toplevel
+
+    if !has('nvim')
+        set encoding=utf-8
+    endif
 "}}}
 
 "{{{ Backup System
