@@ -247,6 +247,10 @@
     if !has('nvim')
         set encoding=utf-8
     endif
+
+    " Persistent undo
+    set undolevels=5000
+    set undofile
 "}}}
 
 "{{{ Backup System
