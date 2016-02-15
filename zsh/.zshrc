@@ -124,6 +124,7 @@
     alias v="/usr/bin/nvim"
     alias vi="/usr/bin/nvim"
     alias vim="nvim"
+    alias vhex="vim -b"
     alias x="startx"
     alias z="zathura"
 
