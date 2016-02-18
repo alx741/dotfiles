@@ -128,14 +128,12 @@
     nnoremap <space> za
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
-    nnoremap <silent><esc> :noh<CR><esc>
+    nnoremap <silent><esc> :noh<CR> :call sneak#cancel()<CR><esc>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
     nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
-    " Visual select last pasted text
     nnoremap gp `[v`]
-    " Search for visual selected area
     vnoremap // y/<C-R>"<CR>
 
     " Terminal mode leaving
