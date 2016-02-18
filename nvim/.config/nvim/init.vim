@@ -7,7 +7,6 @@
     Plug 'alvan/vim-closetag'
     Plug 'alx741/vinfo'
     Plug 'benekastah/neomake'
-    Plug 'bruno-/vim-man'
     Plug 'edsono/vim-matchit'
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
@@ -33,13 +32,18 @@
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'vim-scripts/filestyle'
     Plug 'vim-scripts/taglist.vim'
     Plug 'wellle/targets.vim'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
     Plug 'tfnico/vim-gradle'
+    Plug 'Konfekt/FastFold'
+    Plug 'ntpeters/vim-better-whitespace'
+    Plug 'whatyouhide/vim-lengthmatters'
+    Plug 'nhooyr/neoman.vim'
+    Plug 'fidian/hexmode'
+    Plug 'justinmk/vim-sneak'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
@@ -293,8 +297,14 @@
         let g:ctrlp_cmd = 'CtrlPBuffer'
     "}}}
 
-    "{{{ FileStyle
-        let g:filestyle_ignore = ['man', 'info', 'help', 'gitcommit', 'po']
+    "{{{ Better-whitespace
+        let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
+        let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
+        let g:better_whitespace_filetypes_blacklist+=['unite', 'qf', 'neoman']
+    "}}}
+
+    "{{{ Lengthmatters
+        let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
     "}}}
 
     "{{{ Easytags
@@ -304,6 +314,15 @@
     "{{{ EasyAlign
         nmap ga <Plug>(EasyAlign)
         xmap ga <Plug>(EasyAlign)
+    "}}}
+
+    "{{{ Sneak
+        nmap fj <Plug>Sneak_s
+        nmap Fj <Plug>Sneak_S
+        xmap fj <Plug>Sneak_s
+        xmap Fj <Plug>Sneak_S
+        omap fj <Plug>Sneak_s
+        omap Fj <Plug>Sneak_S
     "}}}
 "}}}
 
