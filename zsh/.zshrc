@@ -26,7 +26,6 @@
     # See `man zshoptions`
 
     setopt AUTO_PUSHD
-    setopt CORRECT
     setopt GLOB_COMPLETE
     setopt RM_STAR_WAIT
     setopt ZLE
@@ -38,7 +37,7 @@
     setopt EXTENDED_GLOB
     setopt RC_EXPAND_PARAM
     setopt APPEND_HISTORY
-    setopt  COMPLETE_IN_WORD
+    setopt COMPLETE_IN_WORD
     setopt prompt_subst
     setopt nohashdirs
     setopt nohashcmds
@@ -297,7 +296,7 @@
     bindkey '^N' down-history
     bindkey '^r' history-incremental-search-backward
 
-    # Incrementar search for / and ?
+    # Incremental search for / and ?
     bindkey -M vicmd "/" history-incremental-search-backward
     bindkey -M vicmd "?" history-incremental-search-forward
 
@@ -325,33 +324,31 @@
     # behave as expected with vim commands ( y/p/d/c/s )
     [[ -n $DISPLAY ]] && (( $+commands[xclip] )) && {
 
-      function cutbuffer() {
+    function cut_buffer()
+    {
         zle .$WIDGET
         echo $CUTBUFFER | xclip -selection clipboard
-      }
+    }
 
-      zle_cut_widgets=(
-        vi-yank
-        vi-yank-eol
-      )
-      for widget in $zle_cut_widgets
-      do
-        zle -N $widget cutbuffer
-      done
+    zle -N vi-yank cut_buffer
+    zle -N vi-yank-eol cut_buffer
 
-      function putbuffer() {
-        zle copy-region-as-kill "$(xclip -selection clipboard -o)"
+    function put_buffer()
+    {
+        zle copy-region-as-kill "$(xclip -selection clipboard -o |
+        sed "s/^/ /")"
         zle .$WIDGET
-      }
+    }
 
-      zle_put_widgets=(
-        vi-put-after
-        vi-put-before
-      )
-      for widget in $zle_put_widgets
-      do
-        zle -N $widget putbuffer
-      done
+    function put_quoted_buffer()
+    {
+        zle copy-region-as-kill "$(xclip -selection clipboard -o |
+        sed "s/^/ '/;s/$/'/")"
+        zle .$WIDGET
+    }
+
+    zle -N vi-put-after put_buffer
+    zle -N vi-put-before put_quoted_buffer
     }
 #}}}
 
