@@ -1,9 +1,10 @@
 #! /bin/sh
 
 
+SAFE_VOLUME=65
+
 status=""
 crafted_status=""
-
 
 
 function select_playlist
@@ -121,6 +122,17 @@ function is_paused
 }
 
 
+function is_playing
+{
+    if [[ `mpc status | grep "\[playing\]"` != "" ]]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
 function craft_status_info
 {
     playing_symbol=">"
@@ -174,6 +186,49 @@ function echo_information
 }
 
 
+function seek
+{
+    position=$(mpc status | grep -e '(*%)' | sed -e 's/.*\((.*)\).*/\1/' | \
+        sed -e 's/(//;s/%//;s/)//')
+    left=$((100-position))
+
+    case "$1" in
+        '-')
+            if [[ $position -lt 5 ]];
+            then
+                mpc seek -"$position"%
+            else
+                mpc seek -5%
+            fi
+            ;;
+        '--')
+            if [[ $position -lt 20 ]];
+            then
+                mpc seek -"$position"%
+            else
+                mpc seek -20%
+            fi
+            ;;
+        '+')
+            if [[ $left -lt 5 ]];
+            then
+                mpc seek 97%
+            else
+                mpc seek +5%
+            fi
+            ;;
+        '++')
+            if [[ $left -lt 20 ]];
+            then
+                mpc seek 97%
+            else
+                mpc seek +20%
+            fi
+            ;;
+    esac
+}
+
+
 function toggle_playback
 {
     case "$1" in
@@ -193,10 +248,24 @@ function toggle_playback
 }
 
 
+function toggle
+{
+    if is_playing;
+    then
+        mpc toggle
+        $(dirname "$0")/volume_control.sh restore_previous_vol
+    else
+        $(dirname "$0")/volume_control.sh save_current_vol
+        $(dirname "$0")/volume_control.sh set "$SAFE_VOLUME"
+        mpc toggle
+    fi
+}
+
+
 
 case "$1" in
     'toggle')
-        mpc toggle
+        toggle
         ;;
     'select_song')
         select_song_from_current_playlist
@@ -219,16 +288,16 @@ case "$1" in
         echo_information
         ;;
     'seek+')
-        mpc seek +10
+        seek "+"
         ;;
     'seek++')
-        mpc seek +50
+        seek "++"
         ;;
     'seek-')
-        mpc seek -10
+        seek "-"
         ;;
     'seek--')
-        mpc seek -50
+        seek "--"
         ;;
     'playback')
         toggle_playback $2
@@ -236,5 +305,8 @@ case "$1" in
         ;;
     'search')
         search_song
+        ;;
+    'restart')
+        mpc seek 0%
         ;;
 esac

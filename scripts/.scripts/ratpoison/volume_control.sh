@@ -12,6 +12,37 @@ function read_volume_value
 }
 
 
+function print_ratposion
+{
+    ratpoison -c "echo ($(~/.scripts/echo_volume.sh))"
+}
+
+
+function print_tmux
+{
+    tmux refresh-client -S
+}
+
+
+function save_vol
+{
+    current_vol=$(amixer sget Master | tail -n 1 | sed -e \
+        's/.*\(\[.*%\]\).*/\1/;s/\[//;s/\]//;s/%//')
+    echo "$current_vol" > /tmp/current_volume
+    print_tmux
+    exit 0
+}
+
+
+function restore_vol
+{
+    vol=$(cat /tmp/current_volume)
+    amixer set Master "$vol"%
+    print_tmux
+    exit 0
+}
+
+
 amixer set PCM 100%
 
 case "$1" in
@@ -36,7 +67,18 @@ case "$1" in
     'ask')
         read_volume_value
         ;;
+    'save_current_vol')
+        save_vol
+        ;;
+    'restore_previous_vol')
+        restore_vol
+        ;;
+    'set')
+        amixer set Master $2%
+        print_tmux
+        exit 0
+        ;;
 esac
 
-ratpoison -c "echo ($(~/.scripts/echo_volume.sh))"
-tmux refresh-client -S
+print_ratposion
+print_tmux
