@@ -1,27 +1,28 @@
 ! Urxvt {{{
 
 ! Options
-URxvt.depth: 32
-URxvt.transparent: false
-URxvt.fading: 0
-URxvt.termName: xterm-256color
-URxvt.loginShell: true
-URxvt.saveLines: 50
-URxvt.lineSpace: 0
-URxvt.title: terminal
-URxvt.scrollstyle: plain
-URxvt.scrollTtyKeypress: true
-URxvt.scrollTtyOutput: false
-URxvt.scrollWithBuffer: false
-URxvt.secondaryScreen: true
-URxvt.secondaryScroll: true
-URxvt.scrollBar: false
-URxvt.cursorBlink: true
-URxvt.hold: false
-URxvt.urlLauncher: firefox
-URxvt.internalBorder: 0
-URxvt.externalBorder: 0
-URxvt.reverseVideo: false
+urxvt.depth: 32
+urxvt.transparent: false
+urxvt.fading: 0
+urxvt.termName: xterm-256color
+urxvt.loginShell: true
+urxvt.saveLines: 50
+urxvt.lineSpace: 0
+urxvt.title: terminal
+urxvt.scrollstyle: plain
+urxvt.scrollTtyKeypress: true
+urxvt.scrollTtyOutput: false
+urxvt.scrollWithBuffer: false
+urxvt.secondaryScreen: true
+urxvt.secondaryScroll: true
+urxvt.scrollBar: false
+urxvt.cursorBlink: true
+urxvt.hold: false
+urxvt.urlLauncher: firefox
+urxvt.internalBorder: 2
+urxvt.externalBorder: 0
+urxvt.borderLess: true
+urxvt.reverseVideo: false
 
 ! Fonts
 urxvt.allow_bold: true
@@ -29,11 +30,11 @@ urxvt*font: xft:DejaVuSansMono:pixelsize=16:syle=book
 urxvt*boldFont: xft:DejaVuSansMono:pixelsize=16:style=bold
 
 ! Fix font space
-URxvt*letterSpace: -1
+urxvt*letterSpace: -1
 
 ! Perl extensions
-URxvt.perl-ext-common: default,matcher
-URxvt.matcher.button: 1
+urxvt.perl-ext-common: default,matcher
+urxvt.matcher.button: 1
 !}}}
 
 ! Color [Solarized] {{{
