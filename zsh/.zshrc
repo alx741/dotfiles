@@ -93,6 +93,13 @@
     HISTSIZE=1000
 #}}}
 
+#{{{ Colorize commands
+    function ping { command ping "$@" | ccze -A }
+    function traceroute { command traceroute "$@" | ccze -A }
+    function make { command make "$@" | ccze -A }
+    function ./configure { command ./configure "$@" | ccze -A }
+#}}}
+
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias auto="$EDITOR configure.ac Makefile.am config.h.in"
