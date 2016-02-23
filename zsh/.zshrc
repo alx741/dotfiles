@@ -128,11 +128,14 @@
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
     alias v="/usr/bin/nvim"
+    alias vhex="vim -b"
     alias vi="/usr/bin/nvim"
     alias vim="nvim"
-    alias vhex="vim -b"
+    alias woman="command man"
     alias x="startx"
     alias z="zathura"
+
+    function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"

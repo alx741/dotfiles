@@ -618,6 +618,49 @@
             exe "norm! \"vpa;\<cr>}\<esc>j"
         endfunction
     "}}}
+
+    "{{{ MAN
+        augroup ft_sh
+            au!
+            au FileType man nnoremap <buffer><silent>[s :call Man_section(1)<CR>
+            au FileType man nnoremap <buffer><silent>]s :call Man_section(0)<CR>
+            au FileType man nnoremap <buffer><silent>[[ :call Man_reference(1)<CR>
+            au FileType man nnoremap <buffer><silent>]] :call Man_reference(0)<CR>
+            au FileType man nnoremap <buffer><nowait>d <C-d>
+            au FileType man nnoremap <buffer><nowait>u <C-u>
+            au FileType man nnoremap <buffer><nowait>f <C-f>
+            au FileType man nnoremap <buffer><nowait>b <C-b>
+            au FileType man nnoremap <buffer><nowait>e <C-e>
+            au FileType man nnoremap <buffer><nowait>y <C-y>
+            au FileType man nnoremap <buffer>q :call Close_man()<CR>
+        augroup END
+
+        function! Close_man()
+            let number_of_buffers=len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+
+            if (number_of_buffers == 0)
+                exec "q"
+            else
+                exec "tabclose"
+            endif
+        endfunction
+
+        function! Man_section(reverse)
+            call search('\v\n\u+', a:reverse ? 'bW' : 'W')
+            exe "norm! zt"
+        endfunction
+
+        function! Man_reference(reverse)
+            call search('\C[a-z0-9]\+(\d)', a:reverse ? 'bW' : 'W')
+        endfunction
+    "}}}
+
+    "{{{ QUICKFIX
+        augroup quickfix
+            au!
+            au BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+        augroup END
+    "}}}
 "}}}
 
 
