@@ -16,7 +16,7 @@ source "$(dirname "$0")/utility.sh"
 #       - Sound unmute
 #       - Ethernet static configuration
 #       - Init:
-#           - Web explorer
+#           - Web browser
 #
 # * No-Home
 #       - Laptop display [1366x768]
@@ -34,7 +34,7 @@ then
     xrandr --output VGA1 --mode 1366x768 --left-of HDMI1
     xbacklight -set 0
     amixer set Master unmute
-    amixer set Master 50%
+    amixer set Master 100%
     ~/.scripts/network/configure_ether.sh
     firefox&
 else
@@ -46,5 +46,5 @@ else
     xbacklight -set 100
     amixer set Master 0%
     amixer set Master mute
-    dhclient enp3s0
+    dhclient enp3s0&
 fi

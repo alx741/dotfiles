@@ -24,20 +24,31 @@ function print_tmux
 }
 
 
-function save_vol
+function get_current_vol
 {
-    current_vol=$(amixer sget Master | tail -n 1 | sed -e \
+    echo $(amixer sget Master | tail -n 1 | sed -e \
         's/.*\(\[.*%\]\).*/\1/;s/\[//;s/\]//;s/%//')
-    echo "$current_vol" > /tmp/current_volume
-    print_tmux
-    exit 0
 }
 
 
-function restore_vol
+# Returns safe value if none saved volume exists
+function get_previous_vol
 {
-    vol=$(cat /tmp/current_volume)
-    amixer set Master "$vol"%
+    if [[ ! -f /tmp/saved_volume ]];
+    then
+        echo 50
+    else
+        echo $(cat /tmp/saved_volume)
+    fi
+}
+
+
+function toggle_previous_volume
+{
+    previous_vol=$(get_previous_vol)
+    current_vol=$(get_current_vol)
+    echo "$current_vol" > /tmp/saved_volume
+    amixer set Master "$previous_vol"%
     print_tmux
     exit 0
 }
@@ -67,11 +78,8 @@ case "$1" in
     'ask')
         read_volume_value
         ;;
-    'save_current_vol')
-        save_vol
-        ;;
-    'restore_previous_vol')
-        restore_vol
+    'toggle_previous_volume')
+        toggle_previous_volume
         ;;
     'set')
         amixer set Master $2%

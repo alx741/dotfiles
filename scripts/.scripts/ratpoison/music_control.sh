@@ -1,8 +1,6 @@
 #! /bin/sh
 
 
-SAFE_VOLUME=65
-
 status=""
 crafted_status=""
 
@@ -253,10 +251,10 @@ function toggle
     if is_playing;
     then
         mpc toggle
-        $(dirname "$0")/volume_control.sh restore_previous_vol
+        sleep 0.3
+        $(dirname "$0")/volume_control.sh toggle_previous_volume
     else
-        $(dirname "$0")/volume_control.sh save_current_vol
-        $(dirname "$0")/volume_control.sh set "$SAFE_VOLUME"
+        $(dirname "$0")/volume_control.sh toggle_previous_volume
         mpc toggle
     fi
 }
