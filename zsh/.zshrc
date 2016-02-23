@@ -136,6 +136,7 @@
     alias z="zathura"
 
     function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
+    function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
@@ -143,7 +144,6 @@
         alias gpull="$SCRIPTS/fancy/git.sh pull"
         alias gpush="$SCRIPTS/fancy/git.sh push"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
-        alias md="$SCRIPTS/md.sh"
         alias poweroff="$SCRIPTS/fancy/addio.sh halt"
         alias pro="$SCRIPTS/configure_projector.sh"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
