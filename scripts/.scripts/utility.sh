@@ -13,6 +13,7 @@ function am_i_at_home
     fi
 }
 
+
 function is_vga_plugedin
 {
     VGASTATE=$(xrandr | grep -i 'vga' | awk '{print $2 }')
@@ -23,5 +24,3 @@ function is_vga_plugedin
         return 1
     fi
 }
-
-

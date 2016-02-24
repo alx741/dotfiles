@@ -1,5 +1,7 @@
 #! /bin/sh
 
+source "$(dirname "$0")/../volume.sh"
+
 
 function read_volume_value
 {
@@ -14,43 +16,13 @@ function read_volume_value
 
 function print_ratposion
 {
-    ratpoison -c "echo ($(~/.scripts/echo_volume.sh))"
+    ratpoison -c "echo ($(vol_echo_formatted ))"
 }
 
 
 function print_tmux
 {
     tmux refresh-client -S
-}
-
-
-function get_current_vol
-{
-    echo $(amixer sget Master | tail -n 1 | sed -e \
-        's/.*\(\[.*%\]\).*/\1/;s/\[//;s/\]//;s/%//')
-}
-
-
-# Returns safe value if none saved volume exists
-function get_previous_vol
-{
-    if [[ ! -f /tmp/saved_volume ]];
-    then
-        echo 50
-    else
-        echo $(cat /tmp/saved_volume)
-    fi
-}
-
-
-function toggle_previous_volume
-{
-    previous_vol=$(get_previous_vol)
-    current_vol=$(get_current_vol)
-    echo "$current_vol" > /tmp/saved_volume
-    amixer set Master "$previous_vol"%
-    print_tmux
-    exit 0
 }
 
 
@@ -78,8 +50,14 @@ case "$1" in
     'ask')
         read_volume_value
         ;;
-    'toggle_previous_volume')
-        toggle_previous_volume
+    'get_mode')
+        echo $(vol_get_mode)
+        ;;
+    'set_music_mode')
+        $(vol_set_music_mode)
+        ;;
+    'set_normal_mode')
+        $(vol_set_normal_mode)
         ;;
     'set')
         amixer set Master $2%
