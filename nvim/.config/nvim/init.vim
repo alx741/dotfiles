@@ -448,6 +448,14 @@
         augroup END
     "}}}
 
+    "{{{ C/C++
+        augroup ft_c_cpp
+            au!
+            au FileType c,cpp nnoremap <buffer><silent>gh :A<CR>
+            au FileType c,cpp nnoremap <buffer><silent>gH :AS<CR>
+        augroup END
+    "}}}
+
     "{{{ SH
         augroup ft_sh
             au!
