@@ -319,6 +319,7 @@
 
     "{{{ Easytags
         let g:easytags_async = 1
+        let g:easytags_by_filetype = '~/.tags'
     "}}}
 
     "{{{ EasyAlign
