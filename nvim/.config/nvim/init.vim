@@ -41,9 +41,11 @@
     Plug 'Konfekt/FastFold'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'whatyouhide/vim-lengthmatters'
-    Plug 'nhooyr/neoman.vim'
     Plug 'fidian/hexmode'
     Plug 'justinmk/vim-sneak'
+    Plug 'vim-scripts/a.vim'
+    Plug 'milkypostman/vim-togglelist'
+    Plug 'vim-scripts/OmniCppComplete'
 
     " On-demand loading
     Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
