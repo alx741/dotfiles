@@ -67,7 +67,7 @@
     augroup END
 "}}}
 
-"{{{ Maps
+"{{{ Mappings
     "{{{ Inclusive movements
         onoremap h vh
         onoremap l vl
@@ -94,10 +94,8 @@
     "{{{ LEADER mappings
         nnoremap <leader>s :call ToggleSpell()<CR>
         nnoremap <silent><leader>t :TlistToggle<CR>
-        nnoremap <silent><leader>u :UndotreeToggle<CR>
-        nnoremap <silent><leader>\ :NERDTreeToggle<CR>
-        nnoremap <silent><leader>g :call Getter_and_setter()<CR>
-        nnoremap <silent><leader>c :!ctags -R .<CR>
+        nnoremap <silent><leader><space> :NERDTreeToggle<CR>
+        nnoremap <silent><leader><leader> :UndotreeToggle<CR>
 
         "{{{ Dotfiles editing
             nnoremap <silent><leader>ev :e ~/.config/nvim/init.vim<CR>
@@ -122,12 +120,14 @@
     nnoremap gs :w<CR>
     nnoremap gS :wq<CR>
     nnoremap gbb :w<CR> :Neomake!<CR>
+    nnoremap gbc :Make! clean<CR>
     nnoremap gbs :w<CR> :Neomake<CR>
     nnoremap <c-z> <c-x>
-    nnoremap 1<space> 1z=
+    nnoremap z<space> 1z=
     nnoremap <silent>g= :call Format()<CR>
     nnoremap Y y$
     nnoremap <space> za
+    nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
     nnoremap <silent><esc> :noh<CR> :call sneak#hl#removehl()<CR><esc>
@@ -135,8 +135,18 @@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
     nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
+    nnoremap <C-\> :call ToggleQuickfixList()<CR>
     nnoremap gp `[v`]
     vnoremap // y/<C-R>"<CR>
+    inoremap <C-f> <C-x>
+
+
+    " X Clipboard yanking/pasting
+    nnoremap <C-c>p "+p
+    nnoremap <C-c>y "+y
+    nnoremap <C-c>Y "+Y
+    vnoremap <C-c>y "+y
+    inoremap <C-r>c <C-r>+
 
     " Terminal mode leaving
     if has('nvim')
