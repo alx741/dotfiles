@@ -5,6 +5,7 @@ Dotfiles
 
 - Astyle
 - Ccze
+- Ctags
 - Emacs
 - Git
 - Mpd
