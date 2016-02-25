@@ -1,4 +1,4 @@
-"{{{ VIM-PLUG
+"{{{ Plugins
     call plug#begin('~/.config/nvim/plugged')
     Plug 'Julian/vim-textobj-variable-segment'
     Plug 'LucHermitte/vim-refactor'
@@ -55,16 +55,224 @@
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
     call plug#end()
+
+    "{{{ Plugins configuration
+        "{{{ Syntastic
+            let $PYTHONPATH='/usr/lib/python3.4/site-packages'
+            let g:syntastic_mode_map = {
+                \ 'mode' : 'passive',
+                \ 'active_filetypes' : [],
+                \ 'passive_filetypes' : [] }
+        "}}}
+
+        "{{{ Targets
+            " let g:targets_aiAI = 'aIAi'
+        "}}}
+
+        "{{{ UltiSnips
+            let g:UltiSnipsEditSplit="horizontal"
+        "}}}
+
+        "{{{ Multiple-cursors
+            let g:multi_cursor_exit_from_visual_mode=0
+            let g:multi_cursor_exit_from_insert_mode=0
+        "}}}
+
+        "{{{ AutoPairs
+            let g:AutoPairs = {'{': '}'}
+        "}}}
+
+        "{{{ CtrlP
+            let g:ctrlp_cmd = 'CtrlPBuffer'
+        "}}}
+
+        "{{{ Better-whitespace
+            let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
+            let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
+            let g:better_whitespace_filetypes_blacklist+=['unite', 'qf', 'neoman']
+        "}}}
+
+        "{{{ Lengthmatters
+            let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
+        "}}}
+
+        "{{{ Easytags
+            let g:easytags_async = 1
+            let g:easytags_by_filetype = '~/.tags'
+        "}}}
+
+        "{{{ EasyAlign
+            nmap ga <Plug>(EasyAlign)
+            xmap ga <Plug>(EasyAlign)
+        "}}}
+
+        "{{{ Sneak
+            nmap fj <Plug>Sneak_s
+            nmap Fj <Plug>Sneak_S
+            xmap fj <Plug>Sneak_s
+            xmap Fj <Plug>Sneak_S
+            omap fj <Plug>Sneak_s
+            omap Fj <Plug>Sneak_S
+        "}}}
+
+        "{{{ Togglelist
+            let g:toggle_list_no_mappings=1
+        "}}}
+
+        "{{{ EasyAlign
+        let g:easy_align_delimiters = {
+            \ '/': {
+            \     'pattern':         '//\+\|/\*\|\*/',
+            \     'delimiter_align': 'l',
+            \     'ignore_groups':   ['!Comment'] }
+            \ }
+        "}}}
+    "}}}
 "}}}
 
-"{{{ Global Auto Commands
-    augroup global_au
-        au!
-        " Reset format options when filetypes are loaded
-        au FileType * set formatoptions=tcrql
-        " Trigger Neomake on save
-        " au BufWritePost * Neomake
-    augroup END
+"{{{ Options
+    "{{{ Path
+        " SDCC
+        set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
+        set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
+    "}}}
+
+    "{{{ Backup System
+        set backup
+        set undofile
+        set noswapfile
+        set undodir=~/.config/nvim/tmp/undo/
+        set backupdir=~/.config/nvim/tmp/backup/
+        set backupskip=/tmp/*,/private/tmp/*
+        set writebackup
+    "}}}
+
+    "{{{ Status Line and Color
+        set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
+        set statusline+=\ [ft=%Y]\ %r\ %m
+
+        set statusline+=\ \ \ \ %#error#
+        set statusline+=%{StatuslineTabWarning()}
+        set statusline+=%*
+
+        set statusline+=\ \ \ \ %#error#
+        set statusline+=%{StatuslineTrailingSpaceWarning()}
+        set statusline+=%*
+
+        set statusline+=%=%c:%l/%L\ %P
+
+
+        augroup statusline
+            au!
+            au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+            au cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+        augroup END
+
+        function! StatuslineTrailingSpaceWarning()
+            if !exists("b:statusline_trailing_space_warning")
+                if search('\s\+$', 'nw') != 0
+                    let b:statusline_trailing_space_warning='[Trailing Whitespaces]'
+                else
+                    let b:statusline_trailing_space_warning=''
+                endif
+            endif
+            return b:statusline_trailing_space_warning
+        endfunction
+
+        function! StatuslineTabWarning()
+            if !exists("b:statusline_tab_warning")
+                let tabs = search('^\t', 'nw') != 0
+                if tabs
+                    let b:statusline_tab_warning =  '[Mixed Indenting]'
+                else
+                    let b:statusline_tab_warning = ''
+                endif
+            endif
+            return b:statusline_tab_warning
+        endfunction
+
+        colors solarized
+    "}}}
+
+    "{{{ Global Auto Commands
+        augroup global_au
+            au!
+            " Reset format options when filetypes are loaded
+            au FileType * set formatoptions=tcrql
+        augroup END
+    "}}}
+
+    "{{{ Global Commands and abbreviations
+        command! W w !sudo tee % >/dev/null
+        cnoreabbrev man Man
+    "}}}
+
+    " {{{ General Options
+        set autoindent
+        set autoread
+        set autowrite
+        set background=light
+        set backspace=2
+        set breakindent
+        set showbreak=>>
+        set completeopt-=longest
+        set completeopt-=preview
+        set completeopt-=noinsert
+        set expandtab
+        set foldenable
+        set foldlevel=1
+        set foldlevelstart=1
+        set foldmethod=syntax
+        set foldnestmax=1
+        set formatoptions=tcrql
+        set foldopen+=block
+        set gdefault
+        set hidden
+        set hlsearch
+        set ignorecase
+        set incsearch
+        set laststatus=2
+        set lazyredraw
+        set linebreak
+        set noesckeys
+        set nojoinspaces
+        set number
+        set relativenumber
+        set ruler
+        set shiftround
+        set shiftwidth=4
+        set showcmd
+        set showmatch
+        set showmode
+        set smartcase
+        set smarttab
+        set softtabstop=4
+        set t_CO=16
+        set tabstop=4
+        set textwidth=80
+        set timeout
+        set timeoutlen=400
+        set ttimeout
+        set ttimeoutlen=0
+        set wildignore=*.o,*.class
+        set wildmenu
+        set wildmode=longest,list,full
+        set wrapscan
+        set exrc
+        set secure
+        set shortmess+=I
+        set undolevels=5000
+        set undofile
+
+        if !has('nvim')
+            set encoding=utf-8
+        endif
+
+        filetype plugin indent on
+        syntax on
+        syntax spell toplevel
+        let c_no_comment_fold=1
+    "}}}
 "}}}
 
 "{{{ Mappings
@@ -106,249 +314,61 @@
         "}}}
     "}}}
 
-    nnoremap <c-k> <c-w>k
-    nnoremap <c-j> <c-w>j
-    nnoremap <c-l> <c-w>l
-    nnoremap <BS> <C-W>h
-    " Some day C-H vs <BS> will be fixed, i hope...
-    " nnoremap <c-h> <c-w>h
+    "{{{ Window movement
+        nnoremap <c-k> <c-w>k
+        nnoremap <c-j> <c-w>j
+        nnoremap <c-l> <c-w>l
+        " Some day C-H vs <BS> will be fixed, i hope...
+        " nnoremap <c-h> <c-w>h
+        nnoremap <BS> <C-W>h
+    "}}}
 
-    nnoremap } }zz
-    nnoremap { {zz
-    nnoremap <NUL> <c-^>
-    nnoremap Q :CtrlP<CR>
-    nnoremap gs :w<CR>
-    nnoremap gS :wq<CR>
-    nnoremap gbb :w<CR> :Neomake!<CR>
-    nnoremap gbc :Make! clean<CR>
-    nnoremap gbs :w<CR> :Neomake<CR>
-    nnoremap <c-z> <c-x>
-    nnoremap z<space> 1z=
-    nnoremap <silent>g= :call Format()<CR>
-    nnoremap Y y$
-    nnoremap <space> za
-    nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
-    nnoremap <leader><CR> mzggg?G`z
-    nnoremap <silent> J :call Join()<CR>
-    nnoremap <silent><esc> :noh<CR> :call sneak#hl#removehl()<CR><esc>
-    nnoremap <silent> gl :set opfunc=Listify<CR>g@
-    vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
-    nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
-    nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
-    nnoremap <C-\> :call ToggleQuickfixList()<CR>
-    nnoremap gp `[v`]
-    vnoremap // y/<C-R>"<CR>
-    inoremap <C-f> <C-x>
+    "{{{ X Clipboard yanking/pasting
+        nnoremap <C-c>p "+p
+        nnoremap <C-c>y "+y
+        nnoremap <C-c>Y "+Y
+        vnoremap <C-c>y "+y
+        inoremap <C-r>c <C-r>+
+    "}}}
 
+    "{{{ General Mappings
+        nnoremap } }zz
+        nnoremap { {zz
+        nnoremap <NUL> <c-^>
+        nnoremap Q :CtrlP<CR>
+        nnoremap gs :w<CR>
+        nnoremap gS :wq<CR>
+        nnoremap gbb :w<CR> :Neomake!<CR>
+        nnoremap gbc :Make! clean<CR>
+        nnoremap gbs :w<CR> :Neomake<CR>
+        nnoremap <c-z> <c-x>
+        nnoremap z<space> 1z=
+        nnoremap <silent>g= :call Format()<CR>
+        nnoremap Y y$
+        nnoremap <space> za
+        nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
+        nnoremap <leader><CR> mzggg?G`z
+        nnoremap <silent> J :call Join()<CR>
+        nnoremap <silent><esc> :noh<CR> :call sneak#hl#removehl()<CR><esc>
+        nnoremap <silent> gl :set opfunc=Listify<CR>g@
+        vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
+        nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
+        nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
+        nnoremap <C-\> :call ToggleQuickfixList()<CR>
+        nnoremap gp `[v`]
+        nnoremap <CR> :CtrlPBuffer<CR>
+        vnoremap // y/<C-R>"<CR>
+        inoremap <C-f> <C-x>
 
-    " X Clipboard yanking/pasting
-    nnoremap <C-c>p "+p
-    nnoremap <C-c>y "+y
-    nnoremap <C-c>Y "+Y
-    vnoremap <C-c>y "+y
-    inoremap <C-r>c <C-r>+
-
-    " Terminal mode leaving
-    if has('nvim')
-        tnoremap <esc> <C-\><C-n>
-    endif
-"}}}
-
-"{{{ Status line and Color
-    set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
-    set statusline+=\ [ft=%Y]\ %r\ %m
-
-    set statusline+=\ \ \ \ %#error#
-    set statusline+=%{StatuslineTabWarning()}
-    set statusline+=%*
-
-    set statusline+=\ \ \ \ %#error#
-    set statusline+=%{StatuslineTrailingSpaceWarning()}
-    set statusline+=%*
-
-    set statusline+=%=%c:%l/%L\ %P
-
-
-    augroup statusline
-        au!
-        au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-        au cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-    augroup END
-
-    function! StatuslineTrailingSpaceWarning()
-        if !exists("b:statusline_trailing_space_warning")
-            if search('\s\+$', 'nw') != 0
-                let b:statusline_trailing_space_warning='[Trailing Whitespaces]'
-            else
-                let b:statusline_trailing_space_warning=''
-            endif
+        " Terminal mode leaving
+        if has('nvim')
+            tnoremap <esc> <C-\><C-n>
         endif
-        return b:statusline_trailing_space_warning
-    endfunction
-
-    function! StatuslineTabWarning()
-        if !exists("b:statusline_tab_warning")
-            let tabs = search('^\t', 'nw') != 0
-            if tabs
-                let b:statusline_tab_warning =  '[Mixed Indenting]'
-            else
-                let b:statusline_tab_warning = ''
-            endif
-        endif
-        return b:statusline_tab_warning
-    endfunction
-
-    colors solarized
-"}}}
-
-"{{{ Options
-    filetype plugin indent on
-    let c_no_comment_fold=1
-    set autoindent
-    set autoread
-    set background=light
-    set backspace=2
-    set complete=.,w,b,u,t
-    set completeopt+=longest
-    set completeopt-=noinsert
-    set completeopt-=preview
-    set encoding=utf-8
-    set expandtab
-    set foldenable
-    set foldlevel=2
-    set foldlevelstart=1
-    set foldmethod=syntax
-    set foldnestmax=1
-    set formatoptions=tcrql
-    set gdefault
-    set hidden
-    set hlsearch
-    set ignorecase
-    set incsearch
-    set laststatus=2
-    set lazyredraw
-    set linebreak
-    set noesckeys
-    set nojoinspaces
-    set number
-    set relativenumber
-    set ruler
-    set shiftround
-    set shiftwidth=4
-    set showcmd
-    set showmatch
-    set showmode
-    set smartcase
-    set smarttab
-    set softtabstop=4
-    set t_CO=16
-    set tabstop=4
-    set textwidth=80
-    set timeout
-    set timeoutlen=400
-    set ttimeout
-    set ttimeoutlen=0
-    set wildignore=*.o,*.class
-    set wildmenu
-    set wildmode=longest,list,full
-    set wrapscan
-    set exrc
-    set secure
-    set shortmess+=I
-    syntax on
-    syntax spell toplevel
-
-    if !has('nvim')
-        set encoding=utf-8
-    endif
-
-    " Persistent undo
-    set undolevels=5000
-    set undofile
-"}}}
-
-"{{{ Backup System
-    set backup
-    set undofile
-    set noswapfile
-    set undodir=~/.config/nvim/tmp/undo/
-    set backupdir=~/.config/nvim/tmp/backup/
-    set backupskip=/tmp/*,/private/tmp/*
-    set writebackup
-"}}}
-
-"{{{ Plugins configuration
-    "{{{ Syntastic
-        let $PYTHONPATH='/usr/lib/python3.4/site-packages'
-        let g:syntastic_mode_map = {
-            \ 'mode' : 'passive',
-            \ 'active_filetypes' : [],
-            \ 'passive_filetypes' : [] }
-    "}}}
-
-    "{{{ Targets
-        " let g:targets_aiAI = 'aIAi'
-    "}}}
-
-    "{{{ UltiSnips
-        let g:UltiSnipsEditSplit="horizontal"
-    "}}}
-
-    "{{{ Multiple-cursors
-        let g:multi_cursor_exit_from_visual_mode=0
-        let g:multi_cursor_exit_from_insert_mode=0
-    "}}}
-
-    "{{{ AutoPairs
-        let g:AutoPairs = {'{': '}'}
-    "}}}
-
-    "{{{ CtrlP
-        let g:ctrlp_cmd = 'CtrlPBuffer'
-    "}}}
-
-    "{{{ Better-whitespace
-        let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
-        let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
-        let g:better_whitespace_filetypes_blacklist+=['unite', 'qf', 'neoman']
-    "}}}
-
-    "{{{ Lengthmatters
-        let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
-    "}}}
-
-    "{{{ Easytags
-        let g:easytags_async = 1
-        let g:easytags_by_filetype = '~/.tags'
-    "}}}
-
-    "{{{ EasyAlign
-        nmap ga <Plug>(EasyAlign)
-        xmap ga <Plug>(EasyAlign)
-    "}}}
-
-    "{{{ Sneak
-        nmap fj <Plug>Sneak_s
-        nmap Fj <Plug>Sneak_S
-        xmap fj <Plug>Sneak_s
-        xmap Fj <Plug>Sneak_S
-        omap fj <Plug>Sneak_s
-        omap Fj <Plug>Sneak_S
     "}}}
 "}}}
 
-"{{{ Path
-    " SDCC
-    set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
-    set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
-"}}}
-
-"{{{ Global Commands
-    command! W w !sudo tee % >/dev/null
-"}}}
-
-"{{{ Global Functions
-    function! Format()
+"{{{ Functions
+    function! Format() "{{{
         " * Removes trailing white spaces
         " * Removes blank lines at the end of the file
         " * Replaces tabs with spaces
@@ -374,15 +394,15 @@
         silent! execute 'norm! `z'
         set formatprg=
     endfunction
+    "}}}
 
-
-    function! RemoveTrailingSpaces()
+    function! RemoveTrailingSpaces() "{{{
         silent! execute '%s/\s\+$//ge'
         silent! execute 'g/\v^$\n*%$/norm! dd'
     endfunction
+    "}}}
 
-
-    function! ToggleSpell()
+    function! ToggleSpell() "{{{
         if &spell ==? 0
             set spelllang=en
             set spell
@@ -400,18 +420,18 @@
             endif
         endif
     endfunction
+    "}}}
 
-
-    function! NumberToggle()
+    function! NumberToggle() "{{{
         if &relativenumber ==? 1
             set norelativenumber
         else
             set relativenumber
         endif
     endfunction
+    "}}}
 
-
-    function! Listify(type, ...)
+    function! Listify(type, ...) "{{{
         if a:0
             exe "'<,'>norm! I* "
         else
@@ -419,18 +439,19 @@
             exe "'<,'>norm! ^i* "
         endif
     endfunction
+    "}}}
 
-
+    function! Translate(text, to_lang) "{{{
     " Needs https://github.com/soimort/translate-shell
-    function! Translate(text, to_lang)
         if a:to_lang ==? "es"
             exe "!trans -b en:es \"" . a:text . "\""
         else
             exe "!trans -b es:en \"" . a:text . "\""
         endif
     endfunction
+    "}}}
 
-    function! Join()
+    function! Join() "{{{
         let next_line = getline(line('.')+1)
         if next_line =~? "^$"
             exec "silent norm! gJ"
@@ -438,6 +459,7 @@
             exec "silent norm! J"
         endif
     endfunction
+    "}}}
 "}}}
 
 "{{{ File Type Specific
@@ -647,7 +669,7 @@
     "}}}
 
     "{{{ MAN
-        augroup ft_sh
+        augroup ft_man
             au!
             au FileType man nnoremap <buffer><silent>[s :call Man_section(1)<CR>
             au FileType man nnoremap <buffer><silent>]s :call Man_section(0)<CR>
@@ -691,4 +713,4 @@
 "}}}
 
 
-" vim:fdm=marker
+" vim:fdm=marker:fdl=0
