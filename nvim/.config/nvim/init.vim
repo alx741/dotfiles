@@ -636,6 +636,7 @@
             au FileType gitcommit setlocal spell
             au FileType gitcommit setlocal spelllang=en
             au FileType gitcommit nnoremap <buffer><space> 1z=
+            au FileType gitcommit exec "norm! gg"
         augroup END
     "}}}
 
