@@ -110,6 +110,9 @@
     # Select frame
     bind F fselect
 
+    # QR code generator
+    bind q exec ~/.scripts/qr_generator.sh
+
     # ET phone home
     bind E exec ~/.scripts/ratpoison/et_phone_home.sh
 
