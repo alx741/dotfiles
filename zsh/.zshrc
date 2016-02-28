@@ -107,11 +107,12 @@
 #}}}
 
 #{{{ Aliases
+    alias artisan="php artisan"
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
-    alias auto="$EDITOR configure.ac Makefile.am config.h.in"
     alias clip="xclip -selection clipboard -i"
+    alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
-    alias dot="dot -Tpng -O"
+    alias dotpng="dot -Tpng -O"
     alias eje="sudo eject /mnt/mem"
     alias ga="git add"
     alias gb="git branch"
@@ -159,6 +160,7 @@
         alias wifi="$SCRIPTS/network/configure_wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
+        alias be="$SCRIPTS/builder_edit.sh"
     #}}}
 
     #{{{ Sufix
@@ -194,7 +196,7 @@
         alias ,,,='cd ../.. && ls -lLh'
         alias ,,,,='cd ../../.. && ls -lLh'
         alias ,,,,,='cd ../../.. && ls -lLh'
-        alias dot="cd ~/lab/dotfiles/"
+        alias dot="cd ~/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
         alias web="cd ~/u/progra/web/"
