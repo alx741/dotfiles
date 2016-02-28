@@ -64,6 +64,8 @@
     export EDITOR=nvim
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
+
+    # Android
     export ANDROID_HOME="/opt/android-sdk-update-manager"
     export ANDROID_SWT="/usr/share/swt-3.7/lib"
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
@@ -78,12 +80,16 @@
     # Gradle
     export GRADLE_HOME="/opt/gradle-2.9"
 
+    # Composer
+    export COMPOSER_HOME=~/.composer/
+
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
     PATH+="$ANDROID_TOOLS:"
     PATH+="$JAVA_HOME/bin:"
     PATH+="$GRADLE_HOME/bin:"
+    PATH+="$COMPOSER_HOME/vendor/bin:"
     export PATH
     declare -U path
 
