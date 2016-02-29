@@ -356,6 +356,7 @@
         nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
         nnoremap <C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
+        nnoremap gr :call Refresh_firefox()<CR>
         nnoremap <CR> :CtrlPBuffer<CR>
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
@@ -458,6 +459,11 @@
         else
             exec "silent norm! J"
         endif
+    endfunction
+    "}}}
+
+    function! Refresh_firefox() "{{{
+        silent exe "! ~/.scripts/refresh_firefox.sh"
     endfunction
     "}}}
 "}}}
