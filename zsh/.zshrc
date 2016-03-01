@@ -267,8 +267,9 @@
         vcs_info
     }
 
-    PROMPT=$'\n''%{$fg[blue]%}<%1~>$reset_color${vcs_info_msg_0_}$reset_color'
-    PROMPT+='%{$fg_bold[magenta]%} ( ͡° ͜ʖ ͡°)$reset_color  '
+    PS1=$'\n''%{$fg[blue]%}<%1~>$reset_colo${vcs_info_msg_0_}%{$reset_color%}'
+    PS1+="%{$fg_bold[magenta]%} ( ͡° ͜ʖ ͡°)%{$reset_color%}  "
+    PS2="%{$fg[cyan]%} | go on (>'_')>  "
 #}}}
 
 #{{{ Vi-mode
