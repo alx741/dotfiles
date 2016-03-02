@@ -21,8 +21,6 @@
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'scrooloose/syntastic'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'thanthese/Tortoise-Typing'
     Plug 'tommcdo/vim-exchange'
@@ -46,10 +44,15 @@
     Plug 'vim-scripts/a.vim'
     Plug 'milkypostman/vim-togglelist'
     Plug 'vim-scripts/OmniCppComplete'
+    Plug 'shawncplus/phpcomplete.vim'
+    Plug 'StanAngeloff/php.vim'
+    Plug 'captbaritone/better-indent-support-for-php-with-html'
+    Plug 'JazzCore/ctrlp-cmatcher/'
+    Plug 'jwalton512/vim-blade'
+    Plug 'luochen1990/rainbow'
+    Plug 'tpope/vim-vinegar'
 
     " On-demand loading
-    Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
     Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -57,14 +60,6 @@
     call plug#end()
 
     "{{{ Plugins configuration
-        "{{{ Syntastic
-            let $PYTHONPATH='/usr/lib/python3.4/site-packages'
-            let g:syntastic_mode_map = {
-                \ 'mode' : 'passive',
-                \ 'active_filetypes' : [],
-                \ 'passive_filetypes' : [] }
-        "}}}
-
         "{{{ Targets
             " let g:targets_aiAI = 'aIAi'
         "}}}
@@ -83,8 +78,17 @@
         "}}}
 
         "{{{ CtrlP
+            set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
             let g:ctrlp_cmd = 'CtrlPBuffer'
-        "}}}
+            let g:ctrlp_use_caching = 1
+            let g:ctrlp_clear_cache_on_exit = 0
+            let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+            let g:ctrlp_show_hidden = 1
+            let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+            let g:ctrlp_prompt_mappings = {
+                \ 'PrtClearCache()':      ['<F5>', '<c-i>'],
+                \ }
+       "}}}
 
         "{{{ Better-whitespace
             let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
@@ -126,6 +130,10 @@
             \     'delimiter_align': 'l',
             \     'ignore_groups':   ['!Comment'] }
             \ }
+        "}}}
+
+        "{{{ Closetag
+            let g:closetag_filenames="*.html,*.xhtml,*.phtml,*.php"
         "}}}
     "}}}
 "}}}
@@ -225,7 +233,6 @@
         set foldmethod=syntax
         set foldnestmax=1
         set formatoptions=tcrql
-        set foldopen+=block
         set gdefault
         set hidden
         set hlsearch
@@ -302,7 +309,6 @@
     "{{{ LEADER mappings
         nnoremap <leader>s :call ToggleSpell()<CR>
         nnoremap <silent><leader>t :TlistToggle<CR>
-        nnoremap <silent><leader><space> :NERDTreeToggle<CR>
         nnoremap <silent><leader><leader> :UndotreeToggle<CR>
 
         "{{{ Dotfiles editing
