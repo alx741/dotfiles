@@ -3,8 +3,19 @@ snippet sh "SH hash bang" b
 endsnippet
 
 snippet fun "function" b
-function $1()
+function $1
 {
 
 }
+endsnippet
+
+snippet case "case statement skeleton"
+case \$${1:variable} in
+	'case1')
+		statement
+		;;
+	*)
+		statement
+		;;
+esac
 endsnippet
