@@ -267,9 +267,12 @@
         vcs_info
     }
 
-    PS1=$'\n''%{$fg[blue]%}<%1~>$reset_colo${vcs_info_msg_0_}%{$reset_color%}'
-    PS1+="%{$fg_bold[magenta]%} ( ͡° ͜ʖ ͡°)%{$reset_color%}  "
-    PS2="%{$fg[cyan]%} | go on (>'_')>  "
+    custom_prompt=$'\n''%{$fg[blue]%}<%1~>$reset_colo${vcs_info_msg_0_}'
+    custom_prompt+="%{$reset_color%}%{$fg_bold[magenta]%} "
+    custom_prompt+="( ͡° ͜ʖ ͡°)%{$reset_color%}"
+
+    PS1=$custom_prompt
+    PS2="%{$fg[blue]%} | go on %{$fg[magenta]%}(>'_')>%{$reset_color%}  "
 #}}}
 
 #{{{ Vi-mode
@@ -334,8 +337,15 @@
     # Mode indicator right prompt
     function zle-line-init zle-keymap-select
     {
-        RPS1="${${KEYMAP/vicmd/}/(main|viins)/-- INSERT --}"
-        RPS2=$RPS1
+        if [[ "$KEYMAP" == "vicmd" ]];
+        then
+            # RPS1="%{$fg[red]%}-- NORMAL --%{$reset_color%}"
+            PS1="$custom_prompt %{$fg_bold[red]%}> "
+        else
+            # RPS1="%{$fg[cyan]%}-- INSERT --%{$reset_color%}"
+            PS1="$custom_prompt   "
+        fi
+
         zle reset-prompt
     }
 
