@@ -412,6 +412,12 @@
         bindkey -M vicmd 'k' history-substring-search-up
         bindkey -M vicmd 'j' history-substring-search-down
     #}}}
+
+    #{{{ FZF
+        [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+        bindkey '^F' fzf-file-widget
+        bindkey '^K' fzf-cd-widget
+    #}}}
 #}}}
 
 #{{{ First Init
