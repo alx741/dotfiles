@@ -144,6 +144,7 @@
 
     function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
+    function c() { cd $* && l }
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
@@ -196,6 +197,7 @@
         alias ,,,='cd ../.. && ls -lLh'
         alias ,,,,='cd ../../.. && ls -lLh'
         alias ,,,,,='cd ../../.. && ls -lLh'
+        alias cd='c'
         alias dot="cd ~/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
