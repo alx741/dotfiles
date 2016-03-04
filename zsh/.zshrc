@@ -144,7 +144,40 @@
 
     function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
-    function c() { cd $* && l }
+
+    function d()
+    {
+        if [[ -n "$1" ]];
+        then
+            if [[ "$1" == "/" ]];
+            then
+                cd /
+            else
+                cd `fasd -d "$*"`
+            fi
+        else
+            cd
+        fi
+
+        ls -lLh
+    }
+
+    #{{{ FZF
+        function list_all_files()
+        {
+            command find -L . -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \
+            -prune | sed 1d | cut -b3-
+        }
+
+        function fe()
+        {
+            files=($(list_all_files | fzf --query="$1" --select-1 --exit-0))
+            if [[ -n "$files" ]];
+            then
+                $EDITOR "$files"
+            fi
+        }
+    #}}}
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
@@ -197,7 +230,6 @@
         alias ,,,='cd ../.. && ls -lLh'
         alias ,,,,='cd ../../.. && ls -lLh'
         alias ,,,,,='cd ../../.. && ls -lLh'
-        alias cd='c'
         alias dot="cd ~/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
