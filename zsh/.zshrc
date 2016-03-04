@@ -451,6 +451,19 @@
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
         bindkey '^F' fzf-file-widget
         bindkey '^K' fzf-cd-widget
+
+        export FZF_TMUX=1
+        export FZF_TMUX_HEIGHT=40%
+
+        TRAPWINCH()
+        {
+            zle && { zle reset-prompt; zle -R }
+        }
+    #}}}
+
+    #{{{ FASD
+        eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install \
+            zsh-wcomp zsh-wcomp-install)"
     #}}}
 #}}}
 
