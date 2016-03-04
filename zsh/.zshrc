@@ -441,6 +441,13 @@
     fi
 #}}}
 
+#{{{ Global Functions
+    function command_not_found_handler()
+    {
+        cat ~/.ascii_art/doge
+    }
+#}}}
+
 #{{{ Plugins configuration
     #{{{ history-substring-search
         bindkey -M vicmd 'k' history-substring-search-up
