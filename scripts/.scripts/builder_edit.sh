@@ -13,56 +13,76 @@ function die
 }
 
 
-function edit_autotools
+function get_autotools_files
 {
     makefiles=$(cat configure.ac | grep AC_CONFIG_FILES \
         | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/ /.am /g;s/$/.am/g')
 
-    $EDITOR configure.ac $makefiles
+    echo "configure.ac $makefiles "
 }
 
 
+builder_files=""
 
 if [[ -f "configure.ac" ]];
 then
-    edit_autotools
+    builder_files+="$(get_autotools_files)"
+fi
 
-elif [[ -f "Makefile" ]] && [[ ! -f "Makefile.am" ]];
+if [[ -f "Makefile" ]] && [[ ! -f "Makefile.am" ]];
 then
-    $EDITOR Makefile
+    builder_files+="Makefile "
+fi
 
-elif [[ -f "composer.json" ]];
+if [[ -f "composer.json" ]];
 then
-    $EDITOR composer.json
+    builder_files+="composer.json "
+fi
 
-elif [[ -f "build.gradle" ]];
+if [[ -f "build.gradle" ]];
 then
-    $EDITOR build.gradle
+    builder_files+="build.gradle "
+fi
 
-elif [[ -f "pom.xml" ]];
+if [[ -f "pom.xml" ]];
 then
-    $EDITOR pom.xml
+    builder_files+="pom.xml "
+fi
 
-elif [[ -f "build.xml" ]];
+if [[ -f "build.xml" ]];
 then
-    $EDITOR build.xml
+    builder_files+="build.xml "
+fi
 
-elif [[ -f "gulpfile.js" ]];
+if [[ -f "gulpfile.js" ]];
 then
-    $EDITOR gulpfile.js
+    builder_files+="gulpfile.js "
+fi
 
-elif [[ -f "Gruntfile.js" ]];
+if [[ -f "Gruntfile.js" ]];
 then
-    $EDITOR Gruntfile.js
+    builder_files+="Gruntfile.js "
+fi
 
-elif [[ -f "Rakefile" ]];
+if [[ -f "bower.json" ]];
 then
-    $EDITOR Rakefile
+    builder_files+="bower.json"
+fi
 
-elif [[ -f "CMakeLists*" ]];
+if [[ -f "Rakefile" ]];
 then
-    $EDITOR CMakeLists
+    builder_files+="Rakefile "
+fi
 
-else
+if [[ -f "CMakeLists*" ]];
+then
+    builder_files+="CMakeLists "
+fi
+
+
+if [[ "$builder_files" == "" ]];
+then
     die
+else
+    $EDITOR $builder_files
 fi
