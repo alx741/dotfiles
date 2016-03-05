@@ -36,11 +36,23 @@ snippet p "Inline PHP tag"
 <?php $1 ?>
 endsnippet
 
+snippet fun "Public Function"
+public function $1()
+{$2
+}
+endsnippet
 
-# Laravel
+snippet pfun "Private Function"
+private function $1()
+{$2
+}
+endsnippet
+
+
+
+####################################
+#########    LARAVEL   ############
+####################################
 snippet route "Route::get"
-Route::${1:get}('${2:route}', function()
-{
-	return view('${3:view}');
-});
+Route::${1:get}('${2:route}', '$3');
 endsnippet

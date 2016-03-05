@@ -1,22 +1,18 @@
 snippet html "HTML 5 skeleton" b
-<!doctype html>
+<!DOCTYPE html>
+<html lang"${1:en}">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="$2">
+	<title>$3</title>
+</head>
 
-<html lang"${1:es}">
+<body>
 
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="$2">
-		<title>$3</title>
-	</head>
+	$0
 
-	<body>$0
-	</body>
-
+</body>
 </html>
-endsnippet
-
-snippet link "Browserlink script line"
-<script src='http://127.0.0.1:9001/js/socket.js'></script>
 endsnippet
 
 snippet angular "AngularJs script line"
@@ -32,11 +28,11 @@ endsnippet
 
 snippet jqs "JQuery Script skeleton" b
 <script>
-    function main()
-    {
+	function main()
+	{
 		$1
-    }
+	}
 
-    $(document).ready(main());
+	$(document).ready(main());
 </script>
 endsnippet
