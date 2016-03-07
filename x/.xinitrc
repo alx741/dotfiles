@@ -18,7 +18,7 @@ mpd&
 
 #{{{ Keyboard
     # Repeat rate
-    xset r rate 250 30
+    xset r rate 250 50
 
     # Init special keys binding
     xbindkeys&
@@ -28,8 +28,8 @@ mpd&
 
     # Configure keys
     setxkbmap -option ctrl:swapcaps&
-    xcape -e 'Control_L=Escape'&
     xmodmap .xmodmap&
+    xcape -e 'Control_L=Escape'
 
     # Ibus
     export GTK_IM_MODULE=ibus
