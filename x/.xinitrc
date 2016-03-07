@@ -13,7 +13,7 @@ wmname LG3D
 # Start graphical terminal emulator instance
 ~/.scripts/ratpoison/app_select.sh terminal
 
-# Music daemon
+# Start Music daemon
 mpd&
 
 #{{{ Keyboard
@@ -41,7 +41,8 @@ mpd&
 #{{{ Mouse
     # Configure appropriate laptop track pad delays and detections
     syndaemon -t -k -i 1 -d &
-    # Hide mice cursor after 1 second
+
+    # Hide the rat after 1 second
     unclutter -idle 1 -jitter 10 -root&
 #}}}
 
