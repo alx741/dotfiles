@@ -1,5 +1,7 @@
 "{{{ Plugins
     call plug#begin('~/.config/nvim/plugged')
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
     Plug 'Julian/vim-textobj-variable-segment'
     Plug 'LucHermitte/vim-refactor'
     Plug 'SirVer/ultisnips'
@@ -10,16 +12,14 @@
     Plug 'edsono/vim-matchit'
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
-    Plug 'jaxbot/browserlink.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/vim-easy-align'
     Plug 'kana/vim-textobj-user'
     Plug 'kennykaye/vim-relativity'
-    Plug 'kien/ctrlp.vim'
     Plug 'mbbill/undotree'
     Plug 'michaeljsmith/vim-indent-object'
-    Plug 'othree/html5.vim'
+    " Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'thanthese/Tortoise-Typing'
@@ -31,6 +31,8 @@
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
     Plug 'vim-scripts/taglist.vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'wellle/targets.vim'
     Plug 'xolox/vim-easytags'
     Plug 'xolox/vim-misc'
@@ -47,10 +49,9 @@
     Plug 'shawncplus/phpcomplete.vim'
     Plug 'StanAngeloff/php.vim'
     Plug 'captbaritone/better-indent-support-for-php-with-html'
-    Plug 'JazzCore/ctrlp-cmatcher/'
     Plug 'jwalton512/vim-blade'
-    Plug 'luochen1990/rainbow'
-    Plug 'tpope/vim-vinegar'
+    Plug 'vim-scripts/Word-Fuzzy-Completion'
+    Plug 'mattn/emmet-vim'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
