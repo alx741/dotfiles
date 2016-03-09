@@ -152,6 +152,7 @@ function delete_snippet
 
 function get_menu
 {
+    ratpoison -c "echo $(xclip -selection clipboard -o)"
     option=`ratmen --title Songs -pd: "Push" "Pop" "Delete" "Purge"`
 
     case "$option" in
