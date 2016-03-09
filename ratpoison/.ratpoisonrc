@@ -7,7 +7,8 @@
 #{{{ Variables
     set bgcolor #fdf6e3
     set barborder 2
-    set border 1
+    set border 2
+    set fwcolor #EEAA22
     set fgcolor #657b83
     set maxsizegravity c
     set waitcursor 0
@@ -98,7 +99,7 @@
     bind Escape abort
 
     # Show current frame
-    bind f curframe
+    bind C-f curframe
 
     # Select next/previous window with same resource class
     bind N inext
@@ -121,6 +122,9 @@
 
     # Only window
     bind o only
+
+    # Swap screens
+    bind x swap 1 0
 
     # Fast switching
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
@@ -158,7 +162,6 @@
 
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
-
 #}}}
 
 
