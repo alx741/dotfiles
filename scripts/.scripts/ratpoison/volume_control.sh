@@ -52,12 +52,17 @@ case "$1" in
         ;;
     'get_mode')
         echo $(vol_get_mode)
+        exit 0
         ;;
     'set_music_mode')
         $(vol_set_music_mode)
+        print_tmux
+        exit 0
         ;;
     'set_normal_mode')
         $(vol_set_normal_mode)
+        print_tmux
+        exit 0
         ;;
     'set')
         amixer set Master $2%
