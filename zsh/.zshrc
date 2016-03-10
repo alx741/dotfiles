@@ -101,6 +101,7 @@
 
 #{{{ Colorize commands
     function ping { command ping "$@" | ccze -A }
+    function ls { command ls "$@" | ccze -A }
     function traceroute { command traceroute "$@" | ccze -A }
     function make { command make "$@" | ccze -A }
     function ./configure { command ./configure "$@" | ccze -A }
@@ -111,6 +112,7 @@
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
+    alias du="du -h"
     alias dhcp="sudo dhclient enp3s0"
     alias dotpng="dot -Tpng -O"
     alias eje="sudo eject /mnt/mem"
@@ -123,7 +125,6 @@
     alias gl="git log"
     alias grep="grep --color=auto"
     alias gs="git status"
-    alias l="ls -lLh"
     alias ls="ls --color"
     alias m="mplayer"
     alias mem="sudo mount /dev/sdc1 /mnt/mem"
@@ -144,40 +145,8 @@
 
     function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
-
-    function d()
-    {
-        if [[ -n "$1" ]];
-        then
-            if [[ "$1" == "/" ]];
-            then
-                cd /
-            else
-                cd `fasd -d "$*"`
-            fi
-        else
-            cd
-        fi
-
-        ls -lLh
-    }
-
-    #{{{ FZF
-        function list_all_files()
-        {
-            command find -L . -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \
-            -prune | sed 1d | cut -b3-
-        }
-
-        function fe()
-        {
-            files=($(list_all_files | fzf --query="$1" --select-1 --exit-0))
-            if [[ -n "$files" ]];
-            then
-                $EDITOR "$files"
-            fi
-        }
-    #}}}
+    function c() { if [[ -n "$*" ]]; then cd "$@" && l; else cd && clear; fi }
+    function l() { echo && ls "$@" -lLh | tail -n +2 }
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
@@ -223,13 +192,14 @@
     #}}}
 
     #{{{ Fast directory access
+        alias cd='c'
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
-        alias ,,='cd .. && ls -lLh'
-        alias ,,,='cd ../.. && ls -lLh'
-        alias ,,,,='cd ../../.. && ls -lLh'
-        alias ,,,,,='cd ../../.. && ls -lLh'
+        alias ,,='cd ..'
+        alias ,,,='cd ../..'
+        alias ,,,,='cd ../../..'
+        alias ,,,,,='cd ../../..'
         alias dot="cd ~/dotfiles/"
         alias opta="cd ~/u/optativa/2/"
         alias ope="cd ~/u/operativos/2/"
@@ -446,6 +416,27 @@
     {
         cat ~/.ascii_art/doge
     }
+
+    #{{{ FZF
+        function fe()
+        {
+            files=($(find -L -type f | fzf --query="$1" --select-1 --exit-0))
+            if [[ -n "$files" ]];
+            then
+                $EDITOR "$files"
+            fi
+        }
+    #}}}
+
+    #{{{ FASD
+        function d()
+        {
+            if [[ -n "$1" ]];
+            then
+                cd `fasd -d "$*"`
+            fi
+        }
+    #}}}
 #}}}
 
 #{{{ Plugins configuration
