@@ -59,6 +59,11 @@ then
     builder_files+="gulpfile.js "
 fi
 
+if [[ -f "package.json" ]];
+then
+    builder_files+="package.json "
+fi
+
 if [[ -f "Gruntfile.js" ]];
 then
     builder_files+="Gruntfile.js "
