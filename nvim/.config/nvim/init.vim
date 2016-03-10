@@ -13,7 +13,6 @@
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'junegunn/goyo.vim'
     Plug 'junegunn/vim-easy-align'
     Plug 'kana/vim-textobj-user'
     Plug 'kennykaye/vim-relativity'
@@ -129,7 +128,6 @@
             let g:user_emmet_install_global = 0
             autocmd FileType html,css,php,blade EmmetInstall
             let g:user_emmet_leader_key='<C-j>'
-            imap hh <C-j>,
         "}}}
     "}}}
 "}}}
@@ -362,6 +360,7 @@
         nnoremap <C-p> :Buffers<CR>
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
+        imap hh <C-j>,
     "}}}
 "}}}
 
