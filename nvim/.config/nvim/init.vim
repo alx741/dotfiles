@@ -86,6 +86,7 @@
 
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
+            let g:lengthmatters_excluded+=['html']
         "}}}
 
         "{{{ Easytags
@@ -122,6 +123,13 @@
 
         "{{{ Closetag
             let g:closetag_filenames="*.html,*.xhtml,*.phtml,*.php"
+        "}}}
+
+        "{{{ Emmet
+            let g:user_emmet_install_global = 0
+            autocmd FileType html,css,php,blade EmmetInstall
+            let g:user_emmet_leader_key='<C-j>'
+            imap hh <C-j>,
         "}}}
     "}}}
 "}}}
