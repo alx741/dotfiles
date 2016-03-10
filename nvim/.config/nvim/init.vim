@@ -78,19 +78,6 @@
             let g:AutoPairs = {'{': '}'}
         "}}}
 
-        "{{{ CtrlP
-            set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-            let g:ctrlp_cmd = 'CtrlPBuffer'
-            let g:ctrlp_use_caching = 1
-            let g:ctrlp_clear_cache_on_exit = 0
-            let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-            let g:ctrlp_show_hidden = 1
-            let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-            let g:ctrlp_prompt_mappings = {
-                \ 'PrtClearCache()':      ['<F5>', '<c-i>'],
-                \ }
-       "}}}
-
         "{{{ Better-whitespace
             let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
             let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
@@ -342,7 +329,7 @@
         nnoremap } }zz
         nnoremap { {zz
         nnoremap <NUL> <c-^>
-        nnoremap Q :CtrlP<CR>
+        nnoremap Q :Files<CR>
         nnoremap gs :w<CR>
         nnoremap gS :wq<CR>
         nnoremap gbb :w<CR> :Neomake!<CR>
@@ -364,14 +351,9 @@
         nnoremap <C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
         nnoremap gr :call Refresh_firefox()<CR>
-        nnoremap <CR> :CtrlPBuffer<CR>
+        nnoremap <C-p> :Buffers<CR>
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
-
-        " Terminal mode leaving
-        if has('nvim')
-            tnoremap <esc> <C-\><C-n>
-        endif
     "}}}
 "}}}
 
@@ -514,7 +496,7 @@
     "{{{ HTML
         augroup ft_html
             au!
-            au FileType html nnoremap <buffer><silent>go :call Firefox_open()<CR>
+            au FileType html nnoremap <buffer><silent>gO :call Firefox_open()<CR>
         augroup END
 
         function! Firefox_open()
