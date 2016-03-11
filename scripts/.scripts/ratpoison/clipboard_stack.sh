@@ -96,17 +96,17 @@ function snippet_menu
         return 0
     fi
 
-    ratmen_cmd="ratmen --title Clipboard_stack -p "
+    vmenu_cmd="vmenu --title Clipboard_stack -p "
     for i in `seq $index -1 1`
     do
         snippet_file="$STACK_DIR/$SNIPPET_PREFIX$i"
         if [ ! -e $snippet_file ];then continue; fi
 
         preview=`get_snippet_preview "$snippet_file"`
-        ratmen_cmd+="\"$preview\""
-        ratmen_cmd+=" '$snippet_file' "
+        vmenu_cmd+="\"$preview\""
+        vmenu_cmd+=" '$snippet_file' "
     done
-    selected_snippet=`eval $ratmen_cmd`
+    selected_snippet=`eval $vmenu_cmd`
 
     if [[ $selected_snippet != "" ]]
     then
@@ -153,7 +153,7 @@ function delete_snippet
 function get_menu
 {
     ratpoison -c "echo $(xclip -selection clipboard -o)"
-    option=`ratmen --title Songs -pd: "Push" "Pop" "Delete" "Purge"`
+    option=`vmenu --title Songs -pd: "Push" "Pop" "Delete" "Purge"`
 
     case "$option" in
         'Push')

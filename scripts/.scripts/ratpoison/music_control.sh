@@ -9,13 +9,13 @@ function select_playlist
 {
     playlists=`mpc lsplaylists`
 
-    ratmen_cmd="ratmen --title Playlists -pd: "
+    vmenu_cmd="vmenu --title Playlists -pd: "
     while read -r line;
     do
-        ratmen_cmd+="'$line' "
+        vmenu_cmd+="'$line' "
     done <<< "$playlists"
 
-    playlist=`eval $ratmen_cmd`
+    playlist=`eval $vmenu_cmd`
 
     if [[ $playlist != "" ]]
     then
@@ -37,13 +37,13 @@ function select_song_from_current_playlist
         return 0
     fi
 
-    ratmen_cmd="ratmen --title Songs -p "
+    vmenu_cmd="vmenu --title Songs -p "
     counter=1
     current_song_number=1
     while read -r line;
     do
-        ratmen_cmd+="'$line' "
-        ratmen_cmd+="'$counter' "
+        vmenu_cmd+="'$line' "
+        vmenu_cmd+="'$counter' "
 
         if [[ $line == $current_song ]]
         then
@@ -53,8 +53,8 @@ function select_song_from_current_playlist
         ((counter++))
     done <<< "$songs"
 
-    ratmen_cmd+=" -i $current_song_number"
-    song=`eval $ratmen_cmd`
+    vmenu_cmd+=" -i $current_song_number"
+    song=`eval $vmenu_cmd`
 
     if [[ $song != "" ]]
     then
@@ -79,13 +79,13 @@ function search_song
         return 0
     fi
 
-    ratmen_cmd="ratmen --title Search -pd: "
+    vmenu_cmd="vmenu --title Search -pd: "
     while read -r line;
     do
-        ratmen_cmd+="\"$line\" "
+        vmenu_cmd+="\"$line\" "
     done <<< "$search_results"
 
-    selected_song=`eval $ratmen_cmd`
+    selected_song=`eval $vmenu_cmd`
 
     if [[ $selected_song != "" ]]
     then
