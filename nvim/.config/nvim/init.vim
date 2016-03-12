@@ -91,6 +91,10 @@
         "{{{ Easytags
             let g:easytags_async = 1
             let g:easytags_by_filetype = '~/.tags'
+            let g:easytags_syntax_keyword = 'always'
+            let g:easytags_on_cursorhold = 0
+            let b:easytags_auto_highlight = 0
+            let g:easytags_python_enabled = 0
         "}}}
 
         "{{{ EasyAlign
