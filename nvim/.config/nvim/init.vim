@@ -133,6 +133,10 @@
             autocmd FileType html,css,php,blade EmmetInstall
             let g:user_emmet_leader_key='<C-j>'
         "}}}
+
+        "{{{ Netrw
+            let g:netrw_banner=0
+        "}}}
     "}}}
 "}}}
 
@@ -227,7 +231,7 @@
         set expandtab
         set foldenable
         set foldlevel=1
-        set foldlevelstart=1
+        set foldlevelstart=10
         set foldmethod=syntax
         set foldnestmax=1
         set formatoptions=tcrql
@@ -247,7 +251,6 @@
         set shiftround
         set shiftwidth=4
         set showcmd
-        set showmatch
         set showmode
         set smartcase
         set smarttab
@@ -362,6 +365,7 @@
         nnoremap gp `[v`]
         nnoremap gr :call Refresh_firefox()<CR>
         nnoremap <C-p> :Buffers<CR>
+        nnoremap g\ :Explore<CR>
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
         imap hh <C-j>,
