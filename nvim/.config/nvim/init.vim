@@ -209,6 +209,7 @@
             au!
             " Reset format options when filetypes are loaded
             au FileType * set formatoptions=tcrql
+            au FileType html,php,css,javascript,blade nnoremap gr :call Refresh_firefox()<CR>
         augroup END
     "}}}
 
@@ -363,7 +364,6 @@
         nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
         nnoremap <C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
-        nnoremap gr :call Refresh_firefox()<CR>
         nnoremap <C-p> :Buffers<CR>
         nnoremap g\ :Explore<CR>
         vnoremap // y/<C-R>"<CR>
