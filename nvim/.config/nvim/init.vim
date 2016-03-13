@@ -721,6 +721,14 @@
             au BufReadPost quickfix nnoremap <buffer> <CR> <CR>
         augroup END
     "}}}
+
+    "{{{ PHP
+        augroup ft_php
+            au!
+            au FileType php setlocal foldmethod=marker
+            au FileType php setlocal foldmarker={,}
+        augroup END
+    "}}}
 "}}}
 
 
