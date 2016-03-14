@@ -1,7 +1,16 @@
-snippet angular "AngularJs script line"
+snippet angularcdn "AngularJS CDN"
+<!-- AngularJS CDN -->
 <script
 src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js">
 </script>
+endsnippet
+
+snippet mod "module"
+var $1 = angular.module('$1', []);
+
+$1.controller('$2', function($scope) {
+            $0
+        });
 endsnippet
 
 snippet na "ng-app"
@@ -14,4 +23,12 @@ endsnippet
 
 snippet nm "ng-model"
 ng-model="$1"$0
+endsnippet
+
+snippet nb "ng-bind"
+ng-bind="$1"$0
+endsnippet
+
+snippet nr "ng-repeat"
+ng-repeat="$1"$0
 endsnippet

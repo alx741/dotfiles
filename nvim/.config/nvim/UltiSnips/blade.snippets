@@ -1,1 +1,16 @@
 extends php, html, javascript, laravel
+
+snippet @se "@section"
+@section ('$1')$0
+@endsection
+endsnippet
+
+snippet @ex "@extends"
+@extends ('$1')
+$0
+endsnippet
+
+snippet @fe "@foreach"
+@foreach ($1)$0
+@endforeach
+endsnippet
