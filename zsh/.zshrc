@@ -201,12 +201,9 @@
         alias ,,,,='cd ../../..'
         alias ,,,,,='cd ../../..'
         alias dot="cd ~/dotfiles/"
-        alias opta="cd ~/u/optativa/2/"
-        alias ope="cd ~/u/operativos/2/"
-        alias web="cd ~/u/progra/web/"
-        alias bd="cd ~/u/bases_datos/2/"
-        alias inv="cd ~/u/invest_operaciones/"
         alias silly="cd ~/lab/silly-bytes/"
+        alias arqui="cd ~/u/arquitectura_computadores/"
+        alias micro="cd ~/u/micros_avanzados/"
     #}}}
 #}}}
 
