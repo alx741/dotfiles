@@ -51,6 +51,7 @@
     Plug 'jwalton512/vim-blade'
     Plug 'vim-scripts/Word-Fuzzy-Completion'
     Plug 'mattn/emmet-vim'
+    Plug 'octol/vim-cpp-enhanced-highlight'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
