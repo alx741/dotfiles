@@ -1,8 +1,10 @@
-extends html, laravel
+extends html, laravel, phpunit
 
 snippet php "PHP tag" b
 <?php
-$1
+
+$0
+
 ?>
 endsnippet
 
@@ -11,13 +13,17 @@ snippet p "Inline PHP tag"
 endsnippet
 
 snippet fun "Public Function"
-public function $1()
-{$2
+public function $1($2)
+{$0
 }
 endsnippet
 
 snippet pfun "Private Function"
-private function $1()
-{$2
+private function $1($2)
+{$0
 }
+endsnippet
+
+snippet t "$this->"
+$this->
 endsnippet
