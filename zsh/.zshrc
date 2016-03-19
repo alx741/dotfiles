@@ -72,9 +72,6 @@
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
-    export CLASSPATH="${CLASSPATH}:.:$(java-config -p tomcat-7,tomcat-servlet-api-3.1)"
-    export CLASSPATH="${CLASSPATH}:.:$(java-config -p myfaces-api)"
-    export CLASSPATH="${CLASSPATH}:/usr/share/primefaces/lib/primefaces-5.3.jar"
     export JAVA_HOME="$(java-config -O)"
 
     # Gradle
