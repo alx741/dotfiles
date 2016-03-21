@@ -728,7 +728,25 @@
             au!
             au FileType php setlocal foldmethod=marker
             au FileType php setlocal foldmarker={,}
+            au FileType php inoremap :: <ESC>:call Php_make_var(1)<CR>
+            au FileType php inoremap ;; <ESC>:call Php_make_var(0)<CR>
+
+            " Laravel
+            au FileType php cnoreabbrev gm !php artisan generate:model
+            au FileType php cnoreabbrev gc !php artisan generate:controller
+            au FileType php cnoreabbrev gt !php artisan generate:test
+            au FileType php cnoreabbrev gmig !php artisan generate:migration
         augroup END
+
+        function! Php_make_var(static)
+            if a:static
+                exe "norm! mzBi$\<esc>`zla:: "
+                exe "startinsert"
+            else
+                exe "norm! mzBi$\<esc>`zla-> "
+                exe "startinsert"
+            endif
+        endfunction
     "}}}
 "}}}
 
