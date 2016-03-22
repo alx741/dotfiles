@@ -367,6 +367,7 @@
         nnoremap gp `[v`]
         nnoremap <C-p> :Buffers<CR>
         nnoremap g\ :Explore<CR>
+        nnoremap go gvo<esc>
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
         imap hh <C-j>,
