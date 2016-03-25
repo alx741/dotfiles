@@ -74,11 +74,11 @@
 
     #{{{ Clipboard stack control
         bind numbersign  exec ~/.scripts/ratpoison/clipboard_stack.sh menu
-        bind equal  exec ~/.scripts/ratpoison/clipboard_stack.sh select
+        bind plus  exec ~/.scripts/ratpoison/clipboard_stack.sh select
     #}}}
 
     #{{{ Snippets
-        bind plus  exec ~/.scripts/ratpoison/snippets.sh
+        bind equal  exec ~/.scripts/ratpoison/snippets.sh
     #}}}
 
     #{{{ Vi like bindings
