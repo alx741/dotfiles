@@ -82,11 +82,12 @@
             let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
             let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
             let g:better_whitespace_filetypes_blacklist+=['unite', 'qf', 'neoman']
+            let g:better_whitespace_filetypes_blacklist+=['mail']
         "}}}
 
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
-            let g:lengthmatters_excluded+=['html']
+            let g:lengthmatters_excluded+=['html', 'mail']
         "}}}
 
         "{{{ Easytags
@@ -748,6 +749,32 @@
                 exe "startinsert"
             endif
         endfunction
+    "}}}
+
+    "{{{ MAIL
+        augroup ft_mail
+            au!
+            au FileType mail setlocal spell
+            au FileType mail setlocal spelllang=en
+            au FileType mail nnoremap <buffer><space> 1z=
+        augroup END
+    "}}}
+
+    "{{{ PAGER
+        augroup ft_pager
+            au!
+            au FileType pager setlocal noma
+            au FileType pager setlocal nospell
+            au FileType pager nnoremap <buffer><nowait>q :q<CR>
+            au FileType pager nnoremap <buffer><nowait>d <C-d>
+            au FileType pager nnoremap <buffer><nowait>u <C-u>
+            au FileType pager nnoremap <buffer><nowait>f <C-f>
+            au FileType pager nnoremap <buffer><nowait>b <C-b>
+            au FileType pager nnoremap <buffer><nowait>e <C-e>
+            au FileType pager nnoremap <buffer><nowait>y <C-y>
+            au FileType pager nnoremap <buffer><nowait>j <C-e>
+            au FileType pager nnoremap <buffer><nowait>k <C-y>
+        augroup END
     "}}}
 "}}}
 
