@@ -12,6 +12,7 @@ Dotfiles
 - Mpd
 - Mplayer
 - Mutt
+- MySQL/MariaDB
 - Ncmpcpp
 - NeoVim
 - Nethack
