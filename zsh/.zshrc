@@ -105,13 +105,13 @@
 #}}}
 
 #{{{ Aliases
-    alias artisan="php artisan"
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
+    alias artisan="php artisan"
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
-    alias du="du -h"
     alias dhcp="sudo dhclient enp3s0"
     alias dotpng="dot -Tpng -O"
+    alias du="du -h"
     alias eje="sudo eject /mnt/mem"
     alias ga="git add"
     alias gb="git branch"
@@ -124,6 +124,7 @@
     alias gs="git status"
     alias ls="ls --color"
     alias m="mplayer"
+    alias mail="mutt"
     alias mem="sudo mount /dev/sdc1 /mnt/mem"
     alias mysql="mysql -u $USER -p --sigint-ignore"
     alias p="ping 8.8.8.8"
