@@ -8,6 +8,7 @@
         zgen load zsh-users/zsh-syntax-highlighting
         zgen load zsh-users/zsh-history-substring-search
         zgen load gentoo/gentoo-zsh-completions
+        zgen load zsh-users/zsh-autosuggestions
 
         zgen save
     fi
@@ -460,6 +461,10 @@
     #{{{ FASD
         eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install \
             zsh-wcomp zsh-wcomp-install)"
+    #}}}
+
+    #{{{ Autosuggestions
+        bindkey '^ ' autosuggest-accept
     #}}}
 #}}}
 
