@@ -360,7 +360,7 @@
         nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
         nnoremap <leader><CR> mzggg?G`z
         nnoremap <silent> J :call Join()<CR>
-        nnoremap <silent><esc> :noh<CR> :call sneak#hl#removehl()<CR><esc>
+        nnoremap <silent><esc> :noh<CR>:call sneak#hl#removehl()<CR><esc>
         nnoremap <silent> gl :set opfunc=Listify<CR>g@
         vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
         nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -370,6 +370,8 @@
         nnoremap <C-p> :Buffers<CR>
         nnoremap g\ :Explore<CR>
         nnoremap go gvo<esc>
+        nnoremap <expr> ; getcharsearch().forward ? ';' : ','
+        nnoremap <expr> , getcharsearch().forward ? ',' : ';'
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
         imap hh <C-j>,
