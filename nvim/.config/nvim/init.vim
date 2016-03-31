@@ -52,6 +52,7 @@
     Plug 'vim-scripts/Word-Fuzzy-Completion'
     Plug 'mattn/emmet-vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'asciidoc/vim-asciidoc'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -775,6 +776,46 @@
             au FileType pager nnoremap <buffer><nowait>j <C-e>
             au FileType pager nnoremap <buffer><nowait>k <C-y>
         augroup END
+    "}}}
+
+    "{{{ ASCIIDOC
+        augroup ft_asciidoc
+            au!
+            au FileType asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+            au FileType asciidoc setlocal spell
+            au FileType asciidoc setlocal spelllang=en
+            au FileType asciidoc nnoremap <buffer><space> 1z=
+        augroup END
+
+        function! Next_header(invert)
+            if a:invert == 0
+                exe "norm! /\\v^[=-]+\<cr>\<esc>"
+            else
+                exe "norm! ?\\v^[=-]+\<cr>\<esc>"
+            endif
+            exe "norm! ztkj"
+        endfunction
+
+        function! Create_header(header)
+            if a:header
+                exe "norm! 0"
+                if (getline(".")[col(".")-1] ==? "=")
+                    exe "norm! I=\<esc>"
+                else
+                    exe "norm! I= \<esc>"
+                endif
+            else
+                exe "norm! 0"
+                if (getline(".")[col(".")] ==? " ")
+                    exe "norm! 2x"
+                elseif (getline(".")[col(".")-1] ==? "=")
+                    exe "norm! x"
+                endif
+            endif
+        endfunction
     "}}}
 "}}}
 
