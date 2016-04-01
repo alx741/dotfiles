@@ -44,7 +44,7 @@ else
         xrandr --output VGA1 --mode 1024x768 --above LVDS1
     fi
     xbacklight -set 100
-    amixer set Master 0%
     amixer set Master mute
+    amixer set Master 0%
     dhclient enp3s0&
 fi

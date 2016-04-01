@@ -1,5 +1,5 @@
 # Load Xresources
-xrdb -load .Xresources&
+xrdb -load .Xresources
 
 # Setup monitors, sound, network (Home or No-Home)
 ./.scripts/setup.sh
