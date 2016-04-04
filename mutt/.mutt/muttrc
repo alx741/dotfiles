@@ -35,12 +35,37 @@
     set spoolfile = 'imaps://mail.riseup.net/INBOX'
 #}}}
 
-#{{{ Vi like bindings
-    bind index L bottom-page
-    bind index G last-entry
-    bind index gg first-entry
+#{{{ Key bindings
+    bind index <space> collapse-thread
     bind index R group-reply
-    bind index * recall-message
+    bind compose p postpone-message
+    bind index p recall-message
+    bind attach <return> view-mailcap
+
+    #{{{ Vi like
+        bind index j next-entry
+        bind index k previous-entry
+        bind index H top-page
+        bind index L bottom-page
+        bind index M middle-page
+        bind index / search
+        bind index ? search-reverse
+        bind index n search-next
+        bind index N search-opposite
+        bind index gg first-entry
+        bind index G last-entry
+        bind index \Ce next-line
+        bind index \Cy previous-line
+        bind index \Cd half-down
+        bind index \Cu half-up
+        bind index \Cf next-page
+        bind index \Cb previous-page
+    #}}}
+
+    #{{ Unbindings
+        bind index e noop
+        bind index z noop
+    #}}
 #}}}
 
 #{{{ GPG sign
