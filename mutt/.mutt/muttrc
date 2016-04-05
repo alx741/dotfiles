@@ -1,8 +1,12 @@
 #{{{ General
     set send_charset = "utf-8"
     set assumed_charset = "utf-8"
-    set sort=reverse-date
-    set sort_browser=reverse-date
+    set date_format = "%b/%d"
+    set index_format = "[%Z]  %D  %-20.20F  %s"
+    set sort = threads
+    set sort_aux = reverse-last-date-received
+    set sort_browser = reverse-date
+    set uncollapse_jump
     set autoedit
     set copy=yes
     set wait_key = no
