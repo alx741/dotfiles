@@ -19,6 +19,12 @@
     set imap_keepalive=300
     set imap_passive = no
     set imap_servernoise = no
+    alternative_order text/plain text/html
+    auto_view text/html
+    ignore *
+    unignore from: to: cc: date: subject:
+    unhdr_order *
+    hdr_order from: to: cc: date: subject:
 #}}}
 
 #{{{ Path
