@@ -213,6 +213,7 @@
             " Reset format options when filetypes are loaded
             au FileType * set formatoptions=tcrql
             au FileType html,php,css,javascript,blade nnoremap gr :call Refresh_firefox()<CR>
+            autocmd BufWritePost init.vim source %
         augroup END
     "}}}
 
