@@ -8,15 +8,17 @@
     set sort_browser = reverse-date
     set uncollapse_jump
     set autoedit
-    set copy=yes
+    set fast_reply
+    set sig_dashes
+    set copy = yes
     set wait_key = no
     set edit_headers
     set pager = "nvim -c 'set ft=pager syntax=mail'"
     set prompt_after = no
     set editor = "nvim -c 'set ft=mail'"
     set menu_scroll = "yes"
-    set mail_check=30
-    set imap_keepalive=300
+    set mail_check = 30
+    set imap_keepalive = 300
     set imap_passive = no
     set imap_servernoise = no
     alternative_order text/plain text/html
