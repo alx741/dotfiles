@@ -30,9 +30,9 @@
 #}}}
 
 #{{{ Path
-    set header_cache=~/.mail/cache/headers
-    set message_cachedir=~/.mail/cache/bodies
-    set record=~/.mail/sent
+    set header_cache = ~/.mail/cache/headers
+    set message_cachedir = ~/.mail/cache/bodies
+    set record = ~/.mail/sent
     set signature = '~/.mutt/signature'
 #}}}
 
