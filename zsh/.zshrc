@@ -120,7 +120,7 @@
     alias gco="git checkout"
     alias gd="git diff"
     alias git="hub"
-    alias gl="git log"
+    alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --color=auto"
     alias gs="git status"
     alias ls="ls --color"
