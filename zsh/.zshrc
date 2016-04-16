@@ -82,7 +82,6 @@
     export COMPOSER_HOME=~/.composer/
 
     # Perl
-    PERL="/home/alx/perl5/bin"
     export PERL5LIB="/home/alx/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"
     export PERL_LOCAL_LIB_ROOT="/home/alx/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
     export PERL_MB_OPT="--install_base \"/home/alx/perl5\""
@@ -95,7 +94,6 @@
     PATH+="$JAVA_HOME/bin:"
     PATH+="$GRADLE_HOME/bin:"
     PATH+="$COMPOSER_HOME/vendor/bin:"
-    PATH+="$PERL:"
     export PATH
     declare -U path
 
