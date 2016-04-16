@@ -130,6 +130,7 @@
     alias gs="git status"
     alias ls="command_not_found_handler"
     alias lsl="command ls -lLh --color | ccze -A"
+    alias lsls="command ls -lLha --color | ccze -A"
     alias m="mplayer"
     alias mail="mutt"
     alias mem="sudo mount /dev/sdc1 /mnt/mem"
