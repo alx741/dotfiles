@@ -105,7 +105,6 @@
 
 #{{{ Colorize commands
     function ping { command ping "$@" | ccze -A }
-    function ls { command ls "$@" | ccze -A }
     function traceroute { command traceroute "$@" | ccze -A }
     function make { command make "$@" | ccze -A }
     function ./configure { command ./configure "$@" | ccze -A }
@@ -129,7 +128,8 @@
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --color=auto"
     alias gs="git status"
-    alias ls="ls --color"
+    alias ls="command_not_found_handler"
+    alias lsl="command ls -lLh --color | ccze -A"
     alias m="mplayer"
     alias mail="mutt"
     alias mem="sudo mount /dev/sdc1 /mnt/mem"
@@ -150,7 +150,13 @@
     function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
     function c() { if [[ -n "$*" ]]; then cd "$@" && l; else cd && clear; fi }
-    function l() { echo && ls "$@" -lLh | tail -n +2 }
+    function l()
+    {
+        echo
+        find . -maxdepth 1 -not -path '*/\.*' -printf "[%y]\t%u:%g\t%P\n" \
+            | tail -n +2 | ccze -A
+    }
+
 
     #{{{ Scripts
         alias addio="$SCRIPTS/fancy/addio.sh halt"
