@@ -20,6 +20,7 @@ Dotfiles
 - Openbox
 - Pacman
 - Ratpoison
+- Rtv
 - Taskwarrior
 - Tmux
 - Urxvt
