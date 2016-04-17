@@ -18,6 +18,7 @@ Dotfiles
 - Nethack
 - Newsbeuter
 - Openbox
+- Pacman
 - Ratpoison
 - Taskwarrior
 - Tmux
