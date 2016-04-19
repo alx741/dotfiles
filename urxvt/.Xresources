@@ -21,7 +21,6 @@ urxvt.hold: false
 urxvt.urlLauncher: firefox
 urxvt.internalBorder: 2
 urxvt.externalBorder: 0
-urxvt.borderLess: true
 urxvt.reverseVideo: false
 
 ! Fonts
