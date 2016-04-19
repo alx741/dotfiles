@@ -229,7 +229,6 @@
         set background=light
         set backspace=2
         set breakindent
-        set showbreak=>>
         set completeopt-=longest
         set completeopt-=preview
         set completeopt-=noinsert
@@ -375,7 +374,7 @@
         nnoremap <expr> , getcharsearch().forward ? ',' : ';'
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
-        imap hh <C-j>,
+        nnoremap q: <NOP>
     "}}}
 "}}}
 
@@ -550,32 +549,42 @@
         augroup END
     "}}}
 
-    "{{{ MARKDOWN
-        augroup ft_markdown
+    "{{{ MARKDOWN & ASCIIDOC
+        augroup ft_markdown_asciidoc
             au!
-            au FileType markdown nnoremap <buffer><silent>gH :call Create_header("h1")<CR>
-            au FileType markdown nnoremap <buffer><silent>gh :call Create_header("h2")<CR>
-            au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
-            au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
-            au FileType markdown setlocal spell
-            au FileType markdown setlocal spelllang=en
-            au FileType markdown nnoremap <buffer><space> 1z=
+            au FileType markdown,asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
+            au FileType markdown,asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType markdown,asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
+            au FileType markdown,asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+            au FileType markdown,asciidoc setlocal spell
+            au FileType markdown,asciidoc setlocal spelllang=en
+            au FileType markdown,asciidoc nnoremap <buffer><space> 1z=
         augroup END
 
         function! Next_header(invert)
             if a:invert == 0
-                exe "norm! /\\v^[=-]+$\<cr>\<esc>"
+                exe "norm! /\\v^[=-]+\<cr>\<esc>"
             else
-                exe "norm! ?\\v^[=-]+$\<cr>\<esc>"
+                exe "norm! ?\\v^[=-]+\<cr>\<esc>"
             endif
             exe "norm! ztkj"
         endfunction
 
         function! Create_header(header)
-            if a:header ==? "h1"
-                exe "norm! yypVr="
-            elseif a:header ==? "h2"
-                exe "norm! yypVr-"
+            if a:header
+                exe "norm! 0"
+                if (getline(".")[col(".")-1] ==? "=")
+                    exe "norm! I=\<esc>"
+                else
+                    exe "norm! I= \<esc>"
+                endif
+            else
+                exe "norm! 0"
+                if (getline(".")[col(".")] ==? " ")
+                    exe "norm! 2x"
+                elseif (getline(".")[col(".")-1] ==? "=")
+                    exe "norm! x"
+                endif
             endif
         endfunction
     "}}}
@@ -779,46 +788,6 @@
             au FileType pager nnoremap <buffer><nowait>j <C-e>
             au FileType pager nnoremap <buffer><nowait>k <C-y>
         augroup END
-    "}}}
-
-    "{{{ ASCIIDOC
-        augroup ft_asciidoc
-            au!
-            au FileType asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
-            au FileType asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
-            au FileType asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
-            au FileType asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
-            au FileType asciidoc setlocal spell
-            au FileType asciidoc setlocal spelllang=en
-            au FileType asciidoc nnoremap <buffer><space> 1z=
-        augroup END
-
-        function! Next_header(invert)
-            if a:invert == 0
-                exe "norm! /\\v^[=-]+\<cr>\<esc>"
-            else
-                exe "norm! ?\\v^[=-]+\<cr>\<esc>"
-            endif
-            exe "norm! ztkj"
-        endfunction
-
-        function! Create_header(header)
-            if a:header
-                exe "norm! 0"
-                if (getline(".")[col(".")-1] ==? "=")
-                    exe "norm! I=\<esc>"
-                else
-                    exe "norm! I= \<esc>"
-                endif
-            else
-                exe "norm! 0"
-                if (getline(".")[col(".")] ==? " ")
-                    exe "norm! 2x"
-                elseif (getline(".")[col(".")-1] ==? "=")
-                    exe "norm! x"
-                endif
-            endif
-        endfunction
     "}}}
 "}}}
 
