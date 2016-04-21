@@ -370,8 +370,6 @@
         nnoremap <C-p> :Buffers<CR>
         nnoremap g\ :Explore<CR>
         nnoremap go gvo<esc>
-        nnoremap <expr> ; getcharsearch().forward ? ';' : ','
-        nnoremap <expr> , getcharsearch().forward ? ',' : ';'
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
         nnoremap q: <NOP>
