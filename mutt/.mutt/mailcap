@@ -1,0 +1,11 @@
+text/plain; nvim %s
+text/html;  /usr/bin/firefox %s >/dev/null 2>&1; needsterminal
+
+text/jpg; sxiv %s
+text/jpeg; sxiv %s
+text/pjpeg; sxiv %s
+text/png; sxiv %s
+text/gif; sxiv %s
+
+application/pdf; zathura %s
+image/pdf; zathura %s

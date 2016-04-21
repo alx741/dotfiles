@@ -34,11 +34,12 @@
     set message_cachedir = ~/.mail/cache/bodies
     set record = ~/.mail/sent
     set signature = '~/.mutt/signature'
+    set mailcap_path = ~/.mutt/mailcap
 #}}}
 
 #{{{ Personal settings
     set from = 'alx741@riseup.net'
-    set use_from=yes
+    set use_from = yes
     set realname = 'Daniel Campoverde Carrión [Alx741]'
     set imap_user = 'alx741@riseup.net'
     set smtp_url = 'smtp://alx741@mail.riseup.net:587/'
