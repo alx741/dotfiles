@@ -17,7 +17,7 @@
 
 #{{{ Color
     color=on
-    include /usr/share/task/rc/solarized-light-256.theme
+    include /usr/share/doc/task/rc/solarized-light-256.theme
 #}}}
 
 #{{{ Sync
