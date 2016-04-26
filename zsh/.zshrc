@@ -67,13 +67,11 @@
     export KEYTIMEOUT=1  # Reduce vi-mode lag
 
     # Android
-    export ANDROID_HOME="/opt/android-sdk-update-manager"
-    export ANDROID_SWT="/usr/share/swt-3.7/lib"
+    export ANDROID_HOME="/opt/android-sdk/"
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
-    export JAVA_HOME="$(java-config -O)"
 
     # Gradle
     export GRADLE_HOME="/opt/gradle-2.9"
@@ -82,18 +80,19 @@
     export COMPOSER_HOME=~/.composer/
 
     # Perl
-    export PERL5LIB="/home/alx/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"
-    export PERL_LOCAL_LIB_ROOT="/home/alx/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
-    export PERL_MB_OPT="--install_base \"/home/alx/perl5\""
-    export PERL_MM_OPT="INSTALL_BASE=/home/alx/perl5"
+    export PERL_HOME="/usr/bin/core_perl/"
+
+    # Ruby
+    RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
     PATH+="$ANDROID_TOOLS:"
-    PATH+="$JAVA_HOME/bin:"
     PATH+="$GRADLE_HOME/bin:"
     PATH+="$COMPOSER_HOME/vendor/bin:"
+    PATH+="$PERL_HOME:"
+    PATH+="$RUBY_GEMS:"
     export PATH
     declare -U path
 
