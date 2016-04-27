@@ -86,6 +86,10 @@
         bind h focusleft
         bind k focusup
         bind l focusright
+        bind C-j focusdown
+        bind C-h focusleft
+        bind C-k focusup
+        bind C-l focusright
         bind J exchangedown
         bind H exchangeleft
         bind K exchangeup
@@ -124,6 +128,7 @@
 
     # Only window
     bind o only
+    bind C-o only
 
     # Swap screens
     bind x swap 1 0
@@ -134,10 +139,13 @@
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
 
     # Give temporally control to openbox
-    bind W tmpwm openbox
+    bind grave tmpwm openbox
 
     # Use ratmen window selection
-    bind w exec ~/.scripts/ratpoison/window_select.sh
+    bind W exec ~/.scripts/ratpoison/window_select.sh ratmen
+
+    # Use FZF window selection
+    bind w exec ~/.scripts/ratpoison/window_select.sh fzf
 
     # Close current window
     bind Q delete
