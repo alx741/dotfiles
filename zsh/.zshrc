@@ -80,10 +80,15 @@
     export COMPOSER_HOME=~/.composer/
 
     # Perl
-    export PERL_HOME="/usr/bin/core_perl/"
+    export PERL_SITE="/usr/bin/site_perl/"
+    export PERL_VENDOR="/usr/bin/vendor_perl/"
+    export PERL_CORE="/usr/bin/core_perl/"
+
+    # Perl6
+    export PERL6=$(find /usr/share/perl6 -type d -printf ":%p")
 
     # Ruby
-    RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
+    export RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
@@ -91,8 +96,9 @@
     PATH+="$ANDROID_TOOLS:"
     PATH+="$GRADLE_HOME/bin:"
     PATH+="$COMPOSER_HOME/vendor/bin:"
-    PATH+="$PERL_HOME:"
+    PATH+="$PERL_SITE:$PERL_VENDOR:$PERL_CORE:"
     PATH+="$RUBY_GEMS:"
+    PATH+="$PERL6:"
     export PATH
     declare -U path
 
