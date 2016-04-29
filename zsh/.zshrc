@@ -118,6 +118,7 @@
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
+    alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
