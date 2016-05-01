@@ -547,16 +547,16 @@
         augroup END
     "}}}
 
-    "{{{ MARKDOWN & ASCIIDOC
-        augroup ft_markdown_asciidoc
+    "{{{ ASCIIDOC
+        augroup ft_asciidoc
             au!
-            au FileType markdown,asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
-            au FileType markdown,asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
-            au FileType markdown,asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
-            au FileType markdown,asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
-            au FileType markdown,asciidoc setlocal spell
-            au FileType markdown,asciidoc setlocal spelllang=en
-            au FileType markdown,asciidoc nnoremap <buffer><space> 1z=
+            au FileType asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+            au FileType asciidoc setlocal spell
+            au FileType asciidoc setlocal spelllang=en
+            au FileType asciidoc nnoremap <buffer><space> 1z=
         augroup END
 
         function! Next_header(invert)
@@ -581,6 +581,46 @@
                 if (getline(".")[col(".")] ==? " ")
                     exe "norm! 2x"
                 elseif (getline(".")[col(".")-1] ==? "=")
+                    exe "norm! x"
+                endif
+            endif
+        endfunction
+    "}}}
+
+    "{{{ MARKDOWN
+        augroup ft_markdown
+            au!
+            au FileType markdown nnoremap <buffer><silent>gh :call Create_header(1)<CR>
+            au FileType markdown nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
+            au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
+            au FileType markdown setlocal spell
+            au FileType markdown setlocal spelllang=en
+            au FileType markdown nnoremap <buffer><space> 1z=
+        augroup END
+
+        function! Next_header(invert)
+            if a:invert == 0
+                exe "norm! /\\v^[#-]+\<cr>\<esc>"
+            else
+                exe "norm! ?\\v^[#-]+\<cr>\<esc>"
+            endif
+            exe "norm! ztkj"
+        endfunction
+
+        function! Create_header(header)
+            if a:header
+                exe "norm! 0"
+                if (getline(".")[col(".")-1] ==? "#")
+                    exe "norm! I#\<esc>"
+                else
+                    exe "norm! I# \<esc>"
+                endif
+            else
+                exe "norm! 0"
+                if (getline(".")[col(".")] ==? " ")
+                    exe "norm! 2x"
+                elseif (getline(".")[col(".")-1] ==? "#")
                     exe "norm! x"
                 endif
             endif
