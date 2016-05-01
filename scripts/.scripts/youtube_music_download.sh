@@ -6,7 +6,9 @@ TMP_FILE=/tmp/youtube-dl.temp
 TMP_FINAL_FILE=/tmp/youtube-dl.mp3
 URL=""
 
-echo ~/.ascii_art/music
+echo
+cat ~/.ascii_art/music
+echo
 
 if [[ "$1" == "" ]]
 then
