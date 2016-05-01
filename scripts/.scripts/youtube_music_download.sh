@@ -49,4 +49,4 @@ if [[ "$comment" == "" ]]; then comment=" "; fi
 id3v2 -t "$title" -a "$artist" -A "$album" -c "$comment" "$TMP_FINAL_FILE"
 
 mv "$TMP_FINAL_FILE" "$MUSIC_DIR/$artist-$title.mp3"
-mpc update
+mpc update > /dev/null
