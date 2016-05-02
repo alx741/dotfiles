@@ -156,14 +156,52 @@
     alias woman="command man"
     alias z="zathura"
 
-    function man() { vim -c ":Man $*" -c ":tabonly" -c ":bd 1" }
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
-    function c() { if [[ -n "$*" ]]; then cd "$@" && l; else cd && clear; fi }
+
+    function c()
+    {
+        if [[ $# -eq 1 ]];
+        then
+            cd "$@" &> /dev/null && l
+            if [[ $? -ne 0 ]]; then cd_fasd "$@"; fi
+        elif [[ $# -eq 0 ]];
+        then
+            cd ~ && clear
+        fi
+    }
+
     function l()
     {
+        if [[ $# -eq 0 ]];
+        then
+            l_dir="."
+        else
+            l_dir="$1"
+        fi
+
         echo
-        find . -maxdepth 1 -not -path '*/\.*' -printf "[%y]\t%u:%g\t%P\n" \
-            | tail -n +2 | ccze -A
+        find "$l_dir/" -maxdepth 1 -not -path '*/\.*' -printf \
+            "[%y]\t%P\n" | tail -n +2 \
+            | sed -r \
+            "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+    }
+
+    function man()
+    {
+        command man -P true "$*" &> /dev/null
+        if [[ $? -eq 0 ]];
+        then
+            vim -c ":Man $*" -c ":tabonly" -c ":bd 1"
+        else
+            echo
+            echo
+            echo -e "\t No man page \"$*\"    ¯\_(ツ)_/¯"
+            echo
+        fi
     }
 
 
@@ -446,11 +484,19 @@
     #}}}
 
     #{{{ FASD
-        function d()
+        function cd_fasd()
         {
             if [[ -n "$1" ]];
             then
-                cd `fasd -d "$*"`
+                go_dir=`fasd -d "$*"`
+                if [[ "$go_dir" == "" ]]
+                then
+                    echo
+                    echo -e "\t No directory \"$*\"    ¯\_(ツ)_/¯"
+                    echo
+                else
+                    cd "$go_dir"
+                fi
             fi
         }
     #}}}
