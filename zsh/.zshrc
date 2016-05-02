@@ -163,7 +163,11 @@
         if [[ $# -eq 1 ]];
         then
             cd "$@" &> /dev/null && l
-            if [[ $? -ne 0 ]]; then cd_fasd "$@"; fi
+            if [[ $? -ne 0 ]];
+            then
+                cd_fzf "$@";
+            fi
+
         elif [[ $# -eq 0 ]];
         then
             cd ~ && clear
@@ -473,6 +477,19 @@
     }
 
     #{{{ FZF
+        function cd_fzf()
+        {
+            go_dir=$(find . -maxdepth 1 -type d -not -path '*/\.*' \
+                -printf "%P\n" | fzf -q "$*" -1 -0)
+
+            if [[ "$go_dir" != "" ]]
+            then
+                cd "./$go_dir"
+            else
+                cd_fasd "$@";
+            fi
+        }
+
         function fe()
         {
             files=($(find -L -type f | fzf --query="$1" --select-1 --exit-0))
