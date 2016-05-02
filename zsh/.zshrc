@@ -347,7 +347,7 @@
     # (standard behaviour)
     bindkey '^?' backward-delete-char
     bindkey '^h' backward-delete-char
-    bindkey '^w' backward-kill-word
+    bindkey '^w' vi-backward-kill-word
 
     # Some extra vim like bindings
     bindkey -a 'gg' beginning-of-buffer-or-history
