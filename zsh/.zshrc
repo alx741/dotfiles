@@ -486,17 +486,18 @@
     #{{{ FASD
         function cd_fasd()
         {
-            if [[ -n "$1" ]];
+            go_dir=`fasd -d "$*"`
+
+            if [[ "$go_dir" == "" ]]
             then
-                go_dir=`fasd -d "$*"`
-                if [[ "$go_dir" == "" ]]
-                then
-                    echo
-                    echo -e "\t No directory \"$*\"    ¯\_(ツ)_/¯"
-                    echo
-                else
-                    cd "$go_dir"
-                fi
+                echo
+                echo -e "\t No directory \"$*\"    ¯\_(ツ)_/¯"
+                echo
+            else
+                echo
+                cat ~/.ascii_art/spacecraft
+                echo
+                cd "$go_dir"
             fi
         }
     #}}}
