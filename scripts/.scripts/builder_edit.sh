@@ -84,6 +84,12 @@ then
     builder_files+="CMakeLists "
 fi
 
+if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
+then
+    builder_files+="*.cabal"
+fi
+
+
 
 if [[ "$builder_files" == "" ]];
 then
