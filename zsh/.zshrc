@@ -118,13 +118,11 @@
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
-    alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
     alias dotpng="dot -Tpng -O"
     alias du="du -h"
-    alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
@@ -139,20 +137,16 @@
     alias lsls="command ls -lLha --color | ccze -A"
     alias m="mplayer"
     alias mail="mutt"
-    alias mem="echo; cat ~/.ascii_art/floppy; echo; sudo mount /dev/sdc1 /mnt/mem"
     alias p="ping 8.8.8.8"
-    alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
-    alias pacman="echo; cat ~/.ascii_art/pacman; echo; sudo pacman"
-    alias pacmanup="echo; cat ~/.ascii_art/pacman; echo; sudo pacman -Syyu"
     alias ser="sudo service"
-    alias sys="sudo systemctl"
     alias suod="sudo"
+    alias sys="sudo systemctl"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
-    alias v="nvim"
+    alias v="fuzzy_edit"
     alias vhex="vim -b"
-    alias vi="nvim"
-    alias vim="nvim"
+    alias vi="fuzzy_edit"
+    alias vim="fuzzy_edit"
     alias woman="command man"
     alias z="zathura"
 
@@ -266,6 +260,18 @@
         alias silly="cd ~/lab/silly-bytes/"
         alias arqui="cd ~/u/arquitectura_computadores/"
         alias micro="cd ~/u/micros_avanzados/"
+    #}}}
+
+    #{{{ Fancy
+        alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
+        alias ghci="echo; cat ~/.ascii_art/lambda; echo; ghci"
+        alias ghc="echo; cat ~/.ascii_art/lambda; echo; ghc"
+        alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
+        alias mem="echo; cat ~/.ascii_art/floppy; echo; \
+            sudo mount /dev/sdc1 /mnt/mem"
+        alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
+        alias pacman="echo; cat ~/.ascii_art/pacman; echo; sudo pacman"
+        alias pacmanup="echo; cat ~/.ascii_art/pacman; echo; sudo pacman -Syyu"
     #}}}
 #}}}
 
