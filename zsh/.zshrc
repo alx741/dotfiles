@@ -9,6 +9,7 @@
         zgen load zsh-users/zsh-history-substring-search
         zgen load gentoo/gentoo-zsh-completions
         zgen load zsh-users/zsh-autosuggestions
+        zgen load rust-lang/zsh-config
 
         zgen save
     fi
