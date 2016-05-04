@@ -91,6 +91,9 @@
     # Ruby
     export RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
 
+    # Rust
+    export RUST_CARGO_BIN="~/.cargo/bin/"
+
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -100,6 +103,7 @@
     PATH+="$PERL_SITE:$PERL_VENDOR:$PERL_CORE:"
     PATH+="$RUBY_GEMS:"
     PATH+="$PERL6:"
+    PATH+="$RUST_CARGO_BIN:"
     export PATH
     declare -U path
 
