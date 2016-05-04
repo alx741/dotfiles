@@ -482,6 +482,46 @@
         cat ~/.ascii_art/doge
     }
 
+    function fuzzy_edit()
+    {
+        file=""
+        if [[ "$#" -gt 1 ]];
+        then
+            $EDITOR $*
+            return 0
+        elif [[ -f "$1" ]];
+        then
+            file="$1"
+        else
+            file=$(find . -maxdepth 1 -type f -not -path '*/\.*' \
+                -printf "%P\n" | fzf -q "$1" -1 -0)
+        fi
+
+        if [[ "$file" != "" ]];
+        then
+            if [[ -w "$file" ]];
+            then
+                $EDITOR "$file"
+            else
+                clear
+                echo
+                cat ~/.ascii_art/skull
+                echo
+                echo "\tTo root or not to root that is the question...  "
+                echo
+                read option
+
+                if [[ "$option" == "y" ]];
+                then
+                    sudo $EDITOR "$file"
+                fi
+                clear
+            fi
+        else
+            $EDITOR "$1"
+        fi
+    }
+
     #{{{ FZF
         function cd_fzf()
         {
