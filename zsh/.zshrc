@@ -92,7 +92,7 @@
     export RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
 
     # Rust
-    export RUST_CARGO_BIN="~/.cargo/bin/"
+    export RUST_CARGO_BIN="$HOME/.cargo/bin"
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
