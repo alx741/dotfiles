@@ -494,6 +494,10 @@
         then
             $EDITOR $*
             return 0
+        elif [[ "$#" -eq 0 ]];
+        then
+            $EDITOR
+            return 0
         elif [[ -f "$1" ]];
         then
             file="$1"
@@ -519,6 +523,8 @@
                 if [[ "$option" == "y" ]];
                 then
                     sudo $EDITOR "$file"
+                else
+                    $EDITOR "$file"
                 fi
                 clear
             fi
