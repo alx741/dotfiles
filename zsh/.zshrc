@@ -269,9 +269,9 @@
 
     #{{{ Fancy
         alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
-        alias ghci="echo; cat ~/.ascii_art/lambda; echo; ghci"
-        alias ghc="echo; cat ~/.ascii_art/lambda; echo; ghc"
+        alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
         alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
+        alias ghci="echo; cat ~/.ascii_art/lambda; echo; ghci"
         alias mem="echo; cat ~/.ascii_art/floppy; echo; \
             sudo mount /dev/sdc1 /mnt/mem"
         alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
