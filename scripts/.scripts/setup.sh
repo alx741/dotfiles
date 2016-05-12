@@ -2,9 +2,6 @@
 
 source "$(dirname "$0")/utility.sh"
 
-# Auto setup configuration script
-# [!] Execute this AFTER ratpoison
-
 # 2 different setups are available:
 #
 # * Home
