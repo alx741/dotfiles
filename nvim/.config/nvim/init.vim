@@ -554,8 +554,8 @@
     "{{{ ASCIIDOC
         augroup ft_asciidoc
             au!
-            au FileType asciidoc nnoremap <buffer><silent>gh :call Create_header(1)<CR>
-            au FileType asciidoc nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>gh :call Adoc_create_header(1)<CR>
+            au FileType asciidoc nnoremap <buffer><silent>gH :call Adoc_create_header(0)<CR>
             au FileType asciidoc nnoremap <buffer><silent>]] :call Next_header(0)<CR>
             au FileType asciidoc nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
             au FileType asciidoc setlocal spell
@@ -572,7 +572,7 @@
             exe "norm! ztkj"
         endfunction
 
-        function! Create_header(header)
+        function! Adoc_create_header(header)
             if a:header
                 exe "norm! 0"
                 if (getline(".")[col(".")-1] ==? "=")
@@ -594,8 +594,8 @@
     "{{{ MARKDOWN
         augroup ft_markdown
             au!
-            au FileType markdown nnoremap <buffer><silent>gh :call Create_header(1)<CR>
-            au FileType markdown nnoremap <buffer><silent>gH :call Create_header(0)<CR>
+            au FileType markdown nnoremap <buffer><silent>gh :call Md_create_header(1)<CR>
+            au FileType markdown nnoremap <buffer><silent>gH :call Md_create_header(0)<CR>
             au FileType markdown nnoremap <buffer><silent>]] :call Next_header(0)<CR>
             au FileType markdown nnoremap <buffer><silent>[[ :call Next_header(1)<CR>
             au FileType markdown setlocal spell
@@ -612,7 +612,7 @@
             exe "norm! ztkj"
         endfunction
 
-        function! Create_header(header)
+        function! Md_create_header(header)
             if a:header
                 exe "norm! 0"
                 if (getline(".")[col(".")-1] ==? "#")
