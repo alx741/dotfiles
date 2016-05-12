@@ -53,6 +53,8 @@
     Plug 'mattn/emmet-vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'asciidoc/vim-asciidoc'
+    Plug 'rust-lang/rust.vim'
+    Plug 'cespare/vim-toml'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
