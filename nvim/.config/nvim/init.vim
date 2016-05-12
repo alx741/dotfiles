@@ -831,6 +831,31 @@
             au FileType pager nnoremap <buffer><nowait>k <C-y>
         augroup END
     "}}}
+
+    "{{{ HASKELL
+        augroup ft_haskell
+            au!
+            au FileType haskell inoremap ;: <ESC>:call Haskell_arrow(0)<CR>
+            au FileType haskell inoremap ;; <ESC>:call Haskell_arrow(1)<CR>
+        augroup END
+
+        function! Haskell_arrow(type)
+            if a:type
+                exe "norm! a->  "
+                exe "startinsert"
+            else
+                exe "norm! a=>  "
+                exe "startinsert"
+            endif
+        endfunction
+    "}}}
+
+    "{{{ RUST
+        augroup ft_rust
+            au!
+            au FileType rust setlocal makeprg=cargo\ build
+        augroup END
+    "}}}
 "}}}
 
 
