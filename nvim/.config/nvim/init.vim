@@ -518,6 +518,8 @@
         augroup ft_html
             au!
             au FileType html nnoremap <buffer><silent>gO :call Firefox_open()<CR>
+            " Emmet
+            au FileType html imap hh <c-j>,
         augroup END
 
         function! Firefox_open()
