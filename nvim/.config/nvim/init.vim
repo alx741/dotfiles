@@ -375,6 +375,7 @@
         vnoremap // y/<C-R>"<CR>
         inoremap <C-f> <C-x>
         nnoremap q: <NOP>
+        nnoremap vv ^<C-v>g_
     "}}}
 "}}}
 
@@ -534,7 +535,7 @@
             au!
             au FileType css setlocal foldmethod=marker
             au FileType css setlocal foldmarker={,}
-            au FileType css nnoremap <buffer>gs :call Sort_properties()<CR>
+            " au FileType css nnoremap <buffer>gs :call Sort_properties()<CR>
         augroup END
 
         function! Sort_properties()
