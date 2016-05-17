@@ -21,7 +21,7 @@ else
     URL="$1"
 fi
 
-youtube-dl --no-warnings -x --audio-format mp3 -o "$TMP_FILE" "$URL"
+youtube-dl --no-warnings --no-playlist -x --audio-format mp3 -o "$TMP_FILE" "$URL"
 
 if [[ $? -ne 0 ]]
 then
