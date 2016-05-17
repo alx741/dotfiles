@@ -21,7 +21,12 @@ else
     URL="$1"
 fi
 
-youtube-dl --no-warnings --no-playlist -x --audio-format mp3 -o "$TMP_FILE" "$URL"
+echo
+echo Validating URL...
+echo
+
+youtube-dl -s -q --skip-download --no-warnings --no-playlist -x \
+    --audio-format mp3 "$URL" >> /dev/null
 
 if [[ $? -ne 0 ]]
 then
@@ -37,6 +42,16 @@ vid_title=`youtube-dl -q --no-warnings -e "$URL"`
 default_artist=$(echo "$vid_title" | cut -d "-" -f1 | sed 's/ $//')
 default_title=$(echo "$vid_title" | cut -d "-" -f2 | sed 's/^ //;s/\[.*\]//;s/(.*)//;s/ $//')
 
+echo
+echo "Downloading:         $vid_title"
+echo
+echo
+
+youtube-dl --no-warnings --no-playlist -x --audio-format mp3 \
+    -o "$TMP_FILE" "$URL"
+
+echo
+echo
 read -p "Artist? [$default_artist] " artist
 read -p "Title? [$default_title] " title
 read -p "Album? [none] " album
