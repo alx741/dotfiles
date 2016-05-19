@@ -49,12 +49,51 @@ function push
 }
 
 
+function is_there_upstream
+{
+    if [[ `git remote | grep upstream` != "" ]];
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+function pull
+{
+    current_branch=`git branch --list --no-color | grep "*" \
+        | sed -e 's/[\*[:space:]]//g'`
+
+    if [[ "$current_branch" != "master" ]];
+    then
+        echo
+        echo "[!] Not in master branch, better to do it manually"
+        echo
+        exit 0
+    fi
+
+    if is_there_upstream;
+    then
+        echo
+        echo "Pulling from Upstream"
+        echo
+        git pull upstream master
+    else
+        echo
+        echo "Pulling from Origin"
+        echo
+        git pull origin master
+    fi
+}
+
+
 case $1 in
     'push')
         push
         ;;
     'pull')
-        git pull origin master
+        pull
         ;;
     'clone')
         clone_clipboard
