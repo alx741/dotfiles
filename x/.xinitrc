@@ -50,5 +50,8 @@ mpd&
 # Window manager
 exec ratpoison
 
+# Wallpaper
+nitrogen --restore&
+
 
 # vim:fdm=marker
