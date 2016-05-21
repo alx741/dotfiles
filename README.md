@@ -17,6 +17,7 @@ Dotfiles
 - NeoVim
 - Nethack
 - Newsbeuter
+- Nitrogen
 - Openbox
 - Pacman
 - Ratpoison
