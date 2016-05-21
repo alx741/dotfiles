@@ -8,6 +8,7 @@ Dotfiles
 - Ctags
 - Emacs
 - Git
+- Gpg
 - MongoDB
 - Mpd
 - Mplayer
