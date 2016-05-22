@@ -3,35 +3,36 @@ Dotfiles
 
 **Using Solarized Light color scheme**
 
-- Astyle
-- Ccze
-- Ctags
-- Emacs
-- Git
-- Gpg
-- MongoDB
-- Mpd
-- Mplayer
-- Mutt
-- MySQL/MariaDB
-- Ncmpcpp
-- NeoVim
-- Nethack
-- Newsbeuter
-- Nitrogen
-- Openbox
-- Pacman
-- Ratpoison
-- Rtv
-- Taskwarrior
-- Tmux
-- Urxvt
-- W3M
-- Weechat
-- X11
-- Xmodmap
-- Zathura
-- Zsh
+* Astyle
+* Ccze
+* Ctags
+* Emacs
+* Git
+* Gpg
+* MongoDB
+* Mpd
+* Mplayer
+* Mutt
+* MySQL/MariaDB
+* Ncmpcpp
+* NeoVim
+* Nethack
+* Newsbeuter
+* Nitrogen
+* Openbox
+* Pacman
+* Ratpoison
+* Rtv
+* Taskwarrior
+* Tmux
+* Urxvt
+* W3M
+* Weechat
+* X11
+* Xmodmap
+* Zathura
+* Zsh
+* Vmenu
 
 
 Deprecated

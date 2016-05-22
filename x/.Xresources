@@ -1,41 +1,3 @@
-! Urxvt {{{
-
-! Options
-urxvt.depth: 32
-urxvt.transparent: false
-urxvt.fading: 0
-urxvt.termName: xterm-256color
-urxvt.loginShell: true
-urxvt.saveLines: 50
-urxvt.lineSpace: 0
-urxvt.title: terminal
-urxvt.scrollstyle: plain
-urxvt.scrollTtyKeypress: true
-urxvt.scrollTtyOutput: false
-urxvt.scrollWithBuffer: false
-urxvt.secondaryScreen: true
-urxvt.secondaryScroll: true
-urxvt.scrollBar: false
-urxvt.cursorBlink: true
-urxvt.hold: false
-urxvt.urlLauncher: firefox
-urxvt.internalBorder: 2
-urxvt.externalBorder: 0
-urxvt.reverseVideo: false
-
-! Fonts
-urxvt.allow_bold: true
-urxvt*font: xft:DejaVuSansMono:pixelsize=16:syle=book
-urxvt*boldFont: xft:DejaVuSansMono:pixelsize=16:style=bold
-
-! Fix font space
-urxvt*letterSpace: -1
-
-! Perl extensions
-urxvt.perl-ext-common: default,matcher
-urxvt.matcher.button: 1
-!}}}
-
 ! Color [Solarized] {{{
 #define S_base03        #002b36
 #define S_base02        #073642
@@ -77,6 +39,50 @@ urxvt.matcher.button: 1
 *color7:                S_base2
 *color15:               S_base3
 !}}}
+
+! Urxvt {{{
+! Options
+urxvt.depth: 32
+urxvt.transparent: false
+urxvt.fading: 0
+urxvt.termName: xterm-256color
+urxvt.loginShell: true
+urxvt.saveLines: 50
+urxvt.lineSpace: 0
+urxvt.title: terminal
+urxvt.scrollstyle: plain
+urxvt.scrollTtyKeypress: true
+urxvt.scrollTtyOutput: false
+urxvt.scrollWithBuffer: false
+urxvt.secondaryScreen: true
+urxvt.secondaryScroll: true
+urxvt.scrollBar: false
+urxvt.cursorBlink: true
+urxvt.hold: false
+urxvt.urlLauncher: firefox
+urxvt.internalBorder: 3
+urxvt.externalBorder: 2
+urxvt.reverseVideo: false
+
+! Fonts
+urxvt.allow_bold: true
+urxvt*font: xft:DejaVuSansMono:pixelsize=16:syle=book
+urxvt*boldFont: xft:DejaVuSansMono:pixelsize=16:style=bold
+
+! Fix font space
+urxvt*letterSpace: -1
+
+! Perl extensions
+urxvt.perl-ext-common: default,matcher
+urxvt.matcher.button: 1
+!}}}
+
+! Vmenu {{{
+vmenu.background: S_base2
+vmenu.foreground: S_cyan
+vmenu.font: 10x20
+!}}}
+
 
 
 ! vim:fdm=marker
