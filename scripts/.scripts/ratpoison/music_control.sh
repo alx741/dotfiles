@@ -9,7 +9,7 @@ function select_playlist
 {
     playlists=`mpc lsplaylists`
 
-    vmenu_cmd="vmenu --title Playlists -pd: "
+    vmenu_cmd="vmenu --unfocus-exit --title Playlists -pd: "
     while read -r line;
     do
         vmenu_cmd+="'$line' "
@@ -37,7 +37,7 @@ function select_song_from_current_playlist
         return 0
     fi
 
-    vmenu_cmd="vmenu --title Songs -p "
+    vmenu_cmd="vmenu --unfocus-exit --title Songs -p "
     counter=1
     current_song_number=1
     while read -r line;
@@ -79,7 +79,7 @@ function search_song
         return 0
     fi
 
-    vmenu_cmd="vmenu --title Search -pd: "
+    vmenu_cmd="vmenu --unfocus-exit --title Search -pd: "
     while read -r line;
     do
         vmenu_cmd+="\"$line\" "

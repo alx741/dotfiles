@@ -5,7 +5,7 @@ function ratmen_select
 {
     window_list=$(ratpoison -c "windows")
 
-    vmenu_cmd="vmenu --title Windows "
+    vmenu_cmd="vmenu --unfocus-exit --title Windows "
     for line in $window_list
     do
         number=$(echo $line | head -c 1)

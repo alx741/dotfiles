@@ -5,7 +5,7 @@ SNIP_DIR=~/.snippets
 
 function snippet_menu
 {
-    vmenu_cmd="vmenu --title Snippets -p "
+    vmenu_cmd="vmenu --unfocus-exit --title Snippets -p "
     for snip in $SNIP_DIR/*
     do
         vmenu_cmd+="${snip##*/}"

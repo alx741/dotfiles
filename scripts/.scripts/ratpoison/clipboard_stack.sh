@@ -96,7 +96,7 @@ function snippet_menu
         return 0
     fi
 
-    vmenu_cmd="vmenu --title Clipboard_stack -p "
+    vmenu_cmd="vmenu --unfocus-exit --title Clipboard_stack -p "
     for i in `seq $index -1 1`
     do
         snippet_file="$STACK_DIR/$SNIPPET_PREFIX$i"
@@ -153,7 +153,7 @@ function delete_snippet
 function get_menu
 {
     ratpoison -c "echo $(xclip -selection clipboard -o)"
-    option=`vmenu --title Songs -pd: "Push" "Pop" "Delete" "Purge"`
+    option=`vmenu --unfocus-exit --title Songs -pd: "Push" "Pop" "Delete" "Purge"`
 
     case "$option" in
         'Push')
