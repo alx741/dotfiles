@@ -30,6 +30,9 @@ mpd&
     setxkbmap -option ctrl:swapcaps&
     xmodmap .xmodmap&
     xcape -e 'Control_L=Escape'
+    xcape -e 'Super_L=Control_L|G|bracketleft'
+    xcape -e 'Super_R=Control_R|G|bracketright'
+    xcape -e 'Shift_L=parenleft;Shift_R=parenright'
 
     # Ibus
     export GTK_IM_MODULE=ibus
@@ -49,9 +52,6 @@ mpd&
 
 # Window manager
 exec ratpoison
-
-# Wallpaper
-nitrogen --restore&
 
 
 # vim:fdm=marker

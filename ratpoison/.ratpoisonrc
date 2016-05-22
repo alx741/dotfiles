@@ -2,6 +2,7 @@
     startup_message off
     msgwait 10
     nextscreen
+    exec nitrogen --restore
 #}}}
 
 #{{{ Variables
