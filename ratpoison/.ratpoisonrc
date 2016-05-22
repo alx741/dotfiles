@@ -7,12 +7,15 @@
 #{{{ Variables
     set bgcolor #fdf6e3
     set barborder 2
-    set border 2
+    set border 0
     set fwcolor #EEAA22
     set fgcolor #657b83
     set maxsizegravity c
     set waitcursor 0
+    set gravity c
     set wingravity c
+    set maxsizegravity c
+    set transgravity c
     set winname class
 #}}}
 
