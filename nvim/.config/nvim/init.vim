@@ -163,8 +163,8 @@
     "}}}
 
     "{{{ Status Line and Color
-        set statusline=[%n]\ %t\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
-        set statusline+=\ [ft=%Y]\ %r\ %m
+        set statusline=[%n]\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
+        set statusline+=\ [ft=%Y]\ %f\ %r\ %m
 
         set statusline+=\ \ \ \ %#error#
         set statusline+=%{StatuslineTabWarning()}
