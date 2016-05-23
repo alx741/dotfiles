@@ -84,6 +84,11 @@ then
     builder_files+="CMakeLists "
 fi
 
+if [[ -f "Cargo.toml" ]];
+then
+    builder_files+="Cargo.toml"
+fi
+
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
 then
     builder_files+="*.cabal"
