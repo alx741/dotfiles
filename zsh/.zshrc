@@ -137,7 +137,6 @@
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --color=auto"
     alias gs="git status"
-    alias ls="command_not_found_handler"
     alias lsl="command ls -lLh --color | ccze -A"
     alias lsls="command ls -lLha --color | ccze -A"
     alias m="mplayer"
