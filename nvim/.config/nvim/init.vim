@@ -376,6 +376,8 @@
         inoremap <C-f> <C-x>
         nnoremap q: <NOP>
         nnoremap vv ^<C-v>g_
+        nnoremap 2O O<esc>O
+        nnoremap 2o o<esc>o
     "}}}
 "}}}
 
