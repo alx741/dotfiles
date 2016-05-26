@@ -262,8 +262,6 @@
         alias ,,,,,='cd ../../..'
         alias dot="cd ~/dotfiles/"
         alias silly="cd ~/lab/silly-bytes/"
-        alias arqui="cd ~/u/arquitectura_computadores/"
-        alias micro="cd ~/u/micros_avanzados/"
     #}}}
 
     #{{{ Fancy
