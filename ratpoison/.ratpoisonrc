@@ -67,11 +67,13 @@
         bind m readkey music
     #}}}
 
-    #{{{ Taskwarrior control
+    #{{{ Taskwarrior & Translation control
         newkmap task
         definekey task l exec ~/.scripts/ratpoison/task_control.sh list
         definekey task p exec ~/.scripts/ratpoison/task_control.sh list_projects
         definekey task a exec ~/.scripts/ratpoison/task_control.sh add
+        definekey task e exec ~/.scripts/ratpoison/translate.sh to_english
+        definekey task s exec ~/.scripts/ratpoison/translate.sh to_spanish
         definekey task question help task
         bind t readkey task
     #}}}
