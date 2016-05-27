@@ -32,8 +32,8 @@ then
     xbacklight -set 0
     amixer set Master unmute
     amixer set Master 100%
-    ~/.scripts/network/configure_ether.sh
     firefox&
+    ~/.scripts/network/configure_ether.sh
 else
     if is_vga_plugedin
     then
