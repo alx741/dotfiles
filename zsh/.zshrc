@@ -330,16 +330,18 @@
 
     precmd()
     {
+        git_repo_name=$(git rev-parse --show-toplevel 2> /dev/null)
+        git_repo_name=${git_repo_name##*/}
         if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-            zstyle ':vcs_info:*' formats ' [%F{green}%b%c%u%F{normal}]'
+            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b%c%u%F{normal}]"
         } else {
-            zstyle ':vcs_info:*' formats ' [%F{green}%b%c%u%F{red}^%F{normal}]'
+            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b%c%u%F{red}^%F{normal}]"
         }
 
         vcs_info
     }
 
-    custom_prompt=$'\n''%{$fg[blue]%}<%1~>$reset_colo${vcs_info_msg_0_}'
+    custom_prompt=$'\n''%{$fg[blue]%}<%2~>$reset_colo${vcs_info_msg_0_}'
     custom_prompt+="%{$reset_color%}%{$fg_bold[magenta]%} "
     custom_prompt+="( ͡° ͜ʖ ͡°)%{$reset_color%}"
 
