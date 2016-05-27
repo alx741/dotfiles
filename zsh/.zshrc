@@ -280,6 +280,7 @@
 #{{{ Completion
     zstyle ':completion::complete:*' use-cache 1
     zstyle ':completion:*' accept-exact '*(N)'
+    zstyle ':completion:*' rehash true
     zstyle ':completion:*' use-cache on
     zstyle ':completion:*' cache-path ~/.zsh/cache
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
