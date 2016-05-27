@@ -50,6 +50,13 @@ function launch_zathura
 }
 
 
+function launch_weechat
+{
+    launch_terminal
+    tmux select-window -t 0
+}
+
+
 case "$1" in
     'firefox')
         launch_firefox
@@ -59,5 +66,8 @@ case "$1" in
         ;;
     'zathura')
         launch_zathura
+        ;;
+    'weechat')
+        launch_weechat
         ;;
 esac
