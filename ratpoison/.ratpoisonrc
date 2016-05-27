@@ -79,6 +79,15 @@
         bind t readkey task
     #}}}
 
+    #{{{ Firefox control
+        newkmap firefox
+        definekey firefox f exec ~/.scripts/ratpoison/firefox.sh select_tab facebook
+        definekey firefox y exec ~/.scripts/ratpoison/firefox.sh select_tab youtube
+        definekey firefox e exec ~/.scripts/ratpoison/firefox.sh select_tab evirtual
+        definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
+        bind f readkey firefox
+    #}}}
+
     #{{{ Clipboard stack control
         bind numbersign  exec ~/.scripts/ratpoison/clipboard_stack.sh menu
         bind plus  exec ~/.scripts/ratpoison/clipboard_stack.sh select
