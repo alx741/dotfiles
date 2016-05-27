@@ -4,8 +4,8 @@ function selectTab(page)
     var url="";
     for(i=numTabs-1; i>0; i--)
     {
-        url= gBrowser.browsers[i].contentDocument.location.href.split(".")[1];
-        if(url == page)
+        url=gBrowser.browsers[i].contentDocument.location.href;
+        if(url.search(page) != -1)
         {
             gBrowser.tabContainer.selectedIndex=i;
             return true;
