@@ -3,6 +3,7 @@
     msgwait 10
     nextscreen
     exec nitrogen --restore
+    exec wmname LG3D
 #}}}
 
 #{{{ Variables
@@ -143,6 +144,7 @@
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
+    bind comma exec ~/.scripts/ratpoison/app_select.sh weechat
 
     # Give temporally control to openbox
     bind grave tmpwm openbox
