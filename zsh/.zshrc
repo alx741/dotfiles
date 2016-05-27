@@ -184,7 +184,7 @@
 
         echo
         find "$l_dir/" -maxdepth 1 -not -path '*/\.*' -printf \
-            "[%y]\t%P\n" | tail -n +2 \
+            "[%y]\t%P\n" | tail -n +2 | sort \
             | sed -r \
             "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
             | sed -r \
