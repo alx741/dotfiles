@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+set page [lindex $argv 0]
+set port 4242
+
+set file [open "select_tab.js"]
+set content [split [read $file] "\n"]
+close $file
+
+spawn telnet localhost $port
+
+foreach line $content {
+    send "$line\r"
+}
+send "selectTab(\"$page\");\r"
+expect "repl2> "
+
+expect {
+    "true" {
+        exit 0
+    }
+    "false" {
+        exit 1
+    }
+}

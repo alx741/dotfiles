@@ -10,6 +10,7 @@ Dotfiles
 * Git
 * Gpg
 * MongoDB
+* Mozrepl
 * Mpd
 * Mplayer
 * Mutt
@@ -26,13 +27,13 @@ Dotfiles
 * Taskwarrior
 * Tmux
 * Urxvt
+* Vmenu
 * W3M
 * Weechat
 * X11
 * Xmodmap
 * Zathura
 * Zsh
-* Vmenu
 
 
 Deprecated
