@@ -25,39 +25,40 @@
 #}}}
 
 #{{{ Options
-    # See `man zshoptions`
-
-    setopt AUTO_PUSHD
-    setopt GLOB_COMPLETE
-    setopt RM_STAR_WAIT
-    setopt ZLE
-    setopt VI
-    setopt NO_HUP
-    setopt IGNORE_EOF
-    setopt NO_BEEP
-    setopt NUMERIC_GLOB_SORT
-    setopt EXTENDED_GLOB
-    setopt RC_EXPAND_PARAM
-    setopt APPEND_HISTORY
-    setopt COMPLETE_IN_WORD
+    setopt auto_cd
+    setopt auto_pushd
+    setopt pushd_ignore_dups
+    setopt glob_complete
+    setopt rm_star_wait
+    setopt zle
+    setopt vi
+    setopt no_hup
+    setopt no_check_jobs
+    setopt ignore_eof
+    setopt no_beep
+    setopt numeric_glob_sort
+    setopt extended_glob
+    setopt rc_expand_param
+    setopt append_history
+    setopt complete_in_word
     setopt prompt_subst
     setopt nohashdirs
     setopt nohashcmds
-    unsetopt FLOW_CONTROL
-    unsetopt LIST_AMBIGUOUS
+    unsetopt flow_control
+    unsetopt list_ambiguous
 
-    # History options
-    setopt EXTENDED_HISTORY
-    setopt SHARE_HISTORY
-    setopt HIST_IGNORE_DUPS
-    setopt HIST_IGNORE_ALL_DUPS
-    setopt HIST_REDUCE_BLANKS
-    setopt HIST_IGNORE_SPACE
-    setopt HIST_NO_STORE
-    setopt HIST_VERIFY
-    setopt HIST_SAVE_NO_DUPS
-    setopt HIST_EXPIRE_DUPS_FIRST
-    setopt HIST_FIND_NO_DUPS
+    # history options
+    setopt extended_history
+    setopt share_history
+    setopt hist_ignore_dups
+    setopt hist_ignore_all_dups
+    setopt hist_reduce_blanks
+    setopt hist_ignore_space
+    setopt hist_no_store
+    setopt hist_verify
+    setopt hist_save_no_dups
+    setopt hist_expire_dups_first
+    setopt hist_find_no_dups
 #}}}
 
 #{{{ Variables
