@@ -136,8 +136,8 @@
     alias gd="git diff"
     alias git="hub"
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
-    alias grep="grep --color=auto"
-    alias gs="git status"
+    alias grep="grep --line-number --ignore-case --color=auto"
+    alias gs="git status -sb"
     alias lsl="command ls -lLh --color | ccze -A"
     alias lsls="command ls -lLha --color | ccze -A"
     alias m="mplayer"
@@ -234,13 +234,15 @@
         alias -s h=vim
         alias -s hpp=vim
         alias -s java=vim
-        alias -s py=vim
         alias -s php=vim
         alias -s html=vim
         alias -s css=vim
         alias -s js=vim
+        alias -s rs=vim
         alias -s pdf=zathura
         alias -s jpg=sxiv
+        alias -s jpeg=sxiv
+        alias -s gif=sxiv
         alias -s png=sxiv
     #}}}
 
@@ -257,10 +259,7 @@
         alias ..='cd ..'
         alias ...='cd ../..'
         alias ....='cd ../../..'
-        alias ,,='cd ..'
-        alias ,,,='cd ../..'
-        alias ,,,,='cd ../../..'
-        alias ,,,,,='cd ../../..'
+        alias ,,='popd'
         alias dot="cd ~/dotfiles/"
         alias silly="cd ~/lab/silly-bytes/"
     #}}}
