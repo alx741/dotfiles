@@ -9,6 +9,7 @@ Dotfiles
 * Emacs
 * Git
 * Gpg
+* Gtk
 * MongoDB
 * Mozrepl
 * Mpd
