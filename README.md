@@ -3,7 +3,19 @@
 ![Rusty Tools](rusty_tools.jpg)
 
 
-**Using Solarized Light color scheme**
+## About
+
+Using Solarized Light color scheme
+
+
+## Installation
+
+Use GNU `stow` for install each config like this:
+
+        $ stow -t ~ nvim
+
+
+## Dotfiles
 
 * Astyle
 * Ccze
@@ -40,7 +52,7 @@
 * Zsh
 
 
-## Deprecated
+### Deprecated
 
 These dotfiles are abandoned
 
@@ -48,10 +60,3 @@ These dotfiles are abandoned
 - ~~Dwm~~
 - ~~Tilda~~
 - ~~Vim~~
-
-
-# Installation
-
-Use GNU `stow` for install each config like this:
-
-        $ stow -t ~ nvim
