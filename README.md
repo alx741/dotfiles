@@ -27,6 +27,7 @@ Dotfiles
 * Taskwarrior
 * Tmux
 * Urxvt
+* VimFx
 * Vmenu
 * W3M
 * Weechat
