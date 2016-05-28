@@ -5,7 +5,10 @@
 
 ## About
 
-Using Solarized Light color scheme
+Daniel Campoverde Carrión [alx741] <alx741@riseup.net>
+[Silly Bytes](http://silly-bytes.blogspot.com/)
+
+Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
 
 ## Installation
@@ -60,3 +63,6 @@ These dotfiles are abandoned
 - ~~Dwm~~
 - ~~Tilda~~
 - ~~Vim~~
+
+
+## Dependencies
