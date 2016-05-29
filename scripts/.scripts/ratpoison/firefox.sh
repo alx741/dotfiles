@@ -38,7 +38,15 @@ function select_tab
     fi
 }
 
-function search
+function search_tab
+{
+    query=`ratpoison -c "prompt [Tab] >  "`
+    if [[ "$query" == "" ]]; then exit 0; fi
+
+    select_tab "$query"
+}
+
+function clipboard_search
 {
     search=$(xclip -selection clipboard -o)
     if [[ "$search" == "" ]];
@@ -51,15 +59,20 @@ function search
 }
 
 
-~/.scripts/ratpoison/app_select.sh firefox
 case $1 in
     'select_tab')
+        ~/.scripts/ratpoison/app_select.sh firefox
         select_tab $2
         ;;
+    'search_tab')
+        search_tab
+        ;;
     'new_tab')
+        ~/.scripts/ratpoison/app_select.sh firefox
         firefox --new-tab "http://"
         ;;
-    'search')
-        search
+    'clipboard_search')
+        ~/.scripts/ratpoison/app_select.sh firefox
+        clipboard_search
         ;;
 esac

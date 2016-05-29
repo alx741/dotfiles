@@ -87,7 +87,8 @@
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
         definekey firefox g exec ~/.scripts/ratpoison/firefox.sh select_tab github
         definekey firefox o exec ~/.scripts/ratpoison/firefox.sh new_tab
-        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search
+        definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
+        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search_tab
         bind f readkey firefox
     #}}}
 
