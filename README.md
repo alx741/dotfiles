@@ -66,3 +66,29 @@ These dotfiles are abandoned
 
 
 ## Dependencies
+
+These dotfiles depends, obviously, on the all the programs it configures, so
+install them first.
+
+Some of the various scripts depend on other binaries that can be installed using
+the system package manager, this is a non exhaustive list:
+
+* acpi
+* alsa-utils
+* ccze
+* dhclient
+* expect
+* firefox
+** mozrepl
+** vimfx
+* figlet
+* id3v2
+* mpc
+* qrencode
+* sxiv
+* task
+* vmenu
+* xclip
+* xcowsay
+* xdotool
+* youtube-dl
