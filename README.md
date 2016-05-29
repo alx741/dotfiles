@@ -79,8 +79,8 @@ the system package manager, this is a non exhaustive list:
 * dhclient
 * expect
 * firefox
-** mozrepl
-** vimfx
+..* mozrepl
+..* vimfx
 * figlet
 * id3v2
 * mpc
