@@ -83,6 +83,7 @@ the system package manager, this is a non exhaustive list:
 * id3v2
 * mpc
 * qrencode
+* scrot
 * sxiv
 * task
 * vmenu
