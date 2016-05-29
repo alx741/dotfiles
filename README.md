@@ -78,10 +78,8 @@ the system package manager, this is a non exhaustive list:
 * ccze
 * dhclient
 * expect
-* firefox
-..* mozrepl
-..* vimfx
 * figlet
+* firefox
 * id3v2
 * mpc
 * qrencode
