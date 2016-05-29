@@ -23,7 +23,6 @@ Use GNU `stow` for install each config like this:
 * Astyle
 * Ccze
 * Ctags
-* Emacs
 * Git
 * Gpg
 * Gtk
@@ -59,10 +58,11 @@ Use GNU `stow` for install each config like this:
 
 These dotfiles are abandoned
 
-- ~~Apvlv~~
-- ~~Dwm~~
-- ~~Tilda~~
-- ~~Vim~~
+* ~~Apvlv~~
+* ~~Dwm~~
+* ~~Emacs~~
+* ~~Tilda~~
+* ~~Vim~~
 
 
 ## Dependencies
