@@ -5,8 +5,13 @@
 
 ## About
 
-Daniel Campoverde Carrión [alx741] <alx741@riseup.net>
-[Silly Bytes](http://silly-bytes.blogspot.com/)
+Daniel Campoverde Carrión [alx741]
+
+mailto: <alx741@riseup.net>
+
+GPG key id: 12622B78 (keys.gnupg.net)
+
+http: [Silly Bytes](http://silly-bytes.blogspot.com/)
 
 Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
