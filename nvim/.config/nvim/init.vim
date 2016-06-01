@@ -55,6 +55,7 @@
     Plug 'asciidoc/vim-asciidoc'
     Plug 'rust-lang/rust.vim'
     Plug 'cespare/vim-toml'
+    Plug 'joukevandermaas/vim-ember-hbs'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -350,6 +351,7 @@
         nnoremap <NUL> <c-^>
         nnoremap Q :Files<CR>
         nnoremap gs :w<CR>
+        inoremap gs <esc>:w<cr>
         nnoremap gS :wq<CR>
         nnoremap gbb :w<CR> :Neomake!<CR>
         nnoremap gbc :Make! clean<CR>
