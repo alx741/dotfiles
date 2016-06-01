@@ -23,6 +23,13 @@ Use GNU `stow` for install each config like this:
         $ stow -t ~ nvim
 
 
+## Show me
+
+Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
+
+![shot](shot.png)
+
+
 ## Dotfiles
 
 * Astyle
