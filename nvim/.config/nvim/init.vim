@@ -56,6 +56,7 @@
     Plug 'rust-lang/rust.vim'
     Plug 'cespare/vim-toml'
     Plug 'joukevandermaas/vim-ember-hbs'
+    Plug 'racer-rust/vim-racer'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -101,6 +102,7 @@
             let g:easytags_on_cursorhold = 0
             let b:easytags_auto_highlight = 0
             let g:easytags_python_enabled = 0
+            let g:easytags_suppress_ctags_warning = 1
         "}}}
 
         "{{{ EasyAlign
@@ -142,6 +144,11 @@
 
         "{{{ Netrw
             let g:netrw_banner=0
+        "}}}
+
+        "{{{ Vim-racer
+            let g:racer_cmd = "racer"
+            let $RUST_SRC_PATH = "/home/alx/lab/rust/rust/src"
         "}}}
     "}}}
 "}}}
