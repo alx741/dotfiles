@@ -7,8 +7,8 @@ vimfx.set('mode.normal.scroll_half_page_up', 'u <c-u>')
 vimfx.set('mode.normal.scroll_page_down', '<c-f>')
 vimfx.set('mode.normal.scroll_page_up', 'b <c-b>')
 
-vimfx.set('mode.normal.tab_select_next', 'gt <c-k> l')
-vimfx.set('mode.normal.tab_select_previous', 'gT <c-j> h')
+vimfx.set('mode.normal.tab_select_next', 'gt <c-k> <c-n> l')
+vimfx.set('mode.normal.tab_select_previous', 'gT <c-j> <c-p> h')
 vimfx.set('mode.normal.window_new', '')
 
 vimfx.set('prevent_autofocus', true)
