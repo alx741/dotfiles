@@ -488,6 +488,17 @@
         silent exe "! ~/.scripts/refresh_firefox.sh"
     endfunction
     "}}}
+
+    function! Make_arrow(type) "{{{
+        if a:type
+            exe "norm! a->  "
+            exe "startinsert"
+        else
+            exe "norm! a=>  "
+            exe "startinsert"
+        endif
+    endfunction
+    "}}}
 "}}}
 
 "{{{ File Type Specific
@@ -805,6 +816,9 @@
             au FileType php cnoreabbrev gc !php artisan generate:controller
             au FileType php cnoreabbrev gt !php artisan generate:test
             au FileType php cnoreabbrev gmig !php artisan generate:migration
+
+            " Emmet
+            au FileType php imap hh <c-j>,
         augroup END
 
         function! Php_make_var(static)
@@ -847,25 +861,17 @@
     "{{{ HASKELL
         augroup ft_haskell
             au!
-            au FileType haskell inoremap ;: <ESC>:call Haskell_arrow(0)<CR>
-            au FileType haskell inoremap ;; <ESC>:call Haskell_arrow(1)<CR>
+            au FileType haskell inoremap ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType haskell inoremap ;; <ESC>:call Make_arrow(1)<CR>
         augroup END
-
-        function! Haskell_arrow(type)
-            if a:type
-                exe "norm! a->  "
-                exe "startinsert"
-            else
-                exe "norm! a=>  "
-                exe "startinsert"
-            endif
-        endfunction
     "}}}
 
     "{{{ RUST
         augroup ft_rust
             au!
             au FileType rust setlocal makeprg=cargo\ build
+            au FileType rust inoremap ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType rust inoremap ;; <ESC>:call Make_arrow(1)<CR>
         augroup END
     "}}}
 "}}}
