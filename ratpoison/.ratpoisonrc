@@ -64,6 +64,7 @@
         definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
         definekey music y exec ~/.scripts/ratpoison/music_control.sh playback single
         definekey music c exec ~/.scripts/ratpoison/music_control.sh playback consume
+        definekey music L exec ~/.scripts/ratpoison/music_control.sh lyrics
         definekey music question help music
         bind m readkey music
     #}}}
@@ -87,7 +88,9 @@
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
         definekey firefox g exec ~/.scripts/ratpoison/firefox.sh select_tab github
         definekey firefox o exec ~/.scripts/ratpoison/firefox.sh new_tab
+        definekey firefox w exec ~/.scripts/ratpoison/firefox.sh new_window
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
+        definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
         definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search_tab
         bind f readkey firefox
     #}}}

@@ -58,6 +58,27 @@ function clipboard_search
     firefox --new-tab "$google_url"
 }
 
+function search_lyrics
+{
+    search=$(mpc | head -n 1)
+    if [[ "$search" == "" ]];
+    then
+        exit 0
+    fi
+    search+=" lyrics"
+    search=$(echo "$search" | sed 's/ /+/g')
+
+    curl -A 'Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0'\
+        "https://www.google.com/search?q=$search"\
+            > /tmp/google_search_result.html
+
+    url=$(sed 's/>/>\r\n/g' /tmp/google_search_result.html\
+        | grep -m 1 '<a href="http:.*".*>'\
+        | sed -e 's/.*href="\([^"]*\)".*/\1/')
+
+    firefox --new-tab "$url"
+}
+
 
 case $1 in
     'select_tab')
@@ -69,10 +90,18 @@ case $1 in
         ;;
     'new_tab')
         ~/.scripts/ratpoison/app_select.sh firefox
-        firefox --new-tab "http://"
+        firefox --new-tab "http://www.google.com"
+        ;;
+    'new_window')
+        ratpoison -c "nextscreen"
+        firefox --new-window "http://www.google.com"
         ;;
     'clipboard_search')
         ~/.scripts/ratpoison/app_select.sh firefox
         clipboard_search
+        ;;
+    'search_lyrics')
+        ~/.scripts/ratpoison/app_select.sh firefox
+        search_lyrics
         ;;
 esac

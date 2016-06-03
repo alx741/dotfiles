@@ -321,6 +321,9 @@ case "$1" in
     'restart')
         mpc seek 0%
         ;;
+    'lyrics')
+        ~/.scripts/ratpoison/firefox.sh search_lyrics
+        ;;
 esac
 
 assert_volume_mode
