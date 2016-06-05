@@ -308,7 +308,6 @@
 
 #{{{ Key bindings
     # Special keys works properly
-
     bindkey '\e[1~' beginning-of-line
     bindkey '\e[4~' end-of-line
     bindkey '\e[A' up-line-or-history
@@ -319,6 +318,8 @@
     bindkey '\e[D' backward-char
     bindkey '\eOC' forward-char
     bindkey '\eOD' backward-char
+
+    bindkey '^i' clear-screen
 #}}}
 
 #{{{ Prompt
