@@ -319,7 +319,7 @@
     bindkey '\eOC' forward-char
     bindkey '\eOD' backward-char
 
-    bindkey '^i' clear-screen
+    bindkey '^o' clear-screen
 #}}}
 
 #{{{ Prompt
