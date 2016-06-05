@@ -1,6 +1,6 @@
 vimfx.set('mode.normal.scroll_down', 'j <c-e> e J')
-vimfx.set('mode.normal.scroll_up', 'k <c-y> <c-s> <space> K')
-vimfx.set('mode.normal.scroll_left', '<c-w> <c-h>')
+vimfx.set('mode.normal.scroll_up', 'k <c-y> <c-s> K')
+vimfx.set('mode.normal.scroll_left', '<c-w> <c-h> <space>')
 vimfx.set('mode.normal.scroll_right', '<c-l>')
 vimfx.set('mode.normal.scroll_half_page_down', 'd <c-d>')
 vimfx.set('mode.normal.scroll_half_page_up', 'u <c-u>')
