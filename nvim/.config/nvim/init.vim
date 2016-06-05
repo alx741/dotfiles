@@ -57,6 +57,7 @@
     Plug 'cespare/vim-toml'
     Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'racer-rust/vim-racer'
+    Plug 'christoomey/vim-tmux-navigator'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
