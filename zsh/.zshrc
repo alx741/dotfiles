@@ -129,6 +129,7 @@
     alias dhcp="sudo dhclient enp3s0"
     alias dotpng="dot -Tpng -O"
     alias du="du -h"
+    alias free="free -h"
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
