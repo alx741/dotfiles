@@ -98,7 +98,9 @@ the system package manager, this is a non exhaustive list:
 * scrot
 * sxiv
 * task
+* unclutter
 * vmenu
+* xcape
 * xclip
 * xcowsay
 * xdotool
