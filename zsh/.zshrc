@@ -147,6 +147,7 @@
     alias ser="sudo service"
     alias suod="sudo"
     alias sys="sudo systemctl"
+    alias time="command time -p"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
     alias v="fuzzy_edit"
