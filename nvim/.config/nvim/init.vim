@@ -151,6 +151,11 @@
             let g:racer_cmd = "racer"
             let $RUST_SRC_PATH = "/home/alx/lab/rust/rust/src"
         "}}}
+
+        "{{{ Vim-tmux-navigator
+            let g:tmux_navigator_no_mappings = 1
+            let g:tmux_navigator_save_on_switch = 1
+        "}}}
     "}}}
 "}}}
 
@@ -337,12 +342,10 @@
     "}}}
 
     "{{{ Window movement
-        nnoremap <c-k> <c-w>k
-        nnoremap <c-j> <c-w>j
-        nnoremap <c-l> <c-w>l
-        " Some day C-H vs <BS> will be fixed, i hope...
-        " nnoremap <c-h> <c-w>h
-        nnoremap <BS> <C-W>h
+        nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+        nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+        nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+        nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
     "}}}
 
     "{{{ X Clipboard yanking/pasting
@@ -362,8 +365,8 @@
         inoremap gs <esc>:w<cr>
         nnoremap gS :wq<CR>
         nnoremap gbb :w<CR> :Neomake!<CR>
+        nnoremap gj :w<CR> :Neomake!<CR>
         nnoremap gbc :Make! clean<CR>
-        nnoremap gbs :w<CR> :Neomake<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
         nnoremap <silent>g= :call Format()<CR>
