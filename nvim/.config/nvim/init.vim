@@ -349,7 +349,8 @@
     "}}}
 
     "{{{ X Clipboard yanking/pasting
-        nnoremap <C-c>p "+p
+        nnoremap <C-c>p o<esc>"+p
+        nnoremap <C-c>P O<esc>"+p
         nnoremap <C-c>y "+y
         nnoremap <C-c>Y "+Y
         vnoremap <C-c>y "+y
