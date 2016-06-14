@@ -62,7 +62,7 @@ function vol_echo_formatted
 
     sound_state="$(echo $mute_state | sed 's/on/-/;s/off/M/') "
     sound_state+="$(echo $volume) "
-    sound_state+="$(echo $mode | sed 's/normal/ N/;s/music/ M/')"
+    sound_state+="$(echo $mode | sed 's/normal/ N/;s/music/ >/')"
 
     echo "$sound_state"
 }
