@@ -58,6 +58,7 @@
     Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'racer-rust/vim-racer'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'veegee/vim-pic'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -164,6 +165,9 @@
         " SDCC
         set path+=/usr/share/sdcc/include/pic14,/usr/share/sdcc/include/pic16
         set path+=/usr/share/sdcc/non-free/include/pic14,/usr/share/sdcc/non-free/include/pic16
+
+        " GPUTILS
+        set path+=/usr/share/gputils/header
     "}}}
 
     "{{{ Backup System
@@ -368,6 +372,7 @@
         nnoremap gbb :w<CR> :Neomake!<CR>
         nnoremap gj :w<CR> :Neomake!<CR>
         nnoremap gbc :Make! clean<CR>
+        nnoremap gb<space> :w<CR> :NeomakeSh exit 0<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
         nnoremap <silent>g= :call Format()<CR>
@@ -877,6 +882,14 @@
             au FileType rust setlocal makeprg=cargo\ build
             au FileType rust inoremap ;: <ESC>:call Make_arrow(0)<CR>
             au FileType rust inoremap ;; <ESC>:call Make_arrow(1)<CR>
+        augroup END
+    "}}}
+
+    "{{{ ASM
+        augroup ft_asm
+            au!
+            au FileType asm setlocal commentstring=;\ %s
+            au FileType pic8 setlocal commentstring=;\ %s
         augroup END
     "}}}
 "}}}
