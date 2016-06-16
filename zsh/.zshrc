@@ -181,18 +181,24 @@
         then
             l_dir="."
         else
-            l_dir="$1"
+            if [[ -d "$1" ]];
+            then
+                l_dir="$1"
+            else
+                l_dir=$(find -L . -maxdepth 1 -type d -not -path '*/\.*' \
+                    -printf "%P\n" | fzf -q "$1" -1 -0)
+
+                if [[ "$l_dir" == "" ]]
+                then
+                    echo
+                    echo -e "\t No directory \"$1\"    ¯\_(ツ)_/¯"
+                    echo
+                    return 1
+                fi
+            fi
         fi
 
-        echo
-        find "$l_dir/" -maxdepth 1 -not -path '*/\.*' -printf \
-            "[%y]\t%P\n" | tail -n +2 | sort \
-            | sed -r \
-            "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
-            | sed -r \
-            "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
-            | sed -r \
-            "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+        list_dir $l_dir
     }
 
     function man()
@@ -490,6 +496,19 @@
         cat ~/.ascii_art/doge
     }
 
+    function list_dir()
+    {
+        echo
+        find "$1/" -maxdepth 1 -not -path '*/\.*' -printf \
+            "[%y]\t%P\n" | tail -n +2 | sort \
+            | sed -r \
+            "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+    }
+
     function fuzzy_edit()
     {
         file=""
@@ -539,7 +558,7 @@
     #{{{ FZF
         function cd_fzf()
         {
-            go_dir=$(find . -maxdepth 1 -type d -not -path '*/\.*' \
+            go_dir=$(find -L . -maxdepth 1 -type d -not -path '*/\.*' \
                 -printf "%P\n" | fzf -q "$*" -1 -0)
 
             if [[ "$go_dir" != "" ]]
