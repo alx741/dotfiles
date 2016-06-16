@@ -397,6 +397,7 @@
         nnoremap vv ^<C-v>g_
         nnoremap 2O O<esc>O
         nnoremap 2o o<esc>o
+        nnoremap c "_c
     "}}}
 "}}}
 
