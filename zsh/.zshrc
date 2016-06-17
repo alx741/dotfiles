@@ -134,7 +134,7 @@
     alias gb="git branch"
     alias gc="git commit"
     alias gco="git checkout"
-    alias gd="git diff"
+    alias gd="git diff --color | diff-so-fancy | less -RSFXi"
     alias git="hub"
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --line-number --ignore-case --color=auto"
