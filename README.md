@@ -89,6 +89,7 @@ the system package manager, this is a non exhaustive list:
 * alsa-utils
 * ccze
 * dhclient
+* diff-so-fancy
 * expect
 * figlet
 * firefox
