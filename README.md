@@ -33,6 +33,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 ## Dotfiles
 
 * Astyle
+* Avrdude
 * Ccze
 * Ctags
 * Git
