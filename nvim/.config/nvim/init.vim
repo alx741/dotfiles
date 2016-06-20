@@ -168,6 +168,9 @@
 
         " GPUTILS
         set path+=/usr/share/gputils/header
+
+        " AVR
+        set path+=/usr/avr/include
     "}}}
 
     "{{{ Backup System
