@@ -13,7 +13,7 @@ foreach line $content {
     send "$line\r"
 }
 send "selectTab(\"$page\");\r"
-expect "repl2> "
+expect "repl> "
 
 expect {
     "true" {

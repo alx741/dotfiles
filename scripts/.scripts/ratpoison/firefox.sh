@@ -17,6 +17,9 @@ function set_url
         'github')
             URL="www.github.com"
             ;;
+        'hades')
+            URL="hades.alx.mooo.com:8080"
+            ;;
         'evirtual')
             URL="evirtual.ucuenca.edu.ec"
             ;;
