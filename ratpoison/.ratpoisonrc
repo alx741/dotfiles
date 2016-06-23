@@ -130,6 +130,7 @@
     escape C-g
 
     # Abort with ESC
+    definekey top Escape exec ~/.scripts/ratpoison/abort.sh
     bind Escape abort
 
     # Show current frame
