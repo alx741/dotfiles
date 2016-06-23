@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ratpoison -c 'fdump'| sed 's/,/\n/g' | awk '{print $5" "$19}' > ratpoison_fdump
+ratpoison -c 'fdump'| sed 's/,/\n/g' | awk '{print $5" "$19}' > /tmp/ratpoison_frame_window_navigator
 
 # Calculate X coordinate for rightmost frame
 greater_x_coordinate=0
@@ -11,12 +11,12 @@ do
     then
         greater_x_coordinate=$coordinate
     fi
-done < ratpoison_fdump
+done < /tmp/ratpoison_frame_window_navigator
 
 
 # Calculate current frame X coordinate
-x_coordinate=$(head -n1 ratpoison_fdump | cut -d' ' -f1)
-last_access=$(head -n1 ratpoison_fdump | cut -d' ' -f2)
+x_coordinate=$(head -n1 /tmp/ratpoison_frame_window_navigator | cut -d' ' -f1)
+last_access=$(head -n1 /tmp/ratpoison_frame_window_navigator | cut -d' ' -f2)
 while read frame;
 do
     access=$(echo "$frame" | cut -d' ' -f2)
@@ -25,7 +25,7 @@ do
         last_access=$access
         x_coordinate=$(echo "$frame" | cut -d' ' -f1)
     fi
-done < ratpoison_fdump
+done < /tmp/ratpoison_frame_window_navigator
 
 function is_leftmost
 {
