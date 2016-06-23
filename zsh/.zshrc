@@ -260,6 +260,11 @@
         alias er="$EDITOR ~/.ratpoisonrc"
         alias ez="$EDITOR ~/.zshrc"
         alias ex="$EDITOR ~/.xinitrc"
+        alias '\ev'="$EDITOR ~/.config/nvim/init.vim"
+        alias '\et'="$EDITOR ~/.tmux.conf"
+        alias '\er'="$EDITOR ~/.ratpoisonrc"
+        alias '\ez'="$EDITOR ~/.zshrc"
+        alias '\ex'="$EDITOR ~/.xinitrc"
     #}}}
 
     #{{{ Fast directory access
