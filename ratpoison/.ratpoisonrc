@@ -107,13 +107,13 @@
 
     #{{{ Vi like bindings
         bind j focusdown
-        bind h focusleft
+        bind h exec ~/.scripts/ratpoison/frame-win_navigator.sh left
         bind k focusup
-        bind l focusright
+        bind l exec ~/.scripts/ratpoison/frame-win_navigator.sh right
         bind C-j focusdown
-        bind C-h focusleft
+        bind C-h exec ~/.scripts/ratpoison/frame-win_navigator.sh left
         bind C-k focusup
-        bind C-l focusright
+        bind C-l exec ~/.scripts/ratpoison/frame-win_navigator.sh right
         bind J exchangedown
         bind H exchangeleft
         bind K exchangeup
