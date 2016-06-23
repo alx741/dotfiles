@@ -31,6 +31,9 @@
     #}}}
 
     #{{{ Volume control
+        definekey top s-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
+        definekey top s-bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
+        definekey top s-backslash exec ~/.scripts/ratpoison/volume_control.sh mute
         bind bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
         bind bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
         bind C-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
@@ -44,6 +47,7 @@
 
     #{{{ Music control
         newkmap music
+        definekey top s-space exec ~/.scripts/ratpoison/music_control.sh toggle
         bind space exec ~/.scripts/ratpoison/music_control.sh toggle
         bind C-space exec ~/.scripts/ratpoison/music_control.sh toggle
         definekey music space exec ~/.scripts/ratpoison/music_control.sh toggle
