@@ -43,7 +43,7 @@ function rat_right
     then
         ratpoison -c 'meta C-l'
     else
-        ~/.scripts/ratpoison/frame-win_navigator.sh right
+        ~/.scripts/ratpoison/frame-mon_navigator.sh right
     fi
 }
 
@@ -53,7 +53,7 @@ function rat_left
     then
         ratpoison -c 'meta C-h'
     else
-        ~/.scripts/ratpoison/frame-win_navigator.sh left
+        ~/.scripts/ratpoison/frame-mon_navigator.sh left
     fi
 }
 
@@ -81,7 +81,7 @@ function tmux_right
 {
     if [[ $pane_right  -eq $window_right ]];
     then
-        ~/.scripts/ratpoison/frame-win_navigator.sh right
+        ~/.scripts/ratpoison/frame-mon_navigator.sh right
     else
         tmux select-pane -R
     fi
@@ -91,7 +91,7 @@ function tmux_left
 {
     if [[ $pane_left  -eq 0 ]];
     then
-        ~/.scripts/ratpoison/frame-win_navigator.sh left
+        ~/.scripts/ratpoison/frame-mon_navigator.sh left
     else
         tmux select-pane -L
     fi
