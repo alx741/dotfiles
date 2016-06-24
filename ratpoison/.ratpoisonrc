@@ -40,6 +40,19 @@
         definekey top C-h exec ~/.scripts/ratpoison/rat_tmux-navigator.sh left
     #}}}
 
+    #{{{ Mouse control
+        definekey top s-k ratrelwarp 0 -15
+        definekey top s-j ratrelwarp 0 15
+        definekey top s-h ratrelwarp -15 0
+        definekey top s-l ratrelwarp 15 0
+        definekey top s-u ratrelwarp -15 -15
+        definekey top s-period ratrelwarp 15 15
+        definekey top s-o ratrelwarp 15 -15
+        definekey top s-n ratrelwarp -15 15
+        definekey top s-Return ratclick 1
+        definekey top s-BackSpace ratclick 3
+    #}}}
+
     #{{{ Volume control
         definekey top s-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
         definekey top s-bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
