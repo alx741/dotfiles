@@ -33,7 +33,7 @@
     Plug 'pangloss/vim-javascript'
     Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'wellle/targets.vim'
-    Plug 'xolox/vim-easytags'
+    Plug 'Wraul/vim-easytags', { 'branch': 'fix-universal-detection' }
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
     Plug 'tfnico/vim-gradle'
@@ -104,7 +104,6 @@
             let g:easytags_on_cursorhold = 0
             let b:easytags_auto_highlight = 0
             let g:easytags_python_enabled = 0
-            let g:easytags_suppress_ctags_warning = 1
         "}}}
 
         "{{{ EasyAlign
@@ -255,6 +254,7 @@
         set completeopt-=longest
         set completeopt-=preview
         set completeopt-=noinsert
+        set complete=.,w,b,u,t,i,kspell
         set expandtab
         set foldenable
         set foldlevel=1
