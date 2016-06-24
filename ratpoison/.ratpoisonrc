@@ -34,10 +34,10 @@
     #}}}
 
     #{{{ Ratpoison-Tmux navigator
-        definekey top C-k exec ~/.scripts/ratpoison/rat_tmux-navigator.sh up
-        definekey top C-j exec ~/.scripts/ratpoison/rat_tmux-navigator.sh down
-        definekey top C-l exec ~/.scripts/ratpoison/rat_tmux-navigator.sh right
-        definekey top C-h exec ~/.scripts/ratpoison/rat_tmux-navigator.sh left
+        definekey top C-k exec ~/.scripts/ratpoison/rat_tmux-navigator.sh rat up
+        definekey top C-j exec ~/.scripts/ratpoison/rat_tmux-navigator.sh rat down
+        definekey top C-l exec ~/.scripts/ratpoison/rat_tmux-navigator.sh rat right
+        definekey top C-h exec ~/.scripts/ratpoison/rat_tmux-navigator.sh rat left
     #}}}
 
     #{{{ Mouse control
