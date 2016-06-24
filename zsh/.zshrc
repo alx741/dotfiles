@@ -134,7 +134,6 @@
     alias gb="git branch"
     alias gc="git commit"
     alias gco="git checkout"
-    alias gd="git diff --color | diff-so-fancy | less -RSFXi"
     alias git="hub"
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --line-number --ignore-case --color=auto"
@@ -156,6 +155,8 @@
     alias vim="fuzzy_edit"
     alias woman="command man"
     alias z="zathura"
+
+    function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
 
