@@ -57,7 +57,7 @@
     Plug 'cespare/vim-toml'
     Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'racer-rust/vim-racer'
-    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'alx741/vim-tmux-navigator', {'branch': 'vim-tmux-wm-monitor' }
     Plug 'veegee/vim-pic'
 
     " On-demand loading
