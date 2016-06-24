@@ -6,10 +6,6 @@
 ratpoison -c "sdump" | sed 's/,/\n/g' > /tmp/ratpoison_cursor_frame
 abs_rat_x=$(ratpoison -c "ratinfo" | cut -d' ' -f1)
 abs_rat_y=$(ratpoison -c "ratinfo" | cut -d' ' -f2)
-echo
-echo "ABS rat x: $abs_rat_x"
-echo "ABS rat y: $abs_rat_y"
-echo
 
 RAT_ON_SCREEN=0
 SCREEN_X=0
@@ -23,14 +19,6 @@ do
     screen_h=$(echo "$screen" | cut -d' ' -f5)
     screen_x1=$(($screen_x0 + $screen_w))
     screen_y1=$(($screen_y0 + $screen_h))
-    echo
-    echo "NUM: $screen_number"
-    echo "screen x0: $screen_x0"
-    echo "screen y0: $screen_y0"
-    echo "screen w: $screen_w"
-    echo "screen h: $screen_h"
-    echo "screen x1: $screen_x1"
-    echo "screen y1: $screen_y1"
 
     if [[ $abs_rat_x -ge $screen_x0 ]] && [[ $abs_rat_y -ge $screen_y0 ]];then
        if  [[ $abs_rat_x -le $screen_x1 ]] && [[ $abs_rat_y -le $screen_y1 ]];then
@@ -48,12 +36,6 @@ done < /tmp/ratpoison_cursor_frame
 ###
 RAT_X=$(($abs_rat_x - $SCREEN_X))
 RAT_Y=$(($abs_rat_y - $SCREEN_Y))
-echo
-echo "rat x: $RAT_X"
-echo "rat y: $RAT_Y"
-echo
-
-
 
 
 ###
@@ -72,14 +54,6 @@ do
     frame_x1=$(($frame_x0 + $frame_w))
     frame_y1=$(($frame_y0 + $frame_h))
     frame_number=$(echo "$frame" | cut -d' ' -f5)
-    echo
-    echo "fn: $frame_number"
-    echo "fram x0: $frame_x0"
-    echo "fram y0: $frame_y0"
-    echo "fram w: $frame_w"
-    echo "fram h: $frame_h"
-    echo "fram x1: $frame_x1"
-    echo "fram y1: $frame_y1"
 
     if [[ $RAT_X -ge $frame_x0 ]] && [[ $RAT_Y -ge $frame_y0 ]];then
        if  [[ $RAT_X -le $frame_x1 ]] && [[ $RAT_Y -le $frame_y1 ]];then
@@ -89,7 +63,4 @@ do
    fi
 done < /tmp/ratpoison_cursor_frame
 
-echo
-echo "Rat in SCREEN: $RAT_ON_SCREEN, FRAME: $RAT_ON_FRAME"
-echo
 ratpoison -c "fselect $RAT_ON_FRAME"
