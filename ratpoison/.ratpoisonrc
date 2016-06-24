@@ -19,6 +19,9 @@
     set maxsizegravity c
     set transgravity c
     set winname class
+    set inputwidth 500
+    set barpadding 4 2
+    set framesels "hgjfkdlsaieow"
 #}}}
 
 #{{{ Bindigs
@@ -28,6 +31,13 @@
         unbind S
         unbind c
         unbind C-c
+    #}}}
+
+    #{{{ Ratpoison-Tmux navigator
+        definekey top C-k exec ~/.scripts/ratpoison/rat_tmux-navigator.sh up
+        definekey top C-j exec ~/.scripts/ratpoison/rat_tmux-navigator.sh down
+        definekey top C-l exec ~/.scripts/ratpoison/rat_tmux-navigator.sh right
+        definekey top C-h exec ~/.scripts/ratpoison/rat_tmux-navigator.sh left
     #}}}
 
     #{{{ Volume control
