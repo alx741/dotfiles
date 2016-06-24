@@ -51,6 +51,7 @@
         definekey top s-n ratrelwarp -15 15
         definekey top s-Return ratclick 1
         definekey top s-BackSpace ratclick 3
+        definekey top s-v rathold down 1
     #}}}
 
     #{{{ Volume control
@@ -162,6 +163,10 @@
     # Select next/previous window with same resource class
     bind N inext
     bind P iprev
+
+    # Select rat frame
+    bind C-c exec ~/.scripts/ratpoison/select_rat_frame.sh
+    bind C-v exec ~/.scripts/ratpoison/select_rat_frame.sh
 
     # Configure keyboard
     definekey top s-grave exec ~/.scripts/keyboard_setup.sh
