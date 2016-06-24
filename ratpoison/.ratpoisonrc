@@ -64,7 +64,6 @@
         bind braceright  exec ~/.scripts/ratpoison/volume_control.sh high
         bind braceleft exec ~/.scripts/ratpoison/volume_control.sh low
         bind bar exec ~/.scripts/ratpoison/volume_control.sh medium
-        bind slash exec ~/.scripts/ratpoison/volume_control.sh ask
         bind backslash  exec ~/.scripts/ratpoison/volume_control.sh mute
     #}}}
 
@@ -86,6 +85,7 @@
         definekey music comma exec ~/.scripts/ratpoison/music_control.sh seek-
         definekey music greater exec ~/.scripts/ratpoison/music_control.sh seek++
         definekey music less exec ~/.scripts/ratpoison/music_control.sh seek--
+        bind slash exec ~/.scripts/ratpoison/music_control.sh search
         definekey music slash exec ~/.scripts/ratpoison/music_control.sh search
         definekey music r exec ~/.scripts/ratpoison/music_control.sh playback repeat
         definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
