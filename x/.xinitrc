@@ -16,29 +16,8 @@ wmname LG3D
 # Start Music daemon
 mpd&
 
-#{{{ Keyboard
-    # Repeat rate
-    xset r rate 250 50
-
-    # Init special keys binding
-    xbindkeys&
-
-    # Set us-international-altgr keyboard
-    setxkbmap us -variant altgr-intl
-
-    # Configure keys
-    setxkbmap -option ctrl:swapcaps&
-    xmodmap .xmodmap&
-    xcape -e 'Control_L=Escape'
-    xcape -e 'Super_L=Control_L|G|bracketleft'
-    xcape -e 'Super_R=Control_R|G|bracketright'
-
-    # Ibus
-    export GTK_IM_MODULE=ibus
-    export XMODIFIERS=@im=ibus
-    export QT_IM_MODULE=ibus
-    ibus-daemon -drx
-#}}}
+# Keyboard
+./.scripts/keyboard_setup.sh
 
 #{{{ Mouse
     # Configure appropriate laptop track pad delays and detections

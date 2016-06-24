@@ -163,6 +163,9 @@
     bind N inext
     bind P iprev
 
+    # Configure keyboard
+    definekey top s-grave exec ~/.scripts/keyboard_setup.sh
+
     # Show last message
     bind semicolon lastmsg
 
