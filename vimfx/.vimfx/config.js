@@ -1,3 +1,28 @@
+vimfx.addCommand({
+  name: 'zoom_in',
+  description: 'Zoom in',
+}, ({vim}) => {
+  vim.window.FullZoom.enlarge()
+})
+
+vimfx.addCommand({
+  name: 'zoom_out',
+  description: 'Zoom out',
+}, ({vim}) => {
+  vim.window.FullZoom.reduce()
+})
+
+vimfx.addCommand({
+  name: 'zoom_reset',
+  description: 'Zoom reset',
+}, ({vim}) => {
+  vim.window.FullZoom.reset()
+})
+
+vimfx.set('custom.mode.normal.zoom_in', '=')
+vimfx.set('custom.mode.normal.zoom_out', '-')
+vimfx.set('custom.mode.normal.zoom_reset', '0')
+
 vimfx.set('mode.normal.scroll_down', 'j <c-e> e J')
 vimfx.set('mode.normal.scroll_up', 'k <c-y> <c-s> K')
 vimfx.set('mode.normal.scroll_left', '<c-w> <c-h> <space>')
