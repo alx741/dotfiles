@@ -57,7 +57,7 @@
     Plug 'cespare/vim-toml'
     Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'racer-rust/vim-racer'
-    Plug 'alx741/vim-tmux-navigator', {'branch': 'vim-tmux-wm-monitor' }
+    Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
     Plug 'veegee/vim-pic'
 
     " On-demand loading
@@ -748,6 +748,7 @@
     "{{{ JAVA
         augroup ft_java
             au!
+            au FileType java setlocal makeprg=gradle
             au FileType java setlocal foldlevel=2
             au FileType java setlocal foldlevelstart=1
             au FileType java setlocal foldnestmax=2
