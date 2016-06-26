@@ -362,6 +362,13 @@
         nnoremap <C-c>Y "+Y
         vnoremap <C-c>y "+y
         inoremap <C-r>c <C-r>+
+        " Ctrl variations
+        nnoremap <C-c><C-p> o<esc>"+p
+        nnoremap <C-c><C-P> O<esc>"+p
+        nnoremap <C-c><C-y> "+y
+        nnoremap <C-c><C-Y> "+Y
+        vnoremap <C-c><C-y> "+y
+        inoremap <C-r><C-c> <C-r>+
     "}}}
 
     "{{{ General Mappings
