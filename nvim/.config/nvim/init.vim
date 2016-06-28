@@ -364,11 +364,8 @@
         inoremap <C-r>c <C-r>+
         " Ctrl variations
         nnoremap <C-c><C-p> o<esc>"+p
-        nnoremap <C-c><C-P> O<esc>"+p
         nnoremap <C-c><C-y> "+y
-        nnoremap <C-c><C-Y> "+Y
         vnoremap <C-c><C-y> "+y
-        inoremap <C-r><C-c> <C-r>+
     "}}}
 
     "{{{ General Mappings
@@ -535,7 +532,14 @@
             au!
             au FileType c,cpp nnoremap <buffer><silent>gh :A<CR>
             au FileType c,cpp nnoremap <buffer><silent>gH :AS<CR>
+            au FileType c inoremap ,< <ESC>:call Avr_set_bit(0)<CR>
+            au FileType c inoremap << <ESC>:call Avr_set_bit(1)<CR>
         augroup END
+
+        function! Avr_set_bit(value)
+            exe "norm! bi(" . a:value ." << \<esc>wgUiWEa) \<esc>"
+            exe "startinsert"
+        endfunction
     "}}}
 
     "{{{ SH
