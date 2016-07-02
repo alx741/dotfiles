@@ -31,6 +31,7 @@
         unbind S
         unbind c
         unbind C-c
+        unbind Return
     #}}}
 
     #{{{ Ratpoison-Tmux navigator
@@ -134,14 +135,6 @@
     #}}}
 
     #{{{ Vi like bindings
-        bind j focusdown
-        bind h exec ~/.scripts/ratpoison/frame-win_navigator.sh left
-        bind k focusup
-        bind l exec ~/.scripts/ratpoison/frame-win_navigator.sh right
-        bind C-j focusdown
-        bind C-h exec ~/.scripts/ratpoison/frame-win_navigator.sh left
-        bind C-k focusup
-        bind C-l exec ~/.scripts/ratpoison/frame-win_navigator.sh right
         bind J exchangedown
         bind H exchangeleft
         bind K exchangeup
@@ -222,10 +215,6 @@
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
     bind S exec sleep 0.3 && xset dpms force off
-
-    # Change screens
-    bind Return nextscreen
-    bind C-Return prevscreen
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
