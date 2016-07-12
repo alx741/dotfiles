@@ -28,6 +28,7 @@
     #{{{ Unbindings
         unbind q
         unbind C-k
+        unbind k
         unbind S
         unbind c
         unbind C-c
