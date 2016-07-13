@@ -59,6 +59,7 @@
     Plug 'racer-rust/vim-racer'
     Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
     Plug 'veegee/vim-pic'
+    Plug 'hsanson/vim-android'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
