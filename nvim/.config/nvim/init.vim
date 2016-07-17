@@ -375,8 +375,8 @@
         inoremap gs <esc>:w<cr>
         nnoremap gS :wq<CR>
         nnoremap gbb :w<CR> :Neomake!<CR>
-        nnoremap gj :w<CR> :Neomake!<CR>
         nnoremap gbc :Make! clean<CR>
+        nnoremap gj :w<CR> :Neomake!<CR>
         nnoremap gb<space> :w<CR> :NeomakeSh exit 0<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
@@ -403,6 +403,8 @@
         nnoremap 2O O<esc>O
         nnoremap 2o o<esc>o
         nnoremap c "_c
+        inoremap {{ {<cr>}<esc>O
+        vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
     "}}}
 "}}}
 
@@ -414,6 +416,7 @@
         " * Re-Indent
         "
         " * If: C, CPP, PHP or JAVA code: format using 'astyle'
+        " * If: RUST code: format using 'rustfmt'
         "
         " * Leaves 'formatprg' option clean so `gq` can be used with the default
         "   behavior
@@ -424,6 +427,9 @@
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'java'
             set formatprg=astyle\ --mode=java
+            silent! execute 'norm! gggqG'
+        elseif &ft ==? 'rust'
+            set formatprg=rustfmt
             silent! execute 'norm! gggqG'
         endif
 
@@ -885,17 +891,20 @@
     "{{{ HASKELL
         augroup ft_haskell
             au!
-            au FileType haskell inoremap ;: <ESC>:call Make_arrow(0)<CR>
-            au FileType haskell inoremap ;; <ESC>:call Make_arrow(1)<CR>
+            au FileType haskell inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType haskell inoremap <buffer> ;; <ESC>:call Make_arrow(1)<CR>
         augroup END
     "}}}
 
     "{{{ RUST
         augroup ft_rust
             au!
-            au FileType rust setlocal makeprg=cargo\ build
-            au FileType rust inoremap ;: <ESC>:call Make_arrow(0)<CR>
-            au FileType rust inoremap ;; <ESC>:call Make_arrow(1)<CR>
+            au FileType rust setlocal makeprg=cargo
+            au FileType rust nnoremap <buffer> gj :w<CR> :Neomake<CR>
+            au FileType rust nnoremap <buffer> gk :w<CR> :Dispatch test<CR>
+            au FileType rust nnoremap <buffer> gs :w<CR>
+            au FileType rust inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType rust inoremap <buffer> ;; <ESC>:call Make_arrow(1)<CR>
         augroup END
     "}}}
 
