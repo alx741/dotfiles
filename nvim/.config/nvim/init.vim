@@ -12,7 +12,6 @@
     Plug 'edsono/vim-matchit'
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
-    Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/vim-easy-align'
     Plug 'kana/vim-textobj-user'
     Plug 'kennykaye/vim-relativity'
@@ -60,6 +59,7 @@
     Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
     Plug 'veegee/vim-pic'
     Plug 'hsanson/vim-android'
+    Plug 'sheerun/vim-polyglot'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -80,10 +80,6 @@
         "{{{ Multiple-cursors
             let g:multi_cursor_exit_from_visual_mode=0
             let g:multi_cursor_exit_from_insert_mode=0
-        "}}}
-
-        "{{{ AutoPairs
-            let g:AutoPairs = {'{': '}'}
         "}}}
 
         "{{{ Better-whitespace
@@ -150,6 +146,7 @@
 
         "{{{ Vim-racer
             let g:racer_cmd = "racer"
+            let g:racer_no_default_keymappings = 1
             let $RUST_SRC_PATH = "/home/alx/lab/rust/rust/src"
         "}}}
 
