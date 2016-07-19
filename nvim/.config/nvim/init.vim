@@ -17,7 +17,7 @@
     Plug 'kennykaye/vim-relativity'
     Plug 'mbbill/undotree'
     Plug 'michaeljsmith/vim-indent-object'
-    " Plug 'othree/html5.vim'
+    Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'thanthese/Tortoise-Typing'
@@ -255,8 +255,8 @@
         set complete=.,w,b,u,t,i,kspell
         set expandtab
         set foldenable
-        set foldlevel=1
-        set foldlevelstart=10
+        set foldlevel=3
+        set foldlevelstart=99
         set foldmethod=syntax
         set foldnestmax=1
         set formatoptions=tcrql
@@ -718,7 +718,6 @@
             else
                 exe "norm! gv\<esc>"
                 exe "'<,'>norm! I\"\<esc>"
-                exe "norm! gvok\<esc>"
                 exe "'<,'>norm! A \"\<esc>"
                 exe "norm! jA\"\<esc>"
             endif
@@ -918,4 +917,4 @@
 "}}}
 
 
-" vim:fdm=marker:fdl=0
+" vim:fdm=marker
