@@ -94,6 +94,7 @@
 
     # Rust
     export RUST_CARGO_BIN="$HOME/.cargo/bin"
+    export RUST_SRC_PATH=~/lab/rust/rust/src/
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
