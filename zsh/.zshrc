@@ -113,6 +113,8 @@
     HISTFILE=~/.history
     SAVEHIST=1000
     HISTSIZE=1000
+
+    SORT_COMMAND="sort"
 #}}}
 
 #{{{ Colorize commands
@@ -175,6 +177,12 @@
         then
             cd ~ && clear
         fi
+    }
+
+    function L()
+    {
+        SORT_COMMAND="sort -r"
+        l
     }
 
     function l()
@@ -507,13 +515,14 @@
     {
         echo
         find "$1/" -maxdepth 1 -not -path '*/\.*' -printf \
-            "[%y]\t%P\n" | tail -n +2 | sort \
+            "[%y]\t%P\n" | tail -n +2 | eval ${SORT_COMMAND} \
             | sed -r \
             "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
             | sed -r \
             "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
             | sed -r \
             "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+        SORT_COMMAND="sort"
     }
 
     function fuzzy_edit()
@@ -615,7 +624,6 @@
     #{{{ FZF
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
         bindkey '^F' fzf-file-widget
-        bindkey '^K' fzf-cd-widget
 
         export FZF_TMUX=1
         export FZF_TMUX_HEIGHT=40%
