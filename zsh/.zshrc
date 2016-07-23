@@ -243,6 +243,7 @@
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
         alias be="$SCRIPTS/builder_edit.sh"
+        alias o="$SCRIPTS/open.sh"
     #}}}
 
     #{{{ Sufix
