@@ -96,6 +96,9 @@
     export RUST_CARGO_BIN="$HOME/.cargo/bin"
     export RUST_SRC_PATH=~/lab/rust/rust/src/
 
+    # Haskell
+    export HASKELL_STACK_BIN="$HOME/.stack/programs/x86_64-linux/"
+
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -106,6 +109,7 @@
     PATH+="$RUBY_GEMS:"
     PATH+="$PERL6:"
     PATH+="$RUST_CARGO_BIN:"
+    PATH+="$HASKELL_STACK_BIN:"
     export PATH
     declare -U path
 
@@ -290,6 +294,7 @@
 
     #{{{ Fancy
         alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
+        alias stack="echo; cat ~/.ascii_art/lambda; echo; stack"
         alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
         alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
         alias ghci="echo; cat ~/.ascii_art/lambda; echo; ghci"
