@@ -60,6 +60,10 @@
     Plug 'veegee/vim-pic'
     Plug 'hsanson/vim-android'
     Plug 'sheerun/vim-polyglot'
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+    Plug 'ervandew/supertab'
+    Plug 'eagletmt/ghcmod-vim'
+    Plug 'eagletmt/neco-ghc'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
