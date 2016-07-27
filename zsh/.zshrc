@@ -16,12 +16,17 @@
 #}}}
 
 #{{{ ZSH Modules
-    autoload -U compinit promptinit zcalc zsh-mime-setup
+    autoload -U compinit bashcompinit promptinit zcalc zsh-mime-setup
+    autoload -U promptinit zcalc zsh-mime-setup
     autoload -U colors && colors
     autoload -Uz vcs_info
     compinit
+    bashcompinit
     promptinit
     zsh-mime-setup
+
+    # Haskell Stack
+    eval "$(stack --bash-completion-script stack)"
 #}}}
 
 #{{{ Options
@@ -102,6 +107,7 @@
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
+    PATH+="$HOME/.local/bin:"
     PATH+="$ANDROID_TOOLS:"
     PATH+="$GRADLE_HOME/bin:"
     PATH+="$COMPOSER_HOME/vendor/bin:"
@@ -294,6 +300,7 @@
 
     #{{{ Fancy
         alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
+        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
         alias stack="echo; cat ~/.ascii_art/lambda; echo; stack"
         alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
         alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
