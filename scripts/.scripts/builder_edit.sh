@@ -89,9 +89,14 @@ then
     builder_files+="Cargo.toml"
 fi
 
+if [[ -f "stack.yaml" ]];
+then
+    builder_files+="stack.yaml"
+fi
+
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
 then
-    builder_files+="*.cabal"
+    builder_files+=" *.cabal"
 fi
 
 
