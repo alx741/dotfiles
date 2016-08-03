@@ -54,6 +54,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Pacman
 * Ratpoison
 * Rtv
+* Stack
 * Taskwarrior
 * Tmux
 * Urxvt
