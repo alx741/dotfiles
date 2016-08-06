@@ -387,7 +387,7 @@
 #}}}
 
 #{{{ Vi-mode
-    # From `oh-my-zsh` vi-mode plugin
+    # From 'oh-my-zsh' vi-mode plugin
 
     # Ensures that $terminfo values are valid and updates editor information
     # when the keymap changes.
@@ -451,7 +451,7 @@
         if [[ "$KEYMAP" == "vicmd" ]];
         then
             # RPS1="%{$fg[red]%}-- NORMAL --%{$reset_color%}"
-            PS1="$custom_prompt %{$fg_bold[red]%}> "
+            PS1="$custom_prompt %{$fg[red]%}> "
         else
             # RPS1="%{$fg[cyan]%}-- INSERT --%{$reset_color%}"
             PS1="$custom_prompt   "
