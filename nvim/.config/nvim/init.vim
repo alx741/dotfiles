@@ -95,7 +95,7 @@
 
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
-            let g:lengthmatters_excluded+=['html', 'mail', 'pager']
+            let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
         "}}}
 
         "{{{ Easytags
@@ -110,6 +110,13 @@
         "{{{ EasyAlign
             nmap ga <Plug>(EasyAlign)
             xmap ga <Plug>(EasyAlign)
+
+            let g:easy_align_delimiters = {
+                \ '/': {
+                \     'pattern':         '//\+\|/\*\|\*/',
+                \     'delimiter_align': 'l',
+                \     'ignore_groups':   ['!Comment'] }
+                \ }
         "}}}
 
         "{{{ Sneak
@@ -123,15 +130,6 @@
 
         "{{{ Togglelist
             let g:toggle_list_no_mappings=1
-        "}}}
-
-        "{{{ EasyAlign
-        let g:easy_align_delimiters = {
-            \ '/': {
-            \     'pattern':         '//\+\|/\*\|\*/',
-            \     'delimiter_align': 'l',
-            \     'ignore_groups':   ['!Comment'] }
-            \ }
         "}}}
 
         "{{{ Closetag
@@ -157,6 +155,11 @@
         "{{{ Vim-tmux-navigator
             let g:tmux_navigator_no_mappings = 1
             let g:tmux_navigator_save_on_switch = 1
+        "}}}
+
+        "{{{ Supertab
+            let g:SuperTabDefaultCompletionType = "context"
+            let g:SuperTabContextDefaultCompletionType = "<c-p>"
         "}}}
     "}}}
 "}}}
@@ -395,7 +398,7 @@
         vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
         nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
         nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
-        nnoremap <C-\> :call ToggleQuickfixList()<CR>
+        nnoremap <silent><C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
         nnoremap <C-p> :Buffers<CR>
         nnoremap g\ :Explore<CR>
