@@ -422,21 +422,25 @@
         " * Replaces tabs with spaces
         " * Re-Indent
         "
-        " * If: C, CPP, PHP or JAVA code: format using 'astyle'
-        " * If: RUST code: format using 'rustfmt'
+        " * If: C, CPP, PHP or Java code: format using 'astyle'
+        " * If: Rust code: format using 'rustfmt'
+        " * If: Haskell code: format using 'hindent'
         "
-        " * Leaves 'formatprg' option clean so `gq` can be used with the default
+        " * Clear 'formatprg' so `gq` can be used with the default
         "   behavior
         silent! execute 'norm! mz'
 
         if &ft ==? 'c' || &ft ==? 'cpp' || &ft ==? 'php'
-            set formatprg=astyle\ --mode=c
+            setlocal formatprg=astyle\ --mode=c
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'java'
-            set formatprg=astyle\ --mode=java
+            setlocal formatprg=astyle\ --mode=java
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'rust'
-            set formatprg=rustfmt
+            setlocal formatprg=rustfmt
+            silent! execute 'norm! gggqG'
+        elseif &ft ==? 'haskell'
+            setlocal formatprg=hindent\ --style\ chris-done
             silent! execute 'norm! gggqG'
         endif
 
@@ -444,7 +448,7 @@
         silent! execute 'retab'
         silent! execute 'gg=G'
         silent! execute 'norm! `z'
-        set formatprg=
+        setlocal formatprg=
     endfunction
     "}}}
 
