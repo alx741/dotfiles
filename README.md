@@ -36,6 +36,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Avrdude
 * Ccze
 * Ctags
+* Ghci
 * Git
 * Gpg
 * Gtk
