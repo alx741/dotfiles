@@ -26,6 +26,9 @@ mpd&
 
     # Hide the rat after 1 second
     unclutter -idle 1 -jitter 10 -root&
+
+    # Left pointer
+    xsetroot -cursor_name left_ptr
 #}}}
 
 # Window manager
