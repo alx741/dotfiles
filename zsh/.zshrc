@@ -299,12 +299,12 @@
     #}}}
 
     #{{{ Fancy
-        alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
-        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
         alias stack="echo; cat ~/.ascii_art/lambda; echo; stack"
+        alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
+        alias ghci="$SCRIPTS/fancy/ghci.sh"
+        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
         alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
         alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
-        alias ghci="echo; cat ~/.ascii_art/lambda; echo; stack ghci"
         alias mem="echo; cat ~/.ascii_art/floppy; echo; \
             sudo mount /dev/sdc1 /mnt/mem"
         alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
