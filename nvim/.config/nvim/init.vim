@@ -53,6 +53,7 @@
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'asciidoc/vim-asciidoc'
     Plug 'rust-lang/rust.vim'
+    Plug 'LnL7/vim-nix'
     Plug 'cespare/vim-toml'
     Plug 'joukevandermaas/vim-ember-hbs'
     Plug 'racer-rust/vim-racer'
@@ -62,8 +63,10 @@
     Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'ervandew/supertab'
+    Plug 'calebsmith/vim-lambdify'
     Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
+    Plug 'Twinside/vim-hoogle'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -524,11 +527,11 @@
 
     function! Make_arrow(type) "{{{
         if a:type
-            exe "norm! a->  "
-            exe "startinsert"
+            exe "norm! a-> "
+            exe "startinsert!"
         else
-            exe "norm! a=>  "
-            exe "startinsert"
+            exe "norm! a=> "
+            exe "startinsert!"
         endif
     endfunction
     "}}}
@@ -549,11 +552,12 @@
             au FileType c,cpp nnoremap <buffer><silent>gH :AS<CR>
             au FileType c inoremap ,< <ESC>:call Avr_set_bit(0)<CR>
             au FileType c inoremap << <ESC>:call Avr_set_bit(1)<CR>
+            au FileType c nnoremap <buffer> gb :Make burn<CR>
         augroup END
 
         function! Avr_set_bit(value)
             exe "norm! bi(" . a:value ." << \<esc>wgUiWEa) \<esc>"
-            exe "startinsert"
+            exe "startinsert!"
         endfunction
     "}}}
 
@@ -864,10 +868,10 @@
         function! Php_make_var(static)
             if a:static
                 exe "norm! mzBi$\<esc>`zla:: "
-                exe "startinsert"
+                exe "startinsert!"
             else
                 exe "norm! mzBi$\<esc>`zla-> "
-                exe "startinsert"
+                exe "startinsert!"
             endif
         endfunction
     "}}}
@@ -901,8 +905,33 @@
     "{{{ HASKELL
         augroup ft_haskell
             au!
-            au FileType haskell inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType haskell setlocal makeprg=stack
+            au FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+            au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
+            au FileType haskell nnoremap <buffer> gl :Neomake<CR>
+            au FileType haskell nnoremap <buffer> gj :Make build<CR>
+            au FileType haskell nnoremap <buffer> gk :Make test<CR>
+            au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
+
+            au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
+            au FileType haskell nnoremap <silent><buffer> gfs :GhcModSplitFunCase<CR>
+            au FileType haskell nnoremap <silent><buffer> gtt :GhcModType<CR>
+
             au FileType haskell inoremap <buffer> ;; <ESC>:call Make_arrow(1)<CR>
+            au FileType haskell inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
+
+            au FileType haskell inoreab <buffer> int Int
+            au FileType haskell inoreab <buffer> integer Integer
+            au FileType haskell inoreab <buffer> string String
+            au FileType haskell inoreab <buffer> double Double
+            au FileType haskell inoreab <buffer> float Float
+            au FileType haskell inoreab <buffer> bool Bool
+            au FileType haskell inoreab <buffer> true True
+            au FileType haskell inoreab <buffer> false False
+            au FileType haskell inoreab <buffer> maybe Maybe
+            au FileType haskell inoreab <buffer> just Just
+            au FileType haskell inoreab <buffer> nothing Nothing
         augroup END
     "}}}
 
