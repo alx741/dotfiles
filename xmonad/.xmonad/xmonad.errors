@@ -1,0 +1,9 @@
+
+xmonad.hs:3:15: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+/bin/ld: cannot find -lHSutf8-string-1.0.1.1-2T8mBCuEDlXDo8zed8Onw4
+/bin/ld: cannot find -lHSmtl-2.2.1-6qsR1PHUy5lL47Hpoa4jCM
+collect2: error: ld returned 1 exit status
+`gcc' failed in phase `Linker'. (Exit code: 1)

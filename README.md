@@ -65,6 +65,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Weechat
 * X11
 * Xmodmap
+* Xmonad
 * Zathura
 * Zsh
 

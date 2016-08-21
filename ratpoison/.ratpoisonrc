@@ -195,6 +195,7 @@
 
     # Give temporally control to openbox
     bind grave tmpwm openbox
+    bind asciitilde tmpwm xmonad
 
     # Use ratmen window selection
     bind W exec ~/.scripts/ratpoison/window_select.sh ratmen
