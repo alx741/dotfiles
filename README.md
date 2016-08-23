@@ -97,7 +97,9 @@ the system package manager, this is a non exhaustive list:
 * expect
 * figlet
 * firefox
+* hsColour
 * id3v2
+* lolcat
 * mpc
 * qrencode
 * scrot
