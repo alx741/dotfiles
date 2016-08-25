@@ -817,18 +817,8 @@
             au FileType man nnoremap <buffer><nowait>b <C-b>
             au FileType man nnoremap <buffer><nowait>e <C-e>
             au FileType man nnoremap <buffer><nowait>y <C-y>
-            au FileType man nnoremap <buffer>q :call Close_man()<CR>
+            au FileType man nnoremap <buffer>q :q<CR>
         augroup END
-
-        function! Close_man()
-            let number_of_buffers=len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-
-            if (number_of_buffers == 0)
-                exec "q"
-            else
-                exec "tabclose"
-            endif
-        endfunction
 
         function! Man_section(reverse)
             call search('\v\n\u+', a:reverse ? 'bW' : 'W')
