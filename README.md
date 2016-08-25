@@ -40,6 +40,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Git
 * Gpg
 * Gtk
+* Mimi
 * MongoDB
 * Mozrepl
 * Mpd
