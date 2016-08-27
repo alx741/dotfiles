@@ -7,6 +7,10 @@ CYAN=`echo -e '\e[36m'`
 MAGENTA=`echo -e '\e[35m'`
 RESET=`echo -e '\e[0m'`
 
+echo
+cat ~/.ascii_art/lambda | lolcat -S 28
+echo
+
 stack ghci "$@" 2>&1 |\
     sed "
         s/\[/${MAGENTA}&${RESET}/g;\
