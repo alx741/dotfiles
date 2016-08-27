@@ -173,6 +173,8 @@
 
     function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
 
+    function hoogle() { command hoogle $@ | HsColour --tty }
+
     function c()
     {
         if [[ $# -eq 1 ]];
@@ -226,7 +228,7 @@
         command man -P true "$*" &> /dev/null
         if [[ $? -eq 0 ]];
         then
-            vim -c ":Man $*" -c ":tabonly" -c ":bd 1"
+            command nvim -c ":Man $*" -c ":tabonly" -c ":bd 1"
         else
             echo
             echo
@@ -237,23 +239,17 @@
 
 
     #{{{ Scripts
-        alias addio="$SCRIPTS/fancy/addio.sh halt"
+        alias be="$SCRIPTS/builder_edit.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
-        alias gclone="$SCRIPTS/fancy/git.sh clone"
-        alias gpull="$SCRIPTS/fancy/git.sh pull"
-        alias gpush="$SCRIPTS/fancy/git.sh push"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
-        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
+        alias o="$SCRIPTS/open.sh"
         alias pro="$SCRIPTS/configure_projector.sh"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
-        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
-        alias topa="$SCRIPTS/fancy/addio.sh halt"
+        alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
         alias wifi="$SCRIPTS/network/configure_wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
-        alias be="$SCRIPTS/builder_edit.sh"
-        alias o="$SCRIPTS/open.sh"
     #}}}
 
     #{{{ Sufix
@@ -295,13 +291,19 @@
         alias ....='cd ../../..'
         alias ,,='popd'
         alias dot="cd ~/dotfiles/"
-        alias silly="cd ~/lab/silly-bytes/"
     #}}}
 
     #{{{ Fancy
-        alias stack="echo; cat ~/.ascii_art/lambda; echo; stack"
-        alias cabal="echo; cat ~/.ascii_art/lambda; echo; cabal"
+        alias addio="$SCRIPTS/fancy/addio.sh halt"
+        alias gclone="$SCRIPTS/fancy/git.sh clone"
+        alias gpull="$SCRIPTS/fancy/git.sh pull"
+        alias gpush="$SCRIPTS/fancy/git.sh push"
+        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
+        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
+        alias topa="$SCRIPTS/fancy/addio.sh halt"
         alias ghci="$SCRIPTS/fancy/ghci.sh"
+        alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
+        alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
         alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
         alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
         alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
