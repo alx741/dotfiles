@@ -32,7 +32,7 @@ function launch_terminal
     then
         ratpoison -c "select urxvt"
     else
-        urxvt -e bash -c "tmux -q has-session &>/dev/null && exec tmux \
+        urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
             attach-session -d || exec tmux new-session -n$USER \
             -s$USER@$HOSTNAME weechat\; new-window"&
     fi
