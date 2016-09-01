@@ -168,7 +168,6 @@
     alias vi="fuzzy_edit"
     alias vim="fuzzy_edit"
     alias woman="command man"
-    alias z="zathura"
 
     function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
