@@ -67,6 +67,7 @@
     Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
+    Plug 'alx741/vim-hindent'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -427,7 +428,6 @@
         "
         " * If: C, CPP, PHP or Java code: format using 'astyle'
         " * If: Rust code: format using 'rustfmt'
-        " * If: Haskell code: format using 'hindent'
         "
         " * Clear 'formatprg' so `gq` can be used with the default
         "   behavior
@@ -441,9 +441,6 @@
             silent! execute 'norm! gggqG'
         elseif &ft ==? 'rust'
             setlocal formatprg=rustfmt
-            silent! execute 'norm! gggqG'
-        elseif &ft ==? 'haskell'
-            setlocal formatprg=hindent\ --style\ chris-done
             silent! execute 'norm! gggqG'
         endif
 
@@ -897,6 +894,7 @@
             au!
             au FileType haskell setlocal makeprg=stack
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
+            au FileType haskell setlocal formatprg=hindent
 
             au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
             au FileType haskell nnoremap <buffer> gl :Neomake<CR>
