@@ -7,11 +7,11 @@
 
 Daniel Campoverde Carrión [alx741]
 
-mailto: <alx741@riseup.net>
+mailto: <alx@sillybytes.net>
 
 GPG key id: 12622B78 (keys.gnupg.net)
 
-http: [Silly Bytes](http://silly-bytes.blogspot.com/)
+http: [Silly Bytes](http://www.sillybytes.net)
 
 Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
