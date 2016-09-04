@@ -360,8 +360,8 @@
 #}}}
 
 #{{{ Prompt
-    zstyle ':vcs_info:*' stagedstr '%F{28}^'
-    zstyle ':vcs_info:*' unstagedstr '%F{11}^'
+    zstyle ':vcs_info:*' stagedstr '%F{28}•'
+    zstyle ':vcs_info:*' unstagedstr '%F{11}•'
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
     zstyle ':vcs_info:*' enable git svn
@@ -373,7 +373,7 @@
         if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
             zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b%c%u%F{normal}]"
         } else {
-            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b%c%u%F{red}^%F{normal}]"
+            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b %c%u%F{red}•%F{normal}]"
         }
 
         vcs_info
