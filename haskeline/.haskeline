@@ -1,0 +1,6 @@
+editMode: Vi
+bellStyle: NoBell
+completionType: ListCompletion
+historyDuplicates: IgnoreAll
+bind: ctrl-p up
+bind: ctrl-n down
