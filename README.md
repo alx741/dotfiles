@@ -56,6 +56,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Openbox
 * Pacman
 * Ratpoison
+* Readline
 * Rtv
 * Stack
 * Taskwarrior
