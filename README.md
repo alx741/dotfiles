@@ -59,6 +59,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Readline
 * Rtv
 * Stack
+* Sxiv
 * Taskwarrior
 * Tmux
 * Urxvt
@@ -106,7 +107,6 @@ the system package manager, this is a non exhaustive list:
 * mpc
 * qrencode
 * scrot
-* sxiv
 * task
 * unclutter
 * vmenu
