@@ -185,7 +185,9 @@
     bind C-o only
 
     # Swap screens
-    bind x swap 1 0
+    bind x abort
+    bind j swap 1 0
+    bind C-j swap 1 0
 
     # Fast switching
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
