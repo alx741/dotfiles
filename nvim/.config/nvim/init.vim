@@ -63,7 +63,7 @@
     Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'ervandew/supertab'
-    Plug 'calebsmith/vim-lambdify'
+    " Plug 'calebsmith/vim-lambdify'
     Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
@@ -346,6 +346,7 @@
     "{{{ LEADER mappings
         nnoremap <leader>s :call ToggleSpell()<CR>
         nnoremap <silent><leader>t :TlistToggle<CR>
+        nnoremap <silent><leader>f :FuzzySearch<CR>
         nnoremap <silent><leader><leader> :UndotreeToggle<CR>
 
         "{{{ Dotfiles editing
@@ -524,10 +525,18 @@
 
     function! Make_arrow(type) "{{{
         if a:type
-            exe "norm! a-> "
+            if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
+                exe "norm! a-> "
+            else
+                exe "norm! a -> "
+            endif
             exe "startinsert!"
         else
-            exe "norm! a=> "
+            if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
+                exe "norm! a=> "
+            else
+                exe "norm! a => "
+            endif
             exe "startinsert!"
         endif
     endfunction
@@ -896,18 +905,20 @@
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell setlocal formatprg=hindent
 
-            au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
-            au FileType haskell nnoremap <buffer> gl :Neomake<CR>
+            au FileType haskell nnoremap <buffer> gll :Neomake<CR>
+            au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
+            au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
             au FileType haskell nnoremap <buffer> gj :Make build<CR>
             au FileType haskell nnoremap <buffer> gk :Make test<CR>
             au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
+            au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
 
             au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
             au FileType haskell nnoremap <silent><buffer> gfs :GhcModSplitFunCase<CR>
             au FileType haskell nnoremap <silent><buffer> gtt :GhcModType<CR>
 
-            au FileType haskell inoremap <buffer> ;; <ESC>:call Make_arrow(1)<CR>
-            au FileType haskell inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
+            au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
+            au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(0)<CR>
 
             au FileType haskell inoreab <buffer> int Int
             au FileType haskell inoreab <buffer> integer Integer
