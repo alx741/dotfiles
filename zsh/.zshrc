@@ -69,7 +69,7 @@
 #{{{ Variables
     export HADES="hades.alx.mooo.com"
     export SCRIPTS="~/.scripts"
-    export EDITOR=nvim
+    export EDITOR=vim
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
 
@@ -228,7 +228,7 @@
         command man -P true "$*" &> /dev/null
         if [[ $? -eq 0 ]];
         then
-            command nvim -c ":Man $*" -c ":tabonly" -c ":bd 1"
+            command vim -c ":Man $*" -c ":tabonly" -c ":bd 1"
         else
             echo
             echo
@@ -271,12 +271,12 @@
     #}}}
 
     #{{{ Edit Dotfiles
-        alias ev="$EDITOR ~/.config/nvim/init.vim"
+        alias ev="$EDITOR ~/.vimrc"
         alias et="$EDITOR ~/.tmux.conf"
         alias er="$EDITOR ~/.ratpoisonrc"
         alias ez="$EDITOR ~/.zshrc"
         alias ex="$EDITOR ~/.xinitrc"
-        alias '\ev'="$EDITOR ~/.config/nvim/init.vim"
+        alias '\ev'="$EDITOR ~/.vimrc"
         alias '\et'="$EDITOR ~/.tmux.conf"
         alias '\er'="$EDITOR ~/.ratpoisonrc"
         alias '\ez'="$EDITOR ~/.zshrc"

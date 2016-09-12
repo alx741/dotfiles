@@ -20,7 +20,7 @@ Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
 Use GNU `stow` for install each config like this:
 
-        $ stow -t ~ nvim
+        $ stow -t ~ vim
 
 
 ## Show me
@@ -63,6 +63,7 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 * Taskwarrior
 * Tmux
 * Urxvt
+* Vim
 * VimFx
 * Vmenu
 * W3M
@@ -82,7 +83,6 @@ These dotfiles are abandoned
 * ~~Dwm~~
 * ~~Emacs~~
 * ~~Tilda~~
-* ~~Vim~~
 
 
 ## Dependencies
