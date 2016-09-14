@@ -382,9 +382,9 @@
         nnoremap gs :w<CR>
         inoremap gs <esc>:w<cr>
         nnoremap gS :wq<CR>
-        nnoremap gbb :w<CR> :Neomake!<CR>
+        nnoremap gbb :w<CR> :Make!<CR>
         nnoremap gbc :Make! clean<CR>
-        nnoremap gj :w<CR> :Neomake!<CR>
+        nnoremap gj :w<CR> :Make!<CR>
         nnoremap gb<space> :w<CR> :NeomakeSh exit 0<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
