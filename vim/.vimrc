@@ -248,9 +248,10 @@
         augroup END
     "}}}
 
-    "{{{ Global Commands and abbreviations
+    "{{{ Global Commands, abbreviations and sourcing
         command! W w !sudo tee % >/dev/null
         cnoreabbrev man Man
+        runtime! ftplugin/man.vim
     "}}}
 
     " {{{ General Options
