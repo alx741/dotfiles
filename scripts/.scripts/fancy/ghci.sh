@@ -11,15 +11,4 @@ echo
 cat ~/.ascii_art/lambda | lolcat -S 28
 echo
 
-stack ghci "$@" 2>&1 |\
-    sed "
-        s/\[/${MAGENTA}&${RESET}/g;\
-        s/\]/${MAGENTA}&${RESET}/g;\
-        s/\]/${MAGENTA}&${RESET}/g;\
-        s/[()]/${BLUE}&${RESET}/g;\
-        s/->/${CYAN}&${RESET}/g;\
-        s/=>/${MAGENTA}&${RESET}/g;\
-        s/^Failed, modules loaded:/${RED}&${RESET}/g;\
-        s/^Ok, modules loaded:/${GREEN}&${RESET}/g;\
-        s/::/${MAGENTA}&${RESET}/g;\
-        "
+stack ghci "$@"
