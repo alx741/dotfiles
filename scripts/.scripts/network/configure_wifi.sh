@@ -3,7 +3,7 @@
 source "$(dirname "$0")/../utility.sh"
 
 
-if am_i_at_home
+if am_i_at_home || [[ "$1" == "home" ]];
 then
     sudo ifconfig wlp2s0 up
     sudo wpa_supplicant -i wlp2s0 -c /etc/wpa_supplicant/wifi.h.conf -B
@@ -16,7 +16,7 @@ fi
 
 
 # Create adhoc network sharing through cable interface
-if [[ "$0" == "adhoc" ]]; then
+if [[ "$1" == "adhoc" ]]; then
     sudo ifconfig wlp2s0 down
     sudo iwconfig wlp2s0 mode ad-hoc
     sudo iwconfig wlp2s0 essid "ushare" key "ushare10"
