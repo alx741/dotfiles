@@ -343,7 +343,6 @@
     "{{{ LEADER mappings
         nnoremap <leader>s :call ToggleSpell()<CR>
         nnoremap <silent><leader>t :TlistToggle<CR>
-        nnoremap <silent><leader>f :FuzzySearch<CR>
         nnoremap <silent><leader><leader> :UndotreeToggle<CR>
 
         "{{{ Dotfiles editing
@@ -412,6 +411,7 @@
         nnoremap 2O O<esc>O
         nnoremap 2o o<esc>o
         nnoremap c "_c
+        nnoremap <silent> <c-_> :FuzzySearch<CR>
         inoremap {{ {<cr>}<esc>O
         vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
     "}}}
