@@ -94,12 +94,13 @@
             let g:better_whitespace_filetypes_blacklist=['man', 'info', 'help']
             let g:better_whitespace_filetypes_blacklist+=['gitcommit', 'po', 'diff']
             let g:better_whitespace_filetypes_blacklist+=['unite', 'qf', 'neoman']
-            let g:better_whitespace_filetypes_blacklist+=['mail', 'pager']
+            let g:better_whitespace_filetypes_blacklist+=['mail', 'pager', 'taskedit']
         "}}}
 
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
             let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
+            let g:lengthmatters_excluded+=['taskedit']
         "}}}
 
         "{{{ Easytags
