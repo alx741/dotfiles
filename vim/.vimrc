@@ -403,6 +403,7 @@
         nnoremap <silent><C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
         nnoremap <C-p> :Buffers<CR>
+        nnoremap <C-m> :Tags<CR>
         nnoremap g\ :Explore<CR>
         nnoremap go gvo<esc>
         vnoremap // y/<C-R>"<CR>
