@@ -175,7 +175,7 @@
     bind q exec ~/.scripts/qr_generator.sh
 
     # ET phone home
-    bind E exec ~/.scripts/ratpoison/et_phone_home.sh
+    bind E exec ~/.scripts/fancy/et_phone_home.sh
 
     # Send C-g to application
     bind g meta C-g
