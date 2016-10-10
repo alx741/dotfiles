@@ -290,6 +290,7 @@
         alias ....='cd ../../..'
         alias ,,='popd'
         alias dot="cd ~/dotfiles/"
+        alias acm="cd u/acm"
     #}}}
 
     #{{{ Fancy
