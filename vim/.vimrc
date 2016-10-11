@@ -952,6 +952,13 @@
             au FileType pic8 setlocal commentstring=;\ %s
         augroup END
     "}}}
+
+    "{{{ TEX
+        augroup ft_tex
+            au!
+            au FileType tex nnoremap <buffer><space> 1z=
+        augroup END
+    "}}}
 "}}}
 
 
