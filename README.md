@@ -35,6 +35,13 @@ Here a *vim* instance with my *.vimrc* and a Haskell *GHCI* session
 ![shot2](shot2.png)
 
 
+And over here a *git* push and a *pacman* update
+
+![shot3](shot3.png)
+
+![shot4](shot4.png)
+
+
 ## Dotfiles
 
 * Astyle
