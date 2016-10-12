@@ -29,6 +29,9 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 
 ![shot](shot.png)
 
+
+Here a *vim* instance with my *.vimrc* and a Haskell *GHCI* session
+
 ![shot2](shot2.png)
 
 
