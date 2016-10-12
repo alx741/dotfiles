@@ -42,6 +42,11 @@ And over here a *git* push and a *pacman* update
 ![shot4](shot4.png)
 
 
+Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
+
+![shot5](shot5.png)
+
+
 ## Dotfiles
 
 * Astyle
