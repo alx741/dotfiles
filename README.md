@@ -29,6 +29,8 @@ Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
 
 ![shot](shot.png)
 
+![shot2](shot2.png)
+
 
 ## Dotfiles
 
