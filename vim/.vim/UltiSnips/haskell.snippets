@@ -1,3 +1,17 @@
+snippet main "main :: IO ()"
+main :: IO ()
+main = do
+	$0
+endsnippet
+
 snippet module "module % where"
 module `!v expand('%:t:r')` where$0
+endsnippet
+
+snippet puts "putStrLn"
+putStrLn $0
+endsnippet
+
+snippet getl "getLine"
+getLine $0
 endsnippet
