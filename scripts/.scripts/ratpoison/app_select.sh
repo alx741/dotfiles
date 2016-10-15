@@ -34,7 +34,8 @@ function launch_terminal
     else
         urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
             attach-session -d || exec tmux new-session -n$USER \
-            -s$USER@$HOSTNAME weechat\; new-window"&
+            -s$USER@$HOSTNAME weechat\; new-window\; \
+            rename-window -t 0 _\; rename-window -t 1 ''"&
     fi
 }
 
