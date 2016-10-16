@@ -13,9 +13,9 @@
     set copy = yes
     set wait_key = no
     set edit_headers
-    set pager = "nvim -c 'set ft=pager syntax=mail'"
+    set pager = "vim -c 'set ft=pager syntax=mail'"
     set prompt_after = no
-    set editor = "nvim -c 'set ft=mail'"
+    set editor = "vim -c 'set ft=mail'"
     set menu_scroll = "yes"
     set mail_check = 30
     set imap_keepalive = 300
