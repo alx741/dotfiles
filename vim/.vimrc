@@ -904,32 +904,40 @@
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell setlocal formatprg=hindent
 
-            au FileType haskell nnoremap <buffer> gll :Neomake<CR>
-            au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
-            au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
-            au FileType haskell nnoremap <buffer> gj :Make build<CR>
-            au FileType haskell nnoremap <buffer> gk :Make test<CR>
-            au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
-            au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
+            "{{{ Mappings
+                " General
+                au FileType haskell nnoremap <buffer> gll :Neomake<CR>
+                au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
+                au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
+                au FileType haskell nnoremap <buffer> gj :Make build<CR>
+                au FileType haskell nnoremap <buffer> gk :Make test<CR>
+                au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
+                au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
+                au FileType haskell nmap <silent><buffer> <leader>g :Dispatch ghci %<CR>
 
-            au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
-            au FileType haskell nnoremap <silent><buffer> gfs :GhcModSplitFunCase<CR>
-            au FileType haskell nnoremap <silent><buffer> gtt :GhcModType<CR>
+                " ghc-mod
+                au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
+                au FileType haskell nnoremap <silent><buffer> gfs :GhcModSplitFunCase<CR>
+                au FileType haskell nnoremap <silent><buffer> gtt :GhcModType<CR>
 
-            au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
-            au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(0)<CR>
+                " Arrows
+                au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
+                au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(0)<CR>
+            "}}}
 
-            au FileType haskell inoreab <buffer> int Int
-            au FileType haskell inoreab <buffer> integer Integer
-            au FileType haskell inoreab <buffer> string String
-            au FileType haskell inoreab <buffer> double Double
-            au FileType haskell inoreab <buffer> float Float
-            au FileType haskell inoreab <buffer> bool Bool
-            au FileType haskell inoreab <buffer> true True
-            au FileType haskell inoreab <buffer> false False
-            au FileType haskell inoreab <buffer> maybe Maybe
-            au FileType haskell inoreab <buffer> just Just
-            au FileType haskell inoreab <buffer> nothing Nothing
+            "{{{ Types Abbreviations
+                au FileType haskell inoreab <buffer> int Int
+                au FileType haskell inoreab <buffer> integer Integer
+                au FileType haskell inoreab <buffer> string String
+                au FileType haskell inoreab <buffer> double Double
+                au FileType haskell inoreab <buffer> float Float
+                au FileType haskell inoreab <buffer> bool Bool
+                au FileType haskell inoreab <buffer> true True
+                au FileType haskell inoreab <buffer> false False
+                au FileType haskell inoreab <buffer> maybe Maybe
+                au FileType haskell inoreab <buffer> just Just
+                au FileType haskell inoreab <buffer> nothing Nothing
+            "}}}
         augroup END
     "}}}
 
