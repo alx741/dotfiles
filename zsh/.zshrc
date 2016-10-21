@@ -167,6 +167,7 @@
     alias vhex="vim -b"
     alias vi="fuzzy_edit"
     alias vim="fuzzy_edit"
+    alias st="speedtest"
     alias woman="command man"
 
     function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
