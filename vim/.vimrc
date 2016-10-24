@@ -63,7 +63,6 @@
     Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'ervandew/supertab'
-    " Plug 'calebsmith/vim-lambdify'
     Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
