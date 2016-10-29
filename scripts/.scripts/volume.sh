@@ -60,9 +60,9 @@ function vol_echo_formatted
     mute_state=$(echo $sound_data | awk '{print $6}' | tr -d '[]')
     mode=$(vol_get_mode)
 
-    sound_state="$(echo $mute_state | sed 's/on/-/;s/off/M/') "
-    sound_state+="$(echo $volume) "
-    sound_state+="$(echo $mode | sed 's/normal/ N/;s/music/ >/')"
+    sound_state="$(echo $mute_state | sed 's/on//;s/off/✗/') "
+    sound_state+="$(echo $volume)"
+    sound_state+="$(echo $mode | sed 's/normal/ ◎/;s/music/ ♫/')"
 
     echo "$sound_state"
 }
