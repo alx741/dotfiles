@@ -169,6 +169,7 @@
     alias vim="fuzzy_edit"
     alias st="speedtest"
     alias woman="command man"
+    alias vr="vim README*"
 
     function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
