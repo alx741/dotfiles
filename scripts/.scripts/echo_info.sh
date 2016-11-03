@@ -16,6 +16,6 @@ then
     echo "$date"
 
 else
-    echo "$sound_state | $battery_state || $date"
+    echo "$sound_state | $battery_state | $date"
 fi
 tmux refresh-client -S
