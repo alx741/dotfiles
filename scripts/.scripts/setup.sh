@@ -14,6 +14,7 @@ source "$(dirname "$0")/utility.sh"
 #       - Ethernet static configuration
 #       - Init:
 #           - Web browser
+#           - FTP server
 #
 # * No-Home
 #       - Laptop display [1366x768]
@@ -34,6 +35,7 @@ then
     amixer set Master 100%
     firefox&
     ~/.scripts/network/configure_ether.sh
+    sudo systemctl start vsftpd
 else
     if is_vga_plugedin
     then
