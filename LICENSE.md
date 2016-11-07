@@ -1,7 +1,7 @@
 Copyright 2016 by Daniel Campoverde Carrión [alx741] <alx@sillybytes.net>
 
 When using (fully or partially) any script or configuration file in this
-repository, this **license file have to be preserverd**.
+repository, this **license file must be preserverd**.
 
 Author: *Daniel Campoverde Carrión* *[alx741]*
 
