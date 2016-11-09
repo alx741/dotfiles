@@ -58,6 +58,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Gpg
 * Gtk
 * Haskeline
+* Hindent
 * Mimi
 * MongoDB
 * Mozrepl
