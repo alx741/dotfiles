@@ -109,7 +109,7 @@ These dotfiles depends, obviously, on the all the programs it configures, so
 install them first.
 
 Some of the various scripts depend on other binaries that can be installed using
-the system package manager, this is a non exhaustive list:
+the system package manager. This is a non-exhaustive list:
 
 * acpi
 * alsa-utils
