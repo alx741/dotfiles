@@ -67,6 +67,7 @@
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
     Plug 'alx741/vim-hindent'
+    Plug 'neovimhaskell/haskell-vim'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -902,6 +903,15 @@
             au FileType haskell setlocal makeprg=stack
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell setlocal formatprg=hindent
+            au FileType haskell let g:fzf_tags_command = 'hasktags .'
+
+            "{{{ Color
+                au FileType haskell hi! haskellDecl ctermfg=27
+                au FileType haskell hi! haskellDeclKeyword ctermfg=33
+                au FileType haskell hi! haskellIdentifier ctermfg=129
+                au FileType haskell hi! haskellOperators ctermfg=black
+                au FileType haskell hi! haskellType ctermfg=31
+            "}}}
 
             "{{{ Mappings
                 " General
