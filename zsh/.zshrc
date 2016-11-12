@@ -163,9 +163,11 @@
     alias time="command time -p"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
-    alias v="fuzzy_edit"
+    alias v=vim
     alias vhex="vim -b"
-    alias vi="fuzzy_edit"
+    alias vi=vim
+    alias e=vim
+    alias edit=vim
     alias vim="fuzzy_edit"
     alias st="speedtest"
     alias woman="command man"
