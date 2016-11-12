@@ -651,7 +651,7 @@
         bindkey '^F' fzf-file-widget
 
         export FZF_TMUX=1
-        export FZF_TMUX_HEIGHT=40%
+        export FZF_TMUX_HEIGHT=20%
         export FZF_DEFAULT_COMMAND='ag --depth 10 -f --hidden \
                                     --ignore .git -g ""'
         export FZF_DEFAULT_OPTS='
