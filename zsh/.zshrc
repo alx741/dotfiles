@@ -245,7 +245,10 @@
     #{{{ Scripts
         alias be="$SCRIPTS/builder_edit.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
+        alias eje="$SCRIPTS/mem.sh eject"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
+        alias mem="$SCRIPTS/mem.sh mount"
+        alias meme=mem
         alias pro="$SCRIPTS/configure_projector.sh"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
@@ -299,23 +302,26 @@
 
     #{{{ Fancy
         alias addio="$SCRIPTS/fancy/addio.sh halt"
+        alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
+        alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
+        alias cdmem="cd /mnt/mem1"
+        alias cdmeme=cdmem
+        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
         alias gclone="$SCRIPTS/fancy/git.sh clone"
+        alias ghci="$SCRIPTS/fancy/stack.sh ghci"
+        alias repl="$SCRIPTS/fancy/stack.sh ghci"
+        alias ghc="$SCRIPTS/fancy/stack.sh runhaskell"
+        alias runghc="$SCRIPTS/fancy/stack.sh runhaskell"
+        alias runhaskell="$SCRIPTS/fancy/stack.sh runhaskell"
         alias gpull="$SCRIPTS/fancy/git.sh pull"
         alias gpush="$SCRIPTS/fancy/git.sh push"
-        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
-        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
-        alias topa="$SCRIPTS/fancy/addio.sh halt"
-        alias ghci="$SCRIPTS/fancy/ghci.sh"
-        alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
-        alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
-        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
-        alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
-        alias eje="echo; cat ~/.ascii_art/floppy; echo; sudo eject /mnt/mem"
-        alias mem="echo; cat ~/.ascii_art/floppy; echo; \
-            sudo mount /dev/sdc1 /mnt/mem"
         alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
         alias pacman="echo; cat ~/.ascii_art/pacman; echo; sudo pacman"
         alias pacmanup="echo; cat ~/.ascii_art/pacman; echo; sudo pacman -Syyu"
+        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
+        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
+        alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
+        alias topa="$SCRIPTS/fancy/addio.sh halt"
     #}}}
 #}}}
 
