@@ -1,2 +1,3 @@
 :set prompt "\n\ESC[34m\STX%s  \ESC[35mλ\ESC[m\STX   "
-:def hoogle \s -> return $ ":! hoogle --count=15 --info \"" ++ s ++ "\""
+:def! hoogle \s -> return $ ":! hoogle --count=25 --color \"" ++ s ++ "\""
+:def! doc \s -> return $ ":! hoogle --count=15 --info --color \"" ++ s ++ "\""
