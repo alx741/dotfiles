@@ -32,7 +32,6 @@
     Plug 'pangloss/vim-javascript'
     Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'wellle/targets.vim'
-    " Plug 'Wraul/vim-easytags', { 'branch': 'fix-universal-detection' }
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
@@ -104,15 +103,6 @@
             let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
             let g:lengthmatters_excluded+=['taskedit, vim']
         "}}}
-
-        ""{{{ Easytags
-        "    let g:easytags_async = 1
-        "    let g:easytags_by_filetype = '~/.tags'
-        "    let g:easytags_syntax_keyword = 'always'
-        "    let g:easytags_on_cursorhold = 0
-        "    let b:easytags_auto_highlight = 0
-        "    let g:easytags_python_enabled = 0
-        ""}}}
 
         "{{{ Gutentags
             let g:gutentags_cache_dir = "/home/alx/.tags"
