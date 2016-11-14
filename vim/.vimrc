@@ -9,7 +9,7 @@
     Plug 'alvan/vim-closetag'
     Plug 'alx741/vinfo'
     Plug 'benekastah/neomake'
-    Plug 'edsono/vim-matchit'
+    Plug 'vim-scripts/matchit.zip'
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
     Plug 'junegunn/vim-easy-align'
@@ -32,7 +32,8 @@
     Plug 'pangloss/vim-javascript'
     Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'wellle/targets.vim'
-    Plug 'Wraul/vim-easytags', { 'branch': 'fix-universal-detection' }
+    " Plug 'Wraul/vim-easytags', { 'branch': 'fix-universal-detection' }
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'xolox/vim-misc'
     Plug 'vimwiki/vimwiki'
     Plug 'tfnico/vim-gradle'
@@ -68,6 +69,7 @@
     Plug 'Twinside/vim-hoogle'
     Plug 'alx741/vim-hindent'
     Plug 'neovimhaskell/haskell-vim'
+    Plug 'pbrisbin/vim-syntax-shakespeare'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -100,16 +102,20 @@
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
             let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
-            let g:lengthmatters_excluded+=['taskedit']
+            let g:lengthmatters_excluded+=['taskedit, vim']
         "}}}
 
-        "{{{ Easytags
-            let g:easytags_async = 1
-            let g:easytags_by_filetype = '~/.tags'
-            let g:easytags_syntax_keyword = 'always'
-            let g:easytags_on_cursorhold = 0
-            let b:easytags_auto_highlight = 0
-            let g:easytags_python_enabled = 0
+        ""{{{ Easytags
+        "    let g:easytags_async = 1
+        "    let g:easytags_by_filetype = '~/.tags'
+        "    let g:easytags_syntax_keyword = 'always'
+        "    let g:easytags_on_cursorhold = 0
+        "    let b:easytags_auto_highlight = 0
+        "    let g:easytags_python_enabled = 0
+        ""}}}
+
+        "{{{ Gutentags
+            let g:gutentags_cache_dir = "/home/alx/.tags"
         "}}}
 
         "{{{ EasyAlign
@@ -165,6 +171,44 @@
         "{{{ Supertab
             let g:SuperTabDefaultCompletionType = "context"
             let g:SuperTabContextDefaultCompletionType = "<c-p>"
+        "}}}
+
+        "{{{ Fzf
+            let g:fzf_layout = { 'down': '~20%' }
+            let g:fzf_buffers_jump = 1
+        "}}}
+
+        "{{{ Hindent
+            let g:hindent_indent_size = 4
+        "}}}
+
+        "{{{ Haskell-vim
+            let g:haskell_classic_highlighting = 1
+            let g:haskell_disable_TH = 1
+        "}}}
+
+        "{{{ Polyglot
+            let g:polyglot_disabled = ['haskell']
+        "}}}
+
+        "{{{ Goyo
+            let g:goyo_width = 90
+            let g:goyo_height = '95%'
+
+            function! s:goyo_enter()
+                set nonumber
+                set norelativenumber
+                silent !tmux set -g status
+            endfunction
+
+            function! s:goyo_leave()
+                set number
+                set relativenumber
+                silent !tmux set -g status
+            endfunction
+
+            autocmd! User GoyoEnter nested call <SID>goyo_enter()
+            autocmd! User GoyoLeave nested call <SID>goyo_leave()
         "}}}
     "}}}
 "}}}
@@ -547,6 +591,7 @@
         augroup ft_vim
             au!
             au FileType vim setlocal foldmethod=indent
+            au FileType vim nnoremap <buffer> <CR> <CR>
         augroup END
     "}}}
 
@@ -911,6 +956,7 @@
                 au FileType haskell hi! haskellIdentifier ctermfg=129
                 au FileType haskell hi! haskellOperators ctermfg=black
                 au FileType haskell hi! haskellType ctermfg=31
+                " au FileType haskell hi! haskellQuasiQuoted ctermfg=31
             "}}}
 
             "{{{ Mappings
@@ -922,7 +968,8 @@
                 au FileType haskell nnoremap <buffer> gk :Make test<CR>
                 au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
                 au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
-                au FileType haskell nmap <silent><buffer> <leader>g :Dispatch ghci %<CR>
+                au FileType haskell nmap <silent><buffer> <leader>gg :Dispatch ghci %<CR>
+                au FileType haskell nmap <silent><buffer> <leader>gs :Dispatch stack ghci <CR>
 
                 " ghc-mod
                 au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
@@ -946,6 +993,7 @@
                 au FileType haskell inoreab <buffer> maybe Maybe
                 au FileType haskell inoreab <buffer> just Just
                 au FileType haskell inoreab <buffer> nothing Nothing
+                au FileType haskell inoreab <buffer> io IO ()
             "}}}
         augroup END
     "}}}
