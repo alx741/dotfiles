@@ -7,3 +7,5 @@
 	editor = vim
 [push]
 	default = simple
+[help]
+	autocorrect = 1
