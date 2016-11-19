@@ -933,11 +933,19 @@
     "}}}
 
     "{{{ HASKELL
+
+        function! RunGhci(type)
+            call VimuxRunCommand("stack ghci && exit")
+            if a:type
+                call VimuxSendText(":l " . bufname("%"))
+                call VimuxSendKeys("Enter")
+            endif
+        endfunction
+
         augroup ft_haskell
             au!
             au FileType haskell setlocal makeprg=stack
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
-            au FileType haskell setlocal formatprg=hindent
             au FileType haskell let g:fzf_tags_command = 'hasktags .'
 
             "{{{ Color
@@ -958,8 +966,8 @@
                 au FileType haskell nnoremap <buffer> gk :Make test<CR>
                 au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
                 au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
-                au FileType haskell nmap <silent><buffer> <leader>gg :Dispatch ghci %<CR>
-                au FileType haskell nmap <silent><buffer> <leader>gs :Dispatch stack ghci <CR>
+                au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
+                au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
 
                 " ghc-mod
                 au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
