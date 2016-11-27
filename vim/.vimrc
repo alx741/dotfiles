@@ -942,29 +942,40 @@
             endif
         endfunction
 
+        function! JumpHaskellFunction(reverse)
+            call search('\C[[:alnum:]]*\s*::', a:reverse ? 'bW' : 'W')
+        endfunction
+
         augroup ft_haskell
             au!
             au FileType haskell setlocal makeprg=stack
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
-            au FileType haskell let g:fzf_tags_command = 'hasktags .'
+            au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R .'
 
             "{{{ Color
                 au FileType haskell hi! haskellDecl ctermfg=27
-                au FileType haskell hi! haskellDeclKeyword ctermfg=33
+                au FileType haskell hi! haskellDeclKeyword ctermfg=30
                 au FileType haskell hi! haskellIdentifier ctermfg=129
                 au FileType haskell hi! haskellOperators ctermfg=black
-                au FileType haskell hi! haskellType ctermfg=31
-                " au FileType haskell hi! haskellQuasiQuoted ctermfg=31
+                au FileType haskell hi! haskellType ctermfg=32
+                au FileType haskell hi! def link haskellPragma Comment
+                au FileType haskell hi! haskellNumber ctermfg=166
+                au FileType haskell hi! haskellImportKeywords ctermfg=136
             "}}}
 
             "{{{ Mappings
                 " General
+                au FileType haskell nnoremap onoremap <silent> ia :<c-u>silent execute "normal! ?->\r:nohlsearch\rwvf-ge"<CR>
+                au FileType haskell nnoremap onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
+                au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
+                au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
                 au FileType haskell nnoremap <buffer> gll :Neomake<CR>
                 au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
                 au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
                 au FileType haskell nnoremap <buffer> gj :Make build<CR>
                 au FileType haskell nnoremap <buffer> gk :Make test<CR>
                 au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
+                au FileType haskell nnoremap <buffer> gC :e *.cabal<CR>
                 au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
