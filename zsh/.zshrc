@@ -57,13 +57,14 @@
     setopt share_history
     setopt hist_ignore_dups
     setopt hist_ignore_all_dups
+    setopt hist_expire_dups_first
+    setopt hist_find_no_dups
+    setopt hist_save_no_dups
     setopt hist_reduce_blanks
     setopt hist_ignore_space
     setopt hist_no_store
     setopt hist_verify
-    setopt hist_save_no_dups
-    setopt hist_expire_dups_first
-    setopt hist_find_no_dups
+    setopt hist_ignore_space
 #}}}
 
 #{{{ Variables
@@ -103,6 +104,9 @@
 
     # Haskell
     export HASKELL_STACK_BIN="$HOME/.stack/programs/x86_64-linux/"
+
+    # Codebot
+    export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
@@ -172,6 +176,7 @@
     alias st="speedtest"
     alias woman="command man"
     alias vr="vim README*"
+    alias er=vr
 
     function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
@@ -241,6 +246,18 @@
         fi
     }
 
+    function back_dir()
+    {
+        if [[ "$#" == 0 ]]; then
+            cd ../
+        else
+            for i in {1..$1}
+            do
+                cd ../
+            done
+        fi
+    }
+
 
     #{{{ Scripts
         alias be="$SCRIPTS/builder_edit.sh"
@@ -278,11 +295,6 @@
     #}}}
 
     #{{{ Edit Dotfiles
-        alias ev="$EDITOR ~/.vimrc"
-        alias et="$EDITOR ~/.tmux.conf"
-        alias er="$EDITOR ~/.ratpoisonrc"
-        alias ez="$EDITOR ~/.zshrc"
-        alias ex="$EDITOR ~/.xinitrc"
         alias '\ev'="$EDITOR ~/.vimrc"
         alias '\et'="$EDITOR ~/.tmux.conf"
         alias '\er'="$EDITOR ~/.ratpoisonrc"
@@ -292,10 +304,11 @@
 
     #{{{ Fast directory access
         alias cd='c'
-        alias ..='cd ..'
-        alias ...='cd ../..'
-        alias ....='cd ../../..'
         alias ,,='popd'
+        alias ..='back_dir $@'
+        alias ...='back_dir 2'
+        alias ....='back_dir 3'
+        alias .....='back_dir 4'
         alias dot="cd ~/dotfiles/"
         alias acm="cd u/acm"
     #}}}
@@ -310,7 +323,7 @@
         alias gclone="$SCRIPTS/fancy/git.sh clone"
         alias ghci="$SCRIPTS/fancy/stack.sh ghci"
         alias repl="$SCRIPTS/fancy/stack.sh ghci"
-        alias ghc="$SCRIPTS/fancy/stack.sh runhaskell"
+        alias ghc="$SCRIPTS/fancy/stack.sh ghc"
         alias runghc="$SCRIPTS/fancy/stack.sh runhaskell"
         alias runhaskell="$SCRIPTS/fancy/stack.sh runhaskell"
         alias gpull="$SCRIPTS/fancy/git.sh pull"
