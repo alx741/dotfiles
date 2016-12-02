@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Repeat rate
-xset r rate 250 50
+xset r rate 200 50
 
 # Init special keys binding
 xbindkeys&
@@ -13,6 +13,6 @@ setxkbmap us -variant altgr-intl
 setxkbmap -option ctrl:swapcaps&
 xmodmap ~/.xmodmap&
 killall xcape
-xcape -e 'Control_L=Escape'
+xcape -t 250 -e 'Control_L=Escape'
 xcape -e 'Super_L=Control_L|G|bracketleft'
 xcape -e 'Super_R=Control_R|G|bracketright'
