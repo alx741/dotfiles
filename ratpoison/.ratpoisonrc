@@ -22,6 +22,7 @@
     set inputwidth 500
     set barpadding 4 2
     set framesels "hgjfkdlsaieow"
+    set bargravity sw
 #}}}
 
 #{{{ Bindigs
@@ -126,6 +127,10 @@
         bind f readkey firefox
     #}}}
 
+    #{{{ Misc
+        bind d exec ~/.scripts/ratpoison/ddg.sh
+    #}}}
+
     #{{{ Clipboard stack control
         bind numbersign  exec ~/.scripts/ratpoison/clipboard_stack.sh menu
         bind plus  exec ~/.scripts/ratpoison/clipboard_stack.sh select
@@ -167,6 +172,7 @@
 
     # Show last message
     bind semicolon lastmsg
+    bind C-semicolon lastmsg
 
     # Select frame
     bind F fselect
