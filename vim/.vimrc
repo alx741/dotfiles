@@ -62,13 +62,16 @@
     Plug 'hsanson/vim-android'
     Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-    Plug 'ervandew/supertab'
     Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
-    Plug 'alx741/vim-hindent'
+    Plug '~/lab/vim-hindent'
     Plug 'neovimhaskell/haskell-vim'
     Plug 'pbrisbin/vim-syntax-shakespeare'
+    Plug 'benmills/vimux'
+    Plug '~/lab/vim-yesod'
+    Plug '~/lab/ghc.vim'
+    Plug 'skywind3000/asyncrun.vim'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -158,23 +161,29 @@
             let g:tmux_navigator_save_on_switch = 1
         "}}}
 
-        "{{{ Supertab
-            let g:SuperTabDefaultCompletionType = "context"
-            let g:SuperTabContextDefaultCompletionType = "<c-p>"
-        "}}}
-
         "{{{ Fzf
             let g:fzf_layout = { 'down': '~20%' }
             let g:fzf_buffers_jump = 1
         "}}}
 
         "{{{ Hindent
+            let g:hindent_on_save = 0
+            let g:hindent_line_length = 77
             let g:hindent_indent_size = 4
         "}}}
 
         "{{{ Haskell-vim
             let g:haskell_classic_highlighting = 1
             let g:haskell_disable_TH = 1
+            let g:haskell_indent_disable = 1
+
+            let g:haskell_indent_if = 4
+            let g:haskell_indent_case = 4
+            let g:haskell_indent_let = 4
+            let g:haskell_indent_where = 2
+            let g:haskell_indent_do = 4
+            let g:haskell_indent_let = 0
+            let g:haskell_indent_guard = 4
         "}}}
 
         "{{{ Polyglot
@@ -415,7 +424,6 @@
         nnoremap <NUL> <c-^>
         nnoremap Q :Files<CR>
         nnoremap gs :w<CR>
-        inoremap gs <esc>:w<cr>
         nnoremap gS :wq<CR>
         nnoremap gbb :w<CR> :Make!<CR>
         nnoremap gbc :Make! clean<CR>
