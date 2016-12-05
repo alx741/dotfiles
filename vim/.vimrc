@@ -567,18 +567,18 @@
     function! Make_arrow(type) "{{{
         if a:type
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
-                exe "norm! a-> "
+                exe "norm! a->  "
             else
-                exe "norm! a -> "
+                exe "norm! a ->  "
             endif
-            exe "startinsert!"
+            exe "startreplace"
         else
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
-                exe "norm! a=> "
+                exe "norm! a=>  "
             else
-                exe "norm! a => "
+                exe "norm! a =>  "
             endif
-            exe "startinsert!"
+            exe "startreplace"
         endif
     endfunction
     "}}}
@@ -943,7 +943,7 @@
     "{{{ HASKELL
 
         function! RunGhci(type)
-            call VimuxRunCommand("stack ghci && exit")
+            call VimuxRunCommand(" stack ghci && exit")
             if a:type
                 call VimuxSendText(":l " . bufname("%"))
                 call VimuxSendKeys("Enter")
@@ -957,6 +957,7 @@
         augroup ft_haskell
             au!
             au FileType haskell setlocal makeprg=stack
+            au FileType haskell compiler ghc
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R .'
 
@@ -973,16 +974,16 @@
 
             "{{{ Mappings
                 " General
-                au FileType haskell nnoremap onoremap <silent> ia :<c-u>silent execute "normal! ?->\r:nohlsearch\rwvf-ge"<CR>
-                au FileType haskell nnoremap onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
+                au FileType haskell onoremap <silent> ia :<c-u>silent execute "normal! ?->\r:nohlsearch\rwvf-ge"<CR>
+                au FileType haskell onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer> gll :Neomake<CR>
+                au FileType haskell nnoremap <buffer><silent> gll :write<CR> :echo "Linting..."<CR> :silent! exec "Neomake"<CR>
                 au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
                 au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
-                au FileType haskell nnoremap <buffer> gj :Make build<CR>
-                au FileType haskell nnoremap <buffer> gk :Make test<CR>
-                au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
+                au FileType haskell nnoremap <buffer><silent> gj :write<CR> :echo "Building..."<CR> :exec "AsyncRun " . &makeprg . " build"<CR>
+                au FileType haskell nnoremap <buffer><silent> gk :write<CR> :echo "Testing..."<CR> :exec "AsyncRun " . &makeprg . " test"<CR>
+                au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
                 au FileType haskell nnoremap <buffer> gC :e *.cabal<CR>
                 au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
