@@ -23,7 +23,7 @@ then
     echo
 elif [[ "$1" == "eject" ]];
 then
-    sudo eject $MOUNT_DIR
     echo Syncing "$DEV" ...
     echo
+    sudo eject $MOUNT_DIR
 fi
