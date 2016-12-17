@@ -1,7 +1,7 @@
 #! /bin/sh
 
 
-MUSIC_DIR=~/music
+MUSIC_DIR=~/music/from_youtube
 TMP_FILE=/tmp/youtube-dl.temp
 TMP_FINAL_FILE=/tmp/youtube-dl.mp3
 URL=""
