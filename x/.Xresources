@@ -19,7 +19,7 @@
 *background:            S_base3
 *foreground:            S_base00
 *fadeColor:             S_base3
-*cursorColor:           S_base01
+*cursorColor:           S_cyan
 *pointerColorBackground:S_base1
 *pointerColorForeground:S_base01
 *color0:                S_base02
@@ -57,7 +57,8 @@ urxvt.scrollWithBuffer: false
 urxvt.secondaryScreen: true
 urxvt.secondaryScroll: true
 urxvt.scrollBar: false
-urxvt.cursorBlink: true
+urxvt.cursorBlink: false
+urxvt.cursorUnderline: false
 urxvt.hold: false
 urxvt.urlLauncher: firefox
 urxvt.internalBorder: 3
