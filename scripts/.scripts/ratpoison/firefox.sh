@@ -88,6 +88,9 @@ case $1 in
         ~/.scripts/ratpoison/app_select.sh firefox
         select_tab $2
         ;;
+    'focus_tab')
+        select_tab $2
+        ;;
     'search_tab')
         search_tab
         ;;
