@@ -1,4 +1,4 @@
-#{{{ Zgen
+#{{{ Plugins & Zgen
     source "${HOME}/.zsh/zgen/zgen.zsh"
 
     if ! zgen saved
@@ -12,6 +12,11 @@
         zgen load rust-lang/zsh-config
 
         zgen save
+    fi
+
+    # NativeScript
+    if [ -f /home/alx/.tnsrc ]; then
+        source /home/alx/.tnsrc
     fi
 #}}}
 
