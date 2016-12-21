@@ -29,6 +29,7 @@ function creat_adhoc
 
 function wifi_list
 {
+    sudo ifconfig "$IF" up
     data=$(sudo iwlist scanning 2> /dev/null)
 
     echo

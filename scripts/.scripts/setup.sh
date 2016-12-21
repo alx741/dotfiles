@@ -34,7 +34,7 @@ then
     amixer set Master unmute
     amixer set Master 100%
     firefox&
-    ~/.scripts/network/configure_ether.sh
+    ~/.scripts/network/ether.sh
     sudo systemctl start vsftpd
 else
     if is_vga_plugedin

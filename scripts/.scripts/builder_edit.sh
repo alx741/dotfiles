@@ -71,7 +71,7 @@ fi
 
 if [[ -f "bower.json" ]];
 then
-    builder_files+="bower.json"
+    builder_files+="bower.json "
 fi
 
 if [[ -f "Rakefile" ]];
@@ -91,7 +91,7 @@ fi
 
 if [[ -f "stack.yaml" ]];
 then
-    builder_files+="stack.yaml"
+    builder_files+="stack.yaml "
 fi
 
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];

@@ -14,7 +14,7 @@ source "$(dirname "$0")/utility.sh"
 
 if [[ "$1" == "out" ]];
 then
-    ~/.scripts/network/configure_wifi.sh
+    ~/.scripts/network/wifi.sh
     xrandr --output LVDS1 --mode 1366x768
     xrandr --output HDMI1 --off
     xrandr --output VGA1 --off
@@ -31,7 +31,7 @@ then
         xbacklight -set 0
         amixer set Master unmute
         amixer set Master 100%
-        ~/.scripts/network/configure_ether.sh
+        ~/.scripts/network/ether.sh
         ratpoison -c "restart"
     else
         echo
