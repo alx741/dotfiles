@@ -141,11 +141,20 @@
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
+    alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
+    alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
+    alias cdmem="cd /mnt/mem1"
+    alias cdmeme=cdmem
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
+    alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
+    alias dog="less -RSFXin"
     alias dotpng="dot -Tpng -O"
     alias du="du -h"
+    alias e=vim
+    alias edit=vim
+    alias er=vr
     alias free="free -h"
     alias ga="git add"
     alias gb="git branch"
@@ -159,9 +168,13 @@
     alias lsls="command ls -lLha --color | ccze -A"
     alias m="mplayer"
     alias mail="mutt"
+    alias meme=mem
+    alias ns="nativescript"
     alias o="xdg-open"
     alias p="ping 8.8.8.8"
     alias ser="sudo service"
+    alias st="speedtest"
+    alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
     alias suod="sudo"
     alias sys="sudo systemctl"
     alias time="command time -p"
@@ -170,107 +183,39 @@
     alias v=vim
     alias vhex="vim -b"
     alias vi=vim
-    alias e=vim
-    alias edit=vim
     alias vim="fuzzy_edit"
-    alias st="speedtest"
-    alias woman="command man"
     alias vr="vim README*"
-    alias er=vr
-
-    function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
-
-    function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
-
-    function hoogle() { command hoogle $@ | HsColour --tty }
-
-    function c()
-    {
-        if [[ $# -eq 1 ]];
-        then
-            cd "$@" &> /dev/null && l
-            if [[ $? -ne 0 ]];
-            then
-                cd_fzf "$@";
-            fi
-
-        elif [[ $# -eq 0 ]];
-        then
-            cd ~ && clear
-        fi
-    }
-
-    function L()
-    {
-        SORT_COMMAND="sort -r"
-        l
-    }
-
-    function l()
-    {
-        if [[ $# -eq 0 ]];
-        then
-            l_dir="."
-        else
-            if [[ -d "$1" ]];
-            then
-                l_dir="$1"
-            else
-                l_dir=$(find -L . -maxdepth 1 -type d -not -path '*/\.*' \
-                    -printf "%P\n" | fzf -q "$1" -1 -0)
-
-                if [[ "$l_dir" == "" ]]
-                then
-                    echo
-                    echo -e "\t No directory \"$1\"    ¯\_(ツ)_/¯"
-                    echo
-                    return 1
-                fi
-            fi
-        fi
-
-        list_dir $l_dir
-    }
-
-    function man()
-    {
-        command man -P true "$*" &> /dev/null
-        if [[ $? -eq 0 ]];
-        then
-            command vim -c ":Man $*" -c ":tabonly" -c ":bd 1"
-        else
-            echo
-            echo
-            echo -e "\t No man page \"$*\"    ¯\_(ツ)_/¯"
-            echo
-        fi
-    }
-
-    function back_dir()
-    {
-        if [[ "$#" == 0 ]]; then
-            cd ../
-        else
-            for i in {1..$1}
-            do
-                cd ../
-            done
-        fi
-    }
-
+    alias woman="command man"
 
     #{{{ Scripts
+        alias addio="$SCRIPTS/addio.sh halt"
         alias be="$SCRIPTS/builder_edit.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
+        alias gclone="$SCRIPTS/git.sh clone"
+        alias getit="$SCRIPTS/pacman.sh getit"
+        alias ghc="$SCRIPTS/stack.sh ghc"
+        alias ghci="$SCRIPTS/stack.sh ghci"
+        alias gpull="$SCRIPTS/git.sh pull"
+        alias gpush="$SCRIPTS/git.sh push"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias mem="$SCRIPTS/mem.sh mount"
-        alias meme=mem
-        alias pro="$SCRIPTS/configure_projector.sh"
+        alias packer="$SCRIPTS/pacman.sh packer $*"
+        alias pacman="$SCRIPTS/pacman.sh pacman $*"
+        alias poweroff="$SCRIPTS/addio.sh halt"
+        alias pro="$SCRIPTS/projector.sh"
+        alias psci="$SCRIPTS/pulp.sh psci"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
+        alias pulp="$SCRIPTS/pulp.sh"
+        alias reboot="$SCRIPTS/addio.sh reboot"
+        alias repl="$SCRIPTS/stack.sh ghci"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
+        alias runghc="$SCRIPTS/stack.sh runhaskell"
+        alias runhaskell="$SCRIPTS/stack.sh runhaskell"
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
-        alias wifi="$SCRIPTS/network/configure_wifi.sh"
+        alias topa="$SCRIPTS/addio.sh halt"
+        alias update="$SCRIPTS/pacman.sh update"
+        alias wifi="$SCRIPTS/network/wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
     #}}}
@@ -313,28 +258,90 @@
         alias acm="cd u/acm"
     #}}}
 
-    #{{{ Fancy
-        alias addio="$SCRIPTS/fancy/addio.sh halt"
-        alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
-        alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
-        alias cdmem="cd /mnt/mem1"
-        alias cdmeme=cdmem
-        alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
-        alias gclone="$SCRIPTS/fancy/git.sh clone"
-        alias ghci="$SCRIPTS/fancy/stack.sh ghci"
-        alias repl="$SCRIPTS/fancy/stack.sh ghci"
-        alias ghc="$SCRIPTS/fancy/stack.sh ghc"
-        alias runghc="$SCRIPTS/fancy/stack.sh runhaskell"
-        alias runhaskell="$SCRIPTS/fancy/stack.sh runhaskell"
-        alias gpull="$SCRIPTS/fancy/git.sh pull"
-        alias gpush="$SCRIPTS/fancy/git.sh push"
-        alias packer="echo; cat ~/.ascii_art/pacman; echo; packer"
-        alias pacman="echo; cat ~/.ascii_art/pacman; echo; sudo pacman"
-        alias pacmanup="echo; cat ~/.ascii_art/pacman; echo; sudo pacman -Syyu"
-        alias poweroff="$SCRIPTS/fancy/addio.sh halt"
-        alias reboot="$SCRIPTS/fancy/addio.sh reboot"
-        alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
-        alias topa="$SCRIPTS/fancy/addio.sh halt"
+    #{{{ Functions
+        function yesod() { stack -- exec yesod $@ }
+
+        function yesodtouch() { stack -- exec yesod touch && touch Settings.hs }
+
+        function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
+
+        function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
+
+        function hoogle() { command hoogle $@ | HsColour --tty }
+
+        function c()
+        {
+            if [[ $# -eq 1 ]];
+            then
+                cd "$@" &> /dev/null && l
+                if [[ $? -ne 0 ]];
+                then
+                    cd_fzf "$@";
+                fi
+
+            elif [[ $# -eq 0 ]];
+            then
+                cd ~ && clear
+            fi
+        }
+
+        function L()
+        {
+            SORT_COMMAND="sort -r"
+            l
+        }
+
+        function l()
+        {
+            if [[ $# -eq 0 ]];
+            then
+                l_dir="."
+            else
+                if [[ -d "$1" ]];
+                then
+                    l_dir="$1"
+                else
+                    l_dir=$(find -L . -maxdepth 1 -type d -not -path '*/\.*' \
+                        -printf "%P\n" | fzf -q "$1" -1 -0)
+
+                    if [[ "$l_dir" == "" ]]
+                    then
+                        echo
+                        echo -e "\t No directory \"$1\"    ¯\_(ツ)_/¯"
+                        echo
+                        return 1
+                    fi
+                fi
+            fi
+
+            list_dir $l_dir
+        }
+
+        function man()
+        {
+            command man -P true "$*" &> /dev/null
+            if [[ $? -eq 0 ]];
+            then
+                command vim -c ":Man $*" -c ":tabonly" -c ":bd 1"
+            else
+                echo
+                echo
+                echo -e "\t No man page \"$*\"    ¯\_(ツ)_/¯"
+                echo
+            fi
+        }
+
+        function back_dir()
+        {
+            if [[ "$#" == 0 ]]; then
+                c ../
+            else
+                for i in {1..$1}
+                do
+                    c ../
+                done
+            fi
+        }
     #}}}
 #}}}
 
