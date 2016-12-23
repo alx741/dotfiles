@@ -87,6 +87,21 @@ function pull
     fi
 }
 
+function add_upstream
+{
+    url=`xclip -selection clipboard -o`
+
+    if [[ `echo "$url" | grep "github.com"` == "" ]];
+    then
+        echo
+        echo [!] Invalid URL in the clipboard
+        echo
+        exit 1
+    fi
+
+    git remote add upstream "$url"
+    git remote -v
+}
 
 case $1 in
     'push')
@@ -97,5 +112,8 @@ case $1 in
         ;;
     'clone')
         clone_clipboard
+        ;;
+    'add_upstream')
+        add_upstream
         ;;
 esac
