@@ -1042,6 +1042,41 @@
             au FileType tex nnoremap <buffer><space> 1z=
         augroup END
     "}}}
+
+    "{{{ PURESCRIPT
+        function! RunPsci(type)
+            call VimuxRunCommand(" pulp psci && exit")
+            if a:type
+                call VimuxSendText(":l " . bufname("%"))
+                call VimuxSendKeys("Enter")
+            endif
+        endfunction
+
+        augroup ft_purescript
+            au!
+            au FileType purescript setlocal makeprg=pulp
+            au FileType purescript compiler ghc
+            au FileType purescript setlocal omnifunc=necoghc#omnifunc
+            au FileType purescript let g:fzf_tags_command = 'hasktags -c -x -R .'
+
+            " General
+            au FileType purescript onoremap <silent> ia :<c-u>silent execute "normal! ?->\r:nohlsearch\rwvf-ge"<CR>
+            au FileType purescript onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
+            au FileType purescript nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
+            au FileType purescript nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
+            au FileType purescript nnoremap <buffer><silent> gj :write<CR> :echo "Building..."<CR> :exec "AsyncRun " . &makeprg . " build"<CR>
+            au FileType purescript nnoremap <buffer><silent> gk :write<CR> :echo "Testing..."<CR> :exec "AsyncRun " . &makeprg . " test"<CR>
+            au FileType purescript nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
+            au FileType purescript nnoremap <buffer><silent> ght :!hasktags -c -x -R .<CR>
+            au FileType purescript nmap <silent><buffer> g<space> :call Sort_imports()<CR>
+            au FileType purescript nmap <silent><buffer> <leader>gg :call RunPsci(1)<CR>
+            au FileType purescript nmap <silent><buffer> <leader>gs :call RunPsci(0)<CR>
+
+            " Arrows
+            au FileType purescript inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
+            au FileType purescript inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(0)<CR>
+        augroup END
+    "}}}
 "}}}
 
 
