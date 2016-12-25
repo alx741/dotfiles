@@ -45,5 +45,6 @@ else
     xbacklight -set 100
     amixer set Master mute
     amixer set Master 0%
+    ~/.scripts/network/wifi.sh
     dhclient enp3s0&
 fi
