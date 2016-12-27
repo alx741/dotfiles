@@ -143,7 +143,6 @@
 #{{{ Colorize commands
     function ping { command ping "$@" | ccze -A }
     function traceroute { command traceroute "$@" | ccze -A }
-    function make { command make "$@" | ccze -A }
     function ./configure { command ./configure "$@" | ccze -A }
 #}}}
 
@@ -164,6 +163,8 @@
     alias e=vim
     alias edit=vim
     alias er=vr
+    alias exi="exit"
+    alias exti="exit"
     alias free="free -h"
     alias ga="git add"
     alias gb="git branch"
@@ -195,77 +196,6 @@
     alias vim="fuzzy_edit"
     alias vr="vim README*"
     alias woman="command man"
-
-    #{{{ Scripts
-        alias addio="$SCRIPTS/addio.sh halt"
-        alias be="$SCRIPTS/builder_edit.sh"
-        alias eT="$SCRIPTS/network/et_phone_home.sh"
-        alias eje="$SCRIPTS/mem.sh eject"
-        alias gclone="$SCRIPTS/git.sh clone"
-        alias getit="$SCRIPTS/pacman.sh getit"
-        alias ghc="$SCRIPTS/stack.sh ghc"
-        alias ghci="$SCRIPTS/stack.sh ghci"
-        alias gpull="$SCRIPTS/git.sh pull"
-        alias gpush="$SCRIPTS/git.sh push"
-        alias labip="$SCRIPTS/network/echo_lab_ip.sh"
-        alias mem="$SCRIPTS/mem.sh mount"
-        alias packer="$SCRIPTS/pacman.sh packer $*"
-        alias pacman="$SCRIPTS/pacman.sh pacman $*"
-        alias poweroff="$SCRIPTS/addio.sh halt"
-        alias pro="$SCRIPTS/projector.sh"
-        alias psci="$SCRIPTS/pulp.sh psci"
-        alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
-        alias pulp="$SCRIPTS/pulp.sh"
-        alias reboot="$SCRIPTS/addio.sh reboot"
-        alias repl="$SCRIPTS/stack.sh ghci"
-        alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
-        alias runghc="$SCRIPTS/stack.sh runhaskell"
-        alias runhaskell="$SCRIPTS/stack.sh runhaskell"
-        alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
-        alias topa="$SCRIPTS/addio.sh halt"
-        alias update="$SCRIPTS/pacman.sh update"
-        alias wifi="$SCRIPTS/network/wifi.sh"
-        alias ymd="$SCRIPTS/youtube_music_download.sh"
-        alias yt="$SCRIPTS/youtube_mplayer.sh"
-    #}}}
-
-    #{{{ Sufix
-        alias -s md=md
-        alias -s c=vim
-        alias -s cpp=vim
-        alias -s h=vim
-        alias -s hpp=vim
-        alias -s java=vim
-        alias -s php=vim
-        alias -s html=vim
-        alias -s css=vim
-        alias -s js=vim
-        alias -s rs=vim
-        alias -s pdf=zathura
-        alias -s jpg=sxiv
-        alias -s jpeg=sxiv
-        alias -s gif=sxiv
-        alias -s png=sxiv
-    #}}}
-
-    #{{{ Edit Dotfiles
-        alias '\ev'="$EDITOR ~/.vimrc"
-        alias '\et'="$EDITOR ~/.tmux.conf"
-        alias '\er'="$EDITOR ~/.ratpoisonrc"
-        alias '\ez'="$EDITOR ~/.zshrc"
-        alias '\ex'="$EDITOR ~/.xinitrc"
-    #}}}
-
-    #{{{ Fast directory access
-        alias cd='c'
-        alias ,,='popd'
-        alias ..='back_dir $@'
-        alias ...='back_dir 2'
-        alias ....='back_dir 3'
-        alias .....='back_dir 4'
-        alias dot="cd ~/dotfiles/"
-        alias acm="cd u/acm"
-    #}}}
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
@@ -352,6 +282,80 @@
             fi
         }
     #}}}
+
+    #{{{ Scripts
+        alias addio="$SCRIPTS/addio.sh halt"
+        alias be="$SCRIPTS/builder_edit.sh"
+        alias eT="$SCRIPTS/network/et_phone_home.sh"
+        alias eje="$SCRIPTS/mem.sh eject"
+        alias gclone="$SCRIPTS/git.sh clone"
+        alias gupstream="$SCRIPTS/git.sh add_upstream"
+        alias getit="$SCRIPTS/pacman.sh getit"
+        alias ghc="$SCRIPTS/stack.sh ghc"
+        alias ghci="$SCRIPTS/stack.sh ghci"
+        alias gpull="$SCRIPTS/git.sh pull"
+        alias gpush="$SCRIPTS/git.sh push"
+        alias labip="$SCRIPTS/network/echo_lab_ip.sh"
+        alias mem="$SCRIPTS/mem.sh mount"
+        alias packer="$SCRIPTS/pacman.sh packer $*"
+        alias pacman="$SCRIPTS/pacman.sh pacman $*"
+        alias poweroff="$SCRIPTS/addio.sh halt"
+        alias pro="$SCRIPTS/projector.sh"
+        alias psci="$SCRIPTS/pulp.sh psci"
+        alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
+        alias pulp="$SCRIPTS/pulp.sh"
+        alias reboot="$SCRIPTS/addio.sh reboot"
+        alias repl="$SCRIPTS/stack.sh ghci"
+        alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
+        alias runghc="$SCRIPTS/stack.sh runhaskell"
+        alias runhaskell="$SCRIPTS/stack.sh runhaskell"
+        alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
+        alias topa="$SCRIPTS/addio.sh halt"
+        alias update="$SCRIPTS/pacman.sh update"
+        alias wifi="$SCRIPTS/network/wifi.sh"
+        alias ymd="$SCRIPTS/youtube_music_download.sh"
+        alias yt="$SCRIPTS/youtube_mplayer.sh"
+        alias alan="$SCRIPTS/alan.sh"
+        alias home="$SCRIPTS/home.sh"
+    #}}}
+
+    #{{{ Sufix
+        alias -s md=md
+        alias -s c=vim
+        alias -s cpp=vim
+        alias -s h=vim
+        alias -s hpp=vim
+        alias -s java=vim
+        alias -s php=vim
+        alias -s html=vim
+        alias -s css=vim
+        alias -s js=vim
+        alias -s rs=vim
+        alias -s pdf=zathura
+        alias -s jpg=sxiv
+        alias -s jpeg=sxiv
+        alias -s gif=sxiv
+        alias -s png=sxiv
+    #}}}
+
+    #{{{ Edit Dotfiles
+        alias '\ev'="$EDITOR ~/.vimrc"
+        alias '\et'="$EDITOR ~/.tmux.conf"
+        alias '\er'="$EDITOR ~/.ratpoisonrc"
+        alias '\ez'="$EDITOR ~/.zshrc"
+        alias '\ex'="$EDITOR ~/.xinitrc"
+    #}}}
+
+    #{{{ Fast directory access
+        alias cd='c'
+        alias ,,='popd'
+        alias ..='back_dir $@'
+        alias ...='back_dir 2'
+        alias ....='back_dir 3'
+        alias .....='back_dir 4'
+        alias dot="cd ~/dotfiles/"
+        alias acm="cd u/acm"
+    #}}}
 #}}}
 
 #{{{ Completion
@@ -396,7 +400,7 @@
     bindkey '\eOC' forward-char
     bindkey '\eOD' backward-char
 
-    bindkey '^o' clear-screen
+    bindkey '^O' clear-screen
 #}}}
 
 #{{{ Prompt
@@ -677,6 +681,7 @@
 
     #{{{ FZF
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+        bindkey '^D' fzf-cd-widget
         bindkey '^F' fzf-file-widget
 
         export FZF_TMUX=1
@@ -686,6 +691,7 @@
         export FZF_DEFAULT_OPTS='
             --color fg:240,bg:-1,hl:33,fg+:241,bg+:223,hl+:33
             --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
+        export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
         TRAPWINCH()
         {
