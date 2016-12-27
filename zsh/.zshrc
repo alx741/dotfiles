@@ -110,6 +110,9 @@
     # Haskell
     export HASKELL_STACK_BIN="$HOME/.stack/programs/x86_64-linux/"
 
+    # NPM
+    export NPM_BIN="$HOME/.npm-global/bin"
+
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
@@ -125,6 +128,7 @@
     PATH+="$PERL6:"
     PATH+="$RUST_CARGO_BIN:"
     PATH+="$HASKELL_STACK_BIN:"
+    PATH+="$NPM_BIN:"
     export PATH
     declare -U path
 
