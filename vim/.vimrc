@@ -559,8 +559,14 @@
     endfunction
     "}}}
 
-    function! Refresh_firefox() "{{{
-        silent exe "! ~/.scripts/refresh_firefox.sh"
+    function! Refresh_firefox(type) "{{{
+        if a:type
+            silent exe "! ~/.scripts/refresh_firefox.sh focus"
+            silent exe "redraw!"
+        else
+            silent exe "! ~/.scripts/refresh_firefox.sh"
+            silent exe "redraw!"
+        endif
     endfunction
     "}}}
 
