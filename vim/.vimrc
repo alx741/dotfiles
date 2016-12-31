@@ -21,6 +21,8 @@
     Plug 'rking/ag.vim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'thanthese/Tortoise-Typing'
+    Plug 'kana/vim-vspec'
+    Plug 'rhysd/vim-vspec-matchers'
     Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-dispatch'
@@ -71,7 +73,12 @@
     Plug 'benmills/vimux'
     Plug '~/lab/vim-yesod'
     Plug '~/lab/ghc.vim'
+    Plug '~/lab/vim-nativescript'
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'edkolev/curry.vim'
+    Plug 'tpope/vim-abolish'
+    Plug 'simeji/winresizer'
+    Plug '~/lab/spec.vim'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -104,7 +111,7 @@
         "{{{ Lengthmatters
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
             let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
-            let g:lengthmatters_excluded+=['taskedit, vim']
+            let g:lengthmatters_excluded+=['taskedit', 'vim', 'xml', 'hamlet']
         "}}}
 
         "{{{ Gutentags
@@ -208,6 +215,28 @@
 
             autocmd! User GoyoEnter nested call <SID>goyo_enter()
             autocmd! User GoyoLeave nested call <SID>goyo_leave()
+        "}}}
+
+        "{{{ Winresizer
+            let g:winresizer_start_key = '<C-w><space>'
+        "}}}
+
+        "{{{ spec.vim
+            let g:spec_haskell = {
+                \   'spec_dir': 'test',
+                \   'src_dir': 'src',
+                \   'spec_extension': '.hs',
+                \   'src_extension': '.hs',
+                \   'keep_src_tree': 1,
+                \   'spec_prefix': '',
+                \   'spec_suffix': 'Spec',
+                \   'runner': '!',
+                \   'run_individual_cmd': 'stack runhaskell {spec}',
+                \   'run_all_cmd': 'stack test',
+                \   'hook_before': 'tddlight yellow',
+                \   'hook_pass': 'tddlight green',
+                \   'hook_fail': 'tddlight red'
+                \ }
         "}}}
     "}}}
 "}}}
