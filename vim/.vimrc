@@ -323,6 +323,8 @@
 
     "{{{ Global Commands, abbreviations and sourcing
         command! W w !sudo tee % >/dev/null
+        command! -bang Q :call QuitIgnoringE173("<bang>")<CR>
+        cnoreabbrev q Q
         cnoreabbrev man Man
         runtime! ftplugin/man.vim
     "}}}
@@ -451,9 +453,8 @@
         nnoremap } }zz
         nnoremap { {zz
         nnoremap <NUL> <c-^>
-        nnoremap Q :Files<CR>
         nnoremap gs :w<CR>
-        nnoremap gS :wq<CR>
+        nnoremap gS :wa!<CR> :call QuitIgnoringE173("!")<CR>
         nnoremap gbb :w<CR> :Make!<CR>
         nnoremap gbc :Make! clean<CR>
         nnoremap gj :w<CR> :Make!<CR>
@@ -473,7 +474,8 @@
         nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
         nnoremap <silent><C-\> :call ToggleQuickfixList()<CR>
         nnoremap gp `[v`]
-        nnoremap <C-p> :Buffers<CR>
+        nnoremap Q :Buffers<CR>
+        nnoremap <C-p> :Files<CR>
         nnoremap <C-m> :Tags<CR>
         nnoremap g\ :Explore<CR>
         nnoremap go gvo<esc>
@@ -615,6 +617,19 @@
             endif
             exe "startreplace"
         endif
+    endfunction
+    "}}}
+
+    function! QuitIgnoringE173(bang) "{{{
+        try
+            quit
+        catch /E173/
+            if a:bang == ""
+                quit
+            else
+                quit!
+            endif
+        endtry
     endfunction
     "}}}
 "}}}
