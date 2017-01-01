@@ -14,6 +14,7 @@ source "$(dirname "$0")/utility.sh"
 
 if [[ "$1" == "out" ]];
 then
+    sudo ifconfig enp3s0 down
     ~/.scripts/network/wifi.sh
     xrandr --output LVDS1 --mode 1366x768
     xrandr --output HDMI1 --off
