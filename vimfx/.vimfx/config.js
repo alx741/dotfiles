@@ -21,7 +21,7 @@ vimfx.addCommand({
 
 vimfx.set('custom.mode.normal.zoom_in', '=')
 vimfx.set('custom.mode.normal.zoom_out', '-')
-vimfx.set('custom.mode.normal.zoom_reset', '0')
+vimfx.set('custom.mode.normal.zoom_reset', '0 ar aR')
 
 vimfx.set('mode.normal.scroll_down', 'j <c-e> e J')
 vimfx.set('mode.normal.scroll_up', 'k <c-y> <c-s> K')
