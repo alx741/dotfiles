@@ -184,7 +184,6 @@
     alias p="ping 8.8.8.8"
     alias ser="sudo service"
     alias st="speedtest"
-    alias stack="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; stack"
     alias suod="sudo"
     alias sys="sudo systemctl"
     alias time="command time -p"
@@ -201,6 +200,8 @@
         function yesod() { stack -- exec yesod $@ }
 
         function yesodtouch() { stack -- exec yesod touch && touch Settings.hs }
+
+        function shake() { stack -- exec shake $@ }
 
         function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
@@ -284,7 +285,6 @@
     #}}}
 
     #{{{ Scripts
-        alias addio="$SCRIPTS/addio.sh halt"
         alias be="$SCRIPTS/builder_edit.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
@@ -299,18 +299,18 @@
         alias mem="$SCRIPTS/mem.sh mount"
         alias packer="$SCRIPTS/pacman.sh packer $*"
         alias pacman="$SCRIPTS/pacman.sh pacman $*"
-        alias poweroff="$SCRIPTS/addio.sh halt"
+        alias poweroff="$SCRIPTS/build/Topa halt"
         alias pro="$SCRIPTS/projector.sh"
         alias psci="$SCRIPTS/pulp.sh psci"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
         alias pulp="$SCRIPTS/pulp.sh"
-        alias reboot="$SCRIPTS/addio.sh reboot"
+        alias reboot="$SCRIPTS/build/Topa reboot"
         alias repl="$SCRIPTS/stack.sh ghci"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
         alias runghc="$SCRIPTS/stack.sh runhaskell"
         alias runhaskell="$SCRIPTS/stack.sh runhaskell"
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
-        alias topa="$SCRIPTS/addio.sh halt"
+        alias topa="$SCRIPTS/build/Topa halt"
         alias update="$SCRIPTS/pacman.sh update"
         alias wifi="$SCRIPTS/network/wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
@@ -401,6 +401,7 @@
     bindkey '\eOD' backward-char
 
     bindkey '^O' clear-screen
+    bindkey -M viins '^E' insert-last-word
 #}}}
 
 #{{{ Prompt
