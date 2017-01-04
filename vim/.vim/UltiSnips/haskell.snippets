@@ -2,6 +2,11 @@ snippet lang "LANGUAGE extension"
 {-# LANGUAGE $1 #-}$0
 endsnippet
 
+snippet stack "stack hash bang" b
+#!/usr/bin/env stack
+-- stack runghc --resolver lts-7.14 --install-ghc
+endsnippet
+
 snippet module "module % where"
 module `!v expand('%:t:r')` where$0
 endsnippet
@@ -12,10 +17,32 @@ main = do
 	$0
 endsnippet
 
-snippet puts "putStrLn"
+snippet putl "putStrLn"
 putStrLn $0
+endsnippet
+
+snippet puts "putStr"
+putStr $0
 endsnippet
 
 snippet getl "getLine"
 getLine $0
+endsnippet
+
+snippet und "undefined"
+undefined
+endsnippet
+
+snippet script "haskell scripts boilerplate" b
+{-# LANGUAGE OverloadedStrings #-}
+
+import Turtle
+import System.Environment (getArgs)
+
+main = do
+    args <- getArgs
+    case args of
+        ["some"]  -> shell "sudo echo some" empty
+        ["other"] -> shell "sudo echo other" empty
+        _         -> printUsageOrSomething
 endsnippet
