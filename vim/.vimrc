@@ -316,7 +316,8 @@
             au!
             " Reset format options when filetypes are loaded
             au FileType * set formatoptions=tcrql
-            au FileType html,php,css,javascript,blade nnoremap gr :call Refresh_firefox()<CR>
+            au FileType html,php,css,javascript,blade nnoremap gr :call Refresh_firefox(0)<CR>
+            au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :call Refresh_firefox(1)<CR>
             autocmd BufWritePost init.vim,.vimrc source %
         augroup END
     "}}}
@@ -383,6 +384,7 @@
         set shortmess+=I
         set undolevels=5000
         set undofile
+        set iskeyword+=-
 
         filetype plugin indent on
         syntax on

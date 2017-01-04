@@ -110,4 +110,8 @@ case $1 in
         ~/.scripts/ratpoison/app_select.sh firefox
         search_lyrics
         ;;
+    'cam')
+        ~/.scripts/ratpoison/app_select.sh firefox
+        firefox "http://192.168.1.100:81/index.htm"
+        ;;
 esac
