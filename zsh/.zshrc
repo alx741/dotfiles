@@ -102,6 +102,8 @@
 
     # Ruby
     export RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
+    export GEM_HOME=$HOME/.gem/ruby/2.3.0/gems/
+    export BUNDLE_PATH=$HOME/.gem/ruby/2.3.0/gems/
 
     # Rust
     export RUST_CARGO_BIN="$HOME/.cargo/bin"
@@ -193,8 +195,10 @@
     alias vhex="vim -b"
     alias vi=vim
     alias vim="fuzzy_edit"
-    alias vr="vim README*"
+    alias vr="fuzzy_edit readme"
     alias woman="command man"
+    alias fuck='sudo $(fc -ln -1)'
+    alias mkdir="mkdir -p"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
@@ -599,8 +603,10 @@
         then
             file="$1"
         else
-            file=$(find . -maxdepth 1 -type f -not -path '*/\.*' \
-                -printf "%P\n" | fzf -q "$1" -1 -0)
+            file=$(find . -maxdepth 1 -type f -not -path '*/\.*' -printf "%P\n"\
+                | command grep -i -v -e '\.hi' -e '\.o' -e '\.elf' -e '\.hex' \
+                    -e '\.pdf' -e '\.png' -e '\.jpg' \
+                | fzf -q "$1" -1 -0)
         fi
 
         if [[ "$file" != "" ]];
@@ -688,7 +694,7 @@
         export FZF_TMUX=1
         export FZF_TMUX_HEIGHT=20%
         export FZF_DEFAULT_COMMAND='ag --depth 10 -f --hidden \
-                                    --ignore .git -g ""'
+                                    --ignore .git *.o *.hi -g ""'
         export FZF_DEFAULT_OPTS='
             --color fg:240,bg:-1,hl:33,fg+:241,bg+:223,hl+:33
             --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
