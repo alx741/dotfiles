@@ -123,6 +123,7 @@
         definekey firefox w exec ~/.scripts/ratpoison/firefox.sh new_window
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
         definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
+        definekey firefox c exec ~/.scripts/ratpoison/firefox.sh cam
         definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search_tab
         bind f readkey firefox
     #}}}
