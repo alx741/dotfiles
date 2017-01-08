@@ -646,7 +646,10 @@
         augroup ft_vim
             au!
             au FileType vim setlocal foldmethod=indent
+            au FileType vim setlocal keywordprg=:h
             au FileType vim nnoremap <buffer> <CR> <CR>
+            au FileType vim setlocal makeprg=rake
+            au FileType vim nnoremap <buffer><silent> gk :write<CR> :! rake test<CR>
         augroup END
     "}}}
 
