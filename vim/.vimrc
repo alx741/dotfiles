@@ -491,6 +491,11 @@
         nnoremap <silent> <c-_> :FuzzySearch<CR>
         inoremap {{ {<cr>}<esc>O
         vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
+        vnoremap t <esc>:'<,'>sort<CR>
+        nnoremap <C-w>+ :resize +5<CR>
+        nnoremap <C-w>- :resize -5<CR>
+        nnoremap <C-w>> :vertical resize +5<CR>
+        nnoremap <C-w>< :vertical resize -5<CR>
     "}}}
 "}}}
 
