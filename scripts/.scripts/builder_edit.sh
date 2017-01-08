@@ -94,6 +94,11 @@ then
     builder_files+="stack.yaml "
 fi
 
+if [[ -f "Shakefile.hs" ]];
+then
+    builder_files+="Shakefile.hs"
+fi
+
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
 then
     builder_files+=" *.cabal"
