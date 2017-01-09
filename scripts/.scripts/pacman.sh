@@ -24,6 +24,9 @@ case $1 in
         packer --noedit --noconfirm -S $(cat "$CACHE_FILE")
         ;;
     'update')
-        sudo pacman -Syyu
+        echo Updating mirrorlist...
+        echo
+        sudo reflector --latest 100 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+        packer --noedit --noconfirm -Syyu
         ;;
 esac
