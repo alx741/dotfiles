@@ -33,8 +33,9 @@ then
     xbacklight -set 0
     amixer set Master unmute
     amixer set Master 100%
-    firefox&
     ~/.scripts/network/ether.sh
+    firefox&
+    transmission-gtk&
     sudo systemctl start vsftpd
 else
     if is_vga_plugedin
