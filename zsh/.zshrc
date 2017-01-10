@@ -199,6 +199,8 @@
     alias woman="command man"
     alias fuck='sudo $(fc -ln -1)'
     alias mkdir="mkdir -p"
+    alias pastebin="sprunge"
+    alias pb="sprunge"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
