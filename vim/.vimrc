@@ -324,7 +324,7 @@
 
     "{{{ Global Commands, abbreviations and sourcing
         command! W w !sudo tee % >/dev/null
-        command! -bang Q :call QuitIgnoringE173("<bang>")<CR>
+        command! -bang Q :call QuitIgnoringE173("<bang>")
         cnoreabbrev q Q
         cnoreabbrev man Man
         runtime! ftplugin/man.vim
@@ -629,7 +629,11 @@
 
     function! QuitIgnoringE173(bang) "{{{
         try
-            quit
+            if a:bang == ""
+                quit
+            else
+                quit!
+            endif
         catch /E173/
             if a:bang == ""
                 quit
