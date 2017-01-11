@@ -496,6 +496,8 @@
         nnoremap <C-w>- :resize -5<CR>
         nnoremap <C-w>> :vertical resize +5<CR>
         nnoremap <C-w>< :vertical resize -5<CR>
+        nnoremap dtp yapgP
+        nnoremap dtcp yapgPvip:Commentary<CR>
     "}}}
 "}}}
 
