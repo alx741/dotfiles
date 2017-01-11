@@ -715,10 +715,10 @@
             au!
             au FileType css setlocal foldmethod=marker
             au FileType css setlocal foldmarker={,}
-            au FileType css nnoremap <buffer>g<space> :call Sort_properties()<CR>
+            au FileType css nnoremap <buffer>g<space> :call CssSortProperties()<CR>
         augroup END
 
-        function! Sort_properties()
+        function! CssSortProperties()
             exe "norm! vi{\<ESC>"
             exe "'<,'>sort"
         endfunction
