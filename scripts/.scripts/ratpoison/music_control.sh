@@ -318,6 +318,9 @@ case "$1" in
     'search')
         search_song
         ;;
+    'clear')
+        mpc clear
+        ;;
     'restart')
         mpc seek 0%
         ;;

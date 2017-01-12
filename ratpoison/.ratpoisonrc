@@ -95,6 +95,7 @@
         definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
         definekey music y exec ~/.scripts/ratpoison/music_control.sh playback single
         definekey music c exec ~/.scripts/ratpoison/music_control.sh playback consume
+        definekey music C exec ~/.scripts/ratpoison/music_control.sh clear
         definekey music L exec ~/.scripts/ratpoison/music_control.sh lyrics
         definekey music question help music
         bind m readkey music
