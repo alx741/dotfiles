@@ -165,6 +165,7 @@
     alias e=vim
     alias edit=vim
     alias er=vr
+    alias ex="exit"
     alias exi="exit"
     alias exti="exit"
     alias free="free -h"
@@ -695,8 +696,8 @@
 
         export FZF_TMUX=1
         export FZF_TMUX_HEIGHT=20%
-        export FZF_DEFAULT_COMMAND='ag --depth 10 -f --hidden \
-                                    --ignore .git -g ""'
+        export FZF_DEFAULT_COMMAND='ag --depth 10 -f -g "" --hidden \
+            --ignore "*.git" --ignore "*.o" --ignore "*.hi"'
         export FZF_DEFAULT_OPTS='
             --color fg:240,bg:-1,hl:33,fg+:241,bg+:223,hl+:33
             --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
