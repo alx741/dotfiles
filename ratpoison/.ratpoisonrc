@@ -90,6 +90,7 @@
         definekey music greater exec ~/.scripts/ratpoison/music_control.sh seek++
         definekey music less exec ~/.scripts/ratpoison/music_control.sh seek--
         bind slash exec ~/.scripts/ratpoison/music_control.sh search
+        bind C-slash exec ~/.scripts/ratpoison/music_control.sh search
         definekey music slash exec ~/.scripts/ratpoison/music_control.sh search
         definekey music r exec ~/.scripts/ratpoison/music_control.sh playback repeat
         definekey music z exec ~/.scripts/ratpoison/music_control.sh playback random
