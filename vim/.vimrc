@@ -456,10 +456,10 @@
         nnoremap { {zz
         nnoremap <NUL> <c-^>
         nnoremap gs :w<CR>
-        nnoremap gS :wa!<CR> :call QuitIgnoringE173("!")<CR>
-        nnoremap gbb :w<CR> :Make!<CR>
+        nnoremap gS :wa!<CR>:call QuitIgnoringE173("!")<CR>
+        nnoremap gbb :w<CR>:Make!<CR>
         nnoremap gbc :Make! clean<CR>
-        nnoremap gj :w<CR> :Make!<CR>
+        nnoremap gj :w<CR>:Make!<CR>
         nnoremap gb<space> :w<CR> :NeomakeSh exit 0<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
@@ -1007,7 +1007,6 @@
     "}}}
 
     "{{{ HASKELL
-
         function! RunGhci(type)
             call VimuxRunCommand(" stack ghci && exit")
             if a:type
@@ -1052,16 +1051,19 @@
                 au FileType haskell onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer><silent> gll :write<CR> :echo "Linting..."<CR> :silent! exec "Neomake"<CR>
+                au FileType haskell nnoremap <buffer><silent> gll :write<CR>:echo "Linting..."<CR>:silent! exec "Neomake"<CR>
                 au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
                 au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
-                au FileType haskell nnoremap <buffer><silent> gj :write<CR> :echo "Building..."<CR> :exec "AsyncRun " . &makeprg . " build"<CR>
-                au FileType haskell nnoremap <buffer><silent> gk :write<CR> :echo "Testing..."<CR> :exec "AsyncRun " . &makeprg . " test"<CR>
+                au FileType haskell nnoremap <buffer><silent> gj :write<CR>:echo "Building..."<CR>:exec "AsyncRun " . &makeprg . " build"<CR>
+                au FileType haskell nnoremap <buffer><silent> gk :write<CR>:echo "Testing..."<CR>:exec "AsyncRun " . &makeprg . " test"<CR>
+                au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
                 au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
+                au FileType haskell nnoremap <buffer><silent> ght :!hasktags -c -x -R .<CR>
                 au FileType haskell nnoremap <buffer> gC :e *.cabal<CR>
-                au FileType haskell nmap <silent><buffer> g<space> vii<ESC>:silent!'<,'> EasyAlign /->/<CR>
+                au FileType haskell nmap <silent><buffer> g<space> :call Sort_imports()<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
+                au FileType haskell nnoremap K :HoogleInfo<CR>
 
                 " ghc-mod
                 au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
@@ -1094,8 +1096,8 @@
         augroup ft_rust
             au!
             au FileType rust setlocal makeprg=cargo
-            au FileType rust nnoremap <buffer> gj :w<CR> :Neomake<CR>
-            au FileType rust nnoremap <buffer> gk :w<CR> :Dispatch test<CR>
+            au FileType rust nnoremap <buffer> gj :w<CR>:Neomake<CR>
+            au FileType rust nnoremap <buffer> gk :w<CR>:Dispatch test<CR>
             au FileType rust nnoremap <buffer> gs :w<CR>
             au FileType rust inoremap <buffer> ;: <ESC>:call Make_arrow(0)<CR>
             au FileType rust inoremap <buffer> ;; <ESC>:call Make_arrow(1)<CR>
