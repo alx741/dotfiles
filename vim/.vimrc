@@ -1017,12 +1017,20 @@
         endfunction
 
         function! JumpHaskellFunction(reverse)
-            call search('\C[[:alnum:]]*\s*::', a:reverse ? 'bW' : 'W')
+            call search('\C^[[:alnum:]]*\s*::', a:reverse ? 'bW' : 'W')
+        endfunction
+
+        function! Sort_imports()
+            let l:line = getline('.')
+            if matchstr(l:line, '\Cimport') ==? 'import'
+                exe "norm! vip\<ESC>"
+                exe "'<,'>sort"
+            endif
         endfunction
 
         augroup ft_haskell
             au!
-            au FileType haskell setlocal makeprg=stack
+            au FileType haskell setlocal makeprg=make
             au FileType haskell compiler ghc
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R .'
