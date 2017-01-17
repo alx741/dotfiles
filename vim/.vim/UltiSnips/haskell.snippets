@@ -46,3 +46,21 @@ main = do
         ["other"] -> shell "sudo echo other" empty
         _         -> printUsageOrSomething
 endsnippet
+
+snippet shake "Shakefile boilerplate" b
+import Development.Shake
+import Development.Shake.Command
+import Development.Shake.FilePath
+import Development.Shake.Util
+
+buildDir = "build"
+
+main :: IO ()
+main = shakeArgs shakeOptions{shakeFiles=buildDir} $ do
+    want $ map ((buildDir ++ "/") ++) scripts
+
+    phony "clean" $ do
+        putNormal $ "Cleaning " ++ buildDir
+        removeFilesAfter buildDir ["//*"]
+        removeFilesAfter "." ["/*.hi", "/*.o"]
+endsnippet
