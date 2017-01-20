@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo
-cat ~/.ascii_art/lambda | lolcat -S 28
+cat ~/.ascii_art/lambda | lolcat -S 21
 echo
 
 if [[ $# -gt 1 ]]; then
