@@ -202,6 +202,7 @@
     alias mkdir="mkdir -p"
     alias pastebin="sprunge"
     alias pb="sprunge"
+    alias moretmp="sudo mount -o remount,size=4G,noatime /tmp"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
