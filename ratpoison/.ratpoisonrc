@@ -107,8 +107,10 @@
         definekey task l exec ~/.scripts/ratpoison/task_control.sh list
         definekey task p exec ~/.scripts/ratpoison/task_control.sh list_projects
         definekey task a exec ~/.scripts/ratpoison/task_control.sh add
-        definekey task e exec ~/.scripts/ratpoison/translate.sh to_english
-        definekey task s exec ~/.scripts/ratpoison/translate.sh to_spanish
+        definekey task e exec ~/.scripts/ratpoison/translate.sh en:es
+        definekey task s exec ~/.scripts/ratpoison/translate.sh es:en
+        definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
+        definekey task t exec ~/.scripts/ratpoison/translate.sh select
         definekey task question help task
         bind t readkey task
     #}}}
