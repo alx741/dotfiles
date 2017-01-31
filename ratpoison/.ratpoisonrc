@@ -229,7 +229,7 @@
     bind S exec sleep 0.3 && xset dpms force off
 
     # Print information
-    bind a exec rofi -padding 1 -width -40 -location 7 -color-normal "#fdf6e3, #657b83" -e "$( ~/.scripts/echo_info.sh )"
+    bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
     bind A exec rofi -color-normal "#fdf6e3, #657b83" -e "$( ~/.scripts/echo_cal.sh )"
 
     # Network information
