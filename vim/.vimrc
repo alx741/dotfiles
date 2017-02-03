@@ -44,6 +44,7 @@
     Plug 'fidian/hexmode'
     Plug 'justinmk/vim-sneak'
     Plug 'vim-scripts/a.vim'
+    Plug 'vim-scripts/loremipsum'
     Plug 'milkypostman/vim-togglelist'
     Plug 'vim-scripts/OmniCppComplete'
     Plug 'shawncplus/phpcomplete.vim'
@@ -1027,6 +1028,30 @@
             endif
         endfunction
 
+        function! HaskellSelectArgument(inner)
+            if a:inner
+                exe "norm! ?\\v::\|->\<CR>"
+                exe "norm! Wv/\\v->\|$\<CR>"
+                exe "norm! ge"
+            else
+                exe "norm! ?\\v::\|->\<CR>"
+                exe "norm! Wv/\\v->\|$\<CR>"
+                exe "norm! Wge"
+                let car = matchstr(getline('.'), '\%' . col('.') . 'c.')
+                if (car ==? ">")
+                    exe "norm! wh"
+                else
+                    exe "norm! \<esc>F-hvg_"
+                endif
+            endif
+        endfunction
+
+        function! HaskellSelectCase()
+            exe "norm! $?case\<CR>"
+            exe "norm! Wv/of\<CR>"
+            exe "norm! B"
+        endfunction
+
         augroup ft_haskell
             au!
             au FileType haskell setlocal makeprg=make
@@ -1047,8 +1072,9 @@
 
             "{{{ Mappings
                 " General
-                au FileType haskell onoremap <silent> ia :<c-u>silent execute "normal! ?->\r:nohlsearch\rwvf-ge"<CR>
-                au FileType haskell onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
+                au FileType haskell onoremap <silent> ia :<c-u>silent call HaskellSelectArgument(1)<CR>
+                au FileType haskell onoremap <silent> aa :<c-u>silent call HaskellSelectArgument(0)<CR>
+                au FileType haskell onoremap <silent> ic :<c-u>silent call HaskellSelectCase()<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
                 au FileType haskell nnoremap <buffer><silent> gll :write<CR>:echo "Linting..."<CR>:silent! exec "Neomake"<CR>
