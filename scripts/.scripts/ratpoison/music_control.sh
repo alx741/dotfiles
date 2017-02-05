@@ -1,26 +1,17 @@
 #! /bin/sh
 
-
 status=""
 crafted_status=""
-
 
 function select_playlist
 {
     playlists=`mpc lsplaylists`
+    list=$(echo -e "$playlists" | rofi -dmenu -i -p "> " -no-custom)
 
-    vmenu_cmd="vmenu --unfocus-exit --title Playlists -pd: "
-    while read -r line;
-    do
-        vmenu_cmd+="'$line' "
-    done <<< "$playlists"
-
-    playlist=`eval $vmenu_cmd`
-
-    if [[ $playlist != "" ]]
+    if [[ "$list" != "" ]]
     then
         mpc clear
-        mpc load "$playlist"
+        mpc load "$list"
         $(dirname "$0")/volume_control.sh set_music_mode
         mpc play
     fi
@@ -29,44 +20,27 @@ function select_playlist
 
 function select_song_from_current_playlist
 {
-    current_song=`mpc current -f "[%artist% - %title%]|[%file%]" | tr -d '!-.' | sed -e 's/mp3//'`
-    songs=`mpc playlist -f "[%artist% - %title%]|[%file%]" | tr -d '!-.' | sed -e 's/mp3//'`
-    if [[ $songs == "" ]]
+    songs=`mpc playlist -f "%position% %artist% - %title% ---  %file%" | sed -e 's/mp3//'`
+    if [[ "$songs" == "" ]]
     then
         ratpoison -c "echo [No playlist selected]"
         return 0
     fi
 
-    vmenu_cmd="vmenu --unfocus-exit --title Songs -p "
-    counter=1
-    current_song_number=1
-    while read -r line;
-    do
-        vmenu_cmd+="'$line' "
-        vmenu_cmd+="'$counter' "
-
-        if [[ $line == $current_song ]]
-        then
-            current_song_number=$counter
-        fi
-
-        ((counter++))
-    done <<< "$songs"
-
-    vmenu_cmd+=" -i $current_song_number"
-    song=`eval $vmenu_cmd`
+    song=$(echo -e "$songs" | rofi -dmenu -i -p "> " -no-custom)
+    song=$(echo "$song" | cut -d " " -f 1)
 
     if [[ $song != "" ]]
     then
         $(dirname "$0")/volume_control.sh set_music_mode
-        mpc play $song
+        mpc play $song > /dev/null
     fi
 }
 
 
 function search_song
 {
-    search_text=`ratpoison -c "prompt song? "`
+    search_text=`ratpoison -c "prompt > "`
     if [[ $search_text == "" ]]
     then
         return 0
@@ -79,13 +53,29 @@ function search_song
         return 0
     fi
 
-    vmenu_cmd="vmenu --unfocus-exit --title Search -pd: "
-    while read -r line;
-    do
-        vmenu_cmd+="\"$line\" "
-    done <<< "$search_results"
+    selected_song=$(echo -e "$search_results" | rofi -dmenu -i -p "> " -no-custom)
 
-    selected_song=`eval $vmenu_cmd`
+    if [[ $selected_song != "" ]]
+    then
+        song=$(echo "$selected_song" | sed 's/\\//')
+        echo "$song"
+        mpc insert "$song"
+        mpc next
+        $(dirname "$0")/volume_control.sh set_music_mode
+        mpc play
+    fi
+}
+
+function search_all
+{
+    search_results=$(mpc listall | sed "s/'/\\\'/g;s/\`/\\\\\`/g")
+    if [[ $search_results == "" ]]
+    then
+        ratpoison -c "echo [No search results]"
+        return 0
+    fi
+
+    selected_song=$(echo -e "$search_results" | rofi -dmenu -i -p "> " -no-custom -matching glob)
 
     if [[ $selected_song != "" ]]
     then
@@ -183,7 +173,12 @@ function echo_information
 
     status=`mpc status`
     craft_status_info
-    ratpoison -c "echo $crafted_status"
+    if [[ "$crafted_status" == "[stopped]" ]]
+    then
+        ratpoison -c "echo [stopped]"
+    else
+        rofi -e "$crafted_status" -location 7 -color-normal "#fdf6e3, #657b83"
+    fi
 }
 
 
@@ -318,6 +313,9 @@ case "$1" in
     'search')
         search_song
         ;;
+    'search_all')
+        search_all
+        ;;
     'clear')
         mpc clear
         ;;
@@ -329,4 +327,4 @@ case "$1" in
         ;;
 esac
 
-assert_volume_mode
+assert_volume_mode > /dev/null
