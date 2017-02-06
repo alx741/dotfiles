@@ -46,7 +46,7 @@ function search_song
         return 0
     fi
 
-    search_results=$(mpc search any "$search_text" | sed "s/'/\\\'/g;s/\`/\\\\\`/g")
+    search_results=$(mpc search any "$search_text")
     if [[ $search_results == "" ]]
     then
         ratpoison -c "echo [No search results]"
@@ -68,7 +68,7 @@ function search_song
 
 function search_all
 {
-    search_results=$(mpc listall | sed "s/'/\\\'/g;s/\`/\\\\\`/g")
+    search_results=$(mpc listall)
     if [[ $search_results == "" ]]
     then
         ratpoison -c "echo [No search results]"
