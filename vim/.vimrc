@@ -514,7 +514,7 @@
         "
         " * Clear 'formatprg' so `gq` can be used with the default
         "   behavior
-        silent! execute 'norm! mz'
+        let l:winview = winsaveview()
 
         if &ft ==? 'c' || &ft ==? 'cpp' || &ft ==? 'php'
             setlocal formatprg=astyle\ --mode=c
@@ -530,7 +530,7 @@
         silent! call RemoveTrailingSpaces()
         silent! execute 'retab'
         silent! execute 'gg=G'
-        silent! execute 'norm! `z'
+        call winrestview(l:winview)
         setlocal formatprg=
     endfunction
     "}}}
