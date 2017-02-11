@@ -9,7 +9,7 @@ function read_volume_value
 
     if [[ $vol_level -le 100 && $vol_level -ge 0 ]]
     then
-        amixer set Master $vol_level%
+        amixer set Master $vol_level% > /dev/null
     fi
 }
 
@@ -26,26 +26,26 @@ function print_tmux
 }
 
 
-amixer set PCM 100%
+amixer set PCM 100% > /dev/null
 
 case "$1" in
     'inc')
-        amixer set Master 5%+
+        amixer set Master 5%+ > /dev/null
         ;;
     'dec')
-        amixer set Master 5%-
+        amixer set Master 5%- > /dev/null
         ;;
     'mute')
-        amixer set Master toggle
+        amixer set Master toggle > /dev/null
         ;;
     'high')
-        amixer set Master 100%
+        amixer set Master 100% > /dev/null
         ;;
     'low')
-        amixer set Master 15%
+        amixer set Master 15% > /dev/null
         ;;
     'medium')
-        amixer set Master 50%
+        amixer set Master 50% > /dev/null
         ;;
     'ask')
         read_volume_value
@@ -65,7 +65,7 @@ case "$1" in
         exit 0
         ;;
     'set')
-        amixer set Master $2%
+        amixer set Master $2% > /dev/null
         print_tmux
         exit 0
         ;;
