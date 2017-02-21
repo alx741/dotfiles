@@ -101,9 +101,9 @@
     export PERL6=$(find /usr/share/perl6 -type d -printf ":%p")
 
     # Ruby
-    export RUBY_GEMS=$(find $HOME/.gem/ruby/2.3.0/gems/ -type d -printf ":%p")
-    export GEM_HOME=$HOME/.gem/ruby/2.3.0/gems/
-    export BUNDLE_PATH=$HOME/.gem/ruby/2.3.0/gems/
+    export RUBY_GEMS=$(find $HOME/.gem/ruby/2.4.0/gems/ -type d -printf ":%p")
+    export GEM_HOME=$HOME/.gem/ruby/2.4.0/gems/
+    export BUNDLE_PATH=$HOME/.gem/ruby/2.4.0/gems/
 
     # Rust
     export RUST_CARGO_BIN="$HOME/.cargo/bin"
