@@ -202,7 +202,7 @@
     alias mkdir="mkdir -p"
     alias pastebin="sprunge"
     alias pb="sprunge"
-    alias moretmp="sudo mount -o remount,size=6G,noatime /tmp"
+    alias moretmp="sudo mount -o remount,size=10G,noatime /tmp"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
@@ -215,7 +215,8 @@
 
         function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
 
-        function hoogle() { command hoogle $@ | HsColour --tty }
+        function h() { command hoogle $@ | HsColour --tty }
+        function hi() { command hoogle --info $@ | HsColour --tty }
 
         function c()
         {
