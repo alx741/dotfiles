@@ -80,6 +80,8 @@
     Plug 'tpope/vim-abolish'
     Plug 'simeji/winresizer'
     Plug '~/lab/spec.vim'
+    Plug 'ron89/thesaurus_query.vim'
+    Plug 'rhysd/vim-grammarous'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -238,6 +240,10 @@
                 \   'hook_pass': 'tddlight green',
                 \   'hook_fail': 'tddlight red'
                 \ }
+        "}}}
+
+        "{{{ Grammarous
+            let g:grammarous#use_vim_spelllang = 1
         "}}}
     "}}}
 "}}}
