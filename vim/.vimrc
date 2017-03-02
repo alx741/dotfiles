@@ -379,9 +379,9 @@
         set tabstop=4
         set textwidth=80
         set timeout
-        set timeoutlen=400
+        set timeoutlen=300
         set ttimeout
-        set ttimeoutlen=0
+        set ttimeoutlen=-1
         set wildignore=*.o,*.class
         set wildmenu
         set wildmode=longest,list,full
@@ -607,29 +607,38 @@
     "}}}
 
     function! Refresh_firefox(type) "{{{
+        silent exe "write"
+
         if a:type
-            silent exe "! ~/.scripts/refresh_firefox.sh focus"
-            silent exe "redraw!"
+            silent exe "AsyncRun ~/.scripts/refresh_firefox.sh focus"
         else
-            silent exe "! ~/.scripts/refresh_firefox.sh"
-            silent exe "redraw!"
+            silent exe "AsyncRun ~/.scripts/refresh_firefox.sh"
         endif
+
+        silent exe "redraw!"
     endfunction
     "}}}
 
     function! Make_arrow(type) "{{{
-        if a:type
+        if (a:type == 1)
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
                 exe "norm! a->  "
             else
                 exe "norm! a ->  "
             endif
             exe "startreplace"
-        else
+        elseif (a:type == 2)
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
                 exe "norm! a=>  "
             else
                 exe "norm! a =>  "
+            endif
+            exe "startreplace"
+        elseif (a:type == 3)
+            if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
+                exe "norm! a<-  "
+            else
+                exe "norm! a <-  "
             endif
             exe "startreplace"
         endif
@@ -1104,7 +1113,8 @@
 
                 " Arrows
                 au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
-                au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(0)<CR>
+                au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(2)<CR>
+                au FileType haskell inoremap <buffer> :; <C-]><ESC>:call Make_arrow(3)<CR>
             "}}}
 
             "{{{ Types Abbreviations
