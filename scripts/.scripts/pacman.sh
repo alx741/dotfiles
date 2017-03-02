@@ -27,6 +27,6 @@ case $1 in
         echo Updating mirrorlist...
         echo
         sudo reflector --latest 100 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-        packer --noedit --noconfirm -Syyu
+        sudo pacman -Syyu --noconfirm
         ;;
 esac
