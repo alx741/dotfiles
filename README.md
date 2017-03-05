@@ -73,6 +73,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Nitrogen
 * Openbox
 * Pacman
+* PostgreSQL
 * Ratpoison
 * Readline
 * Rtv

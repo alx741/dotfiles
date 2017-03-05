@@ -1,0 +1,14 @@
+\set QUIET 1
+
+\x auto
+
+\pset linestyle unicode
+\pset border 2
+\pset format wrapped
+\pset null 'NULL'
+
+\set COMP_KEYWORD_CASE upper
+\set PROMPT1 '\n[%/]  (╯°□°）╯- ┻━┻   '
+\set PROMPT2 'go on  (>\'_\')>   '
+
+\l
