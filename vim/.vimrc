@@ -382,6 +382,7 @@
         set timeoutlen=300
         set ttimeout
         set ttimeoutlen=-1
+        set tags=./tags,./TAGS,codex.tags,tags,TAGS
         set wildignore=*.o,*.class
         set wildmenu
         set wildmode=longest,list,full
@@ -1072,7 +1073,7 @@
             au FileType haskell setlocal makeprg=make
             au FileType haskell compiler ghc
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
-            au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R .'
+            au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
 
             "{{{ Color
                 au FileType haskell hi! haskellDecl ctermfg=27
@@ -1099,7 +1100,7 @@
                 au FileType haskell nnoremap <buffer><silent> gk :write<CR>:echo "Testing..."<CR>:exec "AsyncRun " . &makeprg . " test"<CR>
                 au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
                 au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
-                au FileType haskell nnoremap <buffer><silent> ght :!hasktags -c -x -R .<CR>
+                au FileType haskell nnoremap <buffer><silent> ght :exec "!" . g:fzf_tags_command<CR>:redraw!<CR>
                 au FileType haskell nnoremap <buffer> gC :e *.cabal<CR>
                 au FileType haskell nmap <silent><buffer> g<space> :call Sort_imports()<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
