@@ -128,12 +128,13 @@
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
         definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
         definekey firefox c exec ~/.scripts/ratpoison/firefox.sh cam
-        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search_tab
+        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search
         bind f readkey firefox
     #}}}
 
     #{{{ Misc
         bind d exec ~/.scripts/ratpoison/ddg.sh
+        bind k exec ~/.scripts/ratpoison/firefox.sh hoogle
     #}}}
 
     #{{{ Clipboard stack control
