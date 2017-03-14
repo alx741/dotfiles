@@ -209,6 +209,8 @@
 
         function yesodtouch() { stack -- exec yesod touch && touch Settings.hs }
 
+        function hakyll() { stack exec site $@ }
+
         function shake() { stack -- exec shake $@ }
 
         function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
