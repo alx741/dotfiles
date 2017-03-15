@@ -435,7 +435,7 @@
         vcs_info
     }
 
-    custom_prompt=$'\n''%{$fg[blue]%}<%2~>$reset_colo${vcs_info_msg_0_}'
+    custom_prompt=$'\n''%{$fg[blue]%} %2~$reset_color${vcs_info_msg_0_}'
     custom_prompt+="%{$reset_color%}%{$fg_bold[magenta]%} "
     custom_prompt+="( ͡° ͜ʖ ͡°)%{$reset_color%}"
 
