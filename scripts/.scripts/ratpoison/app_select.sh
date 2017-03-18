@@ -38,6 +38,18 @@ function launch_terminal
     fi
 }
 
+function launch_bare_terminal
+{
+    if is_running 'urxvt';
+    then
+        ratpoison -c "select urxvt"
+    else
+        urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
+            attach-session -d || exec tmux new-session -n$USER \
+            -s$USER@$HOSTNAME"&
+    fi
+}
+
 
 function launch_zathura
 {
@@ -63,6 +75,9 @@ case "$1" in
         ;;
     'terminal')
         launch_terminal
+        ;;
+    'bare-terminal')
+        launch_bare_terminal
         ;;
     'zathura')
         launch_zathura
