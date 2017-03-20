@@ -61,9 +61,9 @@ function clipboard_search
     firefox --new-tab "$google_url"
 }
 
-function search
+function duckduckgo
 {
-    query=`ratpoison -c "prompt [Search] >   "`
+    query=`ratpoison -c "prompt [Quack] >   "`
     if [[ "$query" == "" ]]; then exit 0; fi
     query=$(echo "$query" | sed 's/ /+/g')
 
@@ -92,7 +92,16 @@ function search_lyrics
     firefox --new-tab "$url"
 }
 
-function hoogle
+function youtube_search
+{
+    query=`ratpoison -c "prompt [Youtube] >   "`
+    if [[ "$query" == "" ]]; then exit 0; fi
+
+    ~/.scripts/ratpoison/app_select.sh firefox
+    firefox "https://www.youtube.com/results?search_query=$query"
+}
+
+function hoogle_search
 {
     query=`ratpoison -c "prompt [Hoogle] >   "`
     if [[ "$query" == "" ]]; then exit 0; fi
@@ -124,8 +133,8 @@ case $1 in
         ~/.scripts/ratpoison/app_select.sh firefox
         clipboard_search
         ;;
-    'search')
-        search
+    'duckduckgo')
+        duckduckgo
         ;;
     'search_lyrics')
         ~/.scripts/ratpoison/app_select.sh firefox
@@ -135,7 +144,10 @@ case $1 in
         ~/.scripts/ratpoison/app_select.sh firefox
         firefox "http://192.168.1.100:81/index.htm"
         ;;
-    'hoogle')
-        hoogle
+    'hoogle_search')
+        hoogle_search
+        ;;
+    'youtube_search')
+        youtube_search
         ;;
 esac

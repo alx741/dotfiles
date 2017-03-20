@@ -111,6 +111,7 @@
         definekey task s exec ~/.scripts/ratpoison/translate.sh es:en
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
+        definekey task C-Return exec ~/.scripts/build/Topa halt
         definekey task question help task
         bind t readkey task
     #}}}
@@ -118,7 +119,6 @@
     #{{{ Firefox control
         newkmap firefox
         definekey firefox f exec ~/.scripts/ratpoison/firefox.sh select_tab facebook
-        definekey firefox y exec ~/.scripts/ratpoison/firefox.sh select_tab youtube
         definekey firefox e exec ~/.scripts/ratpoison/firefox.sh select_tab evirtual
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
         definekey firefox g exec ~/.scripts/ratpoison/firefox.sh select_tab github
@@ -128,13 +128,14 @@
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
         definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
         definekey firefox c exec ~/.scripts/ratpoison/firefox.sh cam
-        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh search
+        definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh duckduckgo
+        definekey firefox y exec ~/.scripts/ratpoison/firefox.sh youtube_search
+        definekey firefox k exec ~/.scripts/ratpoison/firefox.sh hoogle_search
         bind f readkey firefox
     #}}}
 
     #{{{ Misc
         bind d exec ~/.scripts/ratpoison/ddg.sh
-        bind k exec ~/.scripts/ratpoison/firefox.sh hoogle
     #}}}
 
     #{{{ Clipboard stack control
