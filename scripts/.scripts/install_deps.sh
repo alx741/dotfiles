@@ -14,7 +14,7 @@ AUR_DEPS=(
 )
 
 HASK_DEPS=(
-    shake yesod hoogle hasktags
+    shake yesod hoogle hasktags hakyll codex
 )
 
 sudo pacman -Syy ${ARCH_DEPS[@]}
