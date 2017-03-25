@@ -166,6 +166,7 @@
     alias edit=vim
     alias er=vr
     alias ex="exit"
+    alias ext="exit"
     alias exi="exit"
     alias exti="exit"
     alias free="free -h"
@@ -328,6 +329,7 @@
         alias yt="$SCRIPTS/youtube_mplayer.sh"
         alias alan="$SCRIPTS/alan.sh"
         alias home="$SCRIPTS/home.sh"
+        alias wgetit="$SCRIPTS/wgetit.sh"
     #}}}
 
     #{{{ Sufix
