@@ -1,15 +1,14 @@
 Copyright 2016 by Daniel Campoverde Carrión [alx741] <alx@sillybytes.net>
 
 When using (fully or partially) any script or configuration file in this
-repository, this **license file must be preserverd**.
+repository, this **license file must be copied and preserved intact together
+with the author attribution**.
 
 Author: *Daniel Campoverde Carrión* *[alx741]*
 
 [Silly Bytes](http://www.sillybytes.net)
 
 mailto: alx@sillybytes.net
-
-
 
 
 These dotfiles are free software: you can redistribute it and/or modify
