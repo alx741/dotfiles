@@ -153,7 +153,7 @@
         "{{{ Emmet
             let g:user_emmet_install_global = 0
             autocmd FileType html,css,php,blade EmmetInstall
-            let g:user_emmet_leader_key='<C-j>'
+            let g:user_emmet_leader_key='<C-n>'
         "}}}
 
         "{{{ Netrw
@@ -463,7 +463,7 @@
         nnoremap } }zz
         nnoremap { {zz
         nnoremap <NUL> <c-^>
-        nnoremap gs :w<CR>
+        nnoremap gs :up<CR>
         nnoremap gS :wa!<CR>:call QuitIgnoringE173("!")<CR>
         nnoremap gbb :w<CR>:Make!<CR>
         nnoremap gbc :Make! clean<CR>
