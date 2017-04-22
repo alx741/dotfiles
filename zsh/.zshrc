@@ -166,10 +166,11 @@
     alias edit=vim
     alias er=vr
     alias ex="exit"
-    alias ext="exit"
     alias exi="exit"
+    alias ext="exit"
     alias exti="exit"
     alias free="free -h"
+    alias fuck='sudo $(fc -ln -1)'
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
@@ -183,9 +184,14 @@
     alias m="mplayer"
     alias mail="mutt"
     alias meme=mem
+    alias mkdir="mkdir -p"
+    alias moretmp="sudo mount -o remount,size=10G,noatime /tmp"
     alias ns="nativescript"
     alias o="xdg-open"
     alias p="ping 8.8.8.8"
+    alias pastebin="sprunge"
+    alias pb="sprunge"
+    alias qgis="qgis --nologo"
     alias ser="sudo service"
     alias st="speedtest"
     alias suod="sudo"
@@ -199,11 +205,6 @@
     alias vim="fuzzy_edit"
     alias vr="fuzzy_edit readme"
     alias woman="command man"
-    alias fuck='sudo $(fc -ln -1)'
-    alias mkdir="mkdir -p"
-    alias pastebin="sprunge"
-    alias pb="sprunge"
-    alias moretmp="sudo mount -o remount,size=10G,noatime /tmp"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
