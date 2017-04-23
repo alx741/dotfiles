@@ -8,7 +8,7 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'alvan/vim-closetag'
     Plug 'alx741/vinfo'
-    Plug 'benekastah/neomake'
+    Plug 'w0rp/ale'
     Plug 'vim-scripts/matchit.zip'
     Plug 'ggVGc/vim-fuzzysearch'
     Plug 'hail2u/vim-css3-syntax'
@@ -245,6 +245,18 @@
         "{{{ Grammarous
             let g:grammarous#use_vim_spelllang = 1
         "}}}
+
+        "{{{ ALE
+            let g:ale_lint_on_filetype_changed = 0
+            let g:ale_lint_on_insert_leave = 0
+            let g:ale_lint_on_enter = 0
+            let g:ale_lint_on_save = 0
+            let g:ale_lint_on_text_changed = 'never'
+            let g:grammarous#use_vim_spelllang = 1
+            nnoremap <silent>gjl :up<CR>:echo "Linting..."<CR>:call ale#Lint()<CR>
+            nnoremap <silent> gl<space> :call ToggleLocationList()<CR>
+            nnoremap <silent> glc :sign unplace *<CR>
+        "}}}
     "}}}
 "}}}
 
@@ -465,10 +477,8 @@
         nnoremap <NUL> <c-^>
         nnoremap gs :up<CR>
         nnoremap gS :wa!<CR>:call QuitIgnoringE173("!")<CR>
-        nnoremap gbb :w<CR>:Make!<CR>
-        nnoremap gbc :Make! clean<CR>
-        nnoremap gj :w<CR>:Make!<CR>
-        nnoremap gb<space> :w<CR> :NeomakeSh exit 0<CR>
+        nnoremap gjc :Make! clean<CR>
+        nnoremap gjj :w<CR>:Make<CR>
         nnoremap <c-z> <c-x>
         nnoremap z<space> 1z=
         nnoremap <silent>g= :call Format()<CR>
@@ -672,7 +682,7 @@
             au FileType vim setlocal keywordprg=:h
             au FileType vim nnoremap <buffer> <CR> <CR>
             au FileType vim setlocal makeprg=rake
-            au FileType vim nnoremap <buffer><silent> gk :write<CR> :! rake test<CR>
+            au FileType vim nnoremap <buffer><silent> gk :up<CR> :! rake test<CR>
         augroup END
     "}}}
 
@@ -683,7 +693,7 @@
             au FileType c,cpp nnoremap <buffer><silent>gH :AS<CR>
             au FileType c inoremap ,< <ESC>:call Avr_set_bit(0)<CR>
             au FileType c inoremap << <ESC>:call Avr_set_bit(1)<CR>
-            au FileType c nnoremap <buffer> gb :Make burn<CR>
+            au FileType c nnoremap <buffer> gjb :Make burn<CR>
         augroup END
 
         function! Avr_set_bit(value)
@@ -1093,11 +1103,8 @@
                 au FileType haskell onoremap <silent> ic :<c-u>silent call HaskellSelectCase()<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer><silent> gll :write<CR>:echo "Linting..."<CR>:silent! exec "Neomake"<CR>
-                au FileType haskell nnoremap <buffer><silent> gl<space> :call ToggleLocationList()<CR>
-                au FileType haskell nnoremap <buffer><silent> glc :sign unplace *<CR>
-                au FileType haskell nnoremap <buffer><silent> gj :write<CR>:echo "Building..."<CR>:exec "AsyncRun " . &makeprg . " build"<CR>
-                au FileType haskell nnoremap <buffer><silent> gk :write<CR>:echo "Testing..."<CR>:exec "AsyncRun " . &makeprg . " test"<CR>
+                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Building..."<CR>:exec "AsyncRun " . &makeprg . " build"<CR>
+                au FileType haskell nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:exec "AsyncRun " . &makeprg . " test"<CR>
                 au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
                 au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
                 au FileType haskell nnoremap <buffer><silent> ght :exec "!" . g:fzf_tags_command<CR>:redraw!<CR>
@@ -1183,8 +1190,8 @@
             au FileType purescript onoremap <silent> aa :<c-u>silent execute "normal! ?->\r:nohlsearch\rhvEf-ge"<CR>
             au FileType purescript nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
             au FileType purescript nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-            au FileType purescript nnoremap <buffer><silent> gj :write<CR> :echo "Building..."<CR> :exec "AsyncRun " . &makeprg . " build"<CR>
-            au FileType purescript nnoremap <buffer><silent> gk :write<CR> :echo "Testing..."<CR> :exec "AsyncRun " . &makeprg . " test"<CR>
+            au FileType purescript nnoremap <buffer><silent> gjj :up<CR> :echo "Building..."<CR> :exec "AsyncRun " . &makeprg . " build"<CR>
+            au FileType purescript nnoremap <buffer><silent> gjk :up<CR> :echo "Testing..."<CR> :exec "AsyncRun " . &makeprg . " test"<CR>
             au FileType purescript nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
             au FileType purescript nnoremap <buffer><silent> ght :!hasktags -c -x -R .<CR>
             au FileType purescript nmap <silent><buffer> g<space> :call Sort_imports()<CR>
