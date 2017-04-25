@@ -11,4 +11,4 @@ then
     exit 1
 fi
 
-wget "$url" -O $1
+wget "$url" -O "$1"
