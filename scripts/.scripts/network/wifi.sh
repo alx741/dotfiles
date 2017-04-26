@@ -72,7 +72,7 @@ case $1 in
             sleep 2
             sudo route add default gw 192.168.1.1
             echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf
-        elif exists_home_wifi; then
+        elif exists_u_wifi; then
             sudo iwconfig "$IF" essid "UCWIFI Invitados" ap any
         fi
         ;;
