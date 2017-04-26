@@ -387,7 +387,6 @@
         set smartcase
         set smarttab
         set softtabstop=4
-        set t_CO=16
         set tabstop=4
         set textwidth=80
         set timeout
