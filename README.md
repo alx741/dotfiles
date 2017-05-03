@@ -20,7 +20,7 @@ Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
 ## Installation
 
-Use GNU `stow` for install each config like this:
+Use GNU `stow` to install each config like this:
 
         $ stow -t ~ vim
 
