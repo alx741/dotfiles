@@ -324,7 +324,7 @@
         alias runhaskell="$SCRIPTS/stack.sh runhaskell"
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
         alias topa="$SCRIPTS/build/Topa halt"
-        alias update="$SCRIPTS/pacman.sh update"
+        alias update="$SCRIPTS/update.sh"
         alias wifi="$SCRIPTS/network/wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"

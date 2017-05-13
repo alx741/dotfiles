@@ -23,10 +23,4 @@ case $1 in
     'getit')
         packer --noedit --noconfirm -S $(cat "$CACHE_FILE")
         ;;
-    'update')
-        echo Updating mirrorlist...
-        echo
-        sudo reflector --latest 100 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-        sudo pacman -Syyu --noconfirm
-        ;;
 esac
