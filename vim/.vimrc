@@ -24,7 +24,7 @@
     Plug 'kana/vim-vspec'
     Plug 'rhysd/vim-vspec-matchers'
     Plug 'tommcdo/vim-exchange'
-    Plug 'tpope/vim-commentary'
+    Plug 'manasthakur/vim-commentor'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
