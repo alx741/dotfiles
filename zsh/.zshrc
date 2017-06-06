@@ -97,6 +97,9 @@
     export PERL_VENDOR="/usr/bin/vendor_perl/"
     export PERL_CORE="/usr/bin/core_perl/"
 
+    # Python
+    export PYTHONPATH=/usr/share/qgis/python
+
     # Perl6
     export PERL6=$(find /usr/share/perl6 -type d -printf ":%p")
 
