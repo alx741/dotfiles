@@ -7,14 +7,16 @@ ARCH_DEPS=(
     xmonad zathura zathura-djvu zathura-pdf-mupdf zsh acpi alsa-utils ccze
     dhclient diff-so-fancy expect figlet firefox id3v2 lolcat mpc qrencode scrot
     task unclutter xclip xdotool youtube-dl reflector stow fzf fasd wget ntp
-    sshpass grep sed curl jshon expac haskell-hscolour
+    sshpass grep sed curl jshon expac haskell-hscolour rofi ttf-dejavu
+    ttf-roboto xcape transmission-gtk gimp inkscape
 )
 
 AUR_DEPS=(
+    hub translate-shell tealdeer-git
 )
 
 HASK_DEPS=(
-    shake yesod hoogle hasktags hakyll codex
+    happy alex shake yesod hoogle hasktags hakyll codex
 )
 
 sudo pacman -Syy ${ARCH_DEPS[@]}
