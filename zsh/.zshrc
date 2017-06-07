@@ -161,10 +161,13 @@
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
+    alias dl="darcs log"
     alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
     alias dog="less -RSFXin"
     alias dotpng="dot -Tpng -O"
+    alias dr="darcs record"
     alias du="du -h"
+    alias dw="darcs whatsnew"
     alias e=vim
     alias edit=vim
     alias er=vr
@@ -180,9 +183,6 @@
     alias gco="git checkout"
     alias git="hub"
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
-    alias dl="darcs log"
-    alias dr="darcs record"
-    alias dw="darcs whatsnew"
     alias grep="grep --line-number --ignore-case --color=auto"
     alias gs="git status -sb"
     alias lsl="command ls -lLh --color | ccze -A"
@@ -198,6 +198,7 @@
     alias pastebin="sprunge"
     alias pb="sprunge"
     alias qgis="qgis --nologo"
+    alias s="sxiv"
     alias ser="sudo service"
     alias st="speedtest"
     alias suod="sudo"
