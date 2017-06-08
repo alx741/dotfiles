@@ -1079,7 +1079,7 @@
 
         augroup ft_haskell
             au!
-            au FileType haskell setlocal makeprg=make
+            au FileType haskell setlocal makeprg=stack
             au FileType haskell compiler ghc
             au FileType haskell setlocal omnifunc=necoghc#omnifunc
             au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
