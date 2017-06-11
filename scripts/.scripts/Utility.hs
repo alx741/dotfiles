@@ -10,9 +10,9 @@ import Turtle
 amIAtHome :: Shell Bool
 amIAtHome = do
     usbKeyboard <- inshell "lsusb | grep -i \"holtek semiconductor\"" empty
-    return ((unpack usbKeyboard) =~ ("Holtek" :: String) :: Bool)
+    return ((unpack $ lineToText usbKeyboard) =~ ("Holtek" :: String) :: Bool)
 
 isVGAPlugedin :: Shell Bool
 isVGAPlugedin = do
     vgaState <- inshell "xrandr | grep -i 'vga'" empty
-    return ((unpack vgaState) =~ ("connected" :: String) :: Bool)
+    return ((unpack $ lineToText vgaState) =~ ("connected" :: String) :: Bool)
