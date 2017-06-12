@@ -1,0 +1,295 @@
+#{{{ ZSH Modules
+    autoload -U compinit bashcompinit promptinit zcalc zsh-mime-setup
+    autoload -U promptinit zcalc zsh-mime-setup
+    autoload -U colors && colors
+    autoload -Uz vcs_info
+    compinit
+    bashcompinit
+    promptinit
+    zsh-mime-setup
+#}}}
+
+#{{{ Options
+    setopt auto_cd
+    setopt auto_pushd
+    setopt pushd_ignore_dups
+    setopt glob_complete
+    setopt rm_star_wait
+    setopt zle
+    setopt vi
+    setopt no_hup
+    setopt no_check_jobs
+    setopt ignore_eof
+    setopt no_beep
+    setopt numeric_glob_sort
+    setopt extended_glob
+    setopt rc_expand_param
+    setopt append_history
+    setopt complete_in_word
+    setopt prompt_subst
+    setopt nohashdirs
+    setopt nohashcmds
+    unsetopt flow_control
+    unsetopt list_ambiguous
+
+    # history options
+    setopt extended_history
+    setopt share_history
+    setopt hist_ignore_dups
+    setopt hist_ignore_all_dups
+    setopt hist_expire_dups_first
+    setopt hist_find_no_dups
+    setopt hist_save_no_dups
+    setopt hist_reduce_blanks
+    setopt hist_ignore_space
+    setopt hist_no_store
+    setopt hist_verify
+    setopt hist_ignore_space
+#}}}
+
+#{{{ Variables
+    export EDITOR=vim
+    export PAGER=less
+    export KEYTIMEOUT=1  # Reduce vi-mode lag
+
+    # Path
+    PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
+    PATH+="$HOME/.local/bin:"
+    export PATH
+    declare -U path
+
+    # History
+    HISTFILE=~/.history
+    SAVEHIST=1000
+    HISTSIZE=1000
+
+    SORT_COMMAND="sort"
+#}}}
+
+#{{{ Aliases
+    alias df="df -h"
+    alias dog="less -RSFXin"
+    alias du="du -h"
+    alias e=vim
+    alias edit=vim
+    alias er=vr
+    alias ex="exit"
+    alias exi="exit"
+    alias ext="exit"
+    alias exti="exit"
+    alias free="free -h"
+    alias grep="grep --line-number --ignore-case --color=auto"
+    alias mkdir="mkdir -p"
+    alias p="ping 8.8.8.8"
+    alias st="speedtest"
+    alias suod="sudo"
+    alias sys="sudo systemctl"
+    alias time="command time -p"
+    alias v=vim
+    alias vi=vim
+
+    #{{{ Functions
+        function L()
+        {
+            SORT_COMMAND="sort -r"
+            l
+        }
+
+        function l()
+        {
+            if [[ $# -eq 0 ]];
+            then
+                l_dir="."
+            else
+                if [[ -d "$1" ]];
+                then
+                    l_dir="$1"
+                else
+                    l_dir=$(find -L . -maxdepth 1 -type d -not -path '*/\.*' \
+                        -printf "%P\n" | fzf -q "$1" -1 -0)
+
+                    if [[ "$l_dir" == "" ]]
+                    then
+                        echo
+                        echo -e "\t No directory \"$1\"    ¯\_(ツ)_/¯"
+                        echo
+                        return 1
+                    fi
+                fi
+            fi
+
+            list_dir $l_dir
+        }
+
+        function back_dir()
+        {
+            if [[ "$#" == 0 ]]; then
+                c ../
+            else
+                for i in {1..$1}
+                do
+                    c ../
+                done
+            fi
+        }
+    #}}}
+
+    #{{{ Fast directory access
+        alias cd='c'
+        alias ,,='popd'
+        alias ..='back_dir $@'
+        alias ...='back_dir 2'
+        alias ....='back_dir 3'
+        alias .....='back_dir 4'
+    #}}}
+#}}}
+
+#{{{ Completion
+    zstyle ':completion::complete:*' use-cache 1
+    zstyle ':completion:*' accept-exact '*(N)'
+    zstyle ':completion:*' rehash true
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ~/.zsh/cache
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+    zstyle ':completion:*' verbose yes
+    zstyle ':completion:*:descriptions' format '%B%d%b'
+    zstyle ':completion:*:messages' format '%d'
+    zstyle ':completion:*' group-name ''
+    zstyle ':completion:*' auto-description 'specify: %d'
+    zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+    zstyle ':completion:*:default' menu 'select=0'
+    zstyle ':completion:*' file-sort modification reverse
+    zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+    zstyle ':completion:*:manuals' separate-sections true
+    zstyle ':completion:*:corrections' format '%B%d (errors %e)%b'
+    zstyle ':completion::*:(rm|vi):*' ignore-line true
+    zstyle ':completion:*' ignore-parents parent pwd
+    zstyle ':completion::approximate*:*' prefix-needed false
+
+    #{{{ Ignore
+        zstyle ':completion:*:(all-|)files' ignored-patterns "(*.pyc|*~|*.o|*.class)"
+        zstyle ':completion:*:ls:*:(all-|)files' ignored-patterns
+        zstyle ':completion:*:rm:*:(all-|)files' ignored-patterns
+    #}}}
+#}}}
+
+#{{{ Key bindings
+    # Special keys works properly
+    bindkey '\e[1~' beginning-of-line
+    bindkey '\e[4~' end-of-line
+    bindkey '\e[A' up-line-or-history
+    bindkey '\e[B' down-line-or-history
+    bindkey '\eOA' up-line-or-history
+    bindkey '\eOB' down-line-or-history
+    bindkey '\e[C' forward-char
+    bindkey '\e[D' backward-char
+    bindkey '\eOC' forward-char
+    bindkey '\eOD' backward-char
+
+    bindkey '^O' clear-screen
+    bindkey -s '^Y' 'back_dir\n'
+    bindkey -M viins '^E' insert-last-word
+#}}}
+
+#{{{ Vi-mode
+    # Ensures that $terminfo values are valid and updates editor information
+    # when the keymap changes.
+    function zle-keymap-select zle-line-init zle-line-finish {
+      # The terminal must be in application mode when ZLE is active for
+      # $terminfo values to be valid.
+      if (( ${+terminfo[smkx]} )); then
+        printf '%s' ${terminfo[smkx]}
+      fi
+      if (( ${+terminfo[rmkx]} )); then
+        printf '%s' ${terminfo[rmkx]}
+      fi
+
+      zle reset-prompt
+      zle -R
+    }
+
+    # Ensure that the prompt is redrawn when the terminal size changes.
+    TRAPWINCH() {
+      if [[ -o zle ]]; then
+        zle reset-prompt
+        zle -R
+      fi
+    }
+
+    zle -N zle-line-init
+    zle -N zle-line-finish
+    zle -N zle-keymap-select
+    zle -N edit-command-line
+
+
+    bindkey -v
+
+    # Avoid dropping keystrokes after ESC hit
+    bindkey -as '\e' ''
+
+    # allow ctrl-p, ctrl-n, ctrl-r for navigate history (standard behaviour)
+    bindkey '^P' up-history
+    bindkey '^N' down-history
+    bindkey '^r' history-incremental-search-backward
+
+    # Incremental search for / and ?
+    bindkey -M vicmd "/" history-incremental-search-backward
+    bindkey -M vicmd "?" history-incremental-search-forward
+
+    # allow ctrl-h, ctrl-w, ctrl-? for char and word deletion
+    # (standard behaviour)
+    bindkey '^?' backward-delete-char
+    bindkey '^h' backward-delete-char
+    bindkey '^w' vi-backward-kill-word
+
+    # Some extra vim like bindings
+    bindkey -a 'gg' beginning-of-buffer-or-history
+    bindkey -a 'G' end-of-buffer-or-history
+    bindkey -a 'u' undo
+    bindkey -a '^R' redo
+
+    # Mode indicator right prompt
+    function zle-line-init zle-keymap-select
+    {
+        if [[ "$KEYMAP" == "vicmd" ]];
+        then
+            # RPS1="%{$fg[red]%}-- NORMAL --%{$reset_color%}"
+            PS1="$custom_prompt %{$fg[red]%}> "
+        else
+            # RPS1="%{$fg[cyan]%}-- INSERT --%{$reset_color%}"
+            PS1="$custom_prompt   "
+        fi
+
+        zle reset-prompt
+    }
+#}}}
+
+#{{{ Misc
+    # Deactivate Software flow control
+    stty -ixon
+#}}}
+
+#{{{ Global Functions
+    function list_dir()
+    {
+        echo
+        find "$1/" -maxdepth 1 -not -path '*/\.*' -printf \
+            "[%y]\t%P\n" | tail -n +2 | eval ${SORT_COMMAND} \
+            | sed -r \
+            "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
+            | sed -r \
+            "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+        SORT_COMMAND="sort"
+    }
+#}}}
+
+#{{{ Plugins configuration
+    #{{{ history-substring-search
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
+    #}}}
+#}}}
+
+# vim:fdm=marker
