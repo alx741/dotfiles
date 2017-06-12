@@ -46,7 +46,7 @@
     setopt hist_verify
     setopt hist_ignore_space
 
-    export PS1="[%n@%M] %d %%"
+    export PS1="[%n@%M] %d %%  "
 #}}}
 
 #{{{ Variables
