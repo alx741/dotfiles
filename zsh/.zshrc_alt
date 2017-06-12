@@ -46,7 +46,8 @@
     setopt hist_verify
     setopt hist_ignore_space
 
-    export PS1="[%n@%M] %d %%  "
+    PSDEF="[%n@%m] %d %%  "
+    export PS1="$PSDEF"
 #}}}
 
 #{{{ Variables
@@ -254,7 +255,9 @@
     {
         if [[ "$KEYMAP" == "vicmd" ]];
         then
-            PS1+=" %{$fg[red]%}> "
+            PS1="$PSDEF %{$fg[red]%}> "
+        else
+            PS1="$PSDEF"
         fi
 
         zle reset-prompt
