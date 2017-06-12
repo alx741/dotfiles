@@ -45,6 +45,8 @@
     setopt hist_no_store
     setopt hist_verify
     setopt hist_ignore_space
+
+    export PS1="[%n@%M] %d %%"
 #}}}
 
 #{{{ Variables
@@ -253,11 +255,7 @@
     {
         if [[ "$KEYMAP" == "vicmd" ]];
         then
-            # RPS1="%{$fg[red]%}-- NORMAL --%{$reset_color%}"
-            PS1="$custom_prompt %{$fg[red]%}> "
-        else
-            # RPS1="%{$fg[cyan]%}-- INSERT --%{$reset_color%}"
-            PS1="$custom_prompt   "
+            PS1+=" %{$fg[red]%}> "
         fi
 
         zle reset-prompt
