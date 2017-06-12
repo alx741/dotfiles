@@ -137,7 +137,6 @@
     #}}}
 
     #{{{ Fast directory access
-        alias cd='c'
         alias ,,='popd'
         alias ..='back_dir $@'
         alias ...='back_dir 2'
