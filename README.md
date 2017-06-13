@@ -66,6 +66,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Mozrepl
 * Mpd
 * Mplayer
+* Mpv
 * Mutt
 * MySQL/MariaDB
 * Ncmpcpp
