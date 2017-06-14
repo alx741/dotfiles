@@ -3,7 +3,6 @@ mpd/.mpd/pid
 mpd/.mpd/log
 mpd/.mpd/state
 mpd/.mpd/database
-mpd/.mpd/playlists
 mpd/.mpd/sticker.sql
 ncmpcpp/.ncmpcpp/error.log
 mutt/.mutt/pass
