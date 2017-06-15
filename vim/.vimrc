@@ -1102,8 +1102,8 @@
                 au FileType haskell onoremap <silent> ic :<c-u>silent call HaskellSelectCase()<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Building..."<CR>:exec "AsyncRun " . &makeprg . " build"<CR>
-                au FileType haskell nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:exec "AsyncRun " . &makeprg . " test"<CR>
+                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Building..."<CR>:Make build<CR>
+                au FileType haskell nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Make test<CR>
                 au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
                 au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
                 au FileType haskell nnoremap <buffer><silent> ght :exec "!" . g:fzf_tags_command<CR>:redraw!<CR>
