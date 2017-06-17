@@ -187,7 +187,7 @@
     alias gs="git status -sb"
     alias lsl="command ls -lLh --color | ccze -A"
     alias lsls="command ls -lLha --color | ccze -A"
-    alias m="mplayer"
+    alias m="mpv"
     alias mail="mutt"
     alias meme=mem
     alias mkdir="mkdir -p"
