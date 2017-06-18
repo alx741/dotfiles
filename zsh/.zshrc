@@ -116,7 +116,8 @@
     export HASKELL_STACK_BIN="$HOME/.stack/programs/x86_64-linux/"
 
     # NPM
-    export NPM_BIN="$HOME/.npm-global/bin"
+    export NPM_PACKAGES="$HOME/.npm-packages"
+    export NPM_BIN="$HOME/.npm-packages/bin"
 
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
