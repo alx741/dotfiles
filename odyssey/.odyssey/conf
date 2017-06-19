@@ -1,0 +1,16 @@
+[io]
+driver=linuxppdev
+port=0
+
+# Uncomment the following to add propagation delays
+# see setup.txt section 4
+#[signaldelay]
+#default=1000
+
+clkpin=3
+rdatapin=10
+wdatapin=2
+vpppin=-6
+pwrpin=4  #No usado en este circuito
+
+

@@ -75,6 +75,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Newsbeuter
 * Nitrogen
 * Npm
+* Odyssey
 * Openbox
 * Pacman
 * PostgreSQL
