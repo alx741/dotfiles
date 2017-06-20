@@ -1,0 +1,32 @@
+nnoremap h gT
+nnoremap l gt
+nnoremap x d
+nnoremap X u
+nnoremap gl <C-^>
+nnoremap d <C-d>
+nnoremap u <C-u>
+nnoremap b <C-b>
+nnoremap e <C-e>
+nnoremap <C-p> <C-o>
+nnoremap <C-n> <C-i>
+nnoremap H h
+nnoremap L l
+nnoremap gH :tabmove -1<CR>
+nnoremap gL :tabmove +1<CR>
+nnoremap + :zoom +10<CR>
+nnoremap = :zoom +10<CR>
+nnoremap \- :zoom -10<CR>
+nnoremap gh :set gui="invtabs,invnavigation"<CR>
+
+highlight Hint font-size: 100%;color:black;background-color: #f9dda7;padding: 2px;
+highlight HintElem background-color: transparent;
+
+set noautocomplete
+set hintchars=asdfghjkl
+set defsearch="duckduckgo"
+set nosb
+set scroll=5
+set statuslinevisibility=visible
+source! /home/alx/.vimperatorrc.local
+
+" vim: set ft=vimperator:

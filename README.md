@@ -90,6 +90,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Urxvt
 * Vim
 * VimFx
+* Vimperator
 * Vmenu
 * W3M
 * Weechat
