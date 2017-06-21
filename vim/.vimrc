@@ -82,6 +82,7 @@
     Plug '~/lab/spec.vim'
     Plug 'ron89/thesaurus_query.vim'
     Plug 'rhysd/vim-grammarous'
+    Plug 'vimperator/vimperator.vim'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
