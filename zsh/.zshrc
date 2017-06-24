@@ -100,11 +100,7 @@
     # Python
     export PYTHONPATH=/usr/share/qgis/python
 
-    # Perl6
-    export PERL6=$(find /usr/share/perl6 -type d -printf ":%p")
-
     # Ruby
-    export RUBY_GEMS=$(find $HOME/.gem/ruby/2.4.0/gems/ -type d -printf ":%p")
     export GEM_HOME=$HOME/.gem/ruby/2.4.0/gems/
     export BUNDLE_PATH=$HOME/.gem/ruby/2.4.0/gems/
 
