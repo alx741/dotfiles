@@ -18,6 +18,10 @@ nnoremap = :zoom! +10<CR>
 nnoremap \- :zoom! -10<CR>
 nnoremap gh :set gui="invtabs,invnavigation"<CR>
 
+" NOP
+nnoremap <C-s> <Nop>
+nnoremap <Space> <Nop>
+
 highlight Hint font-size: 100%;color:black;background-color: #f9dda7;padding: 2px;
 highlight HintElem background-color: transparent;
 
