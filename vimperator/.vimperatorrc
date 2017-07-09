@@ -29,7 +29,9 @@ set noautocomplete
 set hintchars=asdfghjkl
 set defsearch="duckduckgo"
 set nosb
+set fc
 set scroll=5
+set passthrough
 set statuslinevisibility=visible
 source! /home/alx/.vimperatorrc.local
 
