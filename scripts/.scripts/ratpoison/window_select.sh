@@ -1,47 +1,10 @@
 #!/bin/bash
 
+window_list=$(ratpoison -c "windows")
+window=$(echo -e "$window_list" | sed 's/URxvt/URxvt terminal/' | rofi -dmenu -i -p "> " -no-custom)
 
-function ratmen_select
-{
-    window_list=$(ratpoison -c "windows")
-
-    vmenu_cmd="vmenu --unfocus-exit --title Windows "
-    for line in $window_list
-    do
-        number=$(echo $line | head -c 1)
-        vmenu_cmd+="'$line' "
-        vmenu_cmd+="'ratpoison -c \"select $number\"' "
-    done
-
-    eval $vmenu_cmd
-}
-
-
-function fzf_select
-{
-    pattern=$(ratpoison -c "prompt > ")
-    if [[ "$pattern" == "" ]];
-    then
-        exit 0
-    fi
-
-    window_list=$(ratpoison -c "windows %c")
-    selected=$(echo "$window_list" | fzf -q "$pattern" -1 -0)
-
-    if [[ "$selected" != "" ]];
-    then
-        ratpoison -c "select $selected"
-    else
-        ratpoison -c "echo [!] There is no a matching window for \"$pattern\""
-    fi
-}
-
-
-case $1 in
-    'ratmen')
-        ratmen_select
-        ;;
-    'fzf')
-        fzf_select
-        ;;
-esac
+if [[ "$window" != "" ]];
+then
+    number=$(echo $window | head -c 1)
+    ratpoison -c "select $number"
+fi
