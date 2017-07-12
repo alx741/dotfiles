@@ -83,6 +83,8 @@
     Plug 'ron89/thesaurus_query.vim'
     Plug 'rhysd/vim-grammarous'
     Plug 'vimperator/vimperator.vim'
+    Plug 'Twinside/vim-haskellFold'
+    Plug 'nixon/vim-vmath'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
