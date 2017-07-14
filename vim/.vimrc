@@ -118,6 +118,7 @@
             let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
             let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
             let g:lengthmatters_excluded+=['taskedit', 'vim', 'xml', 'hamlet']
+            let g:lengthmatters_highlight_one_column = 1
         "}}}
 
         "{{{ Gutentags
