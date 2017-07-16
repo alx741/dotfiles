@@ -1,0 +1,18 @@
+(can-change-accels yes)
+(user-manual-online yes)
+(num-processors 2)
+(tile-cache-size 2G)
+(undo-levels 20)
+(undo-size 300M)
+(toolbox-wilber no)
+(use-help no)
+
+(default-image
+    (width 1000)
+    (height 1000)
+    (xresolution 72.000)
+    (yresolution 72.000)
+    (resolution-unit millimeters)
+    (image-type rgb)
+    (fill-type transparent-fill)
+    (comment ""))
