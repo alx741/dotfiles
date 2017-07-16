@@ -209,6 +209,7 @@
     alias vim="fuzzy_edit"
     alias vr="fuzzy_edit readme"
     alias woman="command man"
+    alias ghc="stack ghc"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
@@ -308,7 +309,6 @@
         alias gclone="$SCRIPTS/git.sh clone"
         alias gupstream="$SCRIPTS/git.sh add_upstream"
         alias getit="$SCRIPTS/pacman.sh getit"
-        alias ghc="$SCRIPTS/stack.sh ghc"
         alias ghci="$SCRIPTS/stack.sh ghci"
         alias gpull="$SCRIPTS/git.sh pull"
         alias gpush="$SCRIPTS/git.sh push"
