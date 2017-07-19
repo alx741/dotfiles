@@ -261,6 +261,11 @@
             nnoremap <silent> gl<space> :call ToggleLocationList()<CR>
             nnoremap <silent> glc :sign unplace *<CR>
         "}}}
+
+        "{{{ Vmath
+            vmap <expr>  ++  VMATH_YankAndAnalyse()
+            nmap         ++  vip++
+        "}}}
     "}}}
 "}}}
 
