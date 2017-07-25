@@ -256,10 +256,15 @@
             let g:ale_lint_on_enter = 0
             let g:ale_lint_on_save = 0
             let g:ale_lint_on_text_changed = 'never'
+            let g:ale_set_highlights = 0
             let g:grammarous#use_vim_spelllang = 1
             nnoremap <silent>gjl :up<CR>:echo "Linting..."<CR>:call ale#Lint()<CR>
             nnoremap <silent> gl<space> :call ToggleLocationList()<CR>
             nnoremap <silent> glc :sign unplace *<CR>
+
+            let g:ale_linters = {
+            \   'haskell': ['hlint'],
+            \}
         "}}}
 
         "{{{ Vmath
@@ -1111,7 +1116,9 @@
                 au FileType haskell onoremap <silent> ic :<c-u>silent call HaskellSelectCase()<CR>
                 au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
                 au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Building..."<CR>:Make build<CR>
+                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."
+                            \<CR>:Dispatch -compiler=ghc hdevtools check %<CR>
+                au FileType haskell nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Make build<CR>
                 au FileType haskell nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Make test<CR>
                 au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
                 au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
@@ -1121,6 +1128,7 @@
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
                 au FileType haskell nnoremap K :HoogleInfo<CR>
+                au FileType haskell nnoremap <silent> gk :HoogleClose<CR>
 
                 " ghc-mod
                 au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
