@@ -1,3 +1,14 @@
+" nnoremap <silent> n n:call HLNext(0.1)<cr>
+" nnoremap <silent> N N:call HLNext(0.1)<cr>
+
+" function! HLNext (blinktime)
+"   let target_pat = '\c\%#'.@/
+"   let ring = matchadd('ErrorMsg', target_pat, 101)
+"   redraw
+"   exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+"   call matchdelete(ring)
+"   redraw
+" endfunction
 "{{{ Plugins
     call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -51,7 +62,6 @@
     Plug 'StanAngeloff/php.vim'
     Plug 'captbaritone/better-indent-support-for-php-with-html'
     Plug 'jwalton512/vim-blade'
-    Plug 'vim-scripts/Word-Fuzzy-Completion'
     Plug 'mattn/emmet-vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'asciidoc/vim-asciidoc'
@@ -65,7 +75,6 @@
     Plug 'hsanson/vim-android'
     Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-    Plug 'eagletmt/ghcmod-vim'
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
     Plug '~/lab/vim-hindent'
@@ -85,6 +94,7 @@
     Plug 'vimperator/vimperator.vim'
     Plug 'Twinside/vim-haskellFold'
     Plug 'nixon/vim-vmath'
+    Plug 'bitc/vim-hdevtools'
 
     " On-demand loading
     Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
@@ -209,12 +219,14 @@
             let g:goyo_height = '95%'
 
             function! s:goyo_enter()
+                exe "Relativity!"
                 set nonumber
                 set norelativenumber
                 silent !tmux set -g status
             endfunction
 
             function! s:goyo_leave()
+                exe "Relativity"
                 set number
                 set relativenumber
                 silent !tmux set -g status
@@ -349,8 +361,9 @@
             au!
             " Reset format options when filetypes are loaded
             au FileType * set formatoptions=tcrql
-            au FileType html,php,css,javascript,blade nnoremap gr :call Refresh_firefox(0)<CR>
-            au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :call Refresh_firefox(1)<CR>
+            au FileType html,php,css,javascript,blade nnoremap gr :up<CR>:call Refresh_firefox(1)<CR>
+            " au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :up<CR>:AsyncRun yesodevel.sh reload<CR>
+            au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :up<CR>:call Refresh_firefox(1)<CR>
             autocmd BufWritePost init.vim,.vimrc source %
         augroup END
     "}}}
@@ -485,8 +498,6 @@
     "}}}
 
     "{{{ General Mappings
-        nnoremap } }zz
-        nnoremap { {zz
         nnoremap <NUL> <c-^>
         nnoremap gs :up<CR>
         nnoremap gS :wa!<CR>:call QuitIgnoringE173("!")<CR>
@@ -500,7 +511,7 @@
         nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
         nnoremap <leader><CR> mzggg?G`z
         nnoremap <silent> J :call Join()<CR>
-        nnoremap <silent><esc> :noh<CR>:call sneak#hl#removehl()<CR>:silent! GhcModTypeClear<CR><esc>
+        nnoremap <silent><esc> :noh<CR>:call sneak#hl#removehl()<CR>:silent! :HdevtoolsClear<CR><ESC>
         nnoremap <silent> gl :set opfunc=Listify<CR>g@
         vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
         nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -631,8 +642,6 @@
     "}}}
 
     function! Refresh_firefox(type) "{{{
-        silent exe "write"
-
         if a:type
             silent exe "AsyncRun ~/.scripts/refresh_firefox.sh focus"
         else
@@ -1128,12 +1137,10 @@
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
                 au FileType haskell nnoremap K :HoogleInfo<CR>
-                au FileType haskell nnoremap <silent> gk :HoogleClose<CR>
+                au FileType haskell nnoremap <silent><buffer>gk :HoogleClose<CR>
 
-                " ghc-mod
-                au FileType haskell nnoremap <silent><buffer> git :GhcModTypeInsert<CR>
-                au FileType haskell nnoremap <silent><buffer> gfs :GhcModSplitFunCase<CR>
-                au FileType haskell nnoremap <silent><buffer> gtt :GhcModType<CR>
+                " Hdevtools
+                au FileType haskell nnoremap <silent><buffer>gt :HdevtoolsType<CR>
 
                 " Arrows
                 au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
