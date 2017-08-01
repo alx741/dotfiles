@@ -122,6 +122,7 @@
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
     PATH+="$HOME/.local/bin:"
+    PATH+="$HOME/.scripts:"
     PATH+="$ANDROID_TOOLS:"
     PATH+="$GRADLE_HOME/bin:"
     PATH+="$COMPOSER_HOME/vendor/bin:"
@@ -131,6 +132,10 @@
     PATH+="$RUST_CARGO_BIN:"
     PATH+="$HASKELL_STACK_BIN:"
     PATH+="$NPM_BIN:"
+
+    # Others
+    PATH+="/home/alx/lab/stage:"
+
     export PATH
     declare -U path
 
@@ -210,6 +215,8 @@
     alias vr="fuzzy_edit readme"
     alias woman="command man"
     alias ghc="stack ghc"
+    alias stage="stage.sh"
+    alias st="stage"
 
     #{{{ Functions
         function yesod() { stack -- exec yesod $@ }
