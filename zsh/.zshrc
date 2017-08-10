@@ -342,6 +342,8 @@
         alias alan="$SCRIPTS/alan.sh"
         alias home="$SCRIPTS/home.sh"
         alias wgetit="$SCRIPTS/wgetit.sh"
+        alias html2hamlet="$SCRIPTS/html2hamlet.sh"
+        alias yesodevel="$SCRIPTS/yesodevel.sh"
     #}}}
 
     #{{{ Sufix
