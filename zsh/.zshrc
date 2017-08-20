@@ -219,9 +219,9 @@
     alias st="stage"
 
     #{{{ Functions
-        function yesod() { stack -- exec yesod $@ }
+        function yesod() { stack exec -- yesod $@ }
 
-        function yesodtouch() { stack -- exec yesod touch && touch Settings.hs }
+        function yesodtouch() { stack exec -- yesod touch && touch Settings.hs }
 
         function hakyll() { stack exec site $@ }
 
@@ -343,7 +343,6 @@
         alias home="$SCRIPTS/home.sh"
         alias wgetit="$SCRIPTS/wgetit.sh"
         alias html2hamlet="$SCRIPTS/html2hamlet.sh"
-        alias yesodevel="$SCRIPTS/yesodevel.sh"
     #}}}
 
     #{{{ Sufix
