@@ -659,22 +659,20 @@
             else
                 exe "norm! a ->  "
             endif
-            exe "startreplace"
         elseif (a:type == 2)
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
                 exe "norm! a=>  "
             else
                 exe "norm! a =>  "
             endif
-            exe "startreplace"
         elseif (a:type == 3)
             if (matchstr(getline('.'), '\%' . col('.') . 'c.') ==? ' ')
                 exe "norm! a<-  "
             else
                 exe "norm! a <-  "
             endif
-            exe "startreplace"
         endif
+        exe "startinsert"
     endfunction
     "}}}
 
@@ -692,6 +690,12 @@
                 quit!
             endif
         endtry
+    endfunction
+    "}}}
+
+    function! SingleSpace() "{{{
+        silent! :.s/\m\s\{2,\}/ /
+        call RemoveTrailingSpaces()
     endfunction
     "}}}
 "}}}
