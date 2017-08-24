@@ -1078,6 +1078,10 @@
                 exe "norm! vip\<ESC>"
                 exe "'<,'>sort"
             endif
+            " Haskell type declarations
+            if matchstr(l:line, '\C::') ==? '::'
+                call SingleSpace()
+            endif
         endfunction
 
         function! HaskellSelectArgument(inner)
@@ -1140,7 +1144,7 @@
                 au FileType haskell nmap <silent><buffer> g<space> :call Sort_imports()<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
                 au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
-                au FileType haskell nnoremap K :HoogleInfo<CR>
+                au FileType haskell nnoremap <buffer>K :HoogleInfo<CR>
                 au FileType haskell nnoremap <silent><buffer>gk :HoogleClose<CR>
 
                 " Hdevtools
@@ -1153,6 +1157,7 @@
             "}}}
 
             "{{{ Types Abbreviations
+                au FileType haskell inoreab <buffer> und undefined
                 au FileType haskell inoreab <buffer> int Int
                 au FileType haskell inoreab <buffer> integer Integer
                 au FileType haskell inoreab <buffer> string String
