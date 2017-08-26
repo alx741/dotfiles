@@ -127,15 +127,6 @@
                 \ }
         "}}}
 
-        "{{{ Sneak
-            nmap fj <Plug>Sneak_s
-            nmap Fj <Plug>Sneak_S
-            xmap fj <Plug>Sneak_s
-            xmap Fj <Plug>Sneak_S
-            omap fj <Plug>Sneak_s
-            omap Fj <Plug>Sneak_S
-        "}}}
-
         "{{{ Togglelist
             let g:toggle_list_no_mappings=1
         "}}}
@@ -491,7 +482,7 @@
         nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
         nnoremap <leader><CR> mzggg?G`z
         nnoremap <silent> J :call Join()<CR>
-        nnoremap <silent><esc> :noh<CR>:call sneak#hl#removehl()<CR>:silent! :HdevtoolsClear<CR><ESC>
+        nnoremap <silent><esc> :noh<CR>:silent! :HdevtoolsClear<CR><ESC>
         nnoremap <silent> gl :set opfunc=Listify<CR>g@
         vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
         nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -1039,121 +1030,6 @@
         augroup END
     "}}}
 
-    "{{{ HASKELL
-        function! RunGhci(type)
-            call VimuxRunCommand(" stack ghci && exit")
-            if a:type
-                call VimuxSendText(":l " . bufname("%"))
-                call VimuxSendKeys("Enter")
-            endif
-        endfunction
-
-        function! JumpHaskellFunction(reverse)
-            call search('\C^[[:alnum:]]*\s*::', a:reverse ? 'bW' : 'W')
-        endfunction
-
-        function! Sort_imports()
-            let l:line = getline('.')
-            if matchstr(l:line, '\Cimport') ==? 'import'
-                exe "norm! vip\<ESC>"
-                exe "'<,'>sort"
-            endif
-            " Haskell type declarations
-            if matchstr(l:line, '\C::') ==? '::'
-                call SingleSpace()
-            endif
-        endfunction
-
-        function! HaskellSelectArgument(inner)
-            if a:inner
-                exe "norm! ?\\v::\|->\<CR>"
-                exe "norm! Wv/\\v->\|$\<CR>"
-                exe "norm! ge"
-            else
-                exe "norm! ?\\v::\|->\<CR>"
-                exe "norm! Wv/\\v->\|$\<CR>"
-                exe "norm! Wge"
-                let car = matchstr(getline('.'), '\%' . col('.') . 'c.')
-                if (car ==? ">")
-                    exe "norm! wh"
-                else
-                    exe "norm! \<esc>F-hvg_"
-                endif
-            endif
-        endfunction
-
-        function! HaskellSelectCase()
-            exe "norm! $?case\<CR>"
-            exe "norm! Wv/of\<CR>"
-            exe "norm! B"
-        endfunction
-
-        augroup ft_haskell
-            au!
-            au FileType haskell setlocal makeprg=stack
-            au FileType haskell compiler ghc
-            au FileType haskell setlocal omnifunc=necoghc#omnifunc
-            au FileType haskell let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
-
-            "{{{ Color
-                au FileType haskell hi! haskellDecl ctermfg=27
-                au FileType haskell hi! haskellDeclKeyword ctermfg=30
-                au FileType haskell hi! haskellIdentifier ctermfg=129
-                au FileType haskell hi! haskellOperators ctermfg=black
-                au FileType haskell hi! haskellType ctermfg=32
-                au FileType haskell hi! def link haskellPragma Comment
-                au FileType haskell hi! haskellNumber ctermfg=166
-                au FileType haskell hi! haskellImportKeywords ctermfg=136
-            "}}}
-
-            "{{{ Mappings
-                " General
-                au FileType haskell onoremap <silent> ia :<c-u>silent call HaskellSelectArgument(1)<CR>
-                au FileType haskell onoremap <silent> aa :<c-u>silent call HaskellSelectArgument(0)<CR>
-                au FileType haskell onoremap <silent> ic :<c-u>silent call HaskellSelectCase()<CR>
-                au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
-                au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
-                au FileType haskell nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."
-                            \<CR>:Dispatch -compiler=ghc hdevtools check %<CR>
-                au FileType haskell nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Make build<CR>
-                au FileType haskell nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Make test<CR>
-                au FileType haskell nnoremap <buffer><silent> gK :SpecRunAll<CR>
-                au FileType haskell nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
-                au FileType haskell nnoremap <buffer><silent> ght :exec "!" . g:fzf_tags_command<CR>:redraw!<CR>
-                au FileType haskell nnoremap <buffer> gC :e *.cabal<CR>
-                au FileType haskell nmap <silent><buffer> g<space> :call Sort_imports()<CR>
-                au FileType haskell nmap <silent><buffer> <leader>gg :call RunGhci(1)<CR>
-                au FileType haskell nmap <silent><buffer> <leader>gs :call RunGhci(0)<CR>
-                au FileType haskell nnoremap <buffer>K :HoogleInfo<CR>
-                au FileType haskell nnoremap <silent><buffer>gk :HoogleClose<CR>
-
-                " Hdevtools
-                au FileType haskell nnoremap <silent><buffer>gt :HdevtoolsType<CR>
-
-                " Arrows
-                au FileType haskell inoremap <buffer> ;; <C-]><ESC>:call Make_arrow(1)<CR>
-                au FileType haskell inoremap <buffer> ;: <C-]><ESC>:call Make_arrow(2)<CR>
-                au FileType haskell inoremap <buffer> :; <C-]><ESC>:call Make_arrow(3)<CR>
-            "}}}
-
-            "{{{ Types Abbreviations
-                au FileType haskell inoreab <buffer> und undefined
-                au FileType haskell inoreab <buffer> int Int
-                au FileType haskell inoreab <buffer> integer Integer
-                au FileType haskell inoreab <buffer> string String
-                au FileType haskell inoreab <buffer> double Double
-                au FileType haskell inoreab <buffer> float Float
-                au FileType haskell inoreab <buffer> bool Bool
-                au FileType haskell inoreab <buffer> true True
-                au FileType haskell inoreab <buffer> false False
-                au FileType haskell inoreab <buffer> maybe Maybe
-                au FileType haskell inoreab <buffer> just Just
-                au FileType haskell inoreab <buffer> nothing Nothing
-                au FileType haskell inoreab <buffer> io IO ()
-            "}}}
-        augroup END
-    "}}}
-
     "{{{ RUST
         augroup ft_rust
             au!
@@ -1216,6 +1092,5 @@
         augroup END
     "}}}
 "}}}
-
 
 " vim:fdm=marker
