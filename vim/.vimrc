@@ -1,14 +1,3 @@
-" nnoremap <silent> n n:call HLNext(0.1)<cr>
-" nnoremap <silent> N N:call HLNext(0.1)<cr>
-
-" function! HLNext (blinktime)
-"   let target_pat = '\c\%#'.@/
-"   let ring = matchadd('ErrorMsg', target_pat, 101)
-"   redraw
-"   exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-"   call matchdelete(ring)
-"   redraw
-" endfunction
 "{{{ Plugins
     call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -30,30 +19,23 @@
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'othree/html5.vim'
     Plug 'rking/ag.vim'
-    Plug 'terryma/vim-multiple-cursors'
     Plug 'thanthese/Tortoise-Typing'
     Plug 'kana/vim-vspec'
     Plug 'rhysd/vim-vspec-matchers'
-    Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'vim-scripts/taglist.vim'
     Plug 'pangloss/vim-javascript'
     Plug 'othree/javascript-libraries-syntax.vim'
     Plug 'wellle/targets.vim'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'xolox/vim-misc'
-    Plug 'vimwiki/vimwiki'
-    Plug 'tfnico/vim-gradle'
     Plug 'Konfekt/FastFold'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'whatyouhide/vim-lengthmatters'
-    Plug 'fidian/hexmode'
-    Plug 'justinmk/vim-sneak'
     Plug 'vim-scripts/a.vim'
     Plug 'vim-scripts/loremipsum'
     Plug 'milkypostman/vim-togglelist'
@@ -73,7 +55,6 @@
     Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
     Plug 'veegee/vim-pic'
     Plug 'hsanson/vim-android'
-    Plug 'sheerun/vim-polyglot'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'eagletmt/neco-ghc'
     Plug 'Twinside/vim-hoogle'
@@ -97,7 +78,6 @@
     Plug 'bitc/vim-hdevtools'
 
     " On-demand loading
-    Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
     Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
