@@ -1,8 +1,8 @@
-nnoremap <buffer><silent> [s :call Man_section(1)<CR>
-nnoremap <buffer><silent> ]s :call Man_section(0)<CR>
-nnoremap <buffer><silent> [[ :call Man_reference(1)<CR>
-nnoremap <buffer><silent> ]] :call Man_reference(0)<CR>
 " This is getting sources everywhere!!
+" nnoremap <buffer><silent> [s :call Man_section(1)<CR>
+" nnoremap <buffer><silent> ]s :call Man_section(0)<CR>
+" nnoremap <buffer><silent> [[ :call Man_reference(1)<CR>
+" nnoremap <buffer><silent> ]] :call Man_reference(0)<CR>
 " nnoremap <buffer><nowait> d <C-d>
 " nnoremap <buffer><nowait> u <C-u>
 " nnoremap <buffer><nowait> f <C-f>

@@ -16,11 +16,12 @@ hi! haskellImportKeywords ctermfg=136
 
 "{{{ Mappings
 " General
-onoremap <buffer><silent> ia :<c-u>silent call HaskellSelectArgument(1)<CR>
-onoremap <buffer><silent> aa :<c-u>silent call HaskellSelectArgument(0)<CR>
-onoremap <buffer><silent> ic :<c-u>silent call HaskellSelectCase()<CR>
-nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
-nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
+nnoremap <buffer><silent> g= :call HaskellFormat()<CR>
+onoremap <buffer><silent> ia :<c-u>silent call SelectArgument(1)<CR>
+onoremap <buffer><silent> aa :<c-u>silent call SelectArgument(0)<CR>
+onoremap <buffer><silent> ic :<c-u>silent call SelectCase()<CR>
+nnoremap <buffer><silent> ]] :call JumpToFunction(0)<CR>
+nnoremap <buffer><silent> [[ :call JumpToFunction(1)<CR>
 nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=ghc hdevtools check %<CR>
 nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Make build<CR>
 nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Make test<CR>
@@ -38,9 +39,9 @@ nnoremap <buffer><silent> gk :HoogleClose<CR>
 nnoremap <buffer><silent>gt :HdevtoolsType<CR>
 
 " Arrows
-inoremap <buffer><silent> ;; <C-]><ESC>:call Make_arrow(1)<CR>
-inoremap <buffer><silent> ;: <C-]><ESC>:call Make_arrow(2)<CR>
-inoremap <buffer><silent> :; <C-]><ESC>:call Make_arrow(3)<CR>
+inoremap <buffer><silent> ;; <space>-><space>
+inoremap <buffer><silent> ;: <space>=><space>
+inoremap <buffer><silent> :; <space><-<space>
 "}}}
 
 "{{{ Types Abbreviations
@@ -68,23 +69,19 @@ function! RunGhci(type)
     endif
 endfunction
 
-function! JumpHaskellFunction(reverse)
+function! JumpToFunction(reverse)
     call search('\C^[[:alnum:]]*\s*::', a:reverse ? 'bW' : 'W')
 endfunction
 
-function! Sort_imports()
+function! SortThisImports()
     let l:line = getline('.')
     if matchstr(l:line, '\Cimport') ==? 'import'
         exe "norm! vip\<ESC>"
         exe "'<,'>sort"
     endif
-    " Haskell type declarations
-    if matchstr(l:line, '\C::') ==? '::'
-        call SingleSpace()
-    endif
 endfunction
 
-function! HaskellSelectArgument(inner)
+function! SelectArgument(inner)
     if a:inner
         exe "norm! ?\\v::\|->\<CR>"
         exe "norm! Wv/\\v->\|$\<CR>"
@@ -102,10 +99,26 @@ function! HaskellSelectArgument(inner)
     endif
 endfunction
 
-function! HaskellSelectCase()
+function! SelectCase()
     exe "norm! $?case\<CR>"
     exe "norm! Wv/of\<CR>"
     exe "norm! B"
+endfunction
+
+function! CleanTypeAnnotations()
+    exe ":g/^[[:alnum:]]*\\s::/call SingleSpace()"
+endfunction
+
+function! SortImports()
+    g/\v^$\n\zsimport/exe "norm j" | call SortThisImports()
+endfunction
+
+function! HaskellFormat()
+    let l:winview = winsaveview()
+    silent! call SortImports()
+    silent! call CleanTypeAnnotations()
+    silent! call RemoveTrailingSpaces()
+    call winrestview(l:winview)
 endfunction
 "}}}
 

@@ -666,7 +666,6 @@ endfunction
 
 function! SingleSpace() "{{{
     silent! :.s/\m\s\{2,\}/ /
-    call RemoveTrailingSpaces()
 endfunction
 "}}}
 "}}}
