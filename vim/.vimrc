@@ -75,7 +75,6 @@ Plug 'rhysd/vim-grammarous'
 Plug 'vimperator/vimperator.vim'
 Plug 'Twinside/vim-haskellFold'
 Plug 'nixon/vim-vmath'
-Plug 'bitc/vim-hdevtools'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
