@@ -202,7 +202,6 @@
     alias qgis="qgis --nologo"
     alias s="sxiv"
     alias ser="sudo service"
-    alias st="speedtest"
     alias suod="sudo"
     alias sys="sudo systemctl"
     alias time="command time -p"
