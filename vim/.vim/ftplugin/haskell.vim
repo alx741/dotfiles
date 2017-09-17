@@ -83,12 +83,12 @@ endfunction
 
 function! SelectArgument(inner)
     if a:inner
-        exe "norm! ?\\v::\| -> \<CR>"
-        exe "norm! Wv/\\v -> \|$\<CR>"
+        exe "norm! ?\\v::\|->\<CR>"
+        exe "norm! Wv/\\v->\|$\<CR>"
         exe "norm! ge"
     else
-        exe "norm! ?\\v::\| -> \<CR>"
-        exe "norm! Wv/\\v -> \|$\<CR>"
+        exe "norm! ?\\v::\|->\<CR>"
+        exe "norm! Wv/\\v->\|$\<CR>"
         exe "norm! Wge"
         let car = matchstr(getline('.'), '\%' . col('.') . 'c.')
         if (car ==? ">")
