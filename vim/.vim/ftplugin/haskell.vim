@@ -83,12 +83,12 @@ endfunction
 
 function! SelectArgument(inner)
     if a:inner
-        exe "norm! ?\\v::\|->\<CR>"
-        exe "norm! Wv/\\v->\|$\<CR>"
+        exe "norm! ?\\v::\| -> \<CR>"
+        exe "norm! Wv/\\v -> \|$\<CR>"
         exe "norm! ge"
     else
-        exe "norm! ?\\v::\|->\<CR>"
-        exe "norm! Wv/\\v->\|$\<CR>"
+        exe "norm! ?\\v::\| -> \<CR>"
+        exe "norm! Wv/\\v -> \|$\<CR>"
         exe "norm! Wge"
         let car = matchstr(getline('.'), '\%' . col('.') . 'c.')
         if (car ==? ">")
@@ -107,6 +107,10 @@ endfunction
 
 function! CleanTypeAnnotations()
     exe ":g/^[[:alnum:]]*\\s::/call SingleSpace()"
+    exe ':%s/\s\+::\s\+/ :: '
+    exe ':%s/\s\+->\s\+/ -> '
+    exe ':%s/\s\+=>\s\+/ => '
+    exe ':%s/\s\+<-\s\+/ <- '
 endfunction
 
 function! SortImports()
@@ -115,9 +119,9 @@ endfunction
 
 function! HaskellFormat()
     let l:winview = winsaveview()
-    silent! call SortImports()
-    silent! call CleanTypeAnnotations()
-    silent! call RemoveTrailingSpaces()
+    silent! exe "keepjumps call CleanTypeAnnotations()"
+    silent! exe "keepjumps call RemoveTrailingSpaces()"
+    exe "Stylishask"
     call winrestview(l:winview)
 endfunction
 "}}}

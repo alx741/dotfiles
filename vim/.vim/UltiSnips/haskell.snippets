@@ -6,7 +6,11 @@ endsnippet
 
 snippet stack "stack hash bang" b
 #!/usr/bin/env stack
--- stack runghc --resolver lts-7.14 --install-ghc
+{-  stack
+    script
+    --resolver lts-9.3
+    --package ...
+-}
 endsnippet
 
 snippet module "module % where"
