@@ -7,7 +7,7 @@ Plug 'LucHermitte/vim-refactor'
 Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'alvan/vim-closetag'
-Plug 'alx741/vinfo'
+Plug '~/lab/vinfo'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'ggVGc/vim-fuzzysearch'
@@ -59,6 +59,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'eagletmt/neco-ghc'
 Plug 'Twinside/vim-hoogle'
 Plug '~/lab/vim-hindent'
+Plug '~/lab/vim-stylishask'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'benmills/vimux'
@@ -164,6 +165,10 @@ call plug#end()
         let g:hindent_on_save = 0
         let g:hindent_line_length = 77
         let g:hindent_indent_size = 4
+    "}}}
+
+    "{{{ Stylishask
+        let g:stylishask_on_save = 0
     "}}}
 
     "{{{ Haskell-vim
