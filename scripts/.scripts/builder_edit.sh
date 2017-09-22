@@ -94,6 +94,11 @@ then
     builder_files+="stack.yaml "
 fi
 
+if [[ -f "package.yaml" ]];
+then
+    builder_files+="package.yaml "
+fi
+
 if [[ -f "Shakefile.hs" ]];
 then
     builder_files+="Shakefile.hs"
