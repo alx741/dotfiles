@@ -9,13 +9,14 @@ ARCH_DEPS=(
     mpc qrencode scrot task unclutter xclip xdotool youtube-dl reflector stow
     fzf fasd wget ntp sshpass grep sed curl jshon expac haskell-hscolour rofi
     ttf-dejavu ttf-roboto xcape transmission-gtk gimp inkscape asciidoctor
-    xorg-xsetroot xf86-input-synaptics xbindkeys xorg-xrandr xorg-xbacklight zip
-    unrar calc the_silver_searcher npm htop chromium cloc pandoc dnsutils
-    bind-tools unzip
+    xorg-xsetroot xf86-input-synaptics xbindkeys xorg-xrandr zip unrar calc
+    the_silver_searcher npm htop chromium cloc pandoc dnsutils bind-tools unzip
+    wol tree
 )
 
 AUR_DEPS=(
-    hub translate-shell tealdeer-git mimi-git popcorntime-bin
+    hub translate-shell tealdeer-git mimi-git popcorntime-bin acpilight sprunge
+    speedtest
 )
 
 HASK_DEPS=(
