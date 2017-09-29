@@ -1,0 +1,26 @@
+snippet schema "XML Schema Definition" b
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+$0
+
+</xs:schema>
+endsnippet
+
+snippet ele "element" b
+<xs:element name="$1" type="xs:$2"/>
+endsnippet
+
+snippet att "attribute" b
+<xs:attribute name="$1" type="xs:$2" use="required"/>
+endsnippet
+
+snippet comp "complexType" b
+<xs:complexType>
+	$0
+</xs:complexType>
+endsnippet
+
+snippet rest "restriction" b
+<xs:restriction base="$0">
+</xs:restriction>
+endsnippet
