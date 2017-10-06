@@ -1,4 +1,4 @@
-EDITOR="nvim"
+EDITOR="vim"
 
 prompt = function(){
     var datab = "";
