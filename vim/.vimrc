@@ -445,6 +445,7 @@ call plug#end()
 
     "{{{ Dotfiles editing
         nnoremap <silent><leader>ev :e ~/.vimrc<CR>
+        nnoremap <silent><leader>ef :e ~/.vim/ftplugin<CR>
         nnoremap <silent><leader>et :e ~/.tmux.conf<CR>
         nnoremap <silent><leader>er :e ~/.ratpoisonrc<CR>
         nnoremap <silent><leader>ez :e ~/.zshrc<CR>
