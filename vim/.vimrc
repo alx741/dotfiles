@@ -137,8 +137,9 @@ call plug#end()
 
     "{{{ Emmet
         let g:user_emmet_install_global = 0
-        autocmd FileType html,css,php,blade EmmetInstall
-        let g:user_emmet_leader_key='<C-n>'
+        autocmd FileType html,xml,css,php,blade EmmetInstall
+        let g:user_emmet_leader_key='g'
+        let g:user_emmet_expandabbr_key = '<C-e>'
     "}}}
 
     "{{{ Netrw
