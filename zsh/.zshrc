@@ -207,7 +207,6 @@
     alias time="command time -p"
     alias tte="trans -b -t en"
     alias tts="trans -b -t es"
-    alias v=vim
     alias vhex="vim -b"
     alias vi=vim
     alias vim="fuzzy_edit"
@@ -647,7 +646,7 @@
 
                 if [[ "$option" == "y" ]];
                 then
-                    sudo $EDITOR "$file"
+                    sudo -e "$file"
                 else
                     $EDITOR "$file"
                 fi
