@@ -1,6 +1,4 @@
 #{{{ Settings
-    startup_message off
-    msgwait 10
     nextscreen
     exec nitrogen --restore
     exec wmname LG3D
@@ -23,6 +21,8 @@
     set barpadding 4 2
     set framesels "hgjfkdlsaieow"
     set bargravity sw
+    set msgwait 10
+    set startup_message 0
 #}}}
 
 #{{{ Bindigs
