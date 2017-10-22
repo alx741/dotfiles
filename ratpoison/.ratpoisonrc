@@ -122,7 +122,6 @@
         definekey firefox e exec ~/.scripts/ratpoison/firefox.sh select_tab evirtual
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
         definekey firefox g exec ~/.scripts/ratpoison/firefox.sh select_tab github
-        definekey firefox h exec ~/.scripts/ratpoison/firefox.sh select_tab hades
         definekey firefox o exec ~/.scripts/ratpoison/firefox.sh new_tab
         definekey firefox w exec ~/.scripts/ratpoison/firefox.sh new_window
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
@@ -130,7 +129,8 @@
         definekey firefox c exec ~/.scripts/ratpoison/firefox.sh cam
         definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh duckduckgo
         definekey firefox y exec ~/.scripts/ratpoison/firefox.sh youtube_search
-        definekey firefox k exec ~/.scripts/ratpoison/firefox.sh hoogle_search
+        definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
+        definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
         bind f readkey firefox
     #}}}
 

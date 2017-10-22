@@ -107,7 +107,18 @@ function hoogle_search
     if [[ "$query" == "" ]]; then exit 0; fi
 
     ~/.scripts/ratpoison/app_select.sh firefox
-    firefox "http://www.stackage.org/lts-8.4/hoogle?q=$query"
+
+    case "$1" in
+        'hackage')
+            firefox "https://www.haskell.org/hoogle/?hoogle=$query"
+            ;;
+        'stackage')
+            firefox "http://www.stackage.org/lts-8.4/hoogle?q=$query"
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
 }
 
 case $1 in
@@ -145,7 +156,7 @@ case $1 in
         firefox "http://192.168.1.100:81/index.htm"
         ;;
     'hoogle_search')
-        hoogle_search
+        hoogle_search $2
         ;;
     'youtube_search')
         youtube_search
