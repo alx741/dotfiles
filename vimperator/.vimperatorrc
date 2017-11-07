@@ -17,6 +17,7 @@ nnoremap + :zoom! +10<CR>
 nnoremap = :zoom! +10<CR>
 nnoremap \- :zoom! -10<CR>
 nnoremap gh :set gui="invtabs,invnavigation"<CR>
+nnoremap zz <Nop>
 
 " NOP
 nnoremap <C-s> <Nop>
