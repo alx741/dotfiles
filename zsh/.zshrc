@@ -21,14 +21,13 @@
 #}}}
 
 #{{{ ZSH Modules
-    autoload -U compinit bashcompinit promptinit zcalc zsh-mime-setup
-    autoload -U promptinit zcalc zsh-mime-setup
+    autoload -U compinit bashcompinit promptinit zcalc
+    autoload -U promptinit zcalc
     autoload -U colors && colors
     autoload -Uz vcs_info
     compinit
     bashcompinit
     promptinit
-    zsh-mime-setup
 
     # Haskell Stack
     eval "$(stack --bash-completion-script stack)"
