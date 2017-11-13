@@ -12,9 +12,6 @@ case $1 in
     'ghci')
         stack ghci
         ;;
-    'ghc')
-        stack ghc "$params"
-        ;;
     'runhaskell')
         stack runhaskell "$params"
         ;;
