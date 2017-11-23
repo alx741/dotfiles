@@ -376,8 +376,6 @@ call plug#end()
     set linebreak
     set noesckeys
     set nojoinspaces
-    set number
-    set relativenumber
     set ruler
     set shiftround
     set shiftwidth=4
