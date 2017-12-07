@@ -84,6 +84,7 @@
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
+    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 
     # Gradle
     export GRADLE_HOME="/opt/gradle-2.9"
@@ -117,6 +118,10 @@
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
+    # Hadoop
+    export HADOOP="/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/bin:/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/sbin"
+    export HADOOP_HOME="/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/"
+
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -131,6 +136,7 @@
     PATH+="$RUST_CARGO_BIN:"
     PATH+="$HASKELL_STACK_BIN:"
     PATH+="$NPM_BIN:"
+    PATH+="$HADOOP:"
 
     # Others
     PATH+="/home/alx/lab/stage:"
@@ -199,7 +205,7 @@
     alias pastebin="sprunge"
     alias pb="sprunge"
     alias qgis="qgis --nologo"
-    alias s="sxiv"
+    alias s="sxiv -q"
     alias ser="sudo service"
     alias suod="sudo"
     alias sys="sudo systemctl"
@@ -520,10 +526,8 @@
     {
         if [[ "$KEYMAP" == "vicmd" ]];
         then
-            # RPS1="%{$fg[red]%}-- NORMAL --%{$reset_color%}"
             PS1="$custom_prompt %{$fg[red]%}> "
         else
-            # RPS1="%{$fg[cyan]%}-- INSERT --%{$reset_color%}"
             PS1="$custom_prompt   "
         fi
 
