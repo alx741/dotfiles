@@ -20,6 +20,7 @@
     map u scroll half-up
     map f scroll full-down
     map b scroll full-up
+    unmap <C-p>
 #}}}
 
 #{{{ Color
