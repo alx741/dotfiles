@@ -629,7 +629,7 @@
         else
             file=$(find . -maxdepth 1 -type f -not -path '*/\.*' -printf "%P\n"\
                 | command grep -i -v -e '\.hi' -e '\.o' -e '\.elf' -e '\.hex' \
-                    -e '\.pdf' -e '\.png' -e '\.jpg' \
+                    -e '\.pdf' -e '\.png' -e '\.jpg'  -e '\.d' \
                 | fzf -q "$1" -1 -0)
         fi
 
