@@ -404,6 +404,10 @@ call plug#end()
 
     filetype plugin indent on
     syntax on
+    hi StatusLine term=bold ctermbg=darkyellow ctermfg=7
+    hi StatusLineNC term=NONE ctermbg=gray ctermfg=7
+    hi VertSplit term=NONE ctermbg=7 ctermfg=7
+    hi MatchParen ctermbg=white ctermfg=21 guibg=white term=none cterm=none gui=italic
     syntax spell toplevel
     let c_no_comment_fold=1
 "}}}
