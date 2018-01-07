@@ -72,6 +72,9 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
 Plug 'Twinside/vim-haskellFold'
 Plug 'nixon/vim-vmath'
+Plug 'glts/vim-magnum'
+Plug 'glts/vim-radical'
+Plug 'triglav/vim-visual-increment'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
