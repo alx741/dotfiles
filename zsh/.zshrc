@@ -85,6 +85,7 @@
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
     export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    export JENA="/mnt/hdd/alx/u/web_semantica/apache-jena-3.6.0/bin"
 
     # Gradle
     export GRADLE_HOME="/opt/gradle-2.9"
@@ -137,6 +138,7 @@
     PATH+="$HASKELL_STACK_BIN:"
     PATH+="$NPM_BIN:"
     PATH+="$HADOOP:"
+    PATH+="$JENA:"
 
     # Others
     PATH+="/home/alx/lab/stage:"
