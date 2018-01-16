@@ -176,6 +176,7 @@
     alias dotpng="dot -Tpng -O"
     alias dr="darcs record"
     alias du="du -h"
+    alias dud="du -h -d 0"
     alias dw="darcs whatsnew"
     alias e=vim
     alias edit=vim
