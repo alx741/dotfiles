@@ -434,7 +434,10 @@
 
     bindkey '^O' clear-screen
     bindkey -s '^Y' 'back_dir\n'
-    bindkey -M viins '^E' insert-last-word
+    autoload -z edit-command-line
+    zle -N edit-command-line
+    bindkey '^E' edit-command-line
+    # bindkey -M viins '^E' insert-last-word
 #}}}
 
 #{{{ Prompt
