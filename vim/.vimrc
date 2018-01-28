@@ -411,6 +411,7 @@ call plug#end()
     hi StatusLineNC term=NONE ctermbg=gray ctermfg=7
     hi VertSplit term=NONE ctermbg=7 ctermfg=7
     hi MatchParen ctermbg=white ctermfg=21 guibg=white term=none cterm=none gui=italic
+    hi SpellBad cterm=underline
     syntax spell toplevel
     let c_no_comment_fold=1
 "}}}
