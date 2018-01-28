@@ -56,7 +56,7 @@ function vol_set_music_mode
 function vol_echo_formatted
 {
     sound_data=$(amixer sget Master | tail -n 1)
-    volume=$(echo $sound_data | awk '{print $4}' | tr -d '[]%')
+    volume=$(echo $sound_data | awk '{print $5}' | tr -d '[]%')
     mute_state=$(echo $sound_data | awk '{print $6}' | tr -d '[]')
     mode=$(vol_get_mode)
 
