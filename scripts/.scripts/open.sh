@@ -1,5 +1,7 @@
 #! /bin/sh
 
+echo "$1"
+
 filename=$(basename "$1")
 extension="${filename##*.}"
 extension=$( echo "$extension" | tr '[:upper:]' '[:lower:]')
@@ -7,19 +9,22 @@ extension=$( echo "$extension" | tr '[:upper:]' '[:lower:]')
 
 case $extension in
     pdf)
-        zathura $@
+        zathura "$@"&
         ;;
     html)
-        firefox $@
+        firefox "$@"
         ;;
     png|jpg|gif|jpgeg)
-        sxiv $@
+        sxiv -a -q "$@"
         ;;
     mp3|mpg|mpeg|mp4|webm|flv|wav)
-        sxiv $@
+        mpv "$@"
         ;;
     docx|xlsx|pptx|xls|xlw|xlt|odt|fodt|ods|fods|odp|odg|fodg|odf|fodp|swx|stw|stc|sti|sxm)
-        libreoffice $@
+        libreoffice "$@"
+        ;;
+    md|txt|csv|conf|sh)
+        vim "$@"
         ;;
     *)
         echo "WAT"
