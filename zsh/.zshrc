@@ -203,12 +203,12 @@
     alias mkdir="mkdir -p"
     alias moretmp="sudo mount -o remount,size=10G,noatime /tmp"
     alias ns="nativescript"
-    alias o="xdg-open"
+    alias o="$SCRIPTS/open.sh"
     alias p="ping 8.8.8.8"
     alias pastebin="sprunge"
     alias pb="sprunge"
     alias qgis="qgis --nologo"
-    alias s="sxiv -q"
+    alias s="sxiv -a -q"
     alias ser="sudo service"
     alias suod="sudo"
     alias sys="sudo systemctl"
@@ -219,10 +219,14 @@
     alias vi=vim
     alias vim="fuzzy_edit"
     alias vr="fuzzy_edit readme"
+    alias re="vim report.md"
+    alias ro="zathura report.pdf&"
     alias woman="command man"
     alias ghc="stack ghc"
     alias stage="stage.sh"
     alias st="stage"
+    alias ink="inkscape"
+    alias inks="inkscape"
 
     #{{{ Functions
         function yesod() { stack exec -- yesod $@ }
