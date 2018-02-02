@@ -20,6 +20,14 @@ if is_filetype "text" "$1" && [[ "$extension" != "html" ]];
 then
     vim "$@"
     exit
+elif is_filetype "image" "$1";
+then
+    sxiv -a -q "$@"
+    exit
+elif is_filetype "video" "$1" || is_filetype "audio" "$1";
+then
+    mpv "$@"
+    exit
 fi
 
 case $extension in
@@ -28,12 +36,6 @@ case $extension in
         ;;
     html)
         firefox "$@"
-        ;;
-    png|jpg|gif|jpgeg)
-        sxiv -a -q "$@"
-        ;;
-    mp3|mpg|mpeg|mp4|webm|flv|wav)
-        mpv "$@"
         ;;
     docx|xlsx|pptx|xls|xlw|xlt|odt|fodt|ods|fods|odp|odg|fodg|odf|fodp|swx|stw|stc|sti|sxm)
         libreoffice "$@"
