@@ -227,6 +227,8 @@
     alias st="stage"
     alias ink="inkscape"
     alias inks="inkscape"
+    alias r="R --quiet"
+    alias R="R --quiet"
 
     #{{{ Functions
         function yesod() { stack exec -- yesod $@ }
