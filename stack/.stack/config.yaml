@@ -3,3 +3,5 @@ templates:
     author-name: Daniel Campoverde
     author-email: alx@sillybytes.net
     github-username: alx741
+
+ghc-build: nopie
