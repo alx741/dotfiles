@@ -190,8 +190,9 @@
     # ET phone home
     bind E exec ~/.scripts/et_phone_home.sh
 
-    # Send C-g to application
+    # Send C-<something> to application
     bind g meta C-g
+    bind l meta C-l
 
     # Only window
     bind o only
@@ -214,6 +215,7 @@
 
     # Window selection
     bind w exec ~/.scripts/ratpoison/window_select.sh
+    bind h exec ~/.scripts/ratpoison/window_select.sh
 
     # Close current window
     bind Q delete
