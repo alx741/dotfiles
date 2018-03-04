@@ -197,6 +197,7 @@
     alias gs="git status -sb"
     alias lsl="command ls -lLh --color | ccze -A"
     alias lsls="command ls -lLha --color | ccze -A"
+    alias lg="la"
     alias m="mpv"
     alias mail="mutt"
     alias meme=mem
@@ -292,6 +293,11 @@
             fi
 
             list_dir $l_dir
+        }
+
+        function la()
+        {
+            l | ag $@
         }
 
         function man()
