@@ -1,1 +1,16 @@
-extends hakyll
+snippet meta "Metadata" b
+---
+title: $1
+published: 2017-12-31$2
+author: Daniel Campoverde C.
+abstract: |
+	Some Abstract here$3
+...
+
+$0
+endsnippet
+
+snippet img "Image"
+![$2](./img/$1.png)$0
+endsnippet
+
