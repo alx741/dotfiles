@@ -1,6 +1,6 @@
 setlocal foldmethod=marker
 setlocal foldmarker={,}
-nnoremap <buffer><silent> g<space> :call CssSortProperties()<CR>
+nnoremap <buffer><silent> gh :call CssSortProperties()<CR>
 
 function! CssSortProperties()
     exe "norm! vi{\<ESC>"
