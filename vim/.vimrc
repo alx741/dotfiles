@@ -443,7 +443,6 @@ call plug#end()
 
 "{{{ LEADER mappings
     nnoremap <leader>s :call ToggleSpell()<CR>
-    nnoremap <silent><leader>t :TlistToggle<CR>
     nnoremap <silent><leader><leader> :UndotreeToggle<CR>
 
     "{{{ Dotfiles editing
