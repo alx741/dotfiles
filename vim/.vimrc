@@ -75,6 +75,7 @@ Plug 'nixon/vim-vmath'
 Plug 'glts/vim-magnum'
 Plug 'glts/vim-radical'
 Plug 'triglav/vim-visual-increment'
+Plug 'fidian/hexmode'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
