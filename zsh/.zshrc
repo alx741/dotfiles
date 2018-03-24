@@ -232,6 +232,11 @@
     alias R="R --quiet"
 
     #{{{ Functions
+        function rv()
+        {
+            vim scp://test@login.hpc.cedia.org.ec//home/test/$@
+        }
+
         function yesod() { stack exec -- yesod $@ }
 
         function yesodtouch() { stack exec -- yesod touch && touch Settings.hs }
