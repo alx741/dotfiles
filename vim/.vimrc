@@ -499,7 +499,6 @@ call plug#end()
     nnoremap gp `[v`]
     nnoremap Q :Buffers<CR>
     nnoremap <C-p> :Files<CR>
-    nnoremap <C-m> :Tags<CR>
     nnoremap g\ :Explore<CR>
     nnoremap go gvo<esc>
     vnoremap // y/<C-R>"<CR>
