@@ -509,7 +509,7 @@ call plug#end()
     nnoremap 2o o<esc>o
     nnoremap c "_c
     nnoremap <silent> <c-_> :FuzzySearch<CR>
-    inoremap {{ {<cr>}<esc>O
+    inoremap {{ {<cr>}<esc>kA
     vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
     vnoremap t <esc>:'<,'>sort<CR>
     nnoremap <C-w>+ :resize +5<CR>
