@@ -119,10 +119,6 @@
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
-    # Hadoop
-    export HADOOP="/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/bin:/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/sbin"
-    export HADOOP_HOME="/mnt/hdd/alx/u/big-data/hadoop/hadoop-2.7.4/"
-
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -137,7 +133,6 @@
     PATH+="$RUST_CARGO_BIN:"
     PATH+="$HASKELL_STACK_BIN:"
     PATH+="$NPM_BIN:"
-    PATH+="$HADOOP:"
     PATH+="$JENA:"
 
     # Others
