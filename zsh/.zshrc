@@ -116,6 +116,9 @@
     export NPM_PACKAGES="$HOME/.npm-packages"
     export NPM_BIN="$HOME/.npm-packages/bin"
 
+    # Gem
+    export GEM_BIN="$HOME/.gem/ruby/2.5.0/bin"
+
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
@@ -133,6 +136,7 @@
     PATH+="$RUST_CARGO_BIN:"
     PATH+="$HASKELL_STACK_BIN:"
     PATH+="$NPM_BIN:"
+    PATH+="$GEM_BIN:"
     PATH+="$JENA:"
 
     # Others
