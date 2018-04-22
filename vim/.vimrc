@@ -299,7 +299,6 @@ call plug#end()
 
     set statusline+=%=%c:%l/%L\ %P
 
-
     augroup statusline
         au!
         au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
@@ -484,7 +483,6 @@ call plug#end()
     nnoremap gjj :w<CR>:Make<CR>
     nnoremap <c-z> <c-x>
     nnoremap z<space> 1z=
-    nnoremap <silent>g= :call Format()<CR>
     nnoremap Y y$
     nnoremap <space> za
     nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
@@ -518,6 +516,8 @@ call plug#end()
     nnoremap <C-w>< :vertical resize -5<CR>
     nnoremap dtp yapgP
     nnoremap dtcp yapgPvip:Commentary<CR>
+    nnoremap zl :setlocal number! relativenumber!<CR>
+    nnoremap g= :call Format()<CR>
 "}}}
 "}}}
 
