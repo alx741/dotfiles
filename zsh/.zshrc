@@ -332,15 +332,19 @@
     #}}}
 
     #{{{ Scripts
+        alias alan="$SCRIPTS/alan.sh"
         alias be="$SCRIPTS/builder_edit.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
+        alias es="$SCRIPTS/edit_shot.sh"
         alias gclone="$SCRIPTS/git.sh clone"
-        alias gupstream="$SCRIPTS/git.sh add_upstream"
         alias getit="$SCRIPTS/pacman.sh getit"
         alias ghci="$SCRIPTS/stack.sh ghci"
         alias gpull="$SCRIPTS/git.sh pull"
         alias gpush="$SCRIPTS/git.sh push"
+        alias gupstream="$SCRIPTS/git.sh add_upstream"
+        alias home="$SCRIPTS/home.sh"
+        alias html2hamlet="$SCRIPTS/html2hamlet.sh"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias mem="$SCRIPTS/mem.sh mount"
         alias packer="$SCRIPTS/pacman.sh packer $*"
@@ -358,13 +362,10 @@
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
         alias topa="$SCRIPTS/build/Topa halt"
         alias update="$SCRIPTS/update.sh"
+        alias wgetit="$SCRIPTS/wgetit.sh"
         alias wifi="$SCRIPTS/network/wifi.sh"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
-        alias alan="$SCRIPTS/alan.sh"
-        alias home="$SCRIPTS/home.sh"
-        alias wgetit="$SCRIPTS/wgetit.sh"
-        alias html2hamlet="$SCRIPTS/html2hamlet.sh"
     #}}}
 
     #{{{ Sufix
