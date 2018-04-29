@@ -1,0 +1,17 @@
+snippet html "HTML 5 skeleton" b
+!!!
+%html(lang="${1:en}")
+
+    %head
+        %meta(charset="utf-8")
+        %meta(name="viewport" content="width=device-width, user-scalable=no, initial-scalable=1.0, maximum-scale=1.0, minimum-scale=1.0")
+
+        %link(rel="stylesheet" href="$2")
+
+        %title$3
+
+%body
+
+    $0
+endsnippet
+
