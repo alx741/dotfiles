@@ -22,7 +22,7 @@ then
     exit
 elif is_filetype "image" "$1";
 then
-    sxiv -a -q "$@"
+    sxiv -a -q "$@"&
     exit
 elif is_filetype "video" "$1" || is_filetype "audio" "$1";
 then
@@ -38,7 +38,7 @@ case $extension in
         firefox "$@"
         ;;
     docx|xlsx|pptx|xls|xlw|xlt|odt|fodt|ods|fods|odp|odg|fodg|odf|fodp|swx|stw|stc|sti|sxm)
-        libreoffice "$@"
+        libreoffice "$@"&
         ;;
     *)
         echo
