@@ -5,7 +5,7 @@ backlight_value=""
 
 function get_backlight_value
 {
-    backlight_value=`xbacklight | sed -e 's/\..*//'`
+    backlight_value=`xbacklight -get`
 }
 
 
@@ -31,10 +31,10 @@ function toggle
 
 case "$1" in
     'inc')
-        xbacklight -inc 20
+        xbacklight -inc 10
         ;;
     'dec')
-        xbacklight -dec 20
+        xbacklight -dec 10
         ;;
     'toggle')
         toggle
