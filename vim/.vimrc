@@ -136,10 +136,16 @@ call plug#end()
     "}}}
 
     "{{{ Emmet
+
+        " I will forget this yet again: To expand an emmet expression like
+        "       html:    'div#someid.someclass'
+        "       css:     'bacol'
+        " Just type the expression and then type <C-]>, that's it.
+
         let g:user_emmet_install_global = 0
         autocmd FileType html,xml,css,php,blade EmmetInstall
         let g:user_emmet_leader_key='\'
-        " let g:user_emmet_expandabbr_key = '<C-e>'
+        let g:user_emmet_expandabbr_key = '<C-]>'
     "}}}
 
     "{{{ Netrw
