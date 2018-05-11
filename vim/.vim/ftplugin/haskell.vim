@@ -1,5 +1,8 @@
 setlocal makeprg=stack
 compiler ghc
+let g:haskellmode_completion_ghc = 0
+let g:necoghc_use_stack = 1
+let g:necoghc_debug = 1
 setlocal omnifunc=necoghc#omnifunc
 let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
 
