@@ -13,7 +13,22 @@
     m:0x0 + c:121
     XF86AudioMute
 
+# Play/Pause
+"mpc toggle"
+    m:0x0 + c:172
+    XF86AudioPlay
+
+# Next
+"mpc next"
+    m:0x0 + c:171
+    XF86AudioNext
+
+# Prev
+"mpc prev"
+    m:0x0 + c:173
+    XF86AudioPrev
+
 #Take screenshot
-"scrot"
-    m:0x0 + c:107
-    Print
+# "scrot"
+#     m:0x0 + c:107
+#     Print
