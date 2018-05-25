@@ -1,12 +1,8 @@
-function am_i_at_home
+function is_vga_plugedin
 {
-    # At home i have my Ducky Shine 3 keyboard connected
-    # so use that in order to identify if i'm at home
-    usb_keyboard_entry=$(lsusb | grep -i "holtek semiconductor" | \
-        awk '{print $7}')
+    VGASTATE=$(xrandr | grep -i 'vga' | awk '{print $2 }')
 
-    if [[ $usb_keyboard_entry == "Holtek" ]]
-    then
+    if [[ $VGASTATE == "connected" ]]; then
         return 0
     else
         return 1
@@ -14,11 +10,22 @@ function am_i_at_home
 }
 
 
-function is_vga_plugedin
+function is_hdmi_plugedin
 {
-    VGASTATE=$(xrandr | grep -i 'vga' | awk '{print $2 }')
+    VGASTATE=$(xrandr | grep -i 'hdmi' | awk '{print $2 }')
 
     if [[ $VGASTATE == "connected" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function am_i_at_home
+{
+    # Both VGA and HDMI ports are hooked in
+    if is_vga_plugedin && is_hdmi_plugedin
+    then
         return 0
     else
         return 1
