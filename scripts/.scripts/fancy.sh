@@ -1,0 +1,1 @@
+/home/alx/lab/sh-fancy/fancy.sh
