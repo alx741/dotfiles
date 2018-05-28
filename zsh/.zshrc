@@ -356,6 +356,7 @@
         alias pulp="$SCRIPTS/pulp.sh"
         alias reboot="$SCRIPTS/build/Topa reboot"
         alias repl="$SCRIPTS/stack.sh ghci"
+        alias rn="$SCRIPTS/generate_report.sh"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
         alias runghc="$SCRIPTS/stack.sh runhaskell"
         alias runhaskell="$SCRIPTS/stack.sh runhaskell"
