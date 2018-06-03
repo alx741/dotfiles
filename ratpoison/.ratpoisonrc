@@ -111,6 +111,7 @@
         definekey task s exec ~/.scripts/ratpoison/translate.sh es:en
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
+        definekey task at exec ~/.scripts/edit_shot.sh
         definekey task C-Return exec ~/.scripts/build/Topa halt
         definekey task question help task
         bind t readkey task
@@ -240,7 +241,8 @@
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
 
     # Running
-    bind exclam exec rofi -show drun
+    # bind exclam exec rofi -show drun
+    bind y exec rofi -show drun
 #}}}
 
 
