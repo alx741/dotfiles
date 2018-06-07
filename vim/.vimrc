@@ -364,11 +364,12 @@ call plug#end()
     set background=light
     set backspace=2
     set breakindent
-    set completeopt-=longest
-    set completeopt-=preview
-    set completeopt-=noinsert
     set complete=.,w,b,u,t,i,kspell
+    set completeopt-=longest
+    set completeopt-=noinsert
+    set completeopt-=preview
     set expandtab
+    set exrc
     set foldenable
     set foldlevel=3
     set foldlevelstart=99
