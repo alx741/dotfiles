@@ -104,6 +104,16 @@ then
     builder_files+="Shakefile.hs"
 fi
 
+if [[ -f "Vagrantfile" ]];
+then
+    builder_files+="Vagrantfile"
+fi
+
+if [[ -f "Dockerfile" ]];
+then
+    builder_files+="Dockerfile"
+fi
+
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
 then
     builder_files+=" *.cabal"
