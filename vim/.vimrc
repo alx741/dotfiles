@@ -279,6 +279,9 @@ call plug#end()
 
     " AVR
     set path+=/usr/avr/include
+
+    " STM32
+    set path+=/home/alx/lab/stm32f1-minimal-lib/include
 "}}}
 
 "{{{ Backup System
