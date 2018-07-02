@@ -25,9 +25,9 @@ onoremap <buffer><silent> aa :<c-u>silent call SelectArgument(0)<CR>
 onoremap <buffer><silent> ic :<c-u>silent call SelectCase()<CR>
 nnoremap <buffer><silent> ]] :call JumpToFunction(0)<CR>
 nnoremap <buffer><silent> [[ :call JumpToFunction(1)<CR>
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=ghc hdevtools check %<CR>
-nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Make build<CR>
-nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Make test<CR>
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=ghc stack build --fast<CR>
+nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Dispatch -compiler=ghc stack build<CR>
+nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:Dispatch -compiler=ghc stack test --fast<CR>
 nnoremap <buffer><silent> gK :SpecRunAll<CR>
 nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
 nnoremap <buffer><silent> ght :exec "!" . g:fzf_tags_command<CR>:redraw!<CR>
