@@ -384,36 +384,36 @@ call plug#end()
     set hlsearch
     set ignorecase
     set incsearch
+    set iskeyword+=-
     set laststatus=2
     set lazyredraw
     set linebreak
     set noesckeys
     set nojoinspaces
     set ruler
+    set secure
     set shiftround
     set shiftwidth=4
+    set shortmess+=I
     set showcmd
     set showmode
     set smartcase
     set smarttab
     set softtabstop=4
+    set synmaxcol=150
     set tabstop=4
+    set tags=./tags,./TAGS,codex.tags,tags,TAGS
     set textwidth=80
     set timeout
     set timeoutlen=300
     set ttimeout
     set ttimeoutlen=-1
-    set tags=./tags,./TAGS,codex.tags,tags,TAGS
+    set undofile
+    set undolevels=5000
     set wildignore=*.o,*.class
     set wildmenu
     set wildmode=longest,list,full
     set wrapscan
-    set exrc
-    set secure
-    set shortmess+=I
-    set undolevels=5000
-    set undofile
-    set iskeyword+=-
 
     filetype plugin indent on
     syntax on
