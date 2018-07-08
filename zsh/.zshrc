@@ -80,7 +80,7 @@
 
     # Android
     export ANDROID_HOME="/opt/android-sdk/"
-    export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+    export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
     # Java
     export _JAVA_AWT_WM_NONREPARENTING=1
