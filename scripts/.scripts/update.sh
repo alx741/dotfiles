@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd ~
 echo
 echo Updating Mirrorlist
 echo
@@ -8,6 +9,14 @@ echo
 echo Updating System
 echo
 sudo pacman -Syyu --noconfirm
+echo
+echo Cleaning Pacman cache
+echo
+sudo paccache -k 3 -r
+echo
+echo Updating stack package index
+echo
+sudo stack update
 echo
 echo Updating Vim plugins
 echo
