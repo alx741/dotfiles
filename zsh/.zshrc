@@ -170,7 +170,6 @@
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
     alias dl="darcs log"
-    alias docker="echo; cat ~/.ascii_art/docker; echo; docker"
     alias dog="less -RSFXin"
     alias dotpng="dot -Tpng -O"
     alias dr="darcs record"
