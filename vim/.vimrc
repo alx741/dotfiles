@@ -76,6 +76,8 @@ Plug 'glts/vim-magnum'
 Plug 'glts/vim-radical'
 Plug 'triglav/vim-visual-increment'
 Plug 'fidian/hexmode'
+Plug 'rhysd/vim-textobj-anyblock'
+" Plug 'eagletmt/ghcmod-vim'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
@@ -143,7 +145,7 @@ call plug#end()
         " Just type the expression and then type <C-]>, that's it.
 
         let g:user_emmet_install_global = 0
-        autocmd FileType html,xml,css,scss,sass,php,blade EmmetInstall
+        autocmd FileType html,xml,css,scss,sass,php,blade,hamlet,cassius EmmetInstall
         let g:user_emmet_leader_key='\'
         let g:user_emmet_expandabbr_key = '<C-]>'
     "}}}
@@ -601,10 +603,10 @@ endfunction
 
 function! Listify(type, ...) "{{{
     if a:0
-        exe "'<,'>norm! I* "
+        exe "'<,'>norm! I- "
     else
         exe "norm! '[V']\<esc>"
-        exe "'<,'>norm! ^i* "
+        exe "'<,'>norm! ^i- "
     endif
 endfunction
 "}}}
@@ -681,9 +683,9 @@ function! QuitIgnoringE173(bang) "{{{
 endfunction
 "}}}
 
-function! SingleSpace() "{{{
-    silent! :.s/\m\s\{2,\}/ /
-endfunction
+" function! SingleSpace() "{{{
+"     silent! :.s/\m\s\{2,\}/ /
+" endfunction
 "}}}
 "}}}
 
