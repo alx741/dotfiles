@@ -36,6 +36,7 @@ nmap     <buffer><silent> g<space> :call Sort_imports()<CR>
 nmap     <buffer><silent> <leader>gg :call RunGhci(1)<CR>
 nmap     <buffer><silent> <leader>gs :call RunGhci(0)<CR>
 nnoremap <buffer><silent> K :HoogleInfo<CR>
+xnoremap <buffer><silent> K y :HoogleInfo <c-r>"<CR>
 nnoremap <buffer><silent> gk :HoogleClose<CR>
 
 " Hdevtools
