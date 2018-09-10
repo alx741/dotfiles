@@ -63,6 +63,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Haskeline
 * Hindent
 * Inkscape
+* Kitty
 * Mimi
 * MongoDB
 * Mozrepl
