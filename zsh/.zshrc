@@ -228,6 +228,8 @@
     alias inks="inkscape"
     alias r="R --quiet"
     alias R="R --quiet"
+    alias bat="command bat --theme GitHub"
+    alias vnmap="nmap -sV --script=vulscan/vulscan.nse"
 
     #{{{ Functions
         function rv()
@@ -359,6 +361,7 @@
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
         alias runghc="$SCRIPTS/stack.sh runhaskell"
         alias runhaskell="$SCRIPTS/stack.sh runhaskell"
+        alias replicate="$SCRIPTS/replicate_term.sh&"
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
         alias topa="$SCRIPTS/build/Topa halt"
         alias update="$SCRIPTS/update.sh"
