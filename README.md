@@ -117,10 +117,10 @@ These dotfiles are abandoned
 
 ## Dependencies
 
-These dotfiles depends, obviously, on the all the programs it configures, so
+These dotfiles depend, obviously, on the all the programs it configures, so
 install them first.
 
-Some of the various scripts depend on other binaries that can be installed using
+Additionally, the scripts depend on other binaries that can be installed using
 the system package manager. This is a non-exhaustive list:
 
 * acpi
