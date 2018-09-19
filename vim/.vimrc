@@ -53,7 +53,6 @@ Plug 'racer-rust/vim-racer'
 Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
 Plug 'veegee/vim-pic'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'eagletmt/neco-ghc'
 Plug 'Twinside/vim-hoogle'
 Plug '~/lab/vim-hindent'
 Plug '~/lab/vim-stylishask'
@@ -77,7 +76,10 @@ Plug 'glts/vim-radical'
 Plug 'triglav/vim-visual-increment'
 Plug 'fidian/hexmode'
 Plug 'rhysd/vim-textobj-anyblock'
-" Plug 'eagletmt/ghcmod-vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'wavded/vim-stylus'
+Plug '~/lab/haskellcomplete.vim'
+Plug '~/lab/stack.vim'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
