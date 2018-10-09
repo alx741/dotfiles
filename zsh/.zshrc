@@ -230,6 +230,7 @@
     alias R="R --quiet"
     alias bat="command bat --theme GitHub"
     alias vnmap="nmap -sV --script=vulscan/vulscan.nse"
+    alias octave="octave -q"
 
     #{{{ Functions
         function rv()
