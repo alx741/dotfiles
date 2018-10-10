@@ -1,9 +1,9 @@
 setlocal makeprg=stack
-compiler ghc
+compiler stack
 let g:haskellmode_completion_ghc = 0
 let g:necoghc_use_stack = 1
 let g:necoghc_debug = 1
-setlocal omnifunc=necoghc#omnifunc
+setlocal omnifunc=haskellcomplete#Complete
 let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
 
 "{{{ Color
@@ -25,8 +25,9 @@ onoremap <buffer><silent> aa :<c-u>silent call SelectArgument(0)<CR>
 onoremap <buffer><silent> ic :<c-u>silent call SelectCase()<CR>
 nnoremap <buffer><silent> ]] :call JumpToFunction(0)<CR>
 nnoremap <buffer><silent> [[ :call JumpToFunction(1)<CR>
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=ghc stack build --fast<CR>
-nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Dispatch -compiler=ghc stack build<CR>
+" nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack exec -- hdevtools check %<CR>
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack build --fast<CR>
+nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Dispatch -compiler=stack stack build<CR>
 nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:! stack test --fast<CR>
 nnoremap <buffer><silent> gK :SpecRunAll<CR>
 nnoremap <buffer><silent> gI :silent exec "keepjumps normal! gg /import \rh"<CR><ESC>:noh<CR>
@@ -40,7 +41,7 @@ xnoremap <buffer><silent> K y :HoogleInfo <c-r>"<CR>
 nnoremap <buffer><silent> gk :HoogleClose<CR>
 
 " Hdevtools
-" nnoremap <buffer><silent>gt :HdevtoolsType<CR>
+" nnoremap <buffer><silent>gt :call HdevtoolsType()<CR>
 
 " Arrows
 inoremap <buffer><silent> ;; <space>-><space>
@@ -127,6 +128,16 @@ function! HaskellFormat()
     silent! exe "keepjumps call RemoveTrailingSpaces()"
     exe "Stylishask"
     call winrestview(l:winview)
+endfunction
+
+function! HdevtoolsType()
+    let l:line = string(line('.'))
+    let l:col = string(col('.'))
+    let l:file = expand('%:p')
+    let l:command = "stack exec -- hdevtools type " . l:file . " " . l:line . " " . l:col
+    echo l:command
+    let l:result = system(l:command)
+    echo l:result
 endfunction
 "}}}
 
