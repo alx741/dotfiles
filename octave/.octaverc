@@ -1,0 +1,2 @@
+edit mode async
+edit editor "urxvt -e 'vim %s'"
