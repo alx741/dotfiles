@@ -80,6 +80,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'wavded/vim-stylus'
 Plug '~/lab/haskellcomplete.vim'
 Plug '~/lab/stack.vim'
+Plug 'jvirtanen/vim-octave'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
