@@ -137,7 +137,7 @@ call plug#end()
     "}}}
 
     "{{{ Closetag
-        let g:closetag_filenames="*.html,*.xhtml,*.xml,*.xds,*.phtml,*.php"
+        let g:closetag_filenames="*.html,*.xhtml,*.xml,*.xds,*.phtml,*.php,*.mustache"
     "}}}
 
     "{{{ Emmet
