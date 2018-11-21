@@ -231,6 +231,8 @@
     alias bat="command bat --theme GitHub"
     alias vnmap="nmap -sV --script=vulscan/vulscan.nse"
     alias octave="octave -q"
+    alias gro="git remote rm origin"
+    alias gao="git remote add origin "
 
     #{{{ Functions
         function rv()
