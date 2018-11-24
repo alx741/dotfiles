@@ -1,4 +1,4 @@
 OPTIONS=align:neutral, !autopickup, autoquiver, catname:Detra, checkpoint
 OPTIONS=confirm,  dogname:Detra, gender:male, horsename:Detra, legacy
 OPTIONS=name:Alx, safe_pet, showexp, showrace, showscore, silent, time
-OPTIONS=color 
+OPTIONS=color
