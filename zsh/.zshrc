@@ -122,6 +122,9 @@
     # Codebot
     export CODEBOT_LANGPATH="$HOME/lab/codebot/langs/"
 
+    # Flutter
+    export FLUTTER="/opt/flutter/bin/"
+
     # Path
     PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -138,6 +141,7 @@
     PATH+="$NPM_BIN:"
     PATH+="$GEM_BIN:"
     PATH+="$JENA:"
+    PATH+="$FLUTTER:"
 
     # Others
     PATH+="/home/alx/lab/stage:"
