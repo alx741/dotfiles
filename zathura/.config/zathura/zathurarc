@@ -13,6 +13,8 @@
     map q quit
     map = zoom in
     map - zoom out
+    map K zoom in
+    map J zoom out
     map i toggle_statusbar
     map e scroll down
     map y scroll up
