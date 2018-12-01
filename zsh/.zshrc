@@ -237,6 +237,8 @@
     alias octave="octave -q"
     alias gro="git remote rm origin"
     alias gao="git remote add origin "
+    alias prog="progress"
+    alias ch="cht.sh "
 
     #{{{ Functions
         function rv()
