@@ -126,7 +126,7 @@
     export FLUTTER="/opt/flutter/bin/"
 
     # Path
-    PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:"
+    PATH="/usr/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
     PATH+="$HOME/.local/bin:"
     PATH+="$HOME/.scripts:"
