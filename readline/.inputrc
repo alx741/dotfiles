@@ -1,3 +1,24 @@
 $if mysql
     set editing-mode vi
 $endif
+
+$if octave
+    set editing-mode vi
+$endif
+
+$if mode=vi
+    set keymap vi-insert
+    "\C-o": clear-screen
+    "\C-p": history-search-backward
+    "\C-n": history-search-forward
+
+    set keymap vi-command
+    "ciw": "lbcw"
+    "ciW": "lBcW"
+    "diw": "lBdw"
+    "diW": "lBdW"
+    "yiw": "lbyw"
+    "yiW": "lByW"
+    "gg": beginning-of-history
+    "G": end-of-history
+$endif
