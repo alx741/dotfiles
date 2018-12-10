@@ -148,9 +148,12 @@ call plug#end()
         " Just type the expression and then type <C-]>, that's it.
 
         let g:user_emmet_install_global = 0
-        autocmd FileType html,xml,css,scss,sass,php,blade,hamlet,cassius EmmetInstall
         let g:user_emmet_leader_key='\'
         let g:user_emmet_expandabbr_key = '<C-]>'
+        augroup emmet_au
+            au!
+            autocmd FileType html,xml,css,scss,sass,php,blade,hamlet,cassius,html.mustache EmmetInstall
+        augroup END
     "}}}
 
     "{{{ Netrw
