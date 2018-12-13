@@ -1,7 +1,12 @@
 :set -DDEVELOPMENT
 :set -O0
 :set -fobject-code
+:set -fno-warn-type-defaults
+
+import Prelude
 
 :set prompt "\n \ESC[35mλ\ESC[m\STX   "
 :def! hoogle \s -> return $ ":! hoogle --count=25 --color \"" ++ s ++ "\""
 :def! doc \s -> return $ ":! hoogle --count=15 --info --color \"" ++ s ++ "\""
+
+:def! yesodreload \_ -> return (":l app/DevelMain.hs\nDevelMain.update\n")
