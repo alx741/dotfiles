@@ -30,5 +30,9 @@ echo Updating Tmux plugins
 echo
 ~/.tmux/plugins/tpm/scripts/update_plugin.sh all all
 echo
+echo Updating TLDR
+echo
+tldr --update
+echo
 echo Updated!
 echo
