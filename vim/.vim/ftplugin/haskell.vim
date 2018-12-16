@@ -25,8 +25,8 @@ onoremap <buffer><silent> aa :<c-u>silent call SelectArgument(0)<CR>
 onoremap <buffer><silent> ic :<c-u>silent call SelectCase()<CR>
 nnoremap <buffer><silent> ]] :call JumpToFunction(0)<CR>
 nnoremap <buffer><silent> [[ :call JumpToFunction(1)<CR>
-" nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack exec -- hdevtools check %<CR>
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack build --fast<CR>
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack exec -- hdevtools check %<CR>
+" nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack build --fast<CR>
 nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Dispatch -compiler=stack stack build<CR>
 nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:! stack test --fast<CR>
 nnoremap <buffer><silent> gK :SpecRunAll<CR>
@@ -41,7 +41,7 @@ xnoremap <buffer><silent> K y :HoogleInfo <c-r>"<CR>
 nnoremap <buffer><silent> gk :HoogleClose<CR>
 
 " Hdevtools
-" nnoremap <buffer><silent>gt :call HdevtoolsType()<CR>
+nnoremap <buffer><silent>gt :call HdevtoolsType()<CR>
 
 " Arrows
 inoremap <buffer><silent> ;; <space>-><space>
