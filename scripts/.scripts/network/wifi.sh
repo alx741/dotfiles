@@ -13,7 +13,7 @@ function exists_home_wifi
 
 function exists_u_wifi
 {
-    wifi_scan=$(sudo iwlist "$IF" scan | grep -i "UCWIFI Invitados")
+    wifi_scan=$(sudo iwlist "$IF" scan | grep -i "UCWIFI")
     if [[ $wifi_scan == "" ]]; then return 1; else return 0; fi
 }
 
@@ -67,11 +67,18 @@ case $1 in
         sudo killall dhclient 2> /dev/null
         sudo ifconfig "$IF" up 2> /dev/null
 
-        if exists_home_wifi; then
+        if exists_home_wifi;
+        then
             sudo wpa_supplicant -i "$IF" -c /etc/wpa_supplicant/alx.conf -B
             sleep 2
             sudo route add default gw 192.168.1.1
             echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf
+        elif exists_u_wifi;
+        then
+            sudo wpa_supplicant -i "$IF" -c /etc/wpa_supplicant/ucuenca.conf -B
+            sleep 2
+            sudo killall dhclient
+            sudo dhclient "$IF"
         fi
         ;;
 esac
