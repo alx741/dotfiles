@@ -1,5 +1,7 @@
 #! /bin/sh
 
+MUSIC_DIR="/home/alx/music"
+
 status=""
 crafted_status=""
 
@@ -177,8 +179,28 @@ function echo_information
     then
         ratpoison -c "echo [stopped]"
     else
-        rofi -e "$crafted_status" -location 7 -color-normal "#fdf6e3, #657b83"
+        ratpoison -c "echo $crafted_status"
     fi
+}
+
+
+function delete_song
+{
+    title=$(mpc status | head -n 1)
+    file_name=$(mpc status -f "%file%" | head -n 1)
+    confirm=`ratpoison -c "prompt Permanently delete \"$title?\" [y/N]  "`
+    if [[ "$confirm" == "y" ]]
+    then
+        mpc next
+        rm "$MUSIC_DIR/$file_name"
+    fi
+}
+
+
+function show_file
+{
+    file_name=$(mpc status -f "%file%" | head -n 1)
+    ratpoison -c "echo $MUSIC_DIR/$file_name"
 }
 
 
@@ -248,12 +270,13 @@ function toggle
 {
     if is_playing;
     then
-        mpc toggle
+        mpc pause
         sleep 0.3
         $(dirname "$0")/volume_control.sh set_normal_mode
     else
         $(dirname "$0")/volume_control.sh set_music_mode
-        mpc toggle
+        sleep 0.1
+        mpc play
     fi
 }
 
@@ -321,6 +344,12 @@ case "$1" in
         ;;
     'restart')
         mpc seek 0%
+        ;;
+    'delete')
+        delete_song
+        ;;
+    'file')
+        show_file
         ;;
     'lyrics')
         ~/.scripts/ratpoison/firefox.sh search_lyrics
