@@ -85,6 +85,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * PostgreSQL
 * Ratpoison
 * Readline
+* Rofi
 * Rtv
 * Stack
 * Stylish-haskell
