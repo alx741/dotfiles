@@ -5,9 +5,9 @@
 #}}}
 
 #{{{ Variables
-    set barborder 2
+    set barborder 1
     set bargravity sw
-    set barpadding 4 2
+    set barpadding 5 5
     set bgcolor #fdf6e3
     set border 0
     set fgcolor #657b83
