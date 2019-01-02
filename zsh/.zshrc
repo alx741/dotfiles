@@ -197,6 +197,8 @@
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --line-number --ignore-case --color=auto"
     alias gs="git status -sb"
+    alias ll="l | less -R"
+    alias LL="L | less -R"
     alias lsl="command ls -lLh --color | ccze -A"
     alias lsls="command ls -lLha --color | ccze -A"
     alias lg="la"
