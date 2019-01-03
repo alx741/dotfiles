@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case "$1" in
+    'g')
+        while IFS= read -r line; do
+            file=$(realpath $line)
+            if [[ "$files" == "" ]]; then
+                files="$file"
+            else
+                files="$files $file"
+            fi
+        done < /dev/stdin
+        gimp $files&
+        ;;
+    'y')
+        cat /dev/stdin | xclip -selection clipboard -i
+        ;;
+    'Y')
+        file=$(cat /dev/stdin)
+        realpath $file | xclip -selection clipboard -i
+        ;;
+    'c')
+        cropgui $(cat /dev/stdin)
+        ;;
+    *)
+        ;;
+esac
