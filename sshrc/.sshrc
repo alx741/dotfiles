@@ -1,0 +1,6 @@
+alias ..="cd .."
+alias e="vim"
+alias l="ls -l"
+alias ex="exit"
+alias suod="sudo"
+alias sys="sudo systemctl"

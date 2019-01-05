@@ -87,6 +87,7 @@ Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
 * Readline
 * Rofi
 * Rtv
+* Sshrc
 * Stack
 * Stylish-haskell
 * Sxiv
