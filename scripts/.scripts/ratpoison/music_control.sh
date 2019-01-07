@@ -8,7 +8,7 @@ crafted_status=""
 function select_playlist
 {
     playlists=`mpc lsplaylists`
-    list=$(echo -e "$playlists" | rofi -dmenu -i -p "> " -no-custom)
+    list=$(echo -e "$playlists" | rofi -dmenu -i -p "" -no-custom)
 
     if [[ "$list" != "" ]]
     then
@@ -29,7 +29,7 @@ function select_song_from_current_playlist
         return 0
     fi
 
-    song=$(echo -e "$songs" | rofi -dmenu -i -p "> " -no-custom)
+    song=$(echo -e "$songs" | rofi -dmenu -i -p "" -no-custom)
     song=$(echo "$song" | cut -d " " -f 1)
 
     if [[ $song != "" ]]
@@ -55,7 +55,7 @@ function search_song
         return 0
     fi
 
-    selected_song=$(echo -e "$search_results" | rofi -dmenu -i -p "> " -no-custom)
+    selected_song=$(echo -e "$search_results" | rofi -dmenu -i -p "" -no-custom)
 
     if [[ $selected_song != "" ]]
     then
@@ -77,7 +77,7 @@ function search_all
         return 0
     fi
 
-    selected_song=$(echo -e "$search_results" | rofi -dmenu -i -p "> " -no-custom -matching glob)
+    selected_song=$(echo -e "$search_results" | rofi -auto-select -dmenu -i -p "" -no-custom -matching glob)
 
     if [[ $selected_song != "" ]]
     then
@@ -128,6 +128,7 @@ function is_playing
 
 function craft_status_info
 {
+    if [[ "$1" == "simple" ]]; then simple=1; fi
     playing_symbol=">"
     paused_symbol="|"
     stopped_symbol="stopped"
@@ -155,26 +156,30 @@ function craft_status_info
 
         song=`echo "$status" | head -n 1`
 
-        playing_time=`echo "$status" | head -n 2 | tail -n 1`
-        playing_time=`echo "$playing_time" | sed -e 's/\[.*\] //'`
+        playing_time=`echo "$status" | head -n 2 | tail -n 1 | cut -d' ' -f5,6,7 | sed 's/^ //'`
+        # playing_time=`echo "$playing_time" | sed -e 's/\[.*\] //'`
 
         playback_modes=`echo "$status" | tail -n 1 | sed -e 's/volume:[^r]*//'`
         playback_modes=`echo "$playback_modes" | sed -e 's/: on/ [*]/g'`
         playback_modes=`echo "$playback_modes" | sed -e 's/: off/ [ ]/g'`
 
-        crafted_status="$playing_status
-        $song
-        $playing_time
-        $playback_modes"
+        if [[ $simple == 1 ]];
+        then
+            crafted_status="$playing_status   $playing_time
+      $song"
+        else
+        crafted_status="$playing_status   $playing_time
+      $song
+      $playback_modes"
+        fi
     fi
 }
 
 
 function echo_information
 {
-
     status=`mpc status`
-    craft_status_info
+    craft_status_info "$1"
     if [[ "$crafted_status" == "[stopped]" ]]
     then
         ratpoison -c "echo [stopped]"
@@ -306,16 +311,19 @@ case "$1" in
     'stop')
         mpc stop
         ;;
+    'info')
+        echo_information "simple"
+        ;;
     'information')
         echo_information
         ;;
     'next')
         mpc next
-        echo_information
+        echo_information "simple"
         ;;
     'previous')
         mpc prev
-        echo_information
+        echo_information "simple"
         ;;
     'seek+')
         seek "+"
