@@ -82,7 +82,8 @@
         definekey music m exec ~/.scripts/ratpoison/music_control.sh select_playlist
         definekey music j exec ~/.scripts/ratpoison/music_control.sh restart
         definekey music s exec ~/.scripts/ratpoison/music_control.sh stop
-        definekey music i exec ~/.scripts/ratpoison/music_control.sh information
+        definekey music i exec ~/.scripts/ratpoison/music_control.sh info
+        definekey music I exec ~/.scripts/ratpoison/music_control.sh information
         definekey music n exec ~/.scripts/ratpoison/music_control.sh next
         definekey music p exec ~/.scripts/ratpoison/music_control.sh previous
         definekey music period exec ~/.scripts/ratpoison/music_control.sh seek+
@@ -102,6 +103,7 @@
         definekey music D exec ~/.scripts/ratpoison/music_control.sh delete
         definekey music question help music
         bind m readkey music
+        bind Return exec ~/.scripts/ratpoison/music_control.sh next
     #}}}
 
     #{{{ Taskwarrior & Translation control
@@ -122,23 +124,17 @@
     #{{{ Firefox control
         newkmap firefox
         definekey firefox f exec ~/.scripts/ratpoison/firefox.sh select_tab facebook
-        definekey firefox e exec ~/.scripts/ratpoison/firefox.sh select_tab evirtual
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
-        definekey firefox g exec ~/.scripts/ratpoison/firefox.sh select_tab github
         definekey firefox o exec ~/.scripts/ratpoison/firefox.sh new_tab
         definekey firefox w exec ~/.scripts/ratpoison/firefox.sh new_window
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
         definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
-        definekey firefox c exec ~/.scripts/ratpoison/firefox.sh cam
         definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh duckduckgo
         definekey firefox y exec ~/.scripts/ratpoison/firefox.sh youtube_search
         definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
         definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
+        definekey firefox c exec gpick
         bind f readkey firefox
-    #}}}
-
-    #{{{ Misc
-        bind d exec ~/.scripts/ratpoison/ddg.sh
     #}}}
 
     #{{{ Clipboard stack control
@@ -211,6 +207,7 @@
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
     bind comma exec ~/.scripts/ratpoison/app_select.sh weechat
+    bind period exec  ~/.scripts/ratpoison/app_select.sh ipcam
 
     # Give temporally control to openbox
     bind grave tmpwm openbox
@@ -237,14 +234,13 @@
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
-    bind A exec rofi -color-normal "#fdf6e3, #657b83" -e "$( ~/.scripts/echo_cal.sh )"
+    bind A exec rofi -e "$( ~/.scripts/echo_cal.sh )"
 
     # Network information
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
 
     # Running
-    # bind exclam exec rofi -show drun
-    bind y exec rofi -show drun
+    bind y exec rofi -display-drun "" -show drun
 #}}}
 
 
