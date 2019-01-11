@@ -242,13 +242,10 @@
     alias gao="git remote add origin "
     alias prog="progress"
     alias ch="cht.sh "
+    alias gdb="gdb -q "
+    alias ssh="sshrc"
 
     #{{{ Functions
-        function rv()
-        {
-            vim scp://test@login.hpc.cedia.org.ec//home/test/$@
-        }
-
         function yesod() { stack exec -- yesod $@ }
 
         function yesodtouch() { stack exec -- yesod touch && touch Settings.hs }
