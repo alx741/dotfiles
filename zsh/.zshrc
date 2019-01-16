@@ -299,7 +299,7 @@
                     if [[ "$l_dir" == "" ]]
                     then
                         echo
-                        echo -e "\t No directory \"$1\"    ¯\_(ツ)_/¯"
+                        echo -e "\t No such directory \"$1\"    ¯\_(ツ)_/¯"
                         echo
                         return 1
                     fi
@@ -323,7 +323,7 @@
             else
                 echo
                 echo
-                echo -e "\t No man page \"$*\"    ¯\_(ツ)_/¯"
+                echo -e "\t No such man page \"$*\"    ¯\_(ツ)_/¯"
                 echo
             fi
         }
