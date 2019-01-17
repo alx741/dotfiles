@@ -357,7 +357,7 @@
         alias html2hamlet="$SCRIPTS/html2hamlet.sh"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias mem="$SCRIPTS/mem.sh mount"
-        alias packer="$SCRIPTS/pacman.sh packer $*"
+        alias yay="$SCRIPTS/pacman.sh yay $*"
         alias pacman="$SCRIPTS/pacman.sh pacman $*"
         alias poweroff="$SCRIPTS/build/Topa halt"
         alias pro="$SCRIPTS/projector.sh"
@@ -415,7 +415,6 @@
         alias ....='back_dir 3'
         alias .....='back_dir 4'
         alias dot="cd ~/dotfiles/"
-        alias acm="cd u/acm"
     #}}}
 #}}}
 
@@ -440,6 +439,8 @@
     zstyle ':completion::*:(rm|vi):*' ignore-line true
     zstyle ':completion:*' ignore-parents parent pwd
     zstyle ':completion::approximate*:*' prefix-needed false
+
+    compdef sshrc=ssh
 
     #{{{ Ignore
         zstyle ':completion:*:(all-|)files' ignored-patterns "(*.pyc|*~|*.o|*.class)"
