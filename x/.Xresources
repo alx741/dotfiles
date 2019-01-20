@@ -62,7 +62,7 @@ urxvt.cursorUnderline: false
 urxvt.hold: false
 urxvt.urlLauncher: firefox
 urxvt.internalBorder: 3
-urxvt.externalBorder: 2
+urxvt.externalBorder: 0
 urxvt.reverseVideo: false
 
 ! Fonts
