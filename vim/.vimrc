@@ -1,5 +1,16 @@
 "{{{ Plugins
 call plug#begin('~/.vim/plugged')
+Plug '~/lab/vim-tmux-navigator'
+Plug '~/lab/vinfo'
+Plug '~/lab/vim-hindent'
+Plug '~/lab/vim-stylishask'
+Plug '~/lab/vim-rustfmt'
+Plug '~/lab/vim-yesod'
+Plug '~/lab/ghc.vim'
+Plug '~/lab/vim-nativescript'
+Plug '~/lab/spec.vim'
+Plug '~/lab/haskellcomplete.vim'
+Plug '~/lab/stack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Julian/vim-textobj-variable-segment'
@@ -7,7 +18,6 @@ Plug 'LucHermitte/vim-refactor'
 Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'alvan/vim-closetag'
-Plug '~/lab/vinfo'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'ggVGc/vim-fuzzysearch'
@@ -50,23 +60,16 @@ Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'racer-rust/vim-racer'
-Plug 'alx741/vim-tmux-navigator', { 'branch': 'vim-tmux-wm-monitor' }
 Plug 'veegee/vim-pic'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Twinside/vim-hoogle'
-Plug '~/lab/vim-hindent'
-Plug '~/lab/vim-stylishask'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'benmills/vimux'
-Plug '~/lab/vim-yesod'
-Plug '~/lab/ghc.vim'
-Plug '~/lab/vim-nativescript'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'edkolev/curry.vim'
 Plug 'tpope/vim-abolish'
 Plug 'simeji/winresizer'
-Plug '~/lab/spec.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
 Plug 'Twinside/vim-haskellFold'
@@ -78,9 +81,9 @@ Plug 'fidian/hexmode'
 Plug 'rhysd/vim-textobj-anyblock'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'wavded/vim-stylus'
-Plug '~/lab/haskellcomplete.vim'
-Plug '~/lab/stack.vim'
 Plug 'jvirtanen/vim-octave'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'calviken/vim-gdscript3'
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
@@ -184,6 +187,10 @@ call plug#end()
 
     "{{{ Stylishask
         let g:stylishask_on_save = 0
+    "}}}
+
+    "{{{ Rustfmt
+        let g:rustfmt_on_save = 0
     "}}}
 
     "{{{ Haskell-vim
