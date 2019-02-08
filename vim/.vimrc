@@ -229,8 +229,11 @@ call plug#end()
             silent !tmux set -g status
         endfunction
 
-        autocmd! User GoyoEnter nested call <SID>goyo_enter()
-        autocmd! User GoyoLeave nested call <SID>goyo_leave()
+        augroup goyo_au
+            au!
+            autocmd! User GoyoEnter nested call <SID>goyo_enter()
+            autocmd! User GoyoLeave nested call <SID>goyo_leave()
+        augroup END
     "}}}
 
     "{{{ Winresizer
@@ -267,7 +270,7 @@ call plug#end()
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_set_highlights = 0
         let g:grammarous#use_vim_spelllang = 1
-        nnoremap <silent>gjl :up<CR>:echo "Linting..."<CR>:call ale#Lint()<CR>
+        nnoremap <silent>gjl :up<CR>:echo "Linting..."<CR>:ALELint<CR>
         nnoremap <silent> gl<space> :call ToggleLocationList()<CR>
         nnoremap <silent> glc :sign unplace *<CR>
 
@@ -541,7 +544,8 @@ call plug#end()
     nnoremap <C-w>< :vertical resize -5<CR>
     nnoremap dtp yapgP
     nnoremap dtcp yapgPvip:Commentary<CR>
-    nnoremap zl :setlocal number! relativenumber!<CR>
+    nnoremap zn :setlocal number! relativenumber!<CR>
+    nnoremap zl :setlocal cursorline!<CR>
     nnoremap g= :call Format()<CR>
 "}}}
 "}}}
