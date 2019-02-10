@@ -244,6 +244,7 @@
     alias ch="cht.sh "
     alias gdb="gdb -q "
     alias ssh="sshrc"
+    alias winbox="wine ~/.local/bin/winbox.exe&"
 
     #{{{ Functions
         function yesod() { stack exec -- yesod $@ }
