@@ -20,9 +20,6 @@ function set_url
         'hades')
             URL="hades.alx.mooo.com:8080"
             ;;
-        'evirtual')
-            URL="evirtual.ucuenca.edu.ec"
-            ;;
     esac
 }
 
@@ -57,8 +54,8 @@ function clipboard_search
         exit 0
     fi
     search=$(echo "$search" | sed 's/ /+/g')
-    google_url="https://www.google.com/search?q=$search"
-    firefox --new-tab "$google_url"
+    duckduckgo_url="https://www.duckduckgo.com/search?q=$search"
+    firefox --new-tab "$duckduckgo_url"
 }
 
 function duckduckgo
@@ -71,7 +68,7 @@ function duckduckgo
     firefox "https://duckduckgo.com/?q=$query"
 }
 
-function search_lyrics
+function search_lyrics_old
 {
     search=$(mpc | head -n 1)
     if [[ "$search" == "" ]];
@@ -92,6 +89,55 @@ function search_lyrics
     firefox --new-tab "$url"
 }
 
+function search_lyrics
+{
+    search=$(mpc | head -n 1)
+    if [[ "$search" == "" ]];
+    then
+        exit 0
+    fi
+
+    url=$(search_azlyrics "$search")
+
+    if [[ "$url" == "" ]];
+    then
+        url=$(search_songtexte "$search")
+    fi
+
+    firefox --new-tab "$url"
+}
+
+function search_azlyrics
+{
+    search=$(echo "$1" | sed 's/-//g;s/ /+/g')
+
+    curl -s -A 'Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/61.0'\
+        "https://search.azlyrics.com/search.php?q=$search" > /tmp/lyrics_search_result.html
+
+    url=$(cat /tmp/lyrics_search_result.html\
+        | grep -Eo '<a href="(https://www.azlyrics.com/lyrics/[^"]*)"'\
+        | grep -o 'http[^"]*'\
+        | head -n 1)
+
+    echo "$url"
+}
+
+function search_songtexte
+{
+    search=$(echo "$1" | sed 's/-//g;s/ /+/g')
+
+    curl -s -A 'Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/61.0'\
+        "https://www.songtexte.com/search?q=$search&c=all" > /tmp/lyrics_search_result.html
+
+
+    url=$(cat /tmp/lyrics_search_result.html\
+        | grep -Eo '<span class="song">[^<]*<a href="(songtext/[^"]*)"'\
+        | grep -o 'songtext/[^"]*'\
+        | head -n 1)
+
+    echo "https://songtexte.com/$url"
+}
+
 function youtube_search
 {
     query=`ratpoison -c "prompt [Youtube] >   "`
@@ -103,7 +149,7 @@ function youtube_search
 
 function hoogle_search
 {
-    query=`ratpoison -c "prompt [Hoogle] >   "`
+    query=`ratpoison -c "prompt [Hoogle $1] >   "`
     if [[ "$query" == "" ]]; then exit 0; fi
 
     ~/.scripts/ratpoison/app_select.sh firefox
@@ -121,6 +167,16 @@ function hoogle_search
     esac
 }
 
+function rustdocs_search
+{
+    query=`ratpoison -c "prompt [Rust docs $1] >   "`
+    if [[ "$query" == "" ]]; then exit 0; fi
+
+    ~/.scripts/ratpoison/app_select.sh firefox
+
+    firefox "https://docs.rs/releases/search?query=$query"
+}
+
 case $1 in
     'select_tab')
         ~/.scripts/ratpoison/app_select.sh firefox
@@ -134,11 +190,11 @@ case $1 in
         ;;
     'new_tab')
         ~/.scripts/ratpoison/app_select.sh firefox
-        firefox --new-tab "http://www.google.com"
+        firefox --new-tab "http://www.duckduckgo.com"
         ;;
     'new_window')
         ratpoison -c "nextscreen"
-        firefox --new-window "http://www.google.com"
+        firefox --new-window
         ;;
     'clipboard_search')
         ~/.scripts/ratpoison/app_select.sh firefox
@@ -151,12 +207,11 @@ case $1 in
         ~/.scripts/ratpoison/app_select.sh firefox
         search_lyrics
         ;;
-    'cam')
-        ~/.scripts/ratpoison/app_select.sh firefox
-        firefox "http://192.168.1.100:81/index.htm"
-        ;;
     'hoogle_search')
         hoogle_search $2
+        ;;
+    'rustdocs_search')
+        rustdocs_search $2
         ;;
     'youtube_search')
         youtube_search
