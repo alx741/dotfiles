@@ -217,6 +217,7 @@
     # Window selection
     bind w exec ~/.scripts/ratpoison/window_select.sh
     bind h exec ~/.scripts/ratpoison/window_select.sh
+    bind C-h exec ~/.scripts/ratpoison/window_select.sh
 
     # Close current window
     bind Q delete
@@ -242,6 +243,7 @@
 
     # Running
     bind y exec rofi -display-drun "" -show drun
+    bind C-y exec rofi -display-drun "" -show drun
 #}}}
 
 
