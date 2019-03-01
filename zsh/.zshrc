@@ -125,6 +125,10 @@
     # Flutter
     export FLUTTER="/opt/flutter/bin/"
 
+    # GPG
+    GPG_TTY=$(tty)
+    export GPG_TTY
+
     # Path
     PATH="/usr/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
