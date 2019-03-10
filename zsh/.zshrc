@@ -129,6 +129,9 @@
     GPG_TTY=$(tty)
     export GPG_TTY
 
+    # Factorio
+    export FACTORIO_BIN="/home/alx/factorio/bin/x64/"
+
     # Path
     PATH="/usr/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -146,6 +149,7 @@
     PATH+="$GEM_BIN:"
     PATH+="$JENA:"
     PATH+="$FLUTTER:"
+    PATH+="$FACTORIO_BIN:"
 
     # Others
     PATH+="/home/alx/lab/stage:"
