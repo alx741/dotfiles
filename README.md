@@ -3,7 +3,7 @@
 ![Rusty Tools](rusty_tools.jpg)
 
 
-## About
+### About
 
 Daniel Campoverde Carrión [alx741]
 
@@ -18,38 +18,18 @@ License: https://github.com/alx741/dotfiles/blob/master/LICENSE.md
 Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
 
-## Installation
+### Installation
 
 Use GNU `stow` to install each config like this:
 
         $ stow -t ~ vim
 
 
-## Show me
-
-Here is my *urxvt* emulator running *tmux*, *zsh* and *weechat*
+### Show me
 
 ![shot](shot.png)
 
-
-Here a *vim* instance with my *.vimrc* and a Haskell *GHCI* session
-
-![shot2](shot2.png)
-
-
-And over here a *git* push and a *pacman* update
-
-![shot3](shot3.png)
-
-![shot4](shot4.png)
-
-
-Oh! And here a *ssh* session to my home lab network. "ET phone home"... Got it?
-
-![shot5](shot5.png)
-
-
-## Dotfiles
+### Dotfiles
 
 * Astyle
 * Avrdude
