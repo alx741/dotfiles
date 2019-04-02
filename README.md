@@ -17,17 +17,8 @@ License: https://github.com/alx741/dotfiles/blob/master/LICENSE.md
 
 Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 
-
-### Installation
-
-Use GNU `stow` to install each config like this:
-
-        $ stow -t ~ vim
-
-
-### Show me
-
 ![shot](shot.png)
+
 
 ### Dotfiles
 
@@ -89,7 +80,7 @@ Use GNU `stow` to install each config like this:
 * Zsh
 
 
-### Deprecated
+#### Deprecated
 
 These dotfiles are abandoned
 
@@ -99,33 +90,6 @@ These dotfiles are abandoned
 * ~~Tilda~~
 
 
-## Dependencies
+### Installation
 
-These dotfiles depend, obviously, on the all the programs it configures, so
-install them first.
-
-Additionally, the scripts depend on other binaries that can be installed using
-the system package manager. This is a non-exhaustive list:
-
-* acpi
-* alsa-utils
-* ccze
-* dhclient
-* diff-so-fancy
-* expect
-* figlet
-* firefox
-* hsColour
-* id3v2
-* lolcat
-* mpc
-* qrencode
-* scrot
-* task
-* unclutter
-* vmenu
-* xcape
-* xclip
-* xcowsay
-* xdotool
-* youtube-dl
+    $ stow -t ~ vim
