@@ -242,7 +242,7 @@
     bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
 
     # Running
-    bind y exec rofi -display-drun "" -show drun
+    bind y exec rofi -display-drun "" -drun-display-format "{name}" -show drun
     bind C-y exec rofi -display-drun "" -show drun
 #}}}
 
