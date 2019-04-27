@@ -1,11 +1,5 @@
 #!/bin/sh
 
-clear
-echo
-cat ~/.ascii_art/octocat
-echo
-
-
 function clone_clipboard
 {
     url=`xclip -selection clipboard -o`
