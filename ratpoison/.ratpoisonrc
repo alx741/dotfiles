@@ -23,6 +23,7 @@
     set waitcursor 0
     set wingravity c
     set winname class
+    set font dejavusans-11
 #}}}
 
 #{{{ Bindigs
