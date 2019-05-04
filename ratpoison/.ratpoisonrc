@@ -105,6 +105,7 @@
         definekey music question help music
         bind m readkey music
         bind Return exec ~/.scripts/ratpoison/music_control.sh next
+        bind C-Return exec ~/.scripts/ratpoison/music_control.sh next
     #}}}
 
     #{{{ Taskwarrior & Translation control
