@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1,radio.lclhst.net CHANNEL/r1 (192kbps/EUROPE)
+http://s1.radio.lclhst.net:1437/r1
+#EXTINF:-1,radio.lclhst.net CHANNEL/r2 (128kbps/EUROPE)
+http://s1.radio.lclhst.net:1437/r2
