@@ -83,7 +83,9 @@
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
     # Java
+    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
     export _JAVA_AWT_WM_NONREPARENTING=1
+    export JAVA_FONTS=/usr/share/fonts/TTF
     export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
     export JENA="/mnt/hdd/alx/u/web_semantica/apache-jena-3.6.0/bin"
 
