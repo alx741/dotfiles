@@ -8,7 +8,7 @@
         zgen load zsh-users/zsh-syntax-highlighting
         zgen load zsh-users/zsh-history-substring-search
         zgen load gentoo/gentoo-zsh-completions
-        zgen load zsh-users/zsh-autosuggestions
+        # zgen load zsh-users/zsh-autosuggestions
         zgen load rust-lang/zsh-config
 
         zgen save
@@ -220,7 +220,7 @@
     alias ns="nativescript"
     alias o="$SCRIPTS/open.sh"
     alias p="ping 8.8.8.8"
-    alias pastebin="sprunge"
+    alias pastebin="sprunge" # Reminder: text snippet sharing
     alias pb="sprunge"
     alias qgis="qgis --nologo"
     alias s="sxiv -a -q&"
@@ -239,6 +239,7 @@
     alias ro="zathura report.pdf&"
     alias woman="command man"
     alias ghc="stack ghc"
+    alias se="stack exec"
     alias stage="stage.sh"
     alias st="stage"
     alias ink="inkscape"
@@ -653,7 +654,7 @@
             | sed -r \
             "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
             | sed -r \
-            "s/\[[f]\](.*)/$(printf '\033[0;32m F')\1$(printf '\033[0m')/"\
+            "s/\[[f]\](.*)/$(printf ' F')\1/"\
             | sed -r \
             "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
         SORT_COMMAND="sort"
