@@ -167,12 +167,6 @@
     SORT_COMMAND="sort"
 #}}}
 
-#{{{ Colorize commands
-    function ping { command ping "$@" | ccze -A }
-    function traceroute { command traceroute "$@" | ccze -A }
-    function ./configure { command ./configure "$@" | ccze -A }
-#}}}
-
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
@@ -209,8 +203,8 @@
     alias gs="git status -sb"
     alias ll="l | less -R"
     alias LL="L | less -R"
-    alias lsl="command ls -lLh --color | ccze -A"
-    alias lsls="command ls -lLha --color | ccze -A"
+    alias lsl="command ls -lLh --color"
+    alias lsls="command ls -lLha --color"
     alias lg="la"
     alias m="mpv"
     alias mail="mutt"
