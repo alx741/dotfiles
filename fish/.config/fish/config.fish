@@ -27,7 +27,7 @@ abbr -a gs git status -sb
 abbr -a gro git remote rm origin
 abbr -a gao git remote add origin
 abbr -a gl git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'
-abbr -a gd git diff --color "$@" | diff-so-fancy | less -RSFXi
+abbr -a gd git diff --color always | diff-so-fancy | less -RSFXi
 abbr -a dl darcs log
 abbr -a dr darcs record
 abbr -a dw darcs whatsnew
@@ -99,9 +99,55 @@ abbr -a svgo svgo --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"re
 abbr -a yesod stack exec -- yesod
 abbr -a hakyll stack exec site
 abbr -a shake stack exec -- shake
-abbr -a md pandoc -s -f markdown -t man "$1" | command man -l -
-abbr -a h command hoogle $@ | HsColour --tty
-abbr -a hi command hoogle --info $@ | HsColour --tty
+# abbr -a md pandoc -s -f markdown -t man "$1" | command man -l -
+# abbr -a h command hoogle $@ | HsColour --tty
+# abbr -a hi command hoogle --info $@ | HsColour --tty
+#}}}
+
+
+#{{{ Bindings
+bind --user \co echo\ -n\ \(clear\ \|\ string\ replace\ \\e\\\[3J\ \"\"\)\;\ commandline\ -f\ repaint
+#}}}
+
+
+#{{{ Functions
+set SORT_CMD sort
+
+function list_dir
+    echo
+    find "$argv/" -maxdepth 1 -not -path '*/\.*' -printf \
+        "[%y]\t%P\n" | tail -n +2 | eval $SORT_CMD  \
+        | sed -r "s/\[[d]\](.*)/ D\1/" \
+        | sed -r "s/\[[f]\](.*)/ F\1/" \
+        | sed -r "s/\[[l]\](.*)/ L\1/"
+
+    set SORT_CMD sort
+end
+
+function L
+    set SORT_CMD sort -r
+    l
+end
+
+function l
+    if test (count $argv) -eq 0
+        set l_dir "."
+    else if test -d "$argv"
+        set l_dir "$argv"
+    else
+        set l_dir (find -L . -maxdepth 1 -type d -not -path '*/\.*' \
+            -printf "%P\n" | fzf -q "$argv" -1 -0)
+
+        if test "$l_dir" = ""
+            echo
+            echo -e "\t No such directory \"$argv\"    ¯\_(ツ)_/¯"
+            echo
+            return 1
+        end
+    end
+
+    list_dir $l_dir
+end
 #}}}
 
 # vim:fdm=marker
