@@ -26,6 +26,7 @@ Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
 * Avrdude
 * Ccze
 * Ctags
+* Fish
 * Ghci
 * Gimp
 * Git
