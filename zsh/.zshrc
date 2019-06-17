@@ -234,6 +234,7 @@
     alias woman="command man"
     alias ghc="stack ghc"
     alias se="stack exec"
+    alias sb="stack build"
     alias stage="stage.sh"
     alias st="stage"
     alias ink="inkscape"
