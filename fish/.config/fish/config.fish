@@ -27,6 +27,7 @@ abbr -a gs git status -sb
 abbr -a gro git remote rm origin
 abbr -a gao git remote add origin
 abbr -a gl git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'
+abbr -a gd git diff --color "$@" | diff-so-fancy | less -RSFXi
 abbr -a dl darcs log
 abbr -a dr darcs record
 abbr -a dw darcs whatsnew
@@ -95,6 +96,12 @@ abbr -a gdb gdb -q
 abbr -a ssh sshrc
 abbr -a winbox wine ~/.local/bin/winbox.exe&
 abbr -a svgo svgo --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'
+abbr -a yesod stack exec -- yesod
+abbr -a hakyll stack exec site
+abbr -a shake stack exec -- shake
+abbr -a md pandoc -s -f markdown -t man "$1" | command man -l -
+abbr -a h command hoogle $@ | HsColour --tty
+abbr -a hi command hoogle --info $@ | HsColour --tty
 #}}}
 
 # vim:fdm=marker
