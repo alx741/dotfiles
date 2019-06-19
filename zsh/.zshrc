@@ -7,8 +7,7 @@
 
         zgen load zsh-users/zsh-syntax-highlighting
         zgen load zsh-users/zsh-history-substring-search
-        zgen load gentoo/gentoo-zsh-completions
-        # zgen load zsh-users/zsh-autosuggestions
+        zgen load zsh-users/zsh-autosuggestions
         zgen load rust-lang/zsh-config
 
         zgen save
@@ -21,16 +20,16 @@
 #}}}
 
 #{{{ ZSH Modules
-    autoload -U compinit bashcompinit promptinit zcalc
+    autoload -Uz compinit
     autoload -U promptinit zcalc
     autoload -U colors && colors
     autoload -Uz vcs_info
-    compinit
-    bashcompinit
-    promptinit
-
-    # Haskell Stack
-    eval "$(stack --bash-completion-script stack)"
+    if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]];
+    then
+        compinit;
+    else
+        compinit -C;
+    fi;
 #}}}
 
 #{{{ Options
@@ -192,7 +191,6 @@
     alias ext="exit"
     alias exti="exit"
     alias free="free -h"
-    alias fuck='sudo $(fc -ln -1)'
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
@@ -251,22 +249,16 @@
     alias gdb="gdb -q "
     alias ssh="sshrc"
     alias winbox="wine ~/.local/bin/winbox.exe&"
+    alias svgo="svgo --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'"
+    alias yesod="stack exec -- yesod"
+    alias hakyll="stack exec site"
+    alias shake="stack -- exec shake"
 
     #{{{ Functions
-        function yesod() { stack exec -- yesod $@ }
-
-        function yesodtouch() { stack exec -- yesod touch && touch Settings.hs }
-
-        function hakyll() { stack exec site $@ }
-
-        function shake() { stack -- exec shake $@ }
-
-        function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
-
         function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
-
         function h() { command hoogle $@ | HsColour --tty }
         function hi() { command hoogle --info $@ | HsColour --tty }
+        function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
 
         function c()
         {
@@ -411,6 +403,7 @@
         alias '\et'="$EDITOR ~/.tmux.conf"
         alias '\er'="$EDITOR ~/.ratpoisonrc"
         alias '\ez'="$EDITOR ~/.zshrc"
+        alias '\ef'="$EDITOR ~/.config/fish/config.fish"
         alias '\ex'="$EDITOR ~/.xinitrc"
     #}}}
 
@@ -645,13 +638,13 @@
     {
         echo
         find "$1/" -maxdepth 1 -not -path '*/\.*' -printf \
-            "[%y]\t%P\n" | tail -n +2 | eval ${SORT_COMMAND} \
+            "[%y]%P\n" | tail -n +2 | eval ${SORT_COMMAND} \
             | sed -r \
-            "s/\[[d]\](.*)/$(printf '\033[0;36m D')\1$(printf '\033[0m')/"\
+            "s/\[[d]\](.*)/$(printf ' \033[1m')\1$(printf '\033[0m')/"\
             | sed -r \
-            "s/\[[f]\](.*)/$(printf ' F')\1/"\
+            "s/\[[f]\](.*)/ \1/"\
             | sed -r \
-            "s/\[[l]\](.*)/$(printf '\033[0;34m L')\1$(printf '\033[0m')/"
+            "s/\[[l]\](.*)/ \1$(printf '\033[38;5;14m@\033[0m')/"
         SORT_COMMAND="sort"
     }
 
@@ -773,11 +766,6 @@
         {
             zle && { zle reset-prompt; zle -R }
         }
-    #}}}
-
-    #{{{ FASD
-        eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install \
-            zsh-wcomp zsh-wcomp-install)"
     #}}}
 
     #{{{ Autosuggestions
