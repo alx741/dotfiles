@@ -5,19 +5,11 @@
 
 ### About
 
-Daniel Campoverde Carrión [alx741]
-
+by: Daniel Campoverde Carrión [alx741]
 mailto: <alx@sillybytes.net>
-
 GPG key id: 12622B78 (keys.gnupg.net)
-
 http: [Silly Bytes](http://www.sillybytes.net)
-
 License: https://github.com/alx741/dotfiles/blob/master/LICENSE.md
-
-Using [Solarized](http://ethanschoonover.com/solarized) Light color scheme.
-
-![shot](shot.png)
 
 
 ### Dotfiles
