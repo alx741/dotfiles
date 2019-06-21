@@ -1,0 +1,3 @@
+# Install
+
+    $ stow -t ~ vim
