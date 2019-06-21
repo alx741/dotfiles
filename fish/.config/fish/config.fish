@@ -9,8 +9,12 @@ export ANDROID_HOME="/opt/android-sdk/"
 export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 #}}}
 
+fish_vi_key_bindings
 
-#{{{ Aliases
+#{{{ Abbreviations
+## To functions
+abbr -a cd c
+
 abbr -a e vim
 abbr -a edit vim
 abbr -a er vr
@@ -148,6 +152,43 @@ function l
 
     list_dir $l_dir
 end
+
+function c
+    if test (count $argv) -gt 0
+        cd "$argv" && l
+        if test $status -ne 0
+            cd_fzf $argv
+        end
+    else
+        cd ~ && clear
+    end
+end
+
+function cd_fzf
+    set go_dir (find -L . -maxdepth 1 -type d -not -path '*/\.*' -printf "%P\n" | fzf -q "$argv" -1 -0)
+
+    if test "$go_dir" != ""
+        cd "./$go_dir"
+    else
+        cd_fasd $argv;
+    end
+end
+
+function cd_fasd
+    set go_dir (fasd -d $argv)
+
+    if test "$go_dir" = ""
+        echo
+        echo -e "\t No directory \"$argv\"    ¯\_(ツ)_/¯"
+        echo
+    else
+        echo
+        cat ~/.ascii_art/spacecraft
+        echo
+        cd "$go_dir"
+    end
+end
+
 #}}}
 
 # vim:fdm=marker
