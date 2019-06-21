@@ -8,9 +8,12 @@ ncmpcpp/.ncmpcpp/error.log
 mutt/.mutt/pass
 weechat/.weechat/sec.conf
 weechat/.weechat/weechat.log
-weechat/.weechat/logs
 weechat/.weechat/weechat_fifo*
-weechat/.weechat/script/plugins.xml.gz
+weechat/.weechat/logs
+weechat/.weechat/script
+weechat/.weechat/perl
+weechat/.weechat/python
+weechat/.weechat/ruby
 newsbeuter/.newsbeuter/cache.db
 newsbeuter/.newsbeuter/cache.db.lock
 newsbeuter/.newsbeuter/history.cmdline
