@@ -14,10 +14,10 @@ weechat/.weechat/script
 weechat/.weechat/perl
 weechat/.weechat/python
 weechat/.weechat/ruby
-newsbeuter/.newsbeuter/cache.db
-newsbeuter/.newsbeuter/cache.db.lock
-newsbeuter/.newsbeuter/history.cmdline
-newsbeuter/.newsbeuter/history.search
+newsboat/.newsboat/cache.db
+newsboat/.newsboat/cache.db.lock
+newsboat/.newsboat/history.cmdline
+newsboat/.newsboat/history.search
 w3m/.w3m/cookie
 w3m/.w3m/history
 w3m/.w3m/passwd
