@@ -26,7 +26,7 @@
 * Ncmpcpp
 * NeoVim
 * Nethack
-* Newsbeuter
+* Newsboat
 * Nitrogen
 * Npm
 * Octave
