@@ -333,7 +333,7 @@ call plug#end()
 
     function! StatuslineTrailingSpaceWarning()
         if !exists("b:statusline_trailing_space_warning")
-            if search('\s\+$', 'nw') != 0 && &ft !~? 'help\|qf'
+            if search('\s\+$', 'nw') != 0 && &ft !~? 'help\|qf\|man'
                 let b:statusline_trailing_space_warning='[Trailing Whitespaces]'
             else
                 let b:statusline_trailing_space_warning=''
@@ -345,7 +345,7 @@ call plug#end()
     function! StatuslineTabWarning()
         if !exists("b:statusline_tab_warning")
             let tabs = search('^\t', 'nw') != 0
-            if tabs && &ft !~? 'help\|qf'
+            if tabs && &ft !~? 'help\|qf\|man'
                 let b:statusline_tab_warning =  '[Mixed Indenting]'
             else
                 let b:statusline_tab_warning = ''
