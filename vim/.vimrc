@@ -313,8 +313,7 @@ call plug#end()
 "}}}
 
 "{{{ Status Line and Color
-    set statusline=[%n]\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]
-    set statusline+=\ [ft=%Y]\ %f\ %r\ %m
+    set statusline+=\ %f\ %r\ %m
 
     set statusline+=\ \ \ \ %#error#
     set statusline+=%{StatuslineTabWarning()}
@@ -334,7 +333,7 @@ call plug#end()
 
     function! StatuslineTrailingSpaceWarning()
         if !exists("b:statusline_trailing_space_warning")
-            if search('\s\+$', 'nw') != 0
+            if search('\s\+$', 'nw') != 0 && &ft !~? 'help\|qf'
                 let b:statusline_trailing_space_warning='[Trailing Whitespaces]'
             else
                 let b:statusline_trailing_space_warning=''
@@ -346,7 +345,7 @@ call plug#end()
     function! StatuslineTabWarning()
         if !exists("b:statusline_tab_warning")
             let tabs = search('^\t', 'nw') != 0
-            if tabs
+            if tabs && &ft !~? 'help\|qf'
                 let b:statusline_tab_warning =  '[Mixed Indenting]'
             else
                 let b:statusline_tab_warning = ''
