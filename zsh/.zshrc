@@ -1,5 +1,5 @@
 #{{{ Plugins & Zgen
-    source "${HOME}/.zsh/zgen/zgen.zsh"
+    source "${HOME}/.zgen/zgen.zsh"
 
     if ! zgen saved
     then
