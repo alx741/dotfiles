@@ -1,271 +1,192 @@
 #!/bin/sh
 
 COMMON_DEPS="\
-arm-none-eabi-binutils \
-arm-none-eabi-gcc \
-arm-none-eabi-gdb \
-arm-none-eabi-newlib \
-aspell \
-astyle \
-avr-binutils \
-avr-gcc \
-avr-gdb \
-avr-libc \
-avrdude \
-bat \
-bind-tools \
-calc \
-ccze \
-ccze \
-cgdb \
-chromium \
-cloc \
-ctags \
-curl \
-diff-so-fancy \
-exa \
-expect \
-fasd \
-fd \
-figlet \
-firefox \
-fzf \
-ghc \
-gimp \
-git \
-gnupg \
-htop \
-hub \
-id3v2 \
-inkscape \
-john \
-jshon \
-mpc \
-mplayer \
-mpv \
-mutt \
-ncmpcpp \
-newsboat \
-nitrogen \
-nmap \
-npm \
-ntp \
-openbox \
-openvpn \
-picocom \
-pulseaudio \
-qemu \
-ratpoison \
-readline \
-rofi \
-rxvt-unicode \
-sassc \
-scrot \
-smartmontools \
-sox \
-sshpass \
-stlink \
-stow \
-sxiv \
-the_silver_searcher \
-tmux \
-transmission-gtk \
-tree \
-unclutter \
-unrar \
-unzip \
-vagrant \
-w3m \
-weechat \
-wget \
-wmname \
-wol \
-words \
-wpa_supplicant \
-xbindkeys \
-xcape \
-xclip \
-xdotool \
-xdotool \
-xf86-input-synaptics \
-zathura \
-zathura-djvu \
-zathura-pdf-mupdf \
-zip \
-zsh \
+    arm-none-eabi-binutils \
+    arm-none-eabi-gcc \
+    arm-none-eabi-gdb \
+    arm-none-eabi-newlib \
+    aspell \
+    astyle \
+    avr-binutils \
+    avr-gcc \
+    avr-gdb \
+    avr-libc \
+    avrdude \
+    bat \
+    bind-tools \
+    calc \
+    ccze \
+    ccze \
+    cgdb \
+    chromium \
+    cloc \
+    ctags \
+    curl \
+    diff-so-fancy \
+    exa \
+    expect \
+    fasd \
+    fd \
+    figlet \
+    firefox \
+    fzf \
+    ghc \
+    gimp \
+    git \
+    gnupg \
+    htop \
+    hub \
+    id3v2 \
+    inkscape \
+    john \
+    jshon \
+    mpc \
+    mplayer \
+    mpv \
+    mutt \
+    ncmpcpp \
+    newsboat \
+    nitrogen \
+    nmap \
+    npm \
+    ntp \
+    openbox \
+    openvpn \
+    picocom \
+    pulseaudio \
+    qemu \
+    ratpoison \
+    readline \
+    rofi \
+    rxvt-unicode \
+    sassc \
+    scrot \
+    smartmontools \
+    sox \
+    sshpass \
+    stlink \
+    stow \
+    sxiv \
+    the_silver_searcher \
+    tmux \
+    transmission-gtk \
+    tree \
+    unclutter \
+    unrar \
+    unzip \
+    vagrant \
+    w3m \
+    weechat \
+    wget \
+    wmname \
+    wol \
+    words \
+    wpa_supplicant \
+    xbindkeys \
+    xcape \
+    xclip \
+    xdotool \
+    xdotool \
+    xf86-input-synaptics \
+    zathura \
+    zathura-djvu \
+    zathura-pdf-mupdf \
+    zip \
+    zsh \
 "
 
 FREEBSD_DEPS="\
-youtube_dl \
+    dejavu \
+    en-aspell \
+    es-aspell \
+    hs-hasktags \
+    hs-hlint \
+    hs-hoogle \
+    hs-pandoc \
+    hs-shellcheck \
+    hs-xmonad \
+    hs-xmonad-contrib \
+    musicpd \
+    nethack36 \
+    py36-speedtest-cli \
+    roboto-fonts-ttf \
+    rubygem-asciidoctor \
+    sourcecodepro-ttf \
+    surf-browser \
+    taskwarrior \
+    terminus-ttf \
+    wireshark \
+    youtube_dl \
 "
 
 ARCH_DEPS="\
-acpi \
-alsa-utils \
-arm-none-eabi-binutils \
-arm-none-eabi-gcc \
-arm-none-eabi-gdb \
-arm-none-eabi-newlib \
-asciidoctor \
-aspell \
-aspell-en \
-aspell-es \
-astyle \
-avr-binutils \
-avr-gcc \
-avr-gdb \
-avr-libc \
-avrdude \
-bat \
-bind-tools \
-calc \
-ccze \
-ccze \
-cgdb \
-chromium \
-cloc \
-ctags \
-curl \
-dhclient \
-diff-so-fancy \
-dnsutils \
-docker \
-espeak-ng \
-exa \
-expac \
-expect \
-fasd \
-fd \
-figlet \
-firefox \
-firefox-developer-edition \
-fzf \
-ghc \
-gimp \
-git \
-gnupg \
-grep \
-gvim \
-haskell-hscolour \
-hasktags \
-hdparm \
-hindent \
-hlint \
-hoogle \
-htop \
-hub \
-id3v2 \
-inkscape \
-john \
-jshon \
-libvir \
-lolcat \
-mariadb \
-mongodb \
-mpc \
-mpd \
-mplayer \
-mpv \
-mutt \
-ncmpcpp \
-neovim \
-nethack \
-newsboat \
-nitrogen \
-nmap \
-npm \
-ntp \
-openbox \
-openvpn \
-pacman \
-pacman-contrib \
-pandoc \
-picocom \
-prettier \
-pulseaudio \
-pulseaudio-alsa \
-python2-lxml \
-python2-scour \
-qemu \
-qemu-arch-extra \
-qrencode \
-ratpoison \
-readline \
-reflector \
-rofi \
-rxvt-unicode \
-sassc \
-scrot \
-sed \
-shellcheck \
-smartmontools \
-sox \
-speedtest-cli \
-sshpass \
-stack \
-stlink \
-stow \
-stylish-haskell \
-surf \
-sxiv \
-task \
-the_silver_searcher \
-time \
-tmux \
-transmission-gtk \
-tree \
-ttf-dejavu \
-ttf-roboto \
-unclutter \
-unrar \
-unzip \
-vagrant \
-vim-runtime \
-virtualbox \
-virtualbox-host-modules-arch \
-w3m \
-weechat \
-wget \
-wireshark-gtk \
-wmname \
-wol \
-words \
-wpa_supplicant \
-xbindkeys \
-xcape \
-xclip \
-xdotool \
-xdotool \
-xf86-input-synaptics \
-xmonad \
-xorg-xinit \
-xorg-xinput \
-xorg-xrandr \
-xorg-xsetroot \
-yarn \
-youtube-dl \
-zathura \
-zathura-djvu \
-zathura-pdf-mupdf \
-zip \
-zsh \
+    acpi \
+    alsa-utils \
+    asciidoctor \
+    aspell-en \
+    aspell-es \
+    dhclient \
+    dnsutils \
+    docker \
+    expac \
+    firefox-developer-edition \
+    grep \
+    gvim \
+    haskell-hscolour \
+    hasktags \
+    hdparm \
+    hindent \
+    hoogle \
+    libvir \
+    lolcat \
+    mpd \
+    neovim \
+    nethack \
+    pacman \
+    pacman-contrib \
+    pandoc \
+    prettier \
+    pulseaudio-alsa \
+    python2-lxml \
+    python2-scour \
+    qemu-arch-extra \
+    qrencode \
+    reflector \
+    sed \
+    shellcheck \
+    speedtest-cli \
+    surf \
+    task \
+    time \
+    ttf-dejavu \
+    ttf-roboto \
+    vim-runtime \
+    virtualbox \
+    virtualbox-host-modules-arch \
+    wireshark-gtk \
+    xmonad \
+    xorg-xinit \
+    xorg-xinput \
+    xorg-xrandr \
+    xorg-xsetroot \
+    youtube-dl \
 "
 
 AUR_DEPS="\
-acpilight \
-cropgui \
-mimi-git \
-popcorntime-bin \
-python-proselint \
-sprunge \
-svgo \
-tealdeer-git \
-translate-shell \
-twa \
-urxvt-resize-font-git \
-wemux \
+    acpilight \
+    cropgui \
+    mimi-git \
+    popcorntime-bin \
+    python-proselint \
+    sprunge \
+    svgo \
+    tealdeer-git \
+    translate-shell \
+    twa \
+    urxvt-resize-font-git \
+    wemux \
 "
 
-eval "pkg install $COMMON_DEPS"
+eval "pkg install $COMMON_DEPS $FREEBSD_DEPS"
 #eval "sudo pacman -Syy $ARCH_DEPS"
 #eval "sudo yay -Syy $AUR_DEPS"
