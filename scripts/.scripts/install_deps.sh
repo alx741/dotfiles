@@ -111,6 +111,7 @@ FREEBSD_DEPS="\
     py36-speedtest-cli \
     roboto-fonts-ttf \
     rubygem-asciidoctor \
+    rxvt-font-size \
     sourcecodepro-ttf \
     surf-browser \
     taskwarrior \
@@ -187,6 +188,11 @@ AUR_DEPS="\
     wemux \
 "
 
+HASKELL_DEPS="\
+    stylish-haskell \
+"
+
 eval "pkg install $COMMON_DEPS $FREEBSD_DEPS"
-#eval "sudo pacman -Syy $ARCH_DEPS"
+# eval "cabal install $HASKELL_DEPS"
+#eval "sudo pacman -Syy $COMMON_DEPS $ARCH_DEPS"
 #eval "sudo yay -Syy $AUR_DEPS"
