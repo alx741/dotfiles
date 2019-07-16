@@ -1,37 +1,173 @@
 #!/bin/sh
 
-ARCH_DEPS=(
-    astyle ccze ctags ghc cabal-install git gnupg hindent mongodb mpd mplayer
-    mutt mariadb ncmpcpp neovim nethack nitrogen openbox pacman ratpoison
-    readline stack sxiv mpv task tmux rxvt-unicode gvim vim-runtime w3m weechat
-    xmonad zathura zathura-djvu zathura-pdf-mupdf zsh acpi alsa-utils ccze
-    dhclient diff-so-fancy expect figlet firefox firefox-developer-edition id3v2
-    lolcat mpc qrencode scrot task unclutter xclip xdotool youtube-dl reflector
-    stow fzf fasd wget ntp sshpass grep sed curl jshon expac haskell-hscolour
-    rofi ttf-dejavu ttf-roboto xcape transmission-gtk gimp inkscape asciidoctor
-    xorg-xsetroot xf86-input-synaptics xbindkeys xorg-xrandr zip unrar calc
-    the_silver_searcher npm htop chromium cloc pandoc dnsutils bind-tools unzip
-    wol tree avr-binutils avr-gcc avr-gdb avr-libc avrdude docker vagrant
-    libvir virtualbox virtualbox-host-modules-arch pacman-contrib xorg-xinput
-    hasktags sassc exa bat fd smartmontools pulseaudio pulseaudio-alsa
-    xorg-xinit wpa_supplicant nmap python2-lxml python2-scour wireshark-gtk
-    hdparm openvpn surf speedtest-cli cgdb prettier xdotool stlink
-    arm-none-eabi-binutils arm-none-eabi-gcc arm-none-eabi-gdb
-    arm-none-eabi-newlib wmname shellcheck time picocom newsboat words aspell
-    aspell-en aspell-es john hub sox espeak-ng hoogle stylish-haskell qemu
-    qemu-arch-extra hlint yarn
-)
+ARCH_DEPS="\
+acpi \
+alsa-utils \
+arm-none-eabi-binutils \
+arm-none-eabi-gcc \
+arm-none-eabi-gdb \
+arm-none-eabi-newlib \
+asciidoctor \
+aspell \
+aspell-en \
+aspell-es \
+astyle \
+avr-binutils \
+avr-gcc \
+avr-gdb \
+avr-libc \
+avrdude \
+bat \
+bind-tools \
+cabal-install \
+calc \
+ccze \
+ccze \
+cgdb \
+chromium \
+cloc \
+ctags \
+curl \
+dhclient \
+diff-so-fancy \
+dnsutils \
+docker \
+espeak-ng \
+exa \
+expac \
+expect \
+fasd \
+fd \
+figlet \
+firefox \
+firefox-developer-edition \
+fzf \
+ghc \
+gimp \
+git \
+gnupg \
+grep \
+gvim \
+haskell-hscolour \
+hasktags \
+hdparm \
+hindent \
+hlint \
+hoogle \
+htop \
+hub \
+id3v2 \
+inkscape \
+john \
+jshon \
+libvir \
+lolcat \
+mariadb \
+mongodb \
+mpc \
+mpd \
+mplayer \
+mpv \
+mutt \
+ncmpcpp \
+neovim \
+nethack \
+newsboat \
+nitrogen \
+nmap \
+npm \
+ntp \
+openbox \
+openvpn \
+pacman \
+pacman-contrib \
+pandoc \
+picocom \
+prettier \
+pulseaudio \
+pulseaudio-alsa \
+python2-lxml \
+python2-scour \
+qemu \
+qemu-arch-extra \
+qrencode \
+ratpoison \
+readline \
+reflector \
+rofi \
+rxvt-unicode \
+sassc \
+scrot \
+sed \
+shellcheck \
+smartmontools \
+sox \
+speedtest-cli \
+sshpass \
+stack \
+stlink \
+stow \
+stylish-haskell \
+surf \
+sxiv \
+task \
+task \
+the_silver_searcher \
+time \
+tmux \
+transmission-gtk \
+tree \
+ttf-dejavu \
+ttf-roboto \
+unclutter \
+unrar \
+unzip \
+vagrant \
+vim-runtime \
+virtualbox \
+virtualbox-host-modules-arch \
+w3m \
+weechat \
+wget \
+wireshark-gtk \
+wmname \
+wol \
+words \
+wpa_supplicant \
+xbindkeys \
+xcape \
+xclip \
+xdotool \
+xdotool \
+xf86-input-synaptics \
+xmonad \
+xorg-xinit \
+xorg-xinput \
+xorg-xrandr \
+xorg-xsetroot \
+yarn \
+youtube-dl \
+zathura \
+zathura-djvu \
+zathura-pdf-mupdf \
+zip \
+zsh \
+"
 
-AUR_DEPS=(
-    translate-shell tealdeer-git mimi-git popcorntime-bin acpilight sprunge
-    python-proselint wemux cropgui svgo urxvt-resize-font-git twa
-)
+AUR_DEPS="\
+acpilight \
+cropgui \
+mimi-git \
+popcorntime-bin \
+python-proselint \
+sprunge \
+svgo \
+tealdeer-git \
+translate-shell \
+twa \
+urxvt-resize-font-git \
+wemux \
+"
 
-HASK_DEPS=(
-    happy alex shake yesod hakyll codex turtle
-)
-
-
-sudo pacman -Syy ${ARCH_DEPS[@]}
-
-stack install ${HASK_DEPS[@]}
+eval "sudo pacman -Syy $ARCH_DEPS"
+eval "sudo yay -Syy $AUR_DEPS"
