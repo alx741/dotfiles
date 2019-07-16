@@ -116,6 +116,7 @@ FREEBSD_DEPS="\
     surf-browser \
     taskwarrior \
     terminus-ttf \
+    wemux \
     wireshark \
     youtube_dl \
 "
