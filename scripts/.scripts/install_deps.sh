@@ -12,17 +12,18 @@ ARCH_DEPS=(
     xorg-xsetroot xf86-input-synaptics xbindkeys xorg-xrandr zip unrar calc
     the_silver_searcher npm htop chromium cloc pandoc dnsutils bind-tools unzip
     wol tree avr-binutils avr-gcc avr-gdb avr-libc avrdude docker vagrant
-    libvirt virtualbox virtualbox-host-modules-arch pacman-contrib xorg-xinput
+    libvir virtualbox virtualbox-host-modules-arch pacman-contrib xorg-xinput
     hasktags sassc exa bat fd smartmontools pulseaudio pulseaudio-alsa
     xorg-xinit wpa_supplicant nmap python2-lxml python2-scour wireshark-gtk
     hdparm openvpn surf speedtest-cli cgdb prettier xdotool stlink
     arm-none-eabi-binutils arm-none-eabi-gcc arm-none-eabi-gdb
     arm-none-eabi-newlib wmname shellcheck time picocom newsboat words aspell
-    aspell-en aspell-es john
+    aspell-en aspell-es john hub sox espeak-ng hoogle stylish-haskell qemu
+    qemu-arch-extra hlint yarn
 )
 
 AUR_DEPS=(
-    hub translate-shell tealdeer-git mimi-git popcorntime-bin acpilight sprunge
+    translate-shell tealdeer-git mimi-git popcorntime-bin acpilight sprunge
     python-proselint wemux cropgui svgo urxvt-resize-font-git twa
 )
 
