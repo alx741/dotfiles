@@ -1,5 +1,104 @@
 #!/bin/sh
 
+COMMON_DEPS="\
+arm-none-eabi-binutils \
+arm-none-eabi-gcc \
+arm-none-eabi-gdb \
+arm-none-eabi-newlib \
+aspell \
+astyle \
+avr-binutils \
+avr-gcc \
+avr-gdb \
+avr-libc \
+avrdude \
+bat \
+bind-tools \
+calc \
+ccze \
+ccze \
+cgdb \
+chromium \
+cloc \
+ctags \
+curl \
+diff-so-fancy \
+exa \
+expect \
+fasd \
+fd \
+figlet \
+firefox \
+fzf \
+ghc \
+gimp \
+git \
+gnupg \
+htop \
+hub \
+id3v2 \
+inkscape \
+john \
+jshon \
+mpc \
+mplayer \
+mpv \
+mutt \
+ncmpcpp \
+newsboat \
+nitrogen \
+nmap \
+npm \
+ntp \
+openbox \
+openvpn \
+picocom \
+pulseaudio \
+qemu \
+ratpoison \
+readline \
+rofi \
+rxvt-unicode \
+sassc \
+scrot \
+smartmontools \
+sox \
+sshpass \
+stlink \
+stow \
+sxiv \
+the_silver_searcher \
+tmux \
+transmission-gtk \
+tree \
+unclutter \
+unrar \
+unzip \
+vagrant \
+w3m \
+weechat \
+wget \
+wmname \
+wol \
+words \
+wpa_supplicant \
+xbindkeys \
+xcape \
+xclip \
+xdotool \
+xdotool \
+xf86-input-synaptics \
+zathura \
+zathura-djvu \
+zathura-pdf-mupdf \
+zip \
+zsh \
+"
+
+FREEBSD_DEPS="\
+youtube_dl \
+"
+
 ARCH_DEPS="\
 acpi \
 alsa-utils \
@@ -19,7 +118,6 @@ avr-libc \
 avrdude \
 bat \
 bind-tools \
-cabal-install \
 calc \
 ccze \
 ccze \
@@ -111,7 +209,6 @@ stylish-haskell \
 surf \
 sxiv \
 task \
-task \
 the_silver_searcher \
 time \
 tmux \
@@ -169,5 +266,6 @@ urxvt-resize-font-git \
 wemux \
 "
 
-eval "sudo pacman -Syy $ARCH_DEPS"
-eval "sudo yay -Syy $AUR_DEPS"
+eval "pkg install $COMMON_DEPS"
+#eval "sudo pacman -Syy $ARCH_DEPS"
+#eval "sudo yay -Syy $AUR_DEPS"
