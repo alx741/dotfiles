@@ -1,8 +1,4 @@
-Copyright 2016 by Daniel Campoverde Carrión [alx741] <alx@sillybytes.net>
-
-When using (fully or partially) any script or configuration file in this
-repository, this **license file must be copied and preserved intact together
-with the author attribution**.
+Copyright 2019 by Daniel Campoverde Carrión [alx741] <alx@sillybytes.net>
 
 Author: *Daniel Campoverde Carrión* *[alx741]*
 
@@ -11,15 +7,14 @@ Author: *Daniel Campoverde Carrión* *[alx741]*
 mailto: alx@sillybytes.net
 
 
-These dotfiles are free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+These `dotfiles` are free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <http://www.gnu.org/licenses/>.
