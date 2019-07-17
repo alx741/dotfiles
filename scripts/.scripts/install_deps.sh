@@ -40,6 +40,7 @@ COMMON_DEPS="\
     inkscape \
     john \
     jshon \
+    librecad \
     mpc \
     mplayer \
     mpv \
@@ -139,6 +140,9 @@ ARCH_DEPS="\
     hdparm \
     hindent \
     hoogle \
+    libre-office-fresh \
+    libre-office-fresh-en \
+    libre-office-fresh-es \
     libvir \
     lolcat \
     mpd \
