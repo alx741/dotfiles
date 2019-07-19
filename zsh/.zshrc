@@ -154,6 +154,7 @@
 
     # Others
     PATH+="/home/alx/lab/stage:"
+    source $HOME/.ghcup/env
 
     export PATH
     declare -U path
@@ -169,9 +170,7 @@
 #{{{ Aliases
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
-    alias cabal="echo; cat ~/.ascii_art/lambda | lolcat -S 28; echo; cabal"
-    alias cargo="echo; cat ~/.ascii_art/rust; echo; cargo"
-    alias cdmem="cd /mnt/mem1"
+    alias cdmem="cd /mnt/mem"
     alias cdmeme=cdmem
     alias clip="xclip -selection clipboard -i"
     alias df="df -h"
@@ -230,9 +229,10 @@
     alias re="vim report.md"
     alias ro="zathura report.pdf&"
     alias woman="command man"
-    alias ghc="stack ghc"
     alias se="stack exec"
     alias sb="stack build"
+    alias cb="cabal v2-build"
+    alias cr="cabal v2-repl"
     alias stage="stage.sh"
     alias st="stage"
     alias ink="inkscape"
@@ -348,7 +348,6 @@
         alias es="$SCRIPTS/edit_shot.sh"
         alias gclone="$SCRIPTS/git.sh clone"
         alias getit="$SCRIPTS/pacman.sh getit"
-        alias ghci="$SCRIPTS/stack.sh ghci"
         alias gpull="$SCRIPTS/git.sh pull"
         alias gpush="$SCRIPTS/git.sh push"
         alias gupstream="$SCRIPTS/git.sh add_upstream"
@@ -364,11 +363,8 @@
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
         alias pulp="$SCRIPTS/pulp.sh"
         alias reboot="$SCRIPTS/build/Topa reboot"
-        alias repl="$SCRIPTS/stack.sh ghci"
         alias rn="$SCRIPTS/generate_report.sh"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
-        alias runghc="$SCRIPTS/stack.sh runhaskell"
-        alias runhaskell="$SCRIPTS/stack.sh runhaskell"
         alias replicate="$SCRIPTS/replicate_term.sh&"
         alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
         alias topa="$SCRIPTS/build/Topa halt"
@@ -721,6 +717,8 @@
     #}}}
 
     #{{{ FASD
+        eval "$(fasd --init posix-alias zsh-hook)"
+
         function cd_fasd()
         {
             go_dir=`fasd -d "$*"`
