@@ -13,10 +13,20 @@ echo
 echo Cleaning Pacman cache
 echo
 sudo paccache -k 3 -r
+sudo pacman -Sc
+yay -Sc
 echo
 echo Updating stack package index
 echo
-sudo stack update
+stack update
+echo
+echo Updating cabal package index
+echo
+cabal v2-update
+echo
+echo Updating rust tools
+echo
+rustup update
 echo
 echo Updating Vim plugins
 echo
