@@ -1,14 +1,17 @@
-\set QUIET 1
-
+\timing
 \x auto
+
+\set QUIET 1
+\set VERBOSITY verbose
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\set PROMPT1 '\n[%/]  (╯°□°）╯- ┻━┻   '
+\set PROMPT2 'go on  (>\'_\')>   '
 
 \pset linestyle unicode
 \pset border 2
 \pset format wrapped
 \pset null 'NULL'
 
-\set COMP_KEYWORD_CASE upper
-\set PROMPT1 '\n[%/]  (╯°□°）╯- ┻━┻   '
-\set PROMPT2 'go on  (>\'_\')>   '
 
 \l
