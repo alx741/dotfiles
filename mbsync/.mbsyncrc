@@ -1,0 +1,46 @@
+IMAPAccount sillybytes
+Host mail.privateemail.com
+User alx@sillybytes.net
+PassCmd "cat ~/.mutt/pass"
+SSLType STARTTLS
+
+IMAPStore sillybytes-remote
+Account sillybytes
+
+MaildirStore sillybytes-local
+SubFolders Verbatim
+Path ~/.mail/
+Inbox ~/.mail/inbox
+
+Channel sillybytes-inbox
+Master :sillybytes-remote:Inbox
+Slave :sillybytes-local:
+Sync All
+SyncState *
+
+Channel sillybytes-sent
+Master :sillybytes-remote:"Sent"
+Slave :sillybytes-local:"sent"
+Create Slave
+Sync All
+SyncState *
+
+Channel sillybytes-spam
+Master :sillybytes-remote:"Spam"
+Slave :sillybytes-local:"spam"
+Create Slave
+Sync All
+SyncState *
+
+Channel sillybytes-trash
+Master :sillybytes-remote:"Trash"
+Slave :sillybytes-local:"trash"
+Create Slave
+Sync All
+SyncState *
+
+Group sillybytes
+Channel sillybytes-inbox
+Channel sillybytes-sent
+Channel sillybytes-spam
+Channel sillybytes-trash

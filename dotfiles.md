@@ -14,6 +14,7 @@
 * Hindent
 * Inkscape
 * Kitty
+* Mbsync
 * Mimi
 * Modprobe
 * MongoDB
