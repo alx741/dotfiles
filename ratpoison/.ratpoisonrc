@@ -133,8 +133,8 @@
         definekey firefox l exec ~/.scripts/ratpoison/firefox.sh search_lyrics
         definekey firefox slash exec ~/.scripts/ratpoison/firefox.sh duckduckgo
         definekey firefox y exec ~/.scripts/ratpoison/firefox.sh youtube_search
-        definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
-        definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
+        definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
+        definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
         definekey firefox n exec ~/.scripts/ratpoison/firefox.sh rustdocs_search
         definekey firefox c exec gpick
         bind f readkey firefox
