@@ -38,11 +38,11 @@
 #}}}
 
 #{{{ Personal settings
-    set from = 'alx@sillbytes.net'
+    set from = 'alx@sillybytes.net'
     set use_from = yes
     set realname = 'Daniel Campoverde Carrión [Alx741]'
     set imap_user = 'alx@sillybytes.net'
-    set smtp_url = 'smtps://mail.privateemail.com/'
+    set smtp_url = "smtp://$imap_user@mail.privateemail.com:587"
     set imap_pass = `cat ~/.mutt/pass`
     set smtp_pass = `cat ~/.mutt/pass`
     set mbox_type=Maildir
@@ -85,12 +85,12 @@
 #}}}
 
 #{{{ GPG sign
-    source ~/.mutt/gpg.rc
-    set pgp_use_gpg_agent = yes
-    set pgp_sign_as = 12622B78
-    set pgp_timeout = 3600
-    set crypt_autosign = yes
-    set crypt_replyencrypt = yes
+    # source ~/.mutt/gpg.rc
+    # set pgp_use_gpg_agent = yes
+    # set pgp_sign_as = 76450F22
+    # set pgp_timeout = 3600
+    # set crypt_autosign = yes
+    # set crypt_replyencrypt = yes
 #}}}
 
 #{{{ Color
