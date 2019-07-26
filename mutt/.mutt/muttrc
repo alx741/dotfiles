@@ -21,7 +21,7 @@
     set imap_keepalive = 300
     set imap_passive = no
     set imap_servernoise = no
-    alternative_order text/plain text/html
+    alternative_order text/plain text/enriched text/html
     auto_view text/html
     ignore *
     unignore from: to: cc: date: subject:
@@ -38,15 +38,17 @@
 #}}}
 
 #{{{ Personal settings
-    set from = 'alx741@riseup.net'
+    set from = 'alx@sillbytes.net'
     set use_from = yes
     set realname = 'Daniel Campoverde Carrión [Alx741]'
-    set imap_user = 'alx741@riseup.net'
-    set smtp_url = 'smtp://alx741@mail.riseup.net:587/'
+    set imap_user = 'alx@sillybytes.net'
+    set smtp_url = 'smtps://mail.privateemail.com/'
     set imap_pass = `cat ~/.mutt/pass`
     set smtp_pass = `cat ~/.mutt/pass`
-    set folder = 'imaps://mail.riseup.net:993'
-    set spoolfile = 'imaps://mail.riseup.net/INBOX'
+    set mbox_type=Maildir
+    set folder = "~/.mail"
+    set spoolfile = "+inbox"
+    mailboxes =inbox =sent =spam =trash
 #}}}
 
 #{{{ Key bindings
