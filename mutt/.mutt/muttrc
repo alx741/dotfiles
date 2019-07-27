@@ -1,26 +1,42 @@
 #{{{ General
     set send_charset = "utf-8"
     set assumed_charset = "utf-8"
-    set date_format = "%b/%d"
-    set index_format = "[%Z]  %D  %-20.20F  %s"
+    set date_format = "%b/%d  %I:%M %P"
+    set index_format = "[%Z] %?X?%X& ? %d   %-25.25F  %s"
+    set status_format = "%r %f [%?n?New: %n ?%?d?Del: %d ?%?F?Flag: %F ?%?t?Tag: %t ?%?p?Post: %p ?%?b?Boxes: %b ?%l] %* %P"
+    set pager_format = "[%Z] %?X?[Attachments: %X] ?(%n) %s%* %P"
+    set attach_format = "[%u%D%I%t]  %4s  %T%.50d%> [%m/%.10M, %.6e%?C?, %C?]"
+    set sidebar_format = "%B  %?N?(%N)"
+    set message_format = "%s"
+    set compose_format = "Size: %l  Atts: %a"
+    set query_format = "%t  %30a  %30n  %?e?(%e)?"
+    set alias_format = "%2f%1t  %-10a  %r"
     set sort = threads
     set sort_aux = reverse-last-date-received
     set sort_browser = reverse-date
     set uncollapse_jump
-    set autoedit
-    set fast_reply
+    set autoedit = yes
+    set fast_reply = yes
     set sig_dashes
     set copy = yes
     set wait_key = no
-    set edit_headers
-    set pager = "vim -c 'set ft=pager syntax=mail'"
+    set mark_old = no
+    set edit_headers = yes
+    set timeout = 3
+    set beep_new = yes
     set prompt_after = no
     set editor = "vim -c 'set ft=mail'"
-    set menu_scroll = "yes"
     set mail_check = 30
     set imap_keepalive = 300
     set imap_passive = no
     set imap_servernoise = no
+    set menu_scroll = yes
+    set pager_stop = yes
+    set pager_context = 3
+    set tilde
+    set markers = no
+    set sidebar_width = 15
+    set sidebar_divider_char = ""
     alternative_order text/plain text/enriched text/html
     auto_view text/html
     ignore *
