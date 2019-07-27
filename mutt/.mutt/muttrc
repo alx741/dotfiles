@@ -56,7 +56,7 @@
 #{{{ Personal settings
     set from = 'alx@sillybytes.net'
     set use_from = yes
-    set realname = 'Daniel Campoverde Carrión [Alx741]'
+    set realname = 'Daniel Campoverde'
     set imap_user = 'alx@sillybytes.net'
     set smtp_url = "smtp://$imap_user@mail.privateemail.com:587"
     set imap_pass = `cat ~/.mutt/pass`
