@@ -101,12 +101,12 @@
 #}}}
 
 #{{{ GPG sign
-    # source ~/.mutt/gpg.rc
-    # set pgp_use_gpg_agent = yes
-    # set pgp_sign_as = 76450F22
-    # set pgp_timeout = 3600
-    # set crypt_autosign = yes
-    # set crypt_replyencrypt = yes
+    source ~/.mutt/gpg.rc
+    set pgp_use_gpg_agent = yes
+    set pgp_sign_as = 76450F22
+    set pgp_timeout = 3600
+    set crypt_autosign = yes
+    set crypt_replyencrypt = yes
 #}}}
 
 #{{{ Color
