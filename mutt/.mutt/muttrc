@@ -148,8 +148,19 @@
 #}}}
 
 #{{{ Color
-    source ~/.mutt/color-solarized-light.rc
+    color normal default default
+    color indicator default white
+    color status default white
+    color attachment default default
+    color header bold default default "^(Subject)"
+    color header bold default default "^(From)"
+    color index red default "~D"
+    color index yellow default "~F"
+    color index yellow default "~T"
+    color index bold default default "~N"
+    color body red  default "(BAD signature)"
+    color body blue default "(Good signature)"
+    mono bold bold
 #}}}
-
 
 # vim:fdm=marker
