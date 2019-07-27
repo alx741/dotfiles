@@ -65,38 +65,76 @@
     set folder = "~/.mail"
     set spoolfile = "+inbox"
     mailboxes =inbox =sent =spam =trash
+    source ~/.mutt/aliases
 #}}}
 
 #{{{ Key bindings
-    bind index <space> collapse-thread
-    bind index R group-reply
     bind compose p postpone-message
-    bind index p recall-message
+    bind index a view-attachments
+    bind pager a view-attachments
     bind attach <return> view-mailcap
+    bind attach D delete-entry
+    bind attach U undelete-entry
+    bind index D delete-message
+    bind index U undelete-message
+    bind index f flag-message
+    bind index F forward-message
+    bind index <tab> sync-mailbox
+    bind index i sidebar-toggle-visible
+    macro index gi "<change-folder>=inbox<enter>"
+    macro index gs "<change-folder>=sent<enter>"
+    macro index gp "<change-folder>=spam<enter>"
+    macro index gt "<change-folder>=trash<enter>"
+    macro index \Cr "<shell-escape>mbsync sillybytes<enter>"
+    bind editor \Cp complete
+    macro compose \Cp "<edit-to><complete>"
+
 
     #{{{ Vi like
         bind index j next-entry
         bind index k previous-entry
+        bind pager j next-line
+        bind pager k previous-line
         bind index H top-page
         bind index L bottom-page
         bind index M middle-page
         bind index / search
-        bind index ? search-reverse
         bind index n search-next
         bind index N search-opposite
+
         bind index gg first-entry
         bind index G last-entry
         bind index \Ce next-line
         bind index \Cy previous-line
+        bind index e next-line
+        bind index y previous-line
+        bind index d half-down
+        bind index u half-up
         bind index \Cd half-down
         bind index \Cu half-up
         bind index \Cf next-page
         bind index \Cb previous-page
+
+        bind pager / search
+        bind pager n search-next
+        bind pager N search-opposite
+        bind pager gg top
+        bind pager G bottom
+        bind pager \Ce next-line
+        bind pager \Cy previous-line
+        bind pager e next-line
+        bind pager y previous-line
+        bind pager d half-down
+        bind pager u half-up
+        bind pager \Cd half-down
+        bind pager \Cu half-up
+        bind pager \Cf next-page
+        bind pager \Cb previous-page
     #}}}
 
     #{{ Unbindings
-        bind index e noop
         bind index z noop
+        bind attach d noop
     #}}
 #}}}
 
