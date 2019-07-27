@@ -1,12 +1,15 @@
-text/plain; nvim %s
-# text/html;  /usr/bin/firefox %s >/dev/null 2>&1; needsterminal
+text/plain; less %s
+text/html; firefox --new-tab %s >/dev/null 2>&1; needsterminal
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 
-text/jpg; sxiv %s
-text/jpeg; sxiv %s
-text/pjpeg; sxiv %s
-text/png; sxiv %s
-text/gif; sxiv %s
+image/jpg;   sxiv %s
+image/jpeg;  sxiv %s
+image/pjpeg; sxiv %s
+image/png;   sxiv %s
+image/gif;   sxiv %s
 
 application/pdf; zathura %s
-image/pdf; zathura %s
+image/pdf;       zathura %s
+
+application/msword; libreoffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s
