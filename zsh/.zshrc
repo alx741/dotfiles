@@ -211,8 +211,10 @@
     alias ns="nativescript"
     alias o="$SCRIPTS/open.sh"
     alias p="ping 8.8.8.8"
-    alias pastebin="sprunge" # Reminder: text snippet sharing
-    alias pb="sprunge"
+    alias pastebin="nc termbin.com 9999" # Reminder: text snippet sharing
+    alias termbin="nc termbin.com 9999"
+    alias sprunge="nc termbin.com 9999"
+    alias pb="nc termbin.com 9999"
     alias qgis="qgis --nologo"
     alias s="sxiv -a -q&"
     alias S="sxiv -a -q ./*&"
