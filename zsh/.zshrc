@@ -228,7 +228,6 @@
     alias vr="fuzzy_edit readme"
     alias re="vim report.md"
     alias ro="zathura report.pdf&"
-    alias woman="command man"
     alias se="stack exec"
     alias sb="stack build"
     alias cb="cabal v2-build"
@@ -247,7 +246,6 @@
     alias prog="progress"
     alias ch="cht.sh "
     alias gdb="gdb -q "
-    alias ssh="sshrc"
     alias winbox="wine ~/.local/bin/winbox.exe&"
     alias svgo="svgo --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'"
     alias yesod="stack exec -- yesod"
@@ -313,7 +311,7 @@
             l | ag $@
         }
 
-        function man()
+        function woman()
         {
             command man -P true "$*" &> /dev/null
             if [[ $? -eq 0 ]];
@@ -435,8 +433,6 @@
     zstyle ':completion::*:(rm|vi):*' ignore-line true
     zstyle ':completion:*' ignore-parents parent pwd
     zstyle ':completion::approximate*:*' prefix-needed false
-
-    compdef sshrc=ssh
 
     #{{{ Ignore
         zstyle ':completion:*:(all-|)files' ignored-patterns "(*.pyc|*~|*.o|*.class)"
