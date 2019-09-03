@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.64.3",
+  "settingsVersion": "1.64.6",
   "exclusionRules": [
     {
       "pattern": "https?://www.youtube.com/*",
@@ -8,6 +8,14 @@
     {
       "pattern": "https?://www.youtube.com/*",
       "passKeys": "k"
+    },
+    {
+      "pattern": "https?://www.netflix.com/*",
+      "passKeys": "f"
+    },
+    {
+      "pattern": "https?://docs.google.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
