@@ -1,3 +1,5 @@
+# remember: serveo.net
+
 #{{{ Plugins & Zgen
     source "${HOME}/.zgen/zgen.zsh"
 
@@ -248,7 +250,7 @@
     alias prog="progress"
     alias ch="cht.sh "
     alias gdb="gdb -q "
-    alias winbox="wine ~/.local/bin/winbox.exe&"
+    alias winbox="wine ~/lab/winbox.exe&"
     alias svgo="svgo --config='{ \"plugins\": [{ \"removeViewBox\": false }, { \"removeDimensions\": true }] }'"
     alias yesod="stack exec -- yesod"
     alias hakyll="stack exec site"
