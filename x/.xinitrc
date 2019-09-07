@@ -13,9 +13,6 @@ wmname LG3D
 # Start Music daemon
 mpd&
 
-# Keyboard
-./.scripts/keyboard_setup.sh
-
 #{{{ Mouse
     # Configure appropriate laptop track pad delays and detections
     syndaemon -t -k -i 1 -d &
@@ -30,6 +27,9 @@ mpd&
 
 # Window manager
 exec ratpoison
+
+# Keyboard
+./.scripts/keyboard_setup.sh
 
 
 # vim:fdm=marker
