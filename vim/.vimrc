@@ -11,10 +11,10 @@ Plug '~/lab/vim-nativescript'
 Plug '~/lab/spec.vim'
 Plug '~/lab/haskellcomplete.vim'
 Plug '~/lab/stack.vim'
+Plug '~/lab/vim-ghcid'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Julian/vim-textobj-variable-segment'
-Plug 'LucHermitte/vim-refactor'
 Plug 'SirVer/ultisnips'
 Plug 'altercation/vim-colors-solarized'
 Plug 'alvan/vim-closetag'
@@ -50,7 +50,6 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'StanAngeloff/php.vim'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'jwalton512/vim-blade'
 Plug 'mattn/emmet-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -84,6 +83,12 @@ Plug 'wavded/vim-stylus'
 Plug 'jvirtanen/vim-octave'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'calviken/vim-gdscript3'
+" Plug 'aiya000/vim-ghcid-quickfix'
+Plug '~/lab/vim-ghcid-quickfix'
+Plug 'jremmen/vim-ripgrep'
+Plug 'KabbAmine/zeavim.vim'
+
+let g:ghcid_quickfix_show_only_error_occured = v:true
 
 " On-demand loading
 Plug 'thanthese/Tortoise-Typing', { 'on': 'TortoiseTyping' }
