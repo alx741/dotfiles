@@ -118,7 +118,7 @@
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
         definekey task at exec ~/.scripts/edit_shot.sh
-        definekey task C-Return exec ~/.scripts/build/Topa halt
+        definekey task C-Return exec ~/.scripts/build/topa.sh halt
         definekey task question help task
         bind t readkey task
     #}}}
