@@ -49,9 +49,7 @@
 * Udev
 * Urxvt
 * Vim
-* VimFx
 * Vimium
-* Vimperator
 * Vmenu
 * W3M
 * Weechat
@@ -66,7 +64,9 @@
 
 These dotfiles are abandoned
 
-* ~~Apvlv~~
-* ~~Dwm~~
-* ~~Emacs~~
-* ~~Tilda~~
+* Apvlv
+* Dwm
+* Emacs
+* Tilda
+* VimFx
+* Vimperator

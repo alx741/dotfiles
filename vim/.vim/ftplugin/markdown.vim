@@ -5,7 +5,14 @@ nnoremap <buffer><silent> gh :call Md_create_header(1)<CR>
 nnoremap <buffer><silent> gH :call Md_create_header(0)<CR>
 nnoremap <buffer><silent> ]] :call Next_header(0)<CR>
 nnoremap <buffer><silent> [[ :call Next_header(1)<CR>
+nnoremap <buffer><silent> gO :call PDF_open()<CR>
 nnoremap <buffer><space> 1z=
+
+function! PDF_open()
+    let s:md_file = expand('%:p:r')
+    exe "silent !zathura " . s:md_file . ".pdf"
+    exe "silent redraw!"
+endfunction
 
 function! Next_header(invert)
     if a:invert == 0

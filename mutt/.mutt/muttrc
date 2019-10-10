@@ -1,10 +1,10 @@
 #{{{ General
     set send_charset = "utf-8"
     set assumed_charset = "utf-8"
-    set date_format = "%b/%d  %I:%M %P"
-    set index_format = "[%Z] %?X?%X& ? %d   %-25.25F  %s"
+    set date_format = "%b/%d %I:%M%P"
+    set index_format = "%Z %?X?%X& ? %d   %-25.25F  %s"
     set status_format = "%r %f [%?n?New: %n ?%?d?Del: %d ?%?F?Flag: %F ?%?t?Tag: %t ?%?p?Post: %p ?%?b?Boxes: %b ?%l] %* %P"
-    set pager_format = "[%Z] %?X?[Attachments: %X] ?(%n) %s%* %P"
+    set pager_format = "%Z %?X?[Attachments: %X] ?(%n) %s%* %P"
     set attach_format = "[%u%D%I%t]  %4s  %T%.50d%> [%m/%.10M, %.6e%?C?, %C?]"
     set sidebar_format = "%B  %?N?(%N)"
     set message_format = "%s"
@@ -51,6 +51,7 @@
     set record = ~/.mail/sent
     set signature = '~/.mutt/signature'
     set mailcap_path = ~/.mutt/mailcap
+    set postponed = ~/.mail/postponed
 #}}}
 
 #{{{ Personal settings
@@ -81,6 +82,7 @@
     bind index F forward-message
     bind index <tab> sync-mailbox
     bind index i sidebar-toggle-visible
+    bind index Q quit
     macro index gi "<change-folder>=inbox<enter>"
     macro index gs "<change-folder>=sent<enter>"
     macro index gp "<change-folder>=spam<enter>"
@@ -135,6 +137,7 @@
     #{{ Unbindings
         bind index z noop
         bind attach d noop
+        bind index q noop
     #}}
 #}}}
 

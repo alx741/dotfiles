@@ -118,7 +118,7 @@
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
         definekey task at exec ~/.scripts/edit_shot.sh
-        definekey task C-Return exec ~/.scripts/build/Topa halt
+        definekey task C-Return exec ~/.scripts/build/topa.sh halt
         definekey task question help task
         bind t readkey task
     #}}}
@@ -235,6 +235,7 @@
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
     bind S exec sleep 0.3 && xset dpms force off
+    bind C-i exec ~/.scripts/ratpoison/lock.sh
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
