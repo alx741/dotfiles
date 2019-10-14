@@ -1,13 +1,13 @@
 #! /bin/bash
 
-source "$(dirname "$0")/../utility.sh"
+. "$(dirname "$0")/../utility.sh"
 
 IF=wlp2s0
 
 
 function exists_home_wifi
 {
-    wifi_scan=$(sudo iwlist "$IF" scan | grep -i "ALX")
+    wifi_scan=$(sudo iwlist "$IF" scan | grep -i "helicon")
     if [[ $wifi_scan == "" ]]; then return 1; else return 0; fi
 }
 
@@ -33,7 +33,7 @@ function wifi_list
     data=$(sudo iwlist scanning 2> /dev/null)
 
     echo
-    while read line; do
+    while read -r line; do
         [[ "$line" =~ \(Channel ]] && {
             chn=${line##*nel }
             chn=${chn:0:$((${#chn}-1))}
@@ -42,8 +42,8 @@ function wifi_list
             qual=${line##*ity=}
             qual=${qual%% *}
         }
-        # [[ "$line" =~ WEP ]] && enc="WEP"
-        # [[ "$line" =~ WPA ]] && enc="WPA/WPA2"
+        [[ "$line" =~ WEP ]] && enc="WEP"
+        [[ "$line" =~ WPA ]] && enc="WPA/WPA2"
         [[ "$line" =~ ESSID ]] && {
             essid=${line##*ID:}
             echo "$essid | channel: $chn | quality: $qual $enc"
@@ -69,7 +69,7 @@ case $1 in
 
         if exists_home_wifi;
         then
-            sudo wpa_supplicant -i "$IF" -c /etc/wpa_supplicant/alx.conf -B
+            sudo wpa_supplicant -i "$IF" -c /etc/wpa_supplicant/helicon.conf -B
             sleep 2
             sudo route add default gw 192.168.1.1
             echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf
