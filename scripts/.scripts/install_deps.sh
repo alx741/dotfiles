@@ -38,6 +38,7 @@ COMMON_DEPS="\
     hub \
     id3v2 \
     inkscape \
+    isync \
     john \
     jshon \
     librecad \
@@ -49,6 +50,7 @@ COMMON_DEPS="\
     newsboat \
     nitrogen \
     nmap \
+    notmuch \
     npm \
     ntp \
     openbox \
@@ -100,6 +102,7 @@ FREEBSD_DEPS="\
     dejavu \
     en-aspell \
     es-aspell \
+    freefonts \
     hs-hasktags \
     hs-hlint \
     hs-hoogle \
@@ -108,7 +111,9 @@ FREEBSD_DEPS="\
     hs-xmonad \
     hs-xmonad-contrib \
     musicpd \
+    netcat \
     nethack36 \
+    password-store \
     py36-speedtest-cli \
     roboto-fonts-ttf \
     rubygem-asciidoctor \
@@ -117,8 +122,13 @@ FREEBSD_DEPS="\
     surf-browser \
     taskwarrior \
     terminus-ttf \
+    urwfonts \
     wemux \
     wireshark \
+    xorg \
+    xorg-docs \
+    xorg-drivers \
+    xorg-fonts-truetype \
     youtube_dl \
 "
 
@@ -148,9 +158,11 @@ ARCH_DEPS="\
     mpd \
     neovim \
     nethack \
+    openbsd-netcat \
     pacman \
     pacman-contrib \
     pandoc \
+    pass \
     prettier \
     pulseaudio-alsa \
     python2-lxml \
@@ -184,7 +196,6 @@ AUR_DEPS="\
     mimi-git \
     popcorntime-bin \
     python-proselint \
-    sprunge \
     svgo \
     tealdeer-git \
     translate-shell \
