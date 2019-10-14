@@ -114,6 +114,16 @@ then
     builder_files+="Dockerfile"
 fi
 
+if [[ -f "cabal.project" ]];
+then
+    builder_files+="cabal.project"
+fi
+
+if [[ -f "cabal.project.local" ]];
+then
+    builder_files+="cabal.project.local"
+fi
+
 if [[ $(command ls *.cabal 2> /dev/null) != "" ]];
 then
     builder_files+=" *.cabal"
