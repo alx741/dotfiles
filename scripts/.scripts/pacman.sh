@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CACHE_FILE="/tmp/pacman-packer_last_searched_package"
+CACHE_FILE="/tmp/pacman-aur_last_searched_package"
 
 echo
 cat ~/.ascii_art/pacman
@@ -16,11 +16,11 @@ case $1 in
         shift 1
         sudo pacman "$@"
         ;;
-    'packer')
+    'yay')
         shift 1
-        packer --noedit --noconfirm "$@"
+        yay --noeditmenu "$@"
         ;;
     'getit')
-        packer --noedit --noconfirm -S $(cat "$CACHE_FILE")
+        yay --noeditmenu -S $(cat "$CACHE_FILE")
         ;;
 esac
