@@ -1,4 +1,5 @@
 # remember: serveo.net
+#           ncdu
 
 #{{{ Plugins & Zgen
     source "${HOME}/.zgen/zgen.zsh"
