@@ -6,6 +6,7 @@ mpd/.mpd/database
 mpd/.mpd/sticker.sql
 ncmpcpp/.ncmpcpp/error.log
 mutt/.mutt/pass
+mutt/.mutt/aliases
 weechat/.weechat/sec.conf
 weechat/.weechat/weechat.log
 weechat/.weechat/weechat_fifo*
