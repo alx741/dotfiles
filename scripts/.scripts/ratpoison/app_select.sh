@@ -62,6 +62,17 @@ function launch_zathura
 }
 
 
+function launch_ipcam
+{
+    if is_running 'surf';
+    then
+        ratpoison -c "select surf"
+    else
+        surf -b -d -F -g -I -K -n -p -S "$HOME/lab/ipcamclient/index.html"&
+    fi
+}
+
+
 function launch_weechat
 {
     launch_terminal
@@ -81,6 +92,9 @@ case "$1" in
         ;;
     'zathura')
         launch_zathura
+        ;;
+    'ipcam')
+        launch_ipcam
         ;;
     'weechat')
         launch_weechat
