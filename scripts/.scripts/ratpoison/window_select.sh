@@ -1,7 +1,7 @@
 #!/bin/bash
 
 window_list=$(ratpoison -c "windows")
-window=$(echo -e "$window_list" | sed 's/URxvt/URxvt terminal/' | rofi -dmenu -i -p "> " -no-custom)
+window=$(echo -e "$window_list" | sed 's/URxvt/urxvt terminal/' | rofi -dmenu -i -p "" -no-custom)
 
 if [[ "$window" != "" ]];
 then
