@@ -1,3 +1,7 @@
+" Unfuck indentation (usually html)
+" Make this a function or something
+" :%s/^\s*/&&/g
+
 "{{{ Plugins
 call plug#begin('~/.vim/plugged')
 Plug '~/lab/vim-tmux-navigator'
@@ -62,7 +66,6 @@ Plug 'racer-rust/vim-racer'
 Plug 'veegee/vim-pic'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Twinside/vim-hoogle'
-Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'benmills/vimux'
 Plug 'skywind3000/asyncrun.vim'
@@ -71,7 +74,6 @@ Plug 'tpope/vim-abolish'
 Plug 'simeji/winresizer'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
-Plug 'Twinside/vim-haskellFold'
 Plug 'nixon/vim-vmath'
 Plug 'glts/vim-magnum'
 Plug 'glts/vim-radical'
