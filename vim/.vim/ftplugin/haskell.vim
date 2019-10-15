@@ -6,16 +6,7 @@ let g:necoghc_debug = 1
 setlocal omnifunc=haskellcomplete#Complete
 let g:fzf_tags_command = 'hasktags -c -x -R . && codex update'
 
-"{{{ Color
-hi! haskellDecl ctermfg=27
-hi! haskellDeclKeyword ctermfg=30
-hi! haskellIdentifier ctermfg=129
-hi! haskellOperators ctermfg=black
-hi! haskellType ctermfg=32
-hi! def link haskellPragma Comment
-hi! haskellNumber ctermfg=166
-hi! haskellImportKeywords ctermfg=136
-"}}}
+let b:current_syntax = 1
 
 "{{{ Mappings
 " General
@@ -25,8 +16,7 @@ onoremap <buffer><silent> aa :<c-u>silent call SelectArgument(0)<CR>
 onoremap <buffer><silent> ic :<c-u>silent call SelectCase()<CR>
 nnoremap <buffer><silent> ]] :call JumpToFunction(0)<CR>
 nnoremap <buffer><silent> [[ :call JumpToFunction(1)<CR>
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack exec -- hdevtools check %<CR>
-" nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack build --fast<CR>
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=stack stack build --fast<CR>
 nnoremap <buffer><silent> gjJ :up<CR>:echo "Building..."<CR>:Dispatch -compiler=stack stack build<CR>
 nnoremap <buffer><silent> gjk :up<CR>:echo "Testing..."<CR>:! stack test --fast<CR>
 nnoremap <buffer><silent> gK :SpecRunAll<CR>
