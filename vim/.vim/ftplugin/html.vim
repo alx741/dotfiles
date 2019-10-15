@@ -1,4 +1,5 @@
 nnoremap <buffer><silent> gO :call Firefox_open()<CR>
+setlocal nowrap
 " Emmet
 " imap hh <c-j>,
 
