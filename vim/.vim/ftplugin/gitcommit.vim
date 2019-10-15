@@ -1,4 +1,4 @@
 setlocal spell
-setlocal spelllang=es
+setlocal spelllang=en
 nnoremap <buffer><space> 1z=
 exec "norm! gg"
