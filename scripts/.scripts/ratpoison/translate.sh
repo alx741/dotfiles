@@ -5,7 +5,7 @@ function select_translation
     langs="Inglés -> Español | en:es\nIngles -> Alemán  | en:de\n"
     langs+="Español -> Inglés | es:en\nEspañol -> Alemán | es:de\n"
     langs+="Alemán -> Español | de:es\nAlemán -> Inglés  | de:en"
-    lang=$(echo -e "$langs" | rofi -dmenu -i -p "> " -no-custom -matching fuzzy)
+    lang=$(echo -e "$langs" | rofi -dmenu -i -p "" -no-custom -matching fuzzy)
 
     if [[ "$lang" != "" ]]
     then

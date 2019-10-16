@@ -9,7 +9,7 @@ function snippet_menu
     do
         snippets+="${snip##*/}\n"
     done
-    echo -e "$snippets" | sed 's/URxvt/URxvt terminal/' | rofi -dmenu -i -p "> " -no-custom
+    echo -e "$snippets" | sed 's/URxvt/URxvt terminal/' | rofi -dmenu -i -p "" -no-custom
 }
 
 

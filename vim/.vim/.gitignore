@@ -1,2 +1,5 @@
 plugged
 tmp
+.netrwhist
+spell
+autoload/plug.vim

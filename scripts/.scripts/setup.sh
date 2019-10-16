@@ -1,6 +1,6 @@
 #! /bin/sh
 
-source "$(dirname "$0")/utility.sh"
+. "$(dirname "$0")/utility.sh"
 
 # 2 different setups are available:
 #
@@ -34,8 +34,10 @@ then
     amixer set Master unmute
     amixer set Master 100%
     ~/.scripts/network/ether.sh
+    ~/.scripts/ratpoison/app_select.sh terminal
     firefox&
-    sudo systemctl start vsftpd
+    sudo systemctl start postgresql
+    sudo systemctl start docker
 else
     if is_vga_plugedin
     then
@@ -50,8 +52,5 @@ else
     amixer set Master mute
     amixer set Speaker mute
     ~/.scripts/network/wifi.sh
-    sudo ifconfig wlp2s0 down
-    sudo ifconfig enp3s0 up
-    sudo dhclient enp3s0&
     ~/.scripts/ratpoison/app_select.sh bare-terminal
 fi

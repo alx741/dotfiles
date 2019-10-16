@@ -159,7 +159,7 @@ function hoogle_search
             firefox "https://www.haskell.org/hoogle/?hoogle=$query"
             ;;
         'stackage')
-            firefox "http://www.stackage.org/lts-11.1/hoogle?q=$query"
+            firefox "http://www.stackage.org/lts-14.9/hoogle?q=$query"
             ;;
         *)
             exit 1

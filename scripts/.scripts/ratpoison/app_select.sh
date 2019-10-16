@@ -3,7 +3,7 @@
 
 function is_running
 {
-    PID=$(pidof -s $1)
+    PID=$(pidof -s "$1")
 
     if [[ $PID != "" ]]
     then
@@ -34,7 +34,7 @@ function launch_terminal
     else
         urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
             attach-session -d || exec tmux new-session -n$USER \
-            -s$USER@$HOSTNAME weechat\; new-window"&
+            -s$USER@$HOSTNAME mutt\; new-window weechat\; new-window"&
     fi
 }
 
@@ -62,6 +62,17 @@ function launch_zathura
 }
 
 
+function launch_ipcam
+{
+    if is_running 'surf';
+    then
+        ratpoison -c "select surf"
+    else
+        surf -b -d -F -g -I -K -n -p -S "$HOME/lab/ipcamclient/index.html"&
+    fi
+}
+
+
 function launch_weechat
 {
     launch_terminal
@@ -81,6 +92,9 @@ case "$1" in
         ;;
     'zathura')
         launch_zathura
+        ;;
+    'ipcam')
+        launch_ipcam
         ;;
     'weechat')
         launch_weechat

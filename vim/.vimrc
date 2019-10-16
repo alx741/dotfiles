@@ -1,3 +1,7 @@
+" Unfuck indentation (usually html)
+" Make this a function or something
+" :%s/^\s*/&&/g
+
 "{{{ Plugins
 call plug#begin('~/.vim/plugged')
 Plug '~/lab/vim-tmux-navigator'
@@ -62,7 +66,6 @@ Plug 'racer-rust/vim-racer'
 Plug 'veegee/vim-pic'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Twinside/vim-hoogle'
-Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'benmills/vimux'
 Plug 'skywind3000/asyncrun.vim'
@@ -71,7 +74,6 @@ Plug 'tpope/vim-abolish'
 Plug 'simeji/winresizer'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'rhysd/vim-grammarous'
-Plug 'Twinside/vim-haskellFold'
 Plug 'nixon/vim-vmath'
 Plug 'glts/vim-magnum'
 Plug 'glts/vim-radical'
@@ -176,7 +178,7 @@ call plug#end()
 
     "{{{ Vim-tmux-navigator
         let g:tmux_navigator_no_mappings = 1
-        let g:tmux_navigator_save_on_switch = 1
+        let g:tmux_navigator_save_on_switch = 0
     "}}}
 
     "{{{ Fzf
@@ -288,6 +290,35 @@ call plug#end()
         vmap <expr>  ++  VMATH_YankAndAnalyse()
         nmap         ++  vip++
     "}}}
+
+    "{{{ Togglelist
+        let g:toggle_list_copen_command="botright copen"
+    "}}}
+
+    "{{{ Syntastic
+        " set statusline+=%#warningmsg#
+        " set statusline+=%{SyntasticStatuslineFlag()}
+        " set statusline+=%*
+
+        " let g:syntastic_always_populate_loc_list = 1
+        " let g:syntastic_auto_loc_list = 1
+        " let g:syntastic_check_on_open = 1
+        " let g:syntastic_check_on_wq = 0
+    "}}}
+
+    "{{{ vim-ghcid
+        let g:ghcid_args = '--command "cabal v2-repl -f O0"'
+    "}}}
+
+    "{{{ zeavim
+        let g:zv_file_types = {
+                    \   'java': 'android',
+                    \   'kotlin'  : 'android',
+                    \   'tex' : 'latex'
+                    \ }
+
+        nnoremap <buffer><silent> K :Zeavim<CR>
+    "}}}
 "}}}
 "}}}
 
@@ -358,8 +389,6 @@ call plug#end()
         endif
         return b:statusline_tab_warning
     endfunction
-
-    colors solarized
 "}}}
 
 "{{{ Global Auto Commands
@@ -368,7 +397,6 @@ call plug#end()
         " Reset format options when filetypes are loaded
         au FileType * set formatoptions=tcrql
         au FileType html,php,css,javascript,blade nnoremap gr :up<CR>:call Refresh_firefox(1)<CR>
-        " au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :up<CR>:AsyncRun yesodevel.sh reload<CR>
         au FileType haskell,yesod,hamlet,lucius,cassius,julius nnoremap gr :up<CR>:call Refresh_firefox(1)<CR>
         autocmd BufWritePost init.vim,.vimrc source %
     augroup END
@@ -438,12 +466,8 @@ call plug#end()
     set wrapscan
 
     filetype plugin indent on
+    colors minimal
     syntax on
-    hi StatusLine term=bold ctermbg=darkyellow ctermfg=7
-    hi StatusLineNC term=NONE ctermbg=gray ctermfg=7
-    hi VertSplit term=NONE ctermbg=7 ctermfg=7
-    hi MatchParen ctermbg=white ctermfg=21 guibg=white term=none cterm=none gui=italic
-    hi SpellBad cterm=underline
     syntax spell toplevel
     let c_no_comment_fold=1
 "}}}
@@ -469,8 +493,11 @@ call plug#end()
     nnoremap j gj
     nnoremap k gk
     nnoremap 0 g0
+    nnoremap g0 0
+    nnoremap ^ g^
     nnoremap ^ g^
     nnoremap $ g$
+    nnoremap g$ $
 "}}}
 
 "{{{ LEADER mappings
@@ -492,6 +519,10 @@ call plug#end()
     nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
     nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
     nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+    nnoremap <silent> <Left>  <nop>
+    nnoremap <silent> <Down>  <nop>
+    nnoremap <silent> <Up>    <nop>
+    nnoremap <silent> <Right> <nop>
 "}}}
 
 "{{{ X Clipboard yanking/pasting
@@ -520,7 +551,7 @@ call plug#end()
     nnoremap <expr>S ':%s/' . @/ . '//<LEFT>'
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
-    nnoremap <silent><esc> :noh<CR>:silent! :HdevtoolsClear<CR><ESC>
+    nnoremap <C-c> :noh<CR>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -684,6 +715,11 @@ function! Make_arrow(type) "{{{
         endif
     endif
     exe "startinsert"
+endfunction
+"}}}
+
+function! ClearQuickfixList() "{{{
+    call setqflist([])
 endfunction
 "}}}
 
