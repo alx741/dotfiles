@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+cabal build
+mv $(cabal-plan list-bin xmonad-alx) "$1"
