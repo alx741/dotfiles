@@ -9,3 +9,7 @@
 	default = simple
 [help]
 	autocorrect = 1
+[credentials]
+	helper = store
+[credential]
+	helper = store
