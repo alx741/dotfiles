@@ -426,10 +426,10 @@ call plug#end()
     set expandtab
     set exrc
     set foldenable
-    set foldlevel=3
-    set foldlevelstart=99
+    set foldlevel=20
+    set foldlevelstart=20
     set foldmethod=syntax
-    set foldnestmax=1
+    set foldnestmax=20
     set formatoptions=tcrql
     set gdefault
     set hidden
