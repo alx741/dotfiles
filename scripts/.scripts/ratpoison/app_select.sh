@@ -3,7 +3,7 @@
 
 function is_running
 {
-    PID=$(pidof -s "$1")
+    PID=$(pidof -s -x "$1")
 
     if [[ $PID != "" ]]
     then
@@ -61,6 +61,20 @@ function launch_zathura
     fi
 }
 
+function launch_androidstudio
+{
+    if is_running 'android-studio';
+    then
+        ratpoison -c "select jetbrains-studio"
+    else
+        android-studio&
+    fi
+}
+
+function launch_window_number
+{
+    ratpoison -c "select $1"
+}
 
 function launch_ipcam
 {
@@ -98,5 +112,11 @@ case "$1" in
         ;;
     'weechat')
         launch_weechat
+        ;;
+    'androidstudio')
+        launch_androidstudio
+        ;;
+    *)
+        launch_window_number "$1"
         ;;
 esac
