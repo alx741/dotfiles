@@ -1,5 +1,5 @@
 setlocal makeprg=./gradlew
-compiler gradlew
+compiler gradle
 
 "{{{ Color
 hi! haskellDecl ctermfg=27
@@ -15,7 +15,8 @@ hi! haskellImportKeywords ctermfg=136
 "{{{ Mappings
 " General
 nnoremap <buffer><silent> g= :%!ktlint -a -F --stdin 2> /dev/null<CR>
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=gradle ./gradlew build<CR>
+nnoremap <buffer><silent> gjj :up<CR>:Dispatch -compiler=gradle make run<CR>
+" nnoremap <buffer><silent> gjl :up<CR>:echo "Linting..."<CR>:Dispatch -compiler=gradle ./gradlew lint<CR>
 
 " Arrows
 inoremap <buffer><silent> ;; <space>-><space>
