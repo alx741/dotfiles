@@ -89,6 +89,7 @@ Plug 'calviken/vim-gdscript3'
 Plug '~/lab/vim-ghcid-quickfix'
 Plug 'jremmen/vim-ripgrep'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'gisphm/vim-gradle'
 
 let g:ghcid_quickfix_show_only_error_occured = v:true
 
