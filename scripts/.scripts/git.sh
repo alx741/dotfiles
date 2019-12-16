@@ -4,7 +4,7 @@ function clone_clipboard
 {
     url=`xclip -selection clipboard -o`
 
-    if [[ `echo "$url" | grep "github.com"` == "" ]];
+    if [[ `echo "$url" | grep "github\|gitlab"` == "" ]];
     then
         echo
         echo [!] Invalid URL in the clipboard
