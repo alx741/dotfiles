@@ -554,6 +554,7 @@ call plug#end()
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
     nnoremap <C-c> :noh<CR>
+    nnoremap <esc> :noh<CR>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -574,7 +575,7 @@ call plug#end()
     nnoremap <silent> <c-_> :FuzzySearch<CR>
     inoremap {{ {<cr>}<esc>kA
     vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
-    vnoremap t <esc>:'<,'>sort<CR>
+    " vnoremap t <esc>:'<,'>sort<CR>
     nnoremap <C-w>+ :resize +5<CR>
     nnoremap <C-w>- :resize -5<CR>
     nnoremap <C-w>> :vertical resize +5<CR>
