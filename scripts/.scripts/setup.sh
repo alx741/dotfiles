@@ -36,8 +36,11 @@ then
         amixer set Master unmute
         amixer set Master 100%
         ~/.scripts/network/ether.sh
+        ~/.scripts/ratpoison/app_select.sh terminal
         firefox&
         sudo systemctl start vsftpd
+        sudo systemctl start postgresql
+        sudo systemctl start docker
     else
         if is_vga_plugedin
         then

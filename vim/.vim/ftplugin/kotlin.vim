@@ -16,7 +16,7 @@ hi! haskellImportKeywords ctermfg=136
 " General
 nnoremap <buffer><silent> g= :%!ktlint -a -F --stdin 2> /dev/null<CR>
 nnoremap <buffer><silent> gjj :up<CR>:Dispatch -compiler=gradle make run<CR>
-" nnoremap <buffer><silent> gjl :up<CR>:echo "Linting..."<CR>:Dispatch -compiler=gradle ./gradlew lint<CR>
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=gradle ./gradlew build<CR>
 
 " Arrows
 inoremap <buffer><silent> ;; <space>-><space>
