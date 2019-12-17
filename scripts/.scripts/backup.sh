@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# rsync -azP --append-verify alx alx@cerbero.hades:/home/alx/backups/
+# rsync -azP --append-verify /mnt/hdd/alx alx@cerbero.hades:/home/alx/backups/
+# rsync -azP --append-verify /home/alx alx@cerbero.hades:/home/alx/backups/home
 
 BU_REMOTE_HOST=alan
 
