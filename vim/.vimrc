@@ -89,6 +89,7 @@ Plug 'calviken/vim-gdscript3'
 Plug '~/lab/vim-ghcid-quickfix'
 Plug 'jremmen/vim-ripgrep'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'gisphm/vim-gradle'
 
 let g:ghcid_quickfix_show_only_error_occured = v:true
 
@@ -124,6 +125,7 @@ call plug#end()
         let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
         let g:lengthmatters_excluded+=['taskedit', 'vim', 'xml', 'hamlet']
         let g:lengthmatters_highlight_one_column = 1
+        call lengthmatters#highlight_link_to('Visual')
     "}}}
 
     "{{{ Gutentags
@@ -424,10 +426,10 @@ call plug#end()
     set expandtab
     set exrc
     set foldenable
-    set foldlevel=3
-    set foldlevelstart=99
+    set foldlevel=20
+    set foldlevelstart=20
     set foldmethod=syntax
-    set foldnestmax=1
+    set foldnestmax=20
     set formatoptions=tcrql
     set gdefault
     set hidden
@@ -552,6 +554,7 @@ call plug#end()
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
     nnoremap <C-c> :noh<CR>
+    nnoremap <esc> :noh<CR>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -572,7 +575,7 @@ call plug#end()
     nnoremap <silent> <c-_> :FuzzySearch<CR>
     inoremap {{ {<cr>}<esc>kA
     vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
-    vnoremap t <esc>:'<,'>sort<CR>
+    " vnoremap t <esc>:'<,'>sort<CR>
     nnoremap <C-w>+ :resize +5<CR>
     nnoremap <C-w>- :resize -5<CR>
     nnoremap <C-w>> :vertical resize +5<CR>

@@ -150,10 +150,9 @@ ARCH_DEPS="\
     hdparm \
     hindent \
     hoogle \
-    libre-office-fresh \
-    libre-office-fresh-en \
-    libre-office-fresh-es \
-    libvir \
+    libreoffice-fresh \
+    libreoffice-fresh-es \
+    libvirt \
     lolcat \
     mpd \
     neovim \
@@ -164,6 +163,7 @@ ARCH_DEPS="\
     pandoc \
     pass \
     prettier \
+    proselint \
     pulseaudio-alsa \
     python2-lxml \
     python2-scour \
@@ -181,8 +181,10 @@ ARCH_DEPS="\
     vim-runtime \
     virtualbox \
     virtualbox-host-modules-arch \
-    wireshark-gtk \
+    wireshark-qt \
     xmonad \
+    xorg-server \
+    xorg-server-common \
     xorg-xinit \
     xorg-xinput \
     xorg-xrandr \
@@ -195,7 +197,7 @@ AUR_DEPS="\
     cropgui \
     mimi-git \
     popcorntime-bin \
-    python-proselint \
+    sprunge \
     svgo \
     tealdeer-git \
     translate-shell \
@@ -208,7 +210,8 @@ HASKELL_DEPS="\
     stylish-haskell \
 "
 
-eval "pkg install $COMMON_DEPS $FREEBSD_DEPS"
+## TODO: Enable package managers as needed
+# eval "pkg install $COMMON_DEPS $FREEBSD_DEPS"
 # eval "cabal install $HASKELL_DEPS"
-#eval "sudo pacman -Syy $COMMON_DEPS $ARCH_DEPS"
-#eval "sudo yay -Syy $AUR_DEPS"
+# eval "sudo pacman -Syy $COMMON_DEPS $ARCH_DEPS"
+# eval "sudo yay -Syy $AUR_DEPS"

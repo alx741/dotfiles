@@ -15,10 +15,10 @@ echo
 sudo paccache -k 3 -r
 sudo pacman -Sc
 yay -Sc
-echo
-echo Updating stack package index
-echo
-stack update
+#echo
+#echo Updating stack package index
+#echo
+#stack update
 echo
 echo Updating cabal package index
 echo

@@ -12,6 +12,8 @@ hi! Comment    ctermbg=NONE ctermfg=gray
 hi! Error      ctermbg=NONE ctermfg=1
 hi! Todo       ctermbg=NONE ctermfg=13 cterm=bold
 
+hi Visual   cterm=NONE ctermbg=7  ctermfg=11
+
 hi StatusLine   cterm=bold ctermbg=7  ctermfg=11
 hi StatusLineNC cterm=NONE ctermbg=7  ctermfg=14
 hi VertSplit    cterm=NONE ctermbg=15 ctermfg=7

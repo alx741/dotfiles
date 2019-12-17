@@ -5,8 +5,8 @@ syntax match kotlinString '".*"' contains=@Spell
 syntax match kotlinCommentLine "//.*$" contains=@Spell,kotlinNote
 syntax match kotlinNote "\v\c<(todo|fixme)>[:]*"
 syntax region kotlinCommentBlock start="/\*" end="\*/" contains=@Spell,javaNote
-hi! kotlinMethod ctermfg=3
+hi! kotlinMethod ctermfg=0
 hi! kotlinNote cterm=bold ctermfg=13
-hi! kotlinString ctermfg=0
+" hi! kotlinString ctermfg=0
 hi! kotlinCommentLine ctermfg=gray
 hi! link kotlinCommentBlock kotlinCommentLine

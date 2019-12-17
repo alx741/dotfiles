@@ -1,0 +1,13 @@
+cabal-version:       >=1.10
+
+name:                xmonad-alx
+version:             0.1.0.0
+author:              Daniel Campoverde
+maintainer:          alx@sillybytes.net
+build-type:          Simple
+
+executable xmonad-alx
+  main-is:             xmonad.hs
+  build-depends:       base >=4.12 && <4.13
+                     , xmonad
+  default-language:    Haskell2010

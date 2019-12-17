@@ -1,0 +1,7 @@
+*.o
+*.hi
+*.errors
+*.errors
+xmonad
+xmonad-x*
+dist-newstyle
