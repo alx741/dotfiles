@@ -210,7 +210,7 @@
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
     bind comma exec ~/.scripts/ratpoison/app_select.sh androidstudio
-    bind period exec  ~/.scripts/ratpoison/app_select.sh 3
+    bind period exec  ~/.scripts/ratpoison/app_select.sh avd
 
     # Give temporally control to openbox
     bind grave tmpwm openbox
