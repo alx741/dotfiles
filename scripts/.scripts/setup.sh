@@ -71,6 +71,7 @@ then
     amixer set PCM 100%
     amixer set Master unmute
     amixer set Speaker mute
+    ~/.scripts/network/ether.sh
     firefox&
     ~/.scripts/ratpoison/app_select.sh bare-terminal
 
