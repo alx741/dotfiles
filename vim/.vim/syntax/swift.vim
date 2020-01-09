@@ -1,6 +1,6 @@
 let b:current_syntax = 1
 
-syntax match swiftMethod "\v\cfunc +\zs[[:alnum:]]*\ze\(\)"
+syntax match swiftMethod "\v\cfunc +\zs[[:alnum:]]*\ze\("
 syntax match swiftString '".*"' contains=@Spell
 syntax match swiftCommentLine "//.*$" contains=@Spell,swiftNote
 syntax match swiftNote "\v\c<(todo|fixme)>[:]*"
