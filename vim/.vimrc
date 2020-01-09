@@ -606,7 +606,7 @@ function! Format() "{{{
         setlocal formatprg=astyle\ --mode=c
         silent! execute 'norm! gggqG'
     elseif &ft ==? 'java'
-        setlocal formatprg=astyle\ --mode=java
+        setlocal formatprg=astyle\ --mode=java\ --style=java
         silent! execute 'norm! gggqG'
     elseif &ft ==? 'rust'
         setlocal formatprg=rustfmt
