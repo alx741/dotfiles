@@ -87,6 +87,17 @@ function launch_ipcam
 }
 
 
+function launch_ipcam
+{
+    if is_running 'surf';
+    then
+        ratpoison -c "select surf"
+    else
+        surf -b -d -F -g -I -K -n -p -S "$HOME/lab/ipcamclient/index.html"&
+    fi
+}
+
+
 function launch_weechat
 {
     launch_terminal
