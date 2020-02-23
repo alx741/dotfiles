@@ -11,10 +11,6 @@ weechat/.weechat/sec.conf
 weechat/.weechat/weechat.log
 weechat/.weechat/weechat_fifo*
 weechat/.weechat/logs
-weechat/.weechat/script
-weechat/.weechat/perl
-weechat/.weechat/python
-weechat/.weechat/ruby
 newsboat/.newsboat/cache.db
 newsboat/.newsboat/cache.db.lock
 newsboat/.newsboat/history.cmdline
