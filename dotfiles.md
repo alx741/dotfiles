@@ -4,6 +4,7 @@
 * Avrdude
 * Ccze
 * Ctags
+* Firefox Add-ons
 * Fish
 * Ghci
 * Gimp

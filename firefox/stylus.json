@@ -1,0 +1,96 @@
+[
+	{
+		"installDate": 1517102694369,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "KISS Facebook",
+		"sections": [
+			{
+				"code": "#pagelet_ego_pane,\n#pagelet_rhc_footer,\n#fb_stories_card_root,\n#pagelet_ego_pane,\n#u_ps_0_7_0,\n#pagelet_marketplace_recently_viewed_rhc,\n.ego_section,\n.ego_unit_container,\n._5qtp,\n._5xmp i\n{\n    overflow: hidden;\n    visibility: hidden;\n    height: 0px;\n}\n\n#bluebarRoot > div {\n    background-color: #e9ebee;\n    color: #ccc;\n    border-bottom: none;\n}\n\n._585-, _42ft {\n    border: none;\n     background-color: #e9ebee;\n     color: #fff;\n}\n\n._585- ._4w98, ._2md {\n    display: none;\n}\n\n#leftCol {\n    visibility: hidden;\n}\n\n#profile_pic_header_100006626628858 {\n    visibility: hidden;\n}\n\n._2n_9, ._59fb, #userNavigationLabel  {\n    filter: contrast(1%) opacity(30%);\n}\n\n._mp3, ._38vo {\n    display: none;\n}",
+				"domains": [
+					"facebook.com"
+				]
+			}
+		],
+		"id": 6,
+		"updateDate": 1554992770163
+	},
+	{
+		"installDate": 1528822850215,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "Medium",
+		"sections": [
+			{
+				"code": ".u-fixed, .metabar, .overlay-dialog {\n    display: none;\n}",
+				"urls": [],
+				"urlPrefixes": [],
+				"domains": [
+					"medium.com"
+				],
+				"regexps": []
+			}
+		],
+		"id": 7
+	},
+	{
+		"installDate": 1528924124627,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "metrolyrics",
+		"sections": [
+			{
+				"code": ".video-container,\n.driver-related,\n.driver-photos,\n.mid-song-wrap,\n.page-header,\n.js-col1,\n.explicit,\n.note,\n.ad,\n.sharing,\n.writers,\nfooter\n{\n    visibility: hidden;\n    display: none;\n}\n.content .verse {\n    font-size: 1.5em;\n}",
+				"domains": [
+					"metrolyrics.com"
+				]
+			}
+		],
+		"id": 8
+	},
+	{
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"installDate": 1543374794023,
+		"name": "azlyrics",
+		"sections": [
+			{
+				"code": "body, .container, .main-page {\nbackground-color: white;\n}",
+				"domains": [
+					"azlyrics.com"
+				]
+			}
+		],
+		"id": 9
+	},
+	{
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"installDate": 1548116338381,
+		"name": "quora",
+		"sections": [
+			{
+				"code": ".BelowQuestionAddPrompt, .NonMemberSiteHeader {\n    display: none;\n}",
+				"domains": [
+					"quora.com"
+				]
+			}
+		],
+		"id": 10
+	}
+]
