@@ -7,6 +7,8 @@ COMMON_DEPS="\
     arm-none-eabi-newlib \
     aspell \
     astyle \
+    ansible \
+    ansible-lint \
     avr-binutils \
     avr-gcc \
     avr-gdb \
@@ -150,6 +152,7 @@ ARCH_DEPS="\
     hdparm \
     hindent \
     hoogle \
+    intel-media-driver \
     libreoffice-fresh \
     libreoffice-fresh-es \
     libvirt \
@@ -161,6 +164,7 @@ ARCH_DEPS="\
     pacman \
     pacman-contrib \
     pandoc \
+    pandoc-citeproc \
     pass \
     prettier \
     proselint \
@@ -175,7 +179,9 @@ ARCH_DEPS="\
     speedtest-cli \
     surf \
     task \
+    texlive-most \
     time \
+    tlp \
     ttf-dejavu \
     ttf-roboto \
     vim-runtime \
@@ -194,6 +200,7 @@ ARCH_DEPS="\
 
 AUR_DEPS="\
     acpilight \
+    anydesk \
     cropgui \
     mimi-git \
     popcorntime-bin \
