@@ -5,8 +5,11 @@ MUSIC="$VOLUME_DIR/music"
 NORMAL="$VOLUME_DIR/normal"
 SELECTED="$VOLUME_DIR/selected_mode"
 
+CARD=1
+CONTROL=PCM
 
-function vol_build_modes
+
+function build_modes
 {
     if [ ! -d $VOLUME_DIR ]
     then
@@ -18,47 +21,44 @@ function vol_build_modes
 }
 
 
-function vol_get_current
-{
-    echo $(amixer sget Master | tail -n 1 | sed -e \
-        's/.*\(\[.*%\]\).*/\1/;s/\[//;s/\]//;s/%//')
-}
-
-
-function vol_get_mode
+function get_mode
 {
     echo $(cat "$SELECTED" | tr -d '\n')
 }
 
-
-function vol_set_normal_mode
+function current_volume
 {
-    if [[ $(vol_get_mode) != "normal" ]];
+    echo $(amixer -c $CARD sget $CONTROL | tail -n 1 | cut -d ' ' -f 5 | tr -d '[]%')
+}
+
+function set_normal_mode
+{
+    if [[ $(get_mode) != "normal" ]];
     then
-        echo $(vol_get_current) > "$MUSIC"
+        echo $(current_volume) > "$MUSIC"
         amixer set Master $(cat $NORMAL)%
         echo "normal" > "$SELECTED"
     fi
 }
 
 
-function vol_set_music_mode
+function set_music_mode
 {
-    if [[ $(vol_get_mode) != "music" ]];
+    if [[ $(get_mode) != "music" ]];
     then
-        echo $(vol_get_current) > "$NORMAL"
+        echo $(current_volume) > "$NORMAL"
         amixer set Master $(cat $MUSIC)%
         echo "music" > "$SELECTED"
     fi
 }
 
 
-function vol_echo_formatted
+function info_formatted
 {
-    sound_data=$(amixer sget Master | tail -n 1)
-    volume=$(echo $sound_data | awk '{print $5}' | tr -d '[]%')
-    mute_state=$(echo $sound_data | awk '{print $6}' | tr -d '[]')
-    mode=$(vol_get_mode)
+    sound_data=$(amixer -c $CARD sget $CONTROL | tail -n 1)
+    volume=$(echo $sound_data | cut -d ' ' -f 5 | tr -d '[]%')
+    mute_state=$(echo $sound_data | cut -d ' ' -f 7 | tr -d '[]%')
+    mode=$(get_mode)
 
     sound_state="$(echo $mute_state | sed 's/on//;s/off/✗/') "
     sound_state+="$(echo $volume)"
@@ -67,4 +67,35 @@ function vol_echo_formatted
     echo "$sound_state"
 }
 
-vol_build_modes
+case "$1" in
+    'info')
+        info_formatted
+        ;;
+    'build_modes')
+        build_modes
+        ;;
+    'set_normal_mode')
+        set_normal_mode
+        ;;
+    'set_music_mode')
+        set_music_mode
+        ;;
+    'toggle')
+        amixer -c $CARD set $CONTROL toggle
+        ;;
+    'inc')
+        amixer -c $CARD set $CONTROL 5%+
+        ;;
+    'dec')
+        amixer -c $CARD set $CONTROL 5%-
+        ;;
+    'high')
+        amixer -c $CARD set $CONTROL 100%
+        ;;
+    'low')
+        amixer -c $CARD set $CONTROL 15%
+        ;;
+    'medium')
+        amixer -c $CARD set $CONTROL 50%
+        ;;
+esac
