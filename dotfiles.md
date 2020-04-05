@@ -35,6 +35,7 @@
 * Odyssey
 * Openbox
 * Pacman
+* Pandoc
 * PostgreSQL
 * Ratpoison
 * Readline
