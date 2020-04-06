@@ -28,7 +28,7 @@ function get_mode
 
 function current_volume
 {
-    echo $(amixer -c $CARD sget $CONTROL | tail -n 1 | cut -d ' ' -f 5 | tr -d '[]%')
+    echo $(amixer -c $CARD sget $CONTROL | tail -n 1 | cut -d ' ' -f 7 | tr -d '[]%')
 }
 
 function set_normal_mode
@@ -36,8 +36,9 @@ function set_normal_mode
     if [[ $(get_mode) != "normal" ]];
     then
         echo $(current_volume) > "$MUSIC"
-        amixer set Master $(cat $NORMAL)%
+        amixer -c $CARD set $CONTROL $(cat $NORMAL)%
         echo "normal" > "$SELECTED"
+        tmux refresh-client -S
     fi
 }
 
@@ -47,8 +48,9 @@ function set_music_mode
     if [[ $(get_mode) != "music" ]];
     then
         echo $(current_volume) > "$NORMAL"
-        amixer set Master $(cat $MUSIC)%
+        amixer -c $CARD set $CONTROL $(cat $MUSIC)%
         echo "music" > "$SELECTED"
+        tmux refresh-client -S
     fi
 }
 

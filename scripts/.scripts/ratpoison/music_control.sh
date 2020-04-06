@@ -14,7 +14,7 @@ function select_playlist
     then
         mpc clear
         mpc load "$list"
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
         mpc play
     fi
 }
@@ -34,7 +34,7 @@ function select_song_from_current_playlist
 
     if [[ $song != "" ]]
     then
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
         mpc play $song > /dev/null
     fi
 }
@@ -63,7 +63,7 @@ function search_song
         echo "$song"
         mpc insert "$song"
         mpc next
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
         mpc play
     fi
 }
@@ -85,7 +85,7 @@ function search_all
         echo "$song"
         mpc insert "$song"
         mpc next
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
         mpc play
     fi
 }
@@ -277,9 +277,9 @@ function toggle
     then
         mpc pause
         sleep 0.3
-        $(dirname "$0")/volume_control.sh set_normal_mode
+        $(dirname "$0")/../volume.sh set_normal_mode
     else
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
         sleep 0.1
         mpc play
     fi
@@ -290,9 +290,9 @@ function assert_volume_mode
 {
     if is_playing;
     then
-        $(dirname "$0")/volume_control.sh set_music_mode
+        $(dirname "$0")/../volume.sh set_music_mode
     else
-        $(dirname "$0")/volume_control.sh set_normal_mode
+        $(dirname "$0")/../volume.sh set_normal_mode
     fi
 }
 
@@ -364,4 +364,4 @@ case "$1" in
         ;;
 esac
 
-assert_volume_mode > /dev/null
+# assert_volume_mode > /dev/null
