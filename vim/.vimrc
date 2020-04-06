@@ -559,6 +559,7 @@ call plug#end()
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
     nnoremap <silent> ze :call Translate(expand("<cword>"), "en")<CR>
+    nnoremap <silent> zd :call DictLookup(expand("<cword>"))<CR>
     nnoremap <silent><C-\> :call ToggleQuickfixList()<CR>
     nnoremap gp `[v`]
     nnoremap Q :Buffers<CR>
@@ -675,6 +676,13 @@ function! Translate(text, to_lang) "{{{
     endif
 endfunction
 "}}}
+
+
+function! DictLookup(word) "{{{
+    exe "!$HOME/.scripts/dict/es.sh \"" . a:word . "\""
+endfunction
+"}}}
+
 
 function! Join() "{{{
     let next_line = getline(line('.')+1)
