@@ -276,11 +276,11 @@ function toggle
     if is_playing;
     then
         mpc pause
-        sleep 0.3
+        sleep 0.5
         $(dirname "$0")/../volume.sh set_normal_mode
     else
         $(dirname "$0")/../volume.sh set_music_mode
-        sleep 0.1
+        sleep 0.2
         mpc play
     fi
 }
