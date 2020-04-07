@@ -1,0 +1,19 @@
+.video-container,
+.driver-related,
+.driver-photos,
+.mid-song-wrap,
+.page-header,
+.js-col1,
+.explicit,
+.note,
+.ad,
+.sharing,
+.writers,
+footer
+{
+    visibility: hidden;
+    display: none;
+}
+.content .verse {
+    font-size: 1.5em;
+}

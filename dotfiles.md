@@ -37,6 +37,7 @@
 * Pacman
 * Pandoc
 * PostgreSQL
+* Qutebrowser
 * Ratpoison
 * Readline
 * Rofi

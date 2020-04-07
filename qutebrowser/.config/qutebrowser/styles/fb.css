@@ -1,0 +1,47 @@
+#pagelet_ego_pane,
+#pagelet_rhc_footer,
+#fb_stories_card_root,
+#pagelet_ego_pane,
+#u_ps_0_7_0,
+#pagelet_marketplace_recently_viewed_rhc,
+.ego_section,
+.ego_unit_container,
+._5qtp,
+._5xmp i
+{
+    overflow: hidden;
+    visibility: hidden;
+    height: 0px;
+}
+
+#bluebarRoot > div {
+    background-color: #e9ebee;
+    color: #ccc;
+    border-bottom: none;
+}
+
+._585-, _42ft {
+    border: none;
+     background-color: #e9ebee;
+     color: #fff;
+}
+
+._585- ._4w98, ._2md {
+    display: none;
+}
+
+#leftCol {
+    visibility: hidden;
+}
+
+#profile_pic_header_100006626628858 {
+    visibility: hidden;
+}
+
+._2n_9, ._59fb, #userNavigationLabel  {
+    filter: contrast(1%) opacity(30%);
+}
+
+._mp3, ._38vo {
+    display: none;
+}
