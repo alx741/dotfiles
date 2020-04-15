@@ -9,7 +9,7 @@ CARD=1
 CONTROL=PCM
 
 
-function build_modes
+build_modes()
 {
     if [ ! -d $VOLUME_DIR ]
     then
@@ -21,19 +21,19 @@ function build_modes
 }
 
 
-function get_mode
+get_mode()
 {
-    echo $(cat "$SELECTED" | tr -d '\n')
+    tr -d '\n' < "$SELECTED"
 }
 
-function current_volume
+current_volume()
 {
-    echo $(amixer -c $CARD sget $CONTROL | tail -n 1 | cut -d ' ' -f 7 | tr -d '[]%')
+    amixer -c $CARD sget $CONTROL | tail -n 1 | cut -d ' ' -f 7 | tr -d '[]%'
 }
 
-function set_normal_mode
+set_normal_mode()
 {
-    if [[ $(get_mode) != "normal" ]];
+    if [ "$(get_mode)" != "normal" ];
     then
         echo $(current_volume) > "$MUSIC"
         amixer -c $CARD set $CONTROL $(cat $NORMAL)%
@@ -43,9 +43,9 @@ function set_normal_mode
 }
 
 
-function set_music_mode
+set_music_mode()
 {
-    if [[ $(get_mode) != "music" ]];
+    if [ "$(get_mode)" != "music" ];
     then
         echo $(current_volume) > "$NORMAL"
         amixer -c $CARD set $CONTROL $(cat $MUSIC)%
@@ -55,7 +55,7 @@ function set_music_mode
 }
 
 
-function info_formatted
+info_formatted()
 {
     sound_data=$(amixer -c $CARD sget $CONTROL | tail -n 1)
     volume=$(echo $sound_data | cut -d ' ' -f 5 | tr -d '[]%')
