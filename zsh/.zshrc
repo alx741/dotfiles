@@ -80,6 +80,8 @@
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
 
+    export LIBVA_DRIVER_NAME=iHD
+
     # Android
     export ANDROID_HOME="/opt/android-sdk/"
     export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
@@ -171,6 +173,8 @@
 #}}}
 
 #{{{ Aliases
+    alias ag=rg
+    alias rg="rg --colors line:fg:yellow --colors line:style:bold --colors path:fg:green --colors path:style:bold --colors match:fg:black --colors match:bg:yellow --colors match:style:nobold"
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
     alias cdmem="cd /mnt/mem"
@@ -314,7 +318,7 @@
 
         function la()
         {
-            l | ag $@
+            l | rg $@
         }
 
         function woman()
@@ -347,6 +351,8 @@
     #{{{ Scripts
         alias alan="$SCRIPTS/alan.sh"
         alias be="$SCRIPTS/builder_edit.sh"
+        alias dic="$SCRIPTS/dict/es.sh"
+        alias dict="$SCRIPTS/dict/es.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
         alias es="$SCRIPTS/edit_shot.sh"
@@ -753,10 +759,10 @@
 
         export FZF_TMUX=1
         export FZF_TMUX_HEIGHT=20%
-        export FZF_DEFAULT_COMMAND='ag --depth 10 -f -g "" --hidden \
-            --ignore ".git" --ignore "_darcs" --ignore "*.o" --ignore "*.hi" \
-            --ignore ".stack-work" --ignore "node_modules" --ignore ".shake" \
-            --ignore "bower_components" --ignore "bower"'
+        export FZF_DEFAULT_COMMAND='rg -i --files --max-depth 10 --hidden \
+            --iglob "!.git" --iglob "!_darcs" --iglob "!*.o" --iglob "!*.hi" \
+            --iglob "!.stack-work" --iglob "!node_modules" --iglob "!.shake" \
+            --iglob "!bower_components" --iglob "!bower"'
         export FZF_DEFAULT_OPTS='
             --color fg:240,bg:-1,hl:33,fg+:241,bg+:223,hl+:33
             --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
