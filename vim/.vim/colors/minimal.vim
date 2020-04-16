@@ -28,3 +28,6 @@ hi! clear Special
 hi! clear Statement
 hi! clear Type
 hi! clear Underline
+
+hi! Pmenu cterm=NONE ctermbg=7 ctermfg=11
+hi! PmenuSel cterm=reverse ctermbg=7 ctermfg=11
