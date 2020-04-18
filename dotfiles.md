@@ -3,6 +3,7 @@
 * Astyle
 * Avrdude
 * Ccze
+* Cron
 * Ctags
 * Firefox Add-ons
 * Fish
