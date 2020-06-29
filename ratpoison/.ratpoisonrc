@@ -210,7 +210,18 @@
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
     bind comma exec ~/.scripts/ratpoison/app_select.sh weechat
-    bind period exec  ~/.scripts/ratpoison/app_select.sh ipcam
+
+    # Cameras control
+    bind period exec  ~/.scripts/ratpoison/app_select.sh cam 2
+    bind C-period exec  ~/.scripts/ratpoison/app_select.sh cam 2
+    bind 1 exec  ~/.scripts/ratpoison/app_select.sh cam 1
+    bind 2 exec  ~/.scripts/ratpoison/app_select.sh cam 2
+    bind 3 exec  ~/.scripts/ratpoison/app_select.sh cam 3
+    bind 4 exec  ~/.scripts/ratpoison/app_select.sh cam 4
+    bind 5 exec  ~/.scripts/ratpoison/app_select.sh cam 5
+    bind 6 exec  ~/.scripts/ratpoison/app_select.sh cam 6
+    bind 7 exec  ~/.scripts/ratpoison/app_select.sh cam 7
+    bind 8 exec  ~/.scripts/ratpoison/app_select.sh cam 8
 
     # Give temporally control to openbox
     bind grave tmpwm openbox
@@ -242,7 +253,7 @@
     bind A exec rofi -e "$( ~/.scripts/echo_cal.sh )"
 
     # Network information
-    bind I exec ratpoison -c "echo $( ~/.scripts/network/echo_net_info.sh )"
+    bind I select avd
 
     # Running
     bind y exec rofi -display-drun "" -drun-display-format "{name}" -show drun

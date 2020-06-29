@@ -26,6 +26,18 @@ function launch_firefox
 }
 
 
+function launch_qutebrowser
+{
+    if is_running 'qutebrowser';
+    then
+        ratpoison -c "select qutebrowser"
+    else
+        ratpoison -c "echo Started"
+        qutebrowser&
+    fi
+}
+
+
 function launch_terminal
 {
     if is_running 'urxvt';
@@ -57,7 +69,7 @@ function launch_zathura
     then
         ratpoison -c "select zathura"
     else
-        zathura&
+        ratpoison -c "echo Where be zathura?"
     fi
 }
 
@@ -76,24 +88,13 @@ function launch_window_number
     ratpoison -c "select $1"
 }
 
-function launch_ipcam
+function launch_cam
 {
-    if is_running 'surf';
+    if is_running 'mpv';
     then
-        ratpoison -c "select surf"
+        ratpoison -c "select mpv"
     else
-        surf -b -d -F -g -I -K -n -p -S "$HOME/lab/ipcamclient/index.html"&
-    fi
-}
-
-
-function launch_ipcam
-{
-    if is_running 'surf';
-    then
-        ratpoison -c "select surf"
-    else
-        surf -b -d -F -g -I -K -n -p -S "$HOME/lab/ipcamclient/index.html"&
+        "$HOME/.scripts/cams.sh" $1
     fi
 }
 
@@ -109,6 +110,9 @@ case "$1" in
     'firefox')
         launch_firefox
         ;;
+    'qutebrowser')
+        launch_qutebrowser
+        ;;
     'terminal')
         launch_terminal
         ;;
@@ -118,8 +122,8 @@ case "$1" in
     'zathura')
         launch_zathura
         ;;
-    'ipcam')
-        launch_ipcam
+    'cam')
+        launch_cam $2
         ;;
     'weechat')
         launch_weechat
