@@ -61,7 +61,7 @@
     #{{{ Volume control
         definekey top s-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
         definekey top s-bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
-        definekey top s-backslash exec ~/.scripts/ratpoison/volume_control.sh mute
+        definekey top s-backslash exec ~/.scripts/ratpoison/volume_control.sh toggle
         bind bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
         bind bracketleft exec ~/.scripts/ratpoison/volume_control.sh dec
         bind C-bracketright exec ~/.scripts/ratpoison/volume_control.sh inc
@@ -69,7 +69,7 @@
         bind braceright  exec ~/.scripts/ratpoison/volume_control.sh high
         bind braceleft exec ~/.scripts/ratpoison/volume_control.sh low
         bind bar exec ~/.scripts/ratpoison/volume_control.sh medium
-        bind backslash  exec ~/.scripts/ratpoison/volume_control.sh mute
+        bind backslash  exec ~/.scripts/ratpoison/volume_control.sh toggle
     #}}}
 
     #{{{ Music control
@@ -118,7 +118,7 @@
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
         definekey task at exec ~/.scripts/edit_shot.sh
-        definekey task C-Return exec ~/.scripts/build/topa.sh halt
+        definekey task C-Return exec sudo poweroff
         definekey task question help task
         bind t readkey task
     #}}}
@@ -126,7 +126,6 @@
     #{{{ Firefox control
         newkmap firefox
         definekey firefox f exec ~/.scripts/ratpoison/firefox.sh select_tab facebook
-        definekey firefox r exec ~/.scripts/ratpoison/firefox.sh select_tab reddit
         definekey firefox o exec ~/.scripts/ratpoison/firefox.sh new_tab
         definekey firefox w exec ~/.scripts/ratpoison/firefox.sh new_window
         definekey firefox s exec ~/.scripts/ratpoison/firefox.sh clipboard_search
@@ -136,6 +135,7 @@
         definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
         definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
         definekey firefox n exec ~/.scripts/ratpoison/firefox.sh rustdocs_search
+        definekey firefox r exec ~/.scripts/ratpoison/firefox.sh rdocs_search
         definekey firefox c exec gpick
         bind f readkey firefox
     #}}}
