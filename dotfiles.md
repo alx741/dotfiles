@@ -16,6 +16,7 @@
 * Hindent
 * Inkscape
 * Kitty
+* Krita
 * Mbsync
 * Mimi
 * Modprobe
