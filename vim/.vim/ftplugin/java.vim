@@ -1,8 +1,11 @@
-setlocal makeprg=gradle
+setlocal makeprg=mvn
 setlocal foldlevel=2
 setlocal foldlevelstart=1
 setlocal foldnestmax=2
 nnoremap <buffer><silent> g<space> :call Getter_and_setter()<CR>
+compiler mvn
+
+nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=mvn mvn compile<CR>
 
 function! Getter_and_setter()
     exe "norm! f="

@@ -6,7 +6,6 @@ nnoremap <buffer><silent> gH :call Md_create_header(0)<CR>
 nnoremap <buffer><silent> ]] :call Next_header(0)<CR>
 nnoremap <buffer><silent> [[ :call Next_header(1)<CR>
 nnoremap <buffer><silent> gO :call PDF_open()<CR>
-nnoremap <buffer><space> 1z=
 
 function! PDF_open()
     let s:md_file = expand('%:p:r')
