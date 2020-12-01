@@ -1,3 +1,9 @@
+set editing-mode vi
+set show-mode-in-prompt on
+
+set vi-ins-mode-string "  "
+set vi-cmd-mode-string "@ "
+
 $if mysql
     set editing-mode vi
 $endif
@@ -11,6 +17,8 @@ $if mode=vi
     "\C-o": clear-screen
     "\C-p": history-search-backward
     "\C-n": history-search-forward
+    "\C-w": kill-word
+    "\C-y": "\C-[^i?\C-m"
 
     set keymap vi-command
     "ciw": "lbcw"
@@ -21,4 +29,5 @@ $if mode=vi
     "yiW": "lByW"
     "gg": beginning-of-history
     "G": end-of-history
+    "\C-y": "\C-[^i?\C-m"
 $endif
