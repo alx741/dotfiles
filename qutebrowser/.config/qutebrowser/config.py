@@ -1,3 +1,10 @@
+import sys, os
+sys.path.append(os.path.join(sys.path[0], 'jblock'))
+config.source("jblock/jblock/integrations/qutebrowser.py")
+c.content.host_blocking.enabled = False
+c.content.host_blocking.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
+c.content.host_blocking.whitelist = []
+
 c.auto_save.session = True
 c.auto_save.interval = 15000
 c.input.insert_mode.auto_load = False
@@ -16,8 +23,8 @@ c.completion.scrollbar.width = 12
 c.completion.show = 'always'
 c.completion.shrink = False
 c.completion.timestamp_format = '%Y-%m-%d'
-c.completion.use_best_match = False
-c.completion.web_history.exclude = []
+c.completion.use_best_match = True
+c.completion.web_history.exclude = ['*://*/.'] #TODO
 c.completion.web_history.max_items = -1
 c.confirm_quit = ['downloads']
 c.content.autoplay = True
@@ -30,12 +37,10 @@ c.content.dns_prefetch = False
 c.content.geolocation = 'ask'
 c.content.headers.accept_language = 'en-US,en;q=0.9'
 c.content.headers.custom = {}
+c.content.notifications = False
 c.content.headers.do_not_track = True
 c.content.headers.referer = 'same-domain'
 c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
-c.content.host_blocking.enabled = True
-c.content.host_blocking.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
-c.content.host_blocking.whitelist = []
 c.content.hyperlink_auditing = False
 c.content.images = True
 c.content.javascript.alert = True
@@ -65,10 +70,10 @@ c.content.ssl_strict = 'ask'
 c.content.user_stylesheets = \
     [ 'styles/fb.css' \
     , 'styles/medium.css' \
-    , 'styles/metrolyrics.css' \
     , 'styles/quora.css' \
     , 'styles/azlyrics.css' \
     ]
+    # , 'styles/metrolyrics.css' \
 
 c.content.webgl = True
 c.content.webrtc_ip_handling_policy = 'all-interfaces'
@@ -182,13 +187,15 @@ c.zoom.mouse_divider = 512
 
 config.bind('x', 'tab-close')
 
-config.bind('j', 'scroll down')
-config.bind('e', 'scroll down')
-config.bind('k', 'scroll up')
+config.bind('j', 'scroll-px 0 25')
+config.bind('e', 'scroll-px 0 25')
+config.bind('k', 'scroll-px 0 -25')
 config.bind('d', 'scroll-page 0 0.5')
 config.bind('<ctrl-d>', 'scroll-page 0 0.5')
 config.bind('u', 'scroll-page 0 -0.5')
 config.bind('<ctrl-u>', 'scroll-page 0 -0.5')
+config.bind('<ctrl-e>', 'scroll down')
+config.bind('<ctrl-y>', 'scroll up')
 
 config.bind('<ctrl-o>', 'back')
 config.bind('<ctrl-i>', 'forward')
@@ -198,10 +205,16 @@ config.bind('l', 'tab-next')
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
 
+config.bind('<ctrl-w>', 'tab-close')
+config.bind('gp', 'tab-pin')
+
+config.bind('gH', 'tab-move -')
+config.bind('gL', 'tab-move +')
+
 config.bind('i', 'enter-mode insert')
 
-config.bind('t', 'set-cmd-text -s :open -t')
-config.bind('<ctrl-t>', 'open -t')
+config.bind('t', 'set-cmd-text -s :open -r -t')
+config.bind('<ctrl-t>', 'set-cmd-text -s :open -t')
 config.bind('gl', 'tab-focus last')
 
 config.bind('+', 'zoom-in')
@@ -214,14 +227,16 @@ config.bind('R', 'reload -f')
 config.bind('gt', 'set-cmd-text -s :buffer')
 config.bind('<ctrl-p>', 'set-cmd-text -s :buffer')
 
-config.bind('<ctrl-w>', 'tab-close')
-config.bind('gp', 'tab-pin')
-
 config.bind('X', 'undo')
 config.bind('<ctrl-shift-t>', 'undo')
 
 config.bind('[[', 'navigate prev')
 config.bind(']]', 'navigate next')
+
+config.bind('gm', 'spawn mpv {url}')
+config.bind('gM', 'hint links spawn mpv {hint-url}')
+
+config.unbind('<Return>')
 
 # config.bind("'", 'enter-mode jump_mark')
 # config.bind('.', 'repeat-command')
@@ -319,10 +334,7 @@ config.bind(']]', 'navigate next')
 # config.bind('gf', 'view-source')
 # config.bind('gg', 'scroll-to-perc 0')
 # config.bind('gi', 'hint inputs --first')
-# config.bind('gl', 'tab-move -')
-# config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
-# config.bind('gr', 'tab-move +')
 # config.bind('gt', 'set-cmd-text -s :buffer')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
