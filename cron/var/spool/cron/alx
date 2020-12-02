@@ -1,2 +1,3 @@
 */5 * * * * mbsync -Va
 @hourly task sync
+0 17 * * 5  /home/alx/.scripts/backup.sh all
