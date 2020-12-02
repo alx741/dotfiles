@@ -3,6 +3,7 @@ snippet meta "Metadata" b
 title: $1
 published: 2017-12-31$2
 author: Daniel Campoverde C.
+lang: es
 abstract: |
 	Some Abstract here$3
 ...
@@ -10,18 +11,30 @@ abstract: |
 $0
 endsnippet
 
+
 snippet img "Image"
 ![$2](./img/$1.png)$0
 endsnippet
 
+
 snippet table "Table"
 
- Right     Left     Center     Default
--------   ------  ----------   -------
-  12        12        12         12
-  123       123       123        123
-  1         1         1          1
+Some title      Some title
+------------    -----------
+data            data
 
 Table:  Demonstration of simple table syntax.
 
+endsnippet
+
+
+snippet code "Code"
+\`\`\`$0
+\`\`\`
+endsnippet
+
+snippet py "Python Code"
+\`\`\`python
+$0
+\`\`\`
 endsnippet
