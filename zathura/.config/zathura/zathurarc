@@ -4,6 +4,7 @@
     set page-padding 10
     set page-cache-size 50
     set guioptions ""
+    set selection-clipboard clipboard
 #}}}
 
 #{{{ Mappings
