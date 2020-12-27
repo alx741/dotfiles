@@ -1,4 +1,7 @@
+! xrdb ~/.Xresources
+
 ! Color [Solarized] {{{
+
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -15,7 +18,6 @@
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
-
 *background:            S_base3
 *foreground:            S_base00
 *fadeColor:             S_base3
@@ -67,8 +69,8 @@ urxvt.reverseVideo: false
 
 ! Fonts
 urxvt.allow_bold: true
-urxvt*font: xft:DejaVuSansMono:pixelsize=16:style=book
-urxvt*boldFont: xft:DejaVuSansMono:pixelsize=16:style=bold
+urxvt*font: xft:DejaVuSansMono:pixelsize=14:style=book
+urxvt*boldFont: xft:DejaVuSansMono:pixelsize=14:style=bold
 
 ! Fix font space
 urxvt*letterSpace: -1
