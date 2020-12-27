@@ -1,5 +1,6 @@
 # remember: serveo.net
 #           ncdu
+#           woeusb: bootable windows
 
 #{{{ Plugins & Zgen
     source "${HOME}/.zgen/zgen.zsh"
@@ -8,7 +9,6 @@
     then
         echo "Creating a zgen save"
 
-        zgen load zsh-users/zsh-syntax-highlighting
         zgen load zsh-users/zsh-history-substring-search
         zgen load zsh-users/zsh-autosuggestions
         zgen load rust-lang/zsh-config
@@ -84,7 +84,7 @@
 
     # Android
     export ANDROID_HOME="/opt/android-sdk/"
-    export ANDROID_TOOLS="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+    export ANDROID_TOOLS="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
     # Java
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
@@ -138,6 +138,10 @@
     # Factorio
     export FACTORIO_BIN="/home/alx/factorio/bin/x64/"
 
+    # Firefox
+    export MOZ_X11_EGL=1
+    export MOZ_WEBRENDER=0
+
     # Path
     PATH="/usr/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:"
     PATH+="/usr/games/bin:"
@@ -173,8 +177,13 @@
 #}}}
 
 #{{{ Aliases
-    alias ag=rg
-    alias rg="rg --colors line:fg:yellow --colors line:style:bold --colors path:fg:green --colors path:style:bold --colors match:fg:black --colors match:bg:yellow --colors match:style:nobold"
+    alias tmp="vim -c ':setlocal buftype=nofile | setlocal bufhidden=hide | setlocal noswapfile'"
+    alias uvpn="~/connect_vpn_u.sh"
+    alias bl="borg --remote-path=borg1"
+    alias avd="emulator -gpu host -accel on @main"
+    alias avdcold="emulator -gpu host -accel on @main -no-snapshot-load"
+    alias ag="rg"
+    alias rg="rg -i --colors line:fg:yellow --colors line:style:bold --colors path:fg:green --colors path:style:bold --colors match:fg:black --colors match:bg:yellow --colors match:style:nobold"
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
     alias cdmem="cd /mnt/mem"
@@ -350,6 +359,7 @@
 
     #{{{ Scripts
         alias alan="$SCRIPTS/alan.sh"
+        alias backup="$SCRIPTS/backup.sh"
         alias be="$SCRIPTS/builder_edit.sh"
         alias dic="$SCRIPTS/dict/es.sh"
         alias dict="$SCRIPTS/dict/es.sh"
@@ -365,22 +375,21 @@
         alias html2hamlet="$SCRIPTS/html2hamlet.sh"
         alias labip="$SCRIPTS/network/echo_lab_ip.sh"
         alias mem="$SCRIPTS/mem.sh mount"
-        alias yay="$SCRIPTS/pacman.sh yay $*"
         alias pacman="$SCRIPTS/pacman.sh pacman $*"
-        alias poweroff="$SCRIPTS/build/Topa halt"
+        alias poweroff="sudo poweroff"
         alias pro="$SCRIPTS/projector.sh"
         alias psci="$SCRIPTS/pulp.sh psci"
         alias pubip="$SCRIPTS/network/echo_pub_ip.sh"
         alias pulp="$SCRIPTS/pulp.sh"
-        alias reboot="$SCRIPTS/build/Topa reboot"
+        alias reboot="sudo reboot"
+        alias replicate="$SCRIPTS/replicate_term.sh&"
         alias rn="$SCRIPTS/generate_report.sh"
         alias rr="$SCRIPTS/ratpoison/restore_ratpoison.sh"
-        alias replicate="$SCRIPTS/replicate_term.sh&"
-        alias silly="$HOME/lab/sillybytes/sillybytes_tool/silly.sh"
-        alias topa="$SCRIPTS/build/Topa halt"
+        alias silly="$HOME/lab/sillybytes_tool/silly.sh"
         alias update="$SCRIPTS/update.sh"
         alias wgetit="$SCRIPTS/wgetit.sh"
         alias wifi="$SCRIPTS/network/wifi.sh"
+        alias yay="$SCRIPTS/pacman.sh yay $*"
         alias ymd="$SCRIPTS/youtube_music_download.sh"
         alias yt="$SCRIPTS/youtube_mplayer.sh"
     #}}}
