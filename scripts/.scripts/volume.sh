@@ -58,8 +58,8 @@ set_music_mode()
 info_formatted()
 {
     sound_data=$(amixer -c $CARD sget $CONTROL | tail -n 1)
-    volume=$(echo $sound_data | cut -d ' ' -f 5 | tr -d '[]%')
-    mute_state=$(echo $sound_data | cut -d ' ' -f 7 | tr -d '[]%')
+    volume=$(echo "$sound_data" | cut -d ' ' -f 7 | tr -d '[]%')
+    mute_state=$(echo "$sound_data" | cut -d ' ' -f 9 | tr -d '[]%')
     mode=$(get_mode)
 
     sound_state="$(echo $mute_state | sed 's/on//;s/off/✗/') "

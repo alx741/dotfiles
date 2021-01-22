@@ -29,23 +29,25 @@ then
 
     if am_i_at_home
     then
-        xrandr --output LVDS-1 --off
-        xrandr --output HDMI-1 --mode 1360x768
-        xrandr --output VGA-1 --mode 1366x768 --right-of HDMI-1
-        xbacklight -set 0
+        xrandr --output eDP1 --off \
+            --output DP2-1 --mode 1920x1080 --rate 120 --primary \
+            --output DP2-2 --mode 1920x1080 --rate 60 --left-of DP2-1 \
+            --output DP2-3 --mode 1920x1080 --rate 60 --right-of DP2-1
+        # xbacklight -set 0
+        xset s off
+        xset -dpms
+        #xinput --set-prop 19 357 0.5 # TODO: improve this?
+        # xset dpms 180 600 1200
         amixer set Master unmute
         amixer set Master 100%
-        ~/.scripts/network/ether.sh
+        ~/.scripts/network/ether.sh "enp0s31f6"
         ~/.scripts/ratpoison/app_select.sh terminal
+        sudo tlp setcharge 40 50 BAT0 && tlp chargeonce BAT0&
         firefox&
-        sudo systemctl start vsftpd
-        sudo systemctl start postgresql
-        sudo systemctl start docker
     else
         if is_vga_plugedin
         then
-            xrandr --output LVDS-1 --mode 1366x768 --below VGA-1
-            xrandr --output VGA-1 --mode 1024x768 --above LVDS-1
+            echo "TODO: implementation pending"
         fi
         xbacklight -set 100
         amixer set Master 0%
@@ -55,9 +57,6 @@ then
         amixer set Master mute
         amixer set Speaker mute
         ~/.scripts/network/wifi.sh
-        sudo ifconfig wlp2s0 down
-        sudo ifconfig enp3s0 up
-        sudo dhclient enp3s0&
         ~/.scripts/ratpoison/app_select.sh bare-terminal
     fi
 
@@ -75,3 +74,5 @@ then
     ~/.scripts/ratpoison/app_select.sh bare-terminal
 
 fi
+
+.scripts/volume.sh build_modes
