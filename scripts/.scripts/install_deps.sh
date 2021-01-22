@@ -1,14 +1,14 @@
 #!/bin/sh
 
 COMMON_DEPS="\
+    ansible \
+    ansible-lint \
     arm-none-eabi-binutils \
     arm-none-eabi-gcc \
     arm-none-eabi-gdb \
     arm-none-eabi-newlib \
     aspell \
     astyle \
-    ansible \
-    ansible-lint \
     avr-binutils \
     avr-gcc \
     avr-gdb \
@@ -62,10 +62,12 @@ COMMON_DEPS="\
     qemu \
     ratpoison \
     readline \
+    ripgrep \
     rofi \
     rxvt-unicode \
     sassc \
     scrot \
+    shfmt \
     smartmontools \
     sox \
     sshpass \
@@ -95,7 +97,8 @@ COMMON_DEPS="\
     xf86-input-synaptics \
     zathura \
     zathura-djvu \
-    zathura-pdf-mupdf \
+    zathura-pdf-poppler \
+    zathura-ps \
     zip \
     zsh \
 "
@@ -105,6 +108,7 @@ FREEBSD_DEPS="\
     en-aspell \
     es-aspell \
     freefonts \
+    gpicker \
     hs-hasktags \
     hs-hlint \
     hs-hoogle \
@@ -117,6 +121,7 @@ FREEBSD_DEPS="\
     nethack36 \
     password-store \
     py36-speedtest-cli \
+    py37-borgbackup \
     roboto-fonts-ttf \
     rubygem-asciidoctor \
     rxvt-font-size \
@@ -135,16 +140,22 @@ FREEBSD_DEPS="\
 "
 
 ARCH_DEPS="\
+    optipng \
+    jpegoptim \
     acpi \
     alsa-utils \
     asciidoctor \
     aspell-en \
     aspell-es \
+    bort \
+    cronie \
+    dart \
     dhclient \
     dnsutils \
     docker \
     expac \
     firefox-developer-edition \
+    gpick \
     grep \
     gvim \
     haskell-hscolour \
@@ -152,6 +163,7 @@ ARCH_DEPS="\
     hdparm \
     hindent \
     hoogle \
+    httpie \
     intel-media-driver \
     libreoffice-fresh \
     libreoffice-fresh-es \
@@ -169,6 +181,7 @@ ARCH_DEPS="\
     prettier \
     proselint \
     pulseaudio-alsa \
+    python-llfuse \
     python2-lxml \
     python2-scour \
     qemu-arch-extra \
@@ -187,7 +200,9 @@ ARCH_DEPS="\
     vim-runtime \
     virtualbox \
     virtualbox-host-modules-arch \
+    whois \
     wireshark-qt \
+    xf86-input-wacom \
     xmonad \
     xorg-server \
     xorg-server-common \
@@ -202,6 +217,8 @@ AUR_DEPS="\
     acpilight \
     anydesk \
     cropgui \
+    kepubify-bin \
+    ktlint \
     mimi-git \
     popcorntime-bin \
     sprunge \
