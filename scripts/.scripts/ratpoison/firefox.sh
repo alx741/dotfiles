@@ -41,18 +41,14 @@ function select_tab
 function search_tab
 {
     query=`ratpoison -c "prompt [Tab] >  "`
-    if [[ "$query" == "" ]]; then exit 0; fi
-
+    [ -z "$query" ] && exit 0
     select_tab "$query"
 }
 
 function clipboard_search
 {
     search=$(xclip -selection clipboard -o)
-    if [[ "$search" == "" ]];
-    then
-        exit 0
-    fi
+    [ -z "$search" ] && exit 0
     search=$(echo "$search" | sed 's/ /+/g')
     duckduckgo_url="https://www.duckduckgo.com/search?q=$search"
     firefox --new-tab "$duckduckgo_url"
@@ -61,7 +57,7 @@ function clipboard_search
 function duckduckgo
 {
     query=`ratpoison -c "prompt [Quack] >   "`
-    if [[ "$query" == "" ]]; then exit 0; fi
+    [ -z "$query" ] && exit 0
     query=$(echo "$query" | sed 's/ /+/g')
 
     ~/.scripts/ratpoison/app_select.sh firefox
@@ -71,10 +67,7 @@ function duckduckgo
 function search_lyrics_old
 {
     search=$(mpc | head -n 1)
-    if [[ "$search" == "" ]];
-    then
-        exit 0
-    fi
+    [ -z "$search" ] && exit 0
     search+=" lyrics"
     search=$(echo "$search" | sed 's/ /+/g')
 
@@ -92,18 +85,9 @@ function search_lyrics_old
 function search_lyrics
 {
     search=$(mpc | head -n 1)
-    if [[ "$search" == "" ]];
-    then
-        exit 0
-    fi
-
+    [ -z "$search" ] && exit 0
     url=$(search_azlyrics "$search")
-
-    if [[ "$url" == "" ]];
-    then
-        url=$(search_songtexte "$search")
-    fi
-
+    [ -z "$url" ] && url=$(search_songtexte "$search")
     firefox --new-tab "$url"
 }
 
@@ -141,18 +125,15 @@ function search_songtexte
 function youtube_search
 {
     query=`ratpoison -c "prompt [Youtube] >   "`
-    if [[ "$query" == "" ]]; then exit 0; fi
-
-    ~/.scripts/ratpoison/app_select.sh firefox
+    [ -z "$query" ] && exit 0
     firefox "https://www.youtube.com/results?search_query=$query"
+    ~/.scripts/ratpoison/app_select.sh firefox
 }
 
 function hoogle_search
 {
     query=`ratpoison -c "prompt [Hoogle $1] >   "`
-    if [[ "$query" == "" ]]; then exit 0; fi
-
-    ~/.scripts/ratpoison/app_select.sh firefox
+    [ -z "$query" ] && exit 0
 
     case "$1" in
         'hackage')
@@ -165,17 +146,26 @@ function hoogle_search
             exit 1
             ;;
     esac
+
+    ~/.scripts/ratpoison/app_select.sh firefox
 }
 
 function rustdocs_search
 {
     query=`ratpoison -c "prompt [Rust docs $1] >   "`
-    if [[ "$query" == "" ]]; then exit 0; fi
-
-    ~/.scripts/ratpoison/app_select.sh firefox
-
+    [ -z "$query" ] && exit 0
     firefox "https://docs.rs/releases/search?query=$query"
+    ~/.scripts/ratpoison/app_select.sh firefox
 }
+
+function rdocs_search
+{
+    query=`ratpoison -c "prompt [R docs $1] >   "`
+    [ -z "$query" ] && exit 0
+    firefox "https://www.rdocumentation.org/search?q=$query"
+    ~/.scripts/ratpoison/app_select.sh firefox
+}
+
 
 case $1 in
     'select_tab')
@@ -212,6 +202,9 @@ case $1 in
         ;;
     'rustdocs_search')
         rustdocs_search $2
+        ;;
+    'rdocs_search')
+        rdocs_search $2
         ;;
     'youtube_search')
         youtube_search
