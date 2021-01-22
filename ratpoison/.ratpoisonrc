@@ -17,7 +17,7 @@
     set inputwidth 500
     set maxsizegravity c
     set maxsizegravity c
-    set msgwait 10
+    set msgwait 2
     set startup_message 0
     set transgravity c
     set waitcursor 0
@@ -25,7 +25,6 @@
     set winname class
     set font dejavusans-11
 #}}}
-
 #{{{ Bindigs
     #{{{ Unbindings
         unbind q
@@ -162,8 +161,8 @@
     escape C-g
 
     # Abort with ESC
-    definekey top Escape exec ~/.scripts/ratpoison/abort.sh
-    bind Escape abort
+    #definekey top Escape exec ~/.scripts/ratpoison/abort.sh
+    #bind Escape abort
 
     # Show current frame
     bind C-f curframe
@@ -202,8 +201,8 @@
 
     # Swap screens
     bind x abort
-    bind j swap 0 1
-    bind C-j swap 0 1
+    bind j swap 1 0
+    bind C-j swap 1 0
 
     # Fast switching
     bind c exec ~/.scripts/ratpoison/app_select.sh terminal
@@ -236,7 +235,7 @@
     bind Q delete
 
     # Screen shots
-    bind at exec scrot -u -z -q 100 -e 'mv $f ~/.shots/'
+    bind at exec scrot -u -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'mv $f ~/.shots/'
 
     # Calculator
     bind C exec ~/.scripts/ratpoison/calculator.sh
@@ -245,7 +244,7 @@
     bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
-    bind S exec sleep 0.3 && xset dpms force off
+    bind S exec sleep 0.5 && xset dpms force off
     bind C-i exec ~/.scripts/ratpoison/lock.sh
 
     # Print information
@@ -259,6 +258,7 @@
     bind y exec rofi -display-drun "" -drun-display-format "{name}" -show drun
     bind C-y exec rofi -display-drun "" -show drun
 #}}}
+
 
 
 # vim:fdm=marker
