@@ -48,7 +48,7 @@ local_backup() {
         --prefix '{hostname}-' \
         --keep-daily    1 \
         --keep-weekly   1 \
-        --keep-monthly  3 \
+        --keep-monthly  1 \
         --keep-yearly   1 \
         "$LOCAL_BORG_REPO" \
             2>> $LOG_FILE \
