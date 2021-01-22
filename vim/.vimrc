@@ -2,6 +2,7 @@
 " Make this a function or something
 " :%s/^\s*/&&/g
 
+
 "{{{ Plugins
 call plug#begin('~/.vim/plugged')
 Plug '~/lab/vim-tmux-navigator'
@@ -9,13 +10,14 @@ Plug '~/lab/vinfo'
 Plug '~/lab/vim-hindent'
 Plug '~/lab/vim-stylishask'
 Plug '~/lab/vim-rustfmt'
-Plug '~/lab/vim-yesod'
+Plug '~/lab/yesod.vim'
 Plug '~/lab/ghc.vim'
 Plug '~/lab/vim-nativescript'
 Plug '~/lab/spec.vim'
 Plug '~/lab/haskellcomplete.vim'
 Plug '~/lab/stack.vim'
 Plug '~/lab/vim-ghcid'
+Plug '~/lab/vim-ghcid-quickfix'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Julian/vim-textobj-variable-segment'
@@ -25,25 +27,16 @@ Plug 'alvan/vim-closetag'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/matchit.zip'
 Plug 'ggVGc/vim-fuzzysearch'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
-Plug 'mbbill/undotree'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'othree/html5.vim'
-Plug 'rking/ag.vim'
 Plug 'thanthese/Tortoise-Typing'
-Plug 'kana/vim-vspec'
-Plug 'rhysd/vim-vspec-matchers'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'wellle/targets.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'xolox/vim-misc'
 Plug 'Konfekt/FastFold'
 Plug 'ntpeters/vim-better-whitespace'
@@ -51,45 +44,28 @@ Plug 'whatyouhide/vim-lengthmatters'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/loremipsum'
 Plug 'milkypostman/vim-togglelist'
-Plug 'vim-scripts/OmniCppComplete'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'StanAngeloff/php.vim'
-Plug 'jwalton512/vim-blade'
 Plug 'mattn/emmet-vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'asciidoc/vim-asciidoc'
-Plug 'rust-lang/rust.vim'
-Plug 'LnL7/vim-nix'
-Plug 'cespare/vim-toml'
-Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'racer-rust/vim-racer'
-Plug 'veegee/vim-pic'
+Plug 'racer-rust/vim-racer' " TODO: favor LSP?
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Twinside/vim-hoogle'
-Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'benmills/vimux'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'edkolev/curry.vim'
 Plug 'tpope/vim-abolish'
 Plug 'simeji/winresizer'
-Plug 'ron89/thesaurus_query.vim'
-Plug 'rhysd/vim-grammarous'
 Plug 'nixon/vim-vmath'
 Plug 'glts/vim-magnum'
 Plug 'glts/vim-radical'
 Plug 'triglav/vim-visual-increment'
-Plug 'fidian/hexmode'
 Plug 'rhysd/vim-textobj-anyblock'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'wavded/vim-stylus'
-Plug 'jvirtanen/vim-octave'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'calviken/vim-gdscript3'
-" Plug 'aiya000/vim-ghcid-quickfix'
-Plug '~/lab/vim-ghcid-quickfix'
 Plug 'jremmen/vim-ripgrep'
-Plug 'KabbAmine/zeavim.vim'
-Plug 'gisphm/vim-gradle'
+Plug 'natebosch/vim-lsc'
+Plug 'thosakwe/vim-flutter'
+Plug 'arcticicestudio/nord-vim'
+Plug 'goerz/jupytext.vim'
+Plug 'vim-scripts/Maven-Compiler'
+"#Plug 'hsanson/vim-android' "TODO: just want the compiler from this!!
 
 let g:ghcid_quickfix_show_only_error_occured = v:true
 
@@ -126,10 +102,6 @@ call plug#end()
         let g:lengthmatters_excluded+=['taskedit', 'vim', 'xml', 'hamlet']
         let g:lengthmatters_highlight_one_column = 1
         call lengthmatters#highlight_link_to('Visual')
-    "}}}
-
-    "{{{ Gutentags
-        let g:gutentags_cache_dir = "/home/alx/.tags"
     "}}}
 
     "{{{ EasyAlign
@@ -312,14 +284,18 @@ call plug#end()
         let g:ghcid_args = '--command "cabal v2-repl -f O0"'
     "}}}
 
-    "{{{ zeavim
-        let g:zv_file_types = {
-                    \   'java': 'android',
-                    \   'kotlin'  : 'android',
-                    \   'tex' : 'latex'
-                    \ }
+    "{{{ vim-lsc
+        let g:lsc_auto_map = v:false
+        let g:lsc_enable_autocomplete = v:false
+        let g:lsc_reference_highlights = v:false
+        let g:lsc_enable_diagnostics = v:false
+        set omnifunc=lsc#complete#complete
 
-        nnoremap <buffer><silent> K :Zeavim<CR>
+        let g:lsc_server_commands = {
+            \   'dart': 'dart /opt/dart-sdk/bin/snapshots/analysis_server.dart.snapshot --lsp'
+            \ }
+            " \ , 'java': '/usr/bin/java-language-server'
+
     "}}}
 "}}}
 "}}}
@@ -586,6 +562,8 @@ call plug#end()
     nnoremap zn :setlocal number! relativenumber!<CR>
     nnoremap zl :setlocal cursorline!<CR>
     nnoremap g= :call Format()<CR>
+    nnoremap zk :norm [e<CR>
+    nnoremap zj :norm ]e<CR>
 "}}}
 "}}}
 
