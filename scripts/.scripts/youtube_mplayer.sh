@@ -28,4 +28,4 @@ then
     exit 1
 fi
 
-mplayer -cookies -cookies-file "$COOKIE_FILE" "$video_uri"
+mpv -cookies -cookies-file="$COOKIE_FILE" "$video_uri"
