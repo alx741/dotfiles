@@ -6,10 +6,7 @@ echo
 cat ~/.ascii_art/pacman
 echo
 
-if [[ "$2" == "-Ss" ]]; then
-    echo "$3" > "$CACHE_FILE"
-fi
-
+[ "$2" = "-Ss" ] && echo "$3" > "$CACHE_FILE"
 
 case $1 in
     'pacman')
@@ -21,6 +18,6 @@ case $1 in
         yay --noeditmenu "$@"
         ;;
     'getit')
-        yay --noeditmenu -S $(cat "$CACHE_FILE")
+        yay --noeditmenu -S "$(cat "$CACHE_FILE")"
         ;;
 esac
