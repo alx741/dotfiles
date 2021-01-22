@@ -1,4 +1,3 @@
-options(stringsAsFactors=FALSE)
 options(scipen=10)
 options(editor="vim")
 options(menu.graphics=FALSE)
