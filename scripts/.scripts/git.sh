@@ -1,10 +1,10 @@
 #!/bin/sh
 
-function clone_clipboard
+clone_clipboard()
 {
-    url=`xclip -selection clipboard -o`
+    url=$(xclip -selection clipboard -o)
 
-    if [[ `echo "$url" | grep "github\|gitlab"` == "" ]];
+    if [ "$(echo "$url" | grep "github\|gitlab")" = "" ];
     then
         echo
         echo [!] Invalid URL in the clipboard
@@ -15,13 +15,16 @@ function clone_clipboard
     git clone "$url"
 }
 
-
-function push
+get_current_branch()
 {
-    current_branch=`git branch --list --no-color | grep "*" \
-        | sed -e 's/[\*[:space:]]//g'`
+    git branch --list --no-color | grep "\*" | sed -e 's/[\*[:space:]]//g'
+}
 
-    if [[ "$current_branch" == "master" ]];
+push()
+{
+    current_branch=$(get_current_branch)
+
+    if [ "$current_branch" = "master" ];
     then
         echo
         echo "Pushing to master"
@@ -29,10 +32,11 @@ function push
         git push origin master
     else
         echo
-        read -p "Push to $current_branch? [y/N] " push
+        echo -n "Push to $current_branch? [y/N] "
+        read -r push
         echo
 
-        if [[ "$push" == "y" ]];
+        if [ "$push" = "y" ];
         then
             echo
             echo "Pushing to $current_branch"
@@ -43,9 +47,9 @@ function push
 }
 
 
-function is_there_upstream
+is_there_upstream()
 {
-    if [[ `git remote | grep upstream` != "" ]];
+    if [ "$(git remote | grep upstream)" != "" ];
     then
         return 0
     else
@@ -54,12 +58,11 @@ function is_there_upstream
 }
 
 
-function pull
+pull()
 {
-    current_branch=`git branch --list --no-color | grep "*" \
-        | sed -e 's/[\*[:space:]]//g'`
+    current_branch=$(get_current_branch)
 
-    if [[ "$current_branch" != "master" ]];
+    if [ "$current_branch" != "master" ];
     then
         echo
         echo "[!] Not in master branch, better to do it manually"
@@ -81,11 +84,11 @@ function pull
     fi
 }
 
-function add_upstream
+add_upstream()
 {
-    url=`xclip -selection clipboard -o`
+    url=$(xclip -selection clipboard -o)
 
-    if [[ `echo "$url" | grep "github.com"` == "" ]];
+    if [ "$(echo "$url" | grep "github.com")" = "" ];
     then
         echo
         echo [!] Invalid URL in the clipboard
