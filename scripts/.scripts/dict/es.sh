@@ -20,7 +20,7 @@ WORD=$(echo "$WORD_RAW" | sed \
     ;s/ü/\[\[=u=\]\]/g
     ')
 
-entry_raw=$(grep -i "^$WORD" es_dict)
+entry_raw=$(grep -i "^$WORD" "$(dirname "$0")/es_dict")
 entry_word=$(echo "$entry_raw" | cut -d ',' -f1)
 entry=$(echo "$entry_raw" | cut -d ',' --complement -f1)
 
