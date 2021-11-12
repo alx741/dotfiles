@@ -22,3 +22,10 @@ xmonad/.xmonad/xmonad.errors
 xmonad/.xmonad/xmonad.hi
 xmonad/.xmonad/xmonad.o
 mpv/.config/mpv/watch_later
+gpg/.gnupg/private*
+gpg/.gnupg/pubring.kbx*
+gpg/.gnupg/random_seed
+gpg/.gnupg/tofu.db
+gpg/.gnupg/trustdb.gpg
+gpg/.gnupg/opengpg-revocs*
+gpg/.gnupg/crls.d
