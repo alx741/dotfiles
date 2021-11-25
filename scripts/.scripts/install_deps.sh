@@ -2,6 +2,7 @@
 
 COMMON_DEPS="\
     ansible \
+    alacritty \
     ansible-lint \
     arm-none-eabi-binutils \
     arm-none-eabi-gcc \
@@ -48,6 +49,7 @@ COMMON_DEPS="\
     mplayer \
     mpv \
     mutt \
+    ncdu \
     ncmpcpp \
     newsboat \
     nitrogen \
@@ -56,6 +58,7 @@ COMMON_DEPS="\
     npm \
     ntp \
     openbox \
+    openocd \
     openvpn \
     picocom \
     pulseaudio \
@@ -82,6 +85,7 @@ COMMON_DEPS="\
     unrar \
     unzip \
     vagrant \
+    vimb \
     w3m \
     weechat \
     wget \
@@ -140,6 +144,9 @@ FREEBSD_DEPS="\
 "
 
 ARCH_DEPS="\
+    openfortivpn \
+    maven \
+    lm_sensors \
     optipng \
     jpegoptim \
     acpi \
@@ -147,7 +154,7 @@ ARCH_DEPS="\
     asciidoctor \
     aspell-en \
     aspell-es \
-    bort \
+    borg \
     cronie \
     dart \
     dhclient \
@@ -161,7 +168,6 @@ ARCH_DEPS="\
     haskell-hscolour \
     hasktags \
     hdparm \
-    hindent \
     hoogle \
     httpie \
     intel-media-driver \
@@ -183,14 +189,12 @@ ARCH_DEPS="\
     pulseaudio-alsa \
     python-llfuse \
     python2-lxml \
-    python2-scour \
     qemu-arch-extra \
     qrencode \
     reflector \
     sed \
     shellcheck \
     speedtest-cli \
-    surf \
     task \
     texlive-most \
     time \
@@ -237,5 +241,5 @@ HASKELL_DEPS="\
 ## TODO: Enable package managers as needed
 # eval "pkg install $COMMON_DEPS $FREEBSD_DEPS"
 # eval "cabal install $HASKELL_DEPS"
-# eval "sudo pacman -Syy $COMMON_DEPS $ARCH_DEPS"
+ eval "sudo pacman -Syy $COMMON_DEPS $ARCH_DEPS"
 # eval "sudo yay -Syy $AUR_DEPS"

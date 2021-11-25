@@ -19,7 +19,7 @@ fi
 
 function rat_up
 {
-    if [[ "$current_window" == "urxvt" ]];
+    if [[ "$current_window" == "alacritty" ]];
     then
         ratpoison -c 'meta C-k'
     else
@@ -29,7 +29,7 @@ function rat_up
 
 function rat_down
 {
-    if [[ "$current_window" == "urxvt" ]];
+    if [[ "$current_window" == "alacritty" ]];
     then
         ratpoison -c 'meta C-j'
     else
@@ -39,7 +39,7 @@ function rat_down
 
 function rat_right
 {
-    if [[ "$current_window" == "urxvt" ]];
+    if [[ "$current_window" == "alacritty" ]];
     then
         ratpoison -c 'meta C-l'
     else
@@ -49,7 +49,7 @@ function rat_right
 
 function rat_left
 {
-    if [[ "$current_window" == "urxvt" ]];
+    if [[ "$current_window" == "alacritty" ]];
     then
         ratpoison -c 'meta C-h'
     else

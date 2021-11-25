@@ -21,7 +21,7 @@ function launch_firefox
         ratpoison -c "select firefox"
     else
         ratpoison -c "echo Started"
-        firefox&
+        firefox
     fi
 }
 
@@ -40,25 +40,38 @@ function launch_qutebrowser
 
 function launch_terminal
 {
-    if is_running 'urxvt';
+    if is_running 'alacritty';
     then
-        ratpoison -c "select urxvt"
+        ratpoison -c "select alacritty"
     else
-        urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
-            attach-session -d || exec tmux new-session -n$USER \
-            -s$USER@$HOSTNAME mutt\; new-window weechat\; new-window"&
+        alacritty -e bash -c "tmux -2 -q has-session -t main &>/dev/null && exec tmux\
+            attach-session -t main -d || exec tmux new-session -s main -n$USER \
+            mutt\; new-window weechat\; new-window"
     fi
 }
 
+# function launch_mon
+# {
+#     if is_running 'alacritty';
+#     then
+#         ratpoison -c "select alacritty"
+#     else
+#         alacritty -e bash -c "tmux -2 -q has-session -t mon &>/dev/null && exec tmux\
+#             attach-session -t mon -d || exec tmux new-session -s mon -n$USER \
+#             ssh -t cerbero.hades tmux a\; new-window ssh -t chia.hades tmux a\; \
+#             new-window ssh -t plotter.hades tmux a"
+#     fi
+# }
+
+
 function launch_bare_terminal
 {
-    if is_running 'urxvt';
+    if is_running 'alacritty';
     then
-        ratpoison -c "select urxvt"
+        ratpoison -c "select alacritty"
     else
-        urxvt -e bash -c "tmux -2 -q has-session &>/dev/null && exec tmux \
-            attach-session -d || exec tmux new-session -n$USER \
-            -s$USER@$HOSTNAME"&
+        alacritty -e bash -c "tmux -2 -q has-session -t alt &>/dev/null && exec tmux\
+            attach-session -t alt -d || exec tmux new-session -s alt -n$USER"&
     fi
 }
 
@@ -116,6 +129,9 @@ case "$1" in
     'terminal')
         launch_terminal
         ;;
+    # 'mon')
+    #     launch_mon
+    #     ;;
     'bare-terminal')
         launch_bare_terminal
         ;;
