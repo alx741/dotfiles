@@ -1,5 +1,6 @@
 # Dotfiles
 
+* Alacritty
 * Astyle
 * Avrdude
 * Ccze
