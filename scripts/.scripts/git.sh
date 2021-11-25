@@ -30,6 +30,18 @@ push()
         echo "Pushing to master"
         echo
         git push origin master
+    elif [ "$current_branch" = "master" ];
+    then
+        echo
+        echo "Pushing to master"
+        echo
+        git push origin master
+    elif [ "$current_branch" = "main" ];
+    then
+        echo
+        echo "Pushing to main"
+        echo
+        git push origin main
     else
         echo
         echo -n "Push to $current_branch? [y/N] "
