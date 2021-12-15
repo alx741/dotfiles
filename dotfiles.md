@@ -3,6 +3,7 @@
 * Alacritty
 * Astyle
 * Avrdude
+* Btop
 * Ccze
 * Cron
 * Ctags
