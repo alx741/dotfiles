@@ -46,105 +46,134 @@
     selected-active-background:  @background;
     spacing:                     0;
 }
-#window {
+
+window {
     background-color: @background;
     border:           1;
     padding:          15;
 }
-#mainbox {
+
+mainbox {
     border:  0;
     padding: 0;
 }
-#message {
+
+message {
     border:       0;
     border-color: @separatorcolor;
     padding:      1px ;
 }
-#textbox {
+
+textbox {
     text-color: @foreground;
 }
-#listview {
+
+listview {
     fixed-height: 0;
     border:       0;
-    spacing:      2px ;
+    spacing:      4px;
     scrollbar:    false;
-    padding:      15px 0px 0px ;
+    padding:      20px 0px 0px ;
 }
-#element {
+
+element {
     border:  0;
     padding: 5px;
 }
-#element.normal.normal {
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+element.normal.normal {
     background-color: @normal-background;
     text-color:       @normal-foreground;
 }
-#element.normal.urgent {
+
+element.normal.urgent {
     background-color: @urgent-background;
     text-color:       @urgent-foreground;
 }
-#element.normal.active {
+
+element.normal.active {
     background-color: @active-background;
     text-color:       @active-foreground;
 }
-#element.selected.normal {
+
+element.selected.normal {
     background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
+    text-color:       @base01;
 }
-#element.selected.urgent {
+
+element.selected.urgent {
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-foreground;
 }
-#element.selected.active {
+
+element.selected.active {
     background-color: @selected-active-background;
     text-color:       @selected-active-foreground;
 }
-#element.alternate.normal {
+
+element.alternate.normal {
     background-color: @alternate-normal-background;
     text-color:       @alternate-normal-foreground;
 }
-#element.alternate.urgent {
+
+element.alternate.urgent {
     background-color: @alternate-urgent-background;
     text-color:       @alternate-urgent-foreground;
 }
-#element.alternate.active {
+
+element.alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
 }
-#scrollbar {
+
+scrollbar {
     width:        0;
     border:       0;
     handle-width: 0;
     padding:      0;
 }
-#sidebar {
+
+sidebar {
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
 }
-#button.selected {
+
+button.selected {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
-#inputbar {
+
+inputbar {
     spacing:    0;
     text-color: @normal-foreground;
     padding:    0px 5px;
 }
-#case-indicator {
+
+case-indicator {
     spacing:    0;
     text-color: @normal-foreground;
 }
-#entry {
+
+entry {
     spacing:    0;
     text-color: @normal-foreground;
 }
-#prompt {
+
+prompt {
     spacing:    0;
     text-color: @normal-foreground;
 }
-#inputbar {
+
+inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
-#textbox-prompt-colon {
+
+textbox-prompt-colon {
     expand:     false;
     str:        "";
     margin:     0px 0em 0em 0em ;
