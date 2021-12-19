@@ -365,7 +365,7 @@
         alias dict="$SCRIPTS/dict/es.sh"
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
-        alias es="$SCRIPTS/edit_shot.sh"
+        alias es="$SCRIPTS/copy_shot.sh"
         alias gclone="$SCRIPTS/git.sh clone"
         alias getit="$SCRIPTS/pacman.sh getit"
         alias gpull="$SCRIPTS/git.sh pull"

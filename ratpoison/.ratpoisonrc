@@ -116,7 +116,6 @@
         definekey task s exec ~/.scripts/ratpoison/translate.sh es:en
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
-        definekey task at exec ~/.scripts/edit_shot.sh
         definekey task C-Return exec sudo poweroff
         definekey task question help task
         bind t readkey task
@@ -235,7 +234,8 @@
     bind Q delete
 
     # Screen shots
-    bind at exec scrot -u -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'mv $f ~/.shots/'
+    bind at exec scrot -s -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'xclip -selection clip -t image/png "$f"; mv $f ~/.shots/'
+    bind dollar exec scrot -u -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'mv $f ~/.shots/'
 
     # Calculator
     bind C exec ~/.scripts/ratpoison/calculator.sh
