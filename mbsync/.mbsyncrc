@@ -13,29 +13,29 @@ Path ~/.mail/
 Inbox ~/.mail/inbox
 
 Channel sillybytes-inbox
-Master :sillybytes-remote:Inbox
-Slave :sillybytes-local:
+Far :sillybytes-remote:INBOX
+Near :sillybytes-local:
 Sync All
 SyncState *
 
 Channel sillybytes-sent
-Master :sillybytes-remote:"Sent"
-Slave :sillybytes-local:"sent"
-Create Slave
+Far :sillybytes-remote:"Sent"
+Near :sillybytes-local:"sent"
+Create Near
 Sync All
 SyncState *
 
 Channel sillybytes-spam
-Master :sillybytes-remote:"Spam"
-Slave :sillybytes-local:"spam"
-Create Slave
+Far :sillybytes-remote:"Spam"
+Near :sillybytes-local:"spam"
+Create Near
 Sync All
 SyncState *
 
 Channel sillybytes-trash
-Master :sillybytes-remote:"Trash"
-Slave :sillybytes-local:"trash"
-Create Slave
+Far :sillybytes-remote:"Trash"
+Near :sillybytes-local:"trash"
+Create Near
 Sync All
 SyncState *
 
