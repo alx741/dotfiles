@@ -18,16 +18,17 @@
 #{{{ Color
     color=on
     include /usr/share/doc/task/rc/solarized-light-256.theme
-    include /usr/share/doc/task/rc/holidays.es-EC.rc
+    #include /usr/share/doc/task/rc/holidays.es-EC.rc
 #}}}
 
 #{{{ Sync
     taskd.server=freecinc.com:53589
-    taskd.key=\/home\/alx\/.task\/freecinc_8714c066.key.pem
-    taskd.certificate=\/home\/alx\/.task\/freecinc_8714c066.cert.pem
-    taskd.ca=\/home\/alx\/.task\/freecinc_8714c066.ca.pem
-    taskd.credentials=FreeCinc\/freecinc_8714c066\/92559017-7811-4e79-9a46-05194921b37d
+    taskd.key=\/home\/alx\/.task\/freecinc.key.pem
+    taskd.certificate=\/home\/alx\/.task\/freecinc.cert.pem
+    taskd.ca=\/home\/alx\/.task\/freecinc.ca.pem
+    taskd.credentials=FreeCinc\/freecinc_4cbf561d\/f2e80a86-426a-4a02-b0ad-453d31aaf17c
 #}}}
 
 
 # vim:fdm=marker
+news.version=2.6.0
