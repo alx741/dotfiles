@@ -1,5 +1,6 @@
 text/plain; less %s
-text/html; firefox --new-tab %s >/dev/null 2>&1; needsterminal
+text/html; firefox --new-tab %s & sleep 3; needsterminal;
+text/html; vimb -i %s >/dev/null 2>&1; needsterminal
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 
 image/jpg;   sxiv %s
