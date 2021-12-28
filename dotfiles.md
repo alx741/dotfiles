@@ -27,6 +27,7 @@
 * Mpd
 * Mplayer
 * Mpv
+* Msmtp
 * Mutt
 * MySQL/MariaDB
 * Ncmpcpp
