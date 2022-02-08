@@ -1,0 +1,42 @@
+set surround
+set commentary
+set textobj-indent
+set vim-paragraph-motion
+set matchit
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set wrapscan
+set showmode
+set ruler
+
+onoremap h vh
+onoremap l vl
+onoremap b vb
+onoremap B vB
+onoremap F vF
+onoremap T vT
+onoremap ^ v^
+onoremap g^ vg^
+onoremap + v+
+onoremap g+ vg+
+onoremap ( v(
+onoremap ` v`
+
+nnoremap j gj
+nnoremap k gk
+nnoremap 0 g0
+nnoremap g0 0
+nnoremap ^ g^
+nnoremap ^ g^
+nnoremap $ g$
+nnoremap g$ $
+nnoremap gs :up<CR>
+nnoremap <C-c> :noh<CR>
+nnoremap gp `[v`]
+nnoremap go gvo<esc>
+nnoremap 2O O<esc>O
+nnoremap 2o o<esc>o
+nnoremap dtp yapgP
+nnoremap gd :action GotoDeclaration

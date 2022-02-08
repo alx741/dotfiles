@@ -16,6 +16,7 @@
 * Gtk
 * Haskeline
 * Hindent
+* Ideavim
 * Inkscape
 * Kitty
 * Krita
