@@ -10,6 +10,8 @@ set hlsearch
 set wrapscan
 set showmode
 set ruler
+set clipboard+=unnamed
+set clipboard+=ideaput
 
 onoremap h vh
 onoremap l vl
@@ -39,4 +41,13 @@ nnoremap go gvo<esc>
 nnoremap 2O O<esc>O
 nnoremap 2o o<esc>o
 nnoremap dtp yapgP
-nnoremap gd :action GotoDeclaration
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap g; :action JumpToLastChange<CR>
+nnoremap g, :action JumpToNextChange<CR>
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
