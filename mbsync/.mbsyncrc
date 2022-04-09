@@ -1,8 +1,9 @@
 IMAPAccount sillybytes
 Host mail.privateemail.com
 User alx@sillybytes.net
-PassCmd "cat ~/.mutt/pass"
-SSLType STARTTLS
+PassCmd "cat ~/.sec/alx@sillybytes.net"
+SSLType IMAPS
+SSLVersions TLSv1.2 TLSv1.3
 
 IMAPStore sillybytes-remote
 Account sillybytes
@@ -15,29 +16,40 @@ Inbox ~/.mail/inbox
 Channel sillybytes-inbox
 Far :sillybytes-remote:INBOX
 Near :sillybytes-local:
+Create Both
+Expunge Both
 Sync All
 SyncState *
 
 Channel sillybytes-sent
 Far :sillybytes-remote:"Sent"
 Near :sillybytes-local:"sent"
-Create Near
+Create Both
+Expunge Both
 Sync All
 SyncState *
+
 
 Channel sillybytes-spam
 Far :sillybytes-remote:"Spam"
 Near :sillybytes-local:"spam"
+MaxMessages 50
+ExpireUnread yes
 Create Near
+Expunge Both
 Sync All
 SyncState *
+
 
 Channel sillybytes-trash
 Far :sillybytes-remote:"Trash"
 Near :sillybytes-local:"trash"
+MaxMessages 50
 Create Near
+Expunge Both
 Sync All
 SyncState *
+
 
 Group sillybytes
 Channel sillybytes-inbox
