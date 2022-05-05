@@ -1,6 +1,8 @@
 # remember: serveo.net
 #           ncdu
 #           woeusb: bootable windows
+#           ffmpeg -f x11grab -s 1920x1080 -i :0.0+1920,0 out.mkv
+#           get X509 PEM TLS cert: openssl s_client -connect DOMAIN:443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
 
 #{{{ Plugins & Zgen
     source "${HOME}/.zgen/zgen.zsh"
@@ -45,7 +47,7 @@
     setopt vi
     setopt no_hup
     setopt no_check_jobs
-    setopt ignore_eof
+    # setopt ignore_eof
     setopt no_beep
     setopt numeric_glob_sort
     setopt extended_glob
@@ -74,13 +76,16 @@
 #}}}
 
 #{{{ Variables
-    export HADES="hades.alx.mooo.com"
+
+
+    # AMD RX580 GPU drivers
+    export LIBVA_DRIVER_NAME=radeonsi
+    export VDPAU_DRIVER=radeonsi
+
     export SCRIPTS="~/.scripts"
     export EDITOR=vim
     export PAGER=less
     export KEYTIMEOUT=1  # Reduce vi-mode lag
-
-    export LIBVA_DRIVER_NAME=iHD
 
     # Android
     export ANDROID_HOME="/opt/android-sdk/"
@@ -90,7 +95,7 @@
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
     export _JAVA_AWT_WM_NONREPARENTING=1
     export JAVA_FONTS=/usr/share/fonts/TTF
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
     export JENA="/mnt/hdd/alx/u/web_semantica/apache-jena-3.6.0/bin"
 
     # Gradle
@@ -141,6 +146,10 @@
     # Firefox
     export MOZ_X11_EGL=1
     export MOZ_WEBRENDER=0
+    export MOZ_DISABLE_RDD_SANDBOX=1
+
+    # ESP-IDF
+    export ESP_IDF="/home/alx/lab/esp-idf/components/esptool_py/esptool:/home/alx/lab/esp-idf/components/espcoredump:/home/alx/lab/esp-idf/components/partition_table:/home/alx/lab/esp-idf/components/app_update:/home/alx/.espressif/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf/bin:/home/alx/.espressif/tools/xtensa-esp32s2-elf/esp-2020r3-8.4.0/xtensa-esp32s2-elf/bin:/home/alx/.espressif/tools/xtensa-esp32s3-elf/esp-2020r3-8.4.0/xtensa-esp32s3-elf/bin:/home/alx/.espressif/tools/riscv32-esp-elf/1.24.0.123_64eb9ff-8.4.0/riscv32-esp-elf/bin:/home/alx/.espressif/tools/esp32ulp-elf/2.28.51-esp-20191205/esp32ulp-elf-binutils/bin:/home/alx/.espressif/tools/esp32s2ulp-elf/2.28.51-esp-20191205/esp32s2ulp-elf-binutils/bin:/home/alx/.espressif/tools/openocd-esp32/v0.10.0-esp32-20200709/openocd-esp32/bin:/home/alx/.espressif/python_env/idf4.4_py3.9_env/bin:/home/alx/lab/esp-idf/tools"
 
     # Path
     PATH="/usr/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:"
@@ -160,6 +169,7 @@
     PATH+="$JENA:"
     PATH+="$FLUTTER:"
     PATH+="$FACTORIO_BIN:"
+    # PATH+="$ESP_IDF:"
 
     # Others
     PATH+="/home/alx/lab/stage:"
@@ -189,6 +199,7 @@
     alias cdmem="cd /mnt/mem"
     alias cdmeme=cdmem
     alias clip="xclip -selection clipboard -i"
+    alias cal="cal -m -3"
     alias df="df -h"
     alias dhcp="sudo dhclient enp3s0"
     alias dl="darcs log"
@@ -214,13 +225,12 @@
     alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
     alias grep="grep --line-number --ignore-case --color=auto"
     alias gs="git status -sb"
+    alias ls="ls --color"
     alias ll="l | less -R"
     alias LL="L | less -R"
     alias lsl="command ls -lLh --color"
     alias lsls="command ls -lLha --color"
     alias lg="la"
-    alias m="mpv"
-    alias mail="mutt"
     alias meme=mem
     alias mkdir="mkdir -p"
     alias moretmp="sudo mount -o remount,size=10G,noatime /tmp"
@@ -236,6 +246,7 @@
     alias S="sxiv -a -q ./*&"
     alias ser="sudo service"
     alias suod="sudo"
+    alias pamcan="pacman"
     alias sys="sudo systemctl"
     alias time="command time -p"
     alias tte="trans -b -t en"
@@ -366,10 +377,14 @@
         alias eT="$SCRIPTS/network/et_phone_home.sh"
         alias eje="$SCRIPTS/mem.sh eject"
         alias es="$SCRIPTS/copy_shot.sh"
+        alias fd="fd -c never"
+        alias procs="procs -c disable"
+        alias tldr="tldr --color never"
         alias gclone="$SCRIPTS/git.sh clone"
         alias getit="$SCRIPTS/pacman.sh getit"
         alias gpull="$SCRIPTS/git.sh pull"
         alias gpush="$SCRIPTS/git.sh push"
+        alias gpush-force="$SCRIPTS/git.sh pushforce"
         alias gupstream="$SCRIPTS/git.sh add_upstream"
         alias home="$SCRIPTS/home.sh"
         alias html2hamlet="$SCRIPTS/html2hamlet.sh"
@@ -480,6 +495,7 @@
     autoload -z edit-command-line
     zle -N edit-command-line
     bindkey '^E' edit-command-line
+    # bindkey '^D' exit
     # bindkey -M viins '^E' insert-last-word
 #}}}
 
@@ -495,20 +511,20 @@
         git_repo_name=$(git rev-parse --show-toplevel 2> /dev/null)
         git_repo_name=${git_repo_name##*/}
         if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b%c%u%F{normal}]"
+            zstyle ':vcs_info:*' formats " %F{normal}[%F{yellow}$git_repo_name%F{normal}|%F{normal}%b%c%u%F{normal}]"
         } else {
-            zstyle ':vcs_info:*' formats " %F{normal}[%F{magenta}$git_repo_name%F{normal}|%F{green}%b %c%u%F{red}•%F{normal}]"
+            zstyle ':vcs_info:*' formats " %F{normal}[%F{yellow}$git_repo_name%F{normal}|%F{normal}%b %c%u%F{red}•%F{normal}]"
         }
 
         vcs_info
     }
 
     custom_prompt=$'\n''%{$fg[blue]%} %2~$reset_color${vcs_info_msg_0_}'
-    custom_prompt+="%{$reset_color%}%{$fg_bold[magenta]%} "
+    custom_prompt+="%{$reset_color%}%{$fg[black]%} "
     custom_prompt+="( ͡° ͜ʖ ͡°)%{$reset_color%}"
 
     PS1=$custom_prompt
-    PS2="%{$fg[blue]%} | go on %{$fg[magenta]%}(>'_')>%{$reset_color%}  "
+    PS2="%{$fg[blue]%} | go on %{$fg[black]%}(>'_')>%{$reset_color%}  "
 #}}}
 
 #{{{ Vi-mode
@@ -644,7 +660,7 @@
 #{{{ Global Functions
     function command_not_found_handler()
     {
-        cat ~/.ascii_art/doge
+        echo "wut?"
     }
 
     function list_dir()
@@ -652,12 +668,9 @@
         echo
         find "$1/" -maxdepth 1 -not -path '*/\.*' -printf \
             "[%y]%P\n" | tail -n +2 | eval ${SORT_COMMAND} \
-            | sed -r \
-            "s/\[[d]\](.*)/$(printf ' \033[1m')\1$(printf '\033[0m')/"\
-            | sed -r \
-            "s/\[[f]\](.*)/ \1/"\
-            | sed -r \
-            "s/\[[l]\](.*)/ \1$(printf '\033[38;5;14m@\033[0m')/"
+            | sed -r "s/\[[d]\](.*)/$(printf ' \033[1m')\1$(printf '\033[0m')/" \
+            | sed -r "s/\[[f]\](.*)/ \1/" \
+            | sed -r "s/\[[l]\](.*)/ \1$(printf '\033[38;5;14m@\033[0m')/"
         SORT_COMMAND="sort"
     }
 
@@ -763,12 +776,11 @@
 
     #{{{ FZF
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-        bindkey '^D' fzf-cd-widget
-        bindkey '^F' fzf-file-widget
+        bindkey '^f' fzf-cd-widget
 
         export FZF_TMUX=1
         export FZF_TMUX_HEIGHT=20%
-        export FZF_DEFAULT_COMMAND='rg -i --files --max-depth 10 --hidden \
+        export FZF_DEFAULT_COMMAND='rg -i --files --max-depth 15 --hidden \
             --iglob "!.git" --iglob "!_darcs" --iglob "!*.o" --iglob "!*.hi" \
             --iglob "!.stack-work" --iglob "!node_modules" --iglob "!.shake" \
             --iglob "!bower_components" --iglob "!bower"'
@@ -786,15 +798,19 @@
     #{{{ Autosuggestions
         bindkey '^ ' autosuggest-accept
         export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=14'
+        export ZSH_AUTOSUGGEST_HISTORY_IGNORE="gpush-force|rm -r*"
     #}}}
 #}}}
 
-#{{{ First Init
-    # Auto start X11
-    if [[ ! (-e /tmp/.X0-lock) ]]; then
-        startx
-    fi
-#}}}
+##{{{ First Init
+#    # Auto start X11
+#    if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#    exec startx
+#    fi
+##}}}
+
+# Fix Java GUI's
+wmname LG3D
 
 
 # vim:fdm=marker
