@@ -1,9 +1,3 @@
-#{{{ Settings
-    nextscreen
-    exec nitrogen --restore
-    exec wmname LG3D
-#}}}
-
 #{{{ Variables
     set barborder 1
     set bargravity sw
@@ -24,7 +18,9 @@
     set wingravity c
     set winname class
     set font dejavusans-11
+    set rudeness 12
 #}}}
+
 #{{{ Bindigs
     #{{{ Unbindings
         unbind q
@@ -71,6 +67,14 @@
         bind backslash  exec ~/.scripts/ratpoison/volume_control.sh toggle
     #}}}
 
+    #{{{ Color signaling
+        newkmap colorsignaling
+        definekey colorsignaling r exec ~/.scripts/zigbee/color_signal.sh red
+        definekey colorsignaling b exec ~/.scripts/zigbee/color_signal.sh blue
+        definekey colorsignaling o exec ~/.scripts/zigbee/color_signal.sh off
+        bind r readkey colorsignaling
+    #}}}
+
     #{{{ Music control
         newkmap music
         definekey top s-space exec ~/.scripts/ratpoison/music_control.sh toggle
@@ -113,10 +117,12 @@
         definekey task p exec ~/.scripts/ratpoison/task_control.sh list_projects
         definekey task a exec ~/.scripts/ratpoison/task_control.sh add
         definekey task e exec ~/.scripts/ratpoison/translate.sh en:es
+        definekey task E exec ~/.scripts/ratpoison/translate.sh en:es:speak
         definekey task s exec ~/.scripts/ratpoison/translate.sh es:en
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
+        definekey task D exec ~/.scripts/ratpoison/translate.sh de:en:speak
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
-        definekey task C-Return exec sudo poweroff
+        definekey task C-Return exec doas poweroff
         definekey task question help task
         bind t readkey task
     #}}}
@@ -198,16 +204,18 @@
     bind o only
     bind C-o only
 
-    # Swap screens
+    # Swap screens and ensure the middle one gets the focus
     bind x abort
-    bind j swap 1 0
-    bind C-j swap 1 0
+    bind j exec ratpoison -c "swap 1 0" && ratpoison -c "fselect 1"
+    bind k exec ratpoison -c "swap 1 2" && ratpoison -c "fselect 1"
+    bind C-j exec ratpoison -c "swap 1 0" && ratpoison -c "fselect 1"
+    bind C-k exec ratpoison -c "swap 1 2" && ratpoison -c "fselect 1"
 
     # Fast switching
-    bind c exec ~/.scripts/ratpoison/app_select.sh terminal
+    bind c exec ~/.scripts/ratpoison/app_select.sh bare-terminal
     bind e exec ~/.scripts/ratpoison/app_select.sh firefox
     bind i exec ~/.scripts/ratpoison/app_select.sh zathura
-    bind comma exec ~/.scripts/ratpoison/app_select.sh weechat
+    bind comma exec ~/.scripts/ratpoison/app_select.sh mon
 
     # Cameras control
     bind period exec  ~/.scripts/ratpoison/app_select.sh cam 2
@@ -244,12 +252,12 @@
     bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
-    bind S exec sleep 0.5 && xset dpms force off
+    bind S exec killall mpv; sleep 0.5 && xset dpms force off
     bind C-i exec ~/.scripts/ratpoison/lock.sh
 
     # Print information
     bind a exec ratpoison -c "echo $( ~/.scripts/echo_info.sh )"
-    bind A exec rofi -e "$( ~/.scripts/echo_cal.sh )"
+    bind A exec ratpoison -c "echo $(cal -3 -m)"
 
     # Network information
     bind I select avd
@@ -259,6 +267,15 @@
     bind C-y exec rofi -display-drun "" -show drun
 #}}}
 
+
+
+#{{{ Startup
+    exec wmname LG3D
+
+    execf 1 ~/.scripts/ratpoison/app_select.sh bare-terminal
+    execf 0 ~/.scripts/ratpoison/app_select.sh firefox
+    execf 2 qbittorrent
+#}}}
 
 
 # vim:fdm=marker
