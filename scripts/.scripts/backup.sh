@@ -1,13 +1,19 @@
 #!/bin/sh
 
+## RESTORE
+# borg --remote-path=borg1 list CRITICAL_OFFSITE_BORG_REPO
+# mkdir backup
+# borg --remote-path=borg1 extract CRITICAL_OFFSITE_BORG_REPO::<BACKUP-DATE>
+
 LOG_FILE=/home/alx/.backup.log
 
-HOME=/home/alx
-CERBERO_MAC=00:19:d1:e9:b1:ae
-LOCAL_BORG_REPO=ssh://alx@cerbero.hades/home/alx/backups/amy
-CRITICAL_OFFSITE_BORG_REPO=$(<$HOME/.borg_user_host):alx/critical
-NONCRITICAL_OFFSITE_BORG_REPO=$(<$HOME/.borg_user_host):alx/noncritical
-export BORG_PASSPHRASE=$(<$HOME/.borg_passphrase)
+LOCAL_BORG_REPO_1=ssh://alx@borg1.terminus/mnt/backups/borg
+# LOCAL_BORG_REPO_2=ssh://alx@borg2.trantor/mnt/backups/borg
+
+NETWORK_CONFIG=$HOME/.network_config
+
+source "$HOME/.sec/borg"
+export BORG_PASSPHRASE
 export BORG_RELOCATED_REPO_ACCESS_IS_OK=yes
 
 log() { printf "[%s]  %s\n" "$(date)" "$*" >> "$LOG_FILE"; }
@@ -16,45 +22,83 @@ logerror() { printf "[%s] [error]  %s\n" "$(date)" "$*" >> "$LOG_FILE"; }
 
 ########################################
 ## Local backup
+##
+## Exclude music directory but include 'from_youtube'
 ########################################
 local_backup() {
-    log "Starting local backup"
+    LOCAL_REPO="$1"
+    log "Starting local backup at: $LOCAL_REPO"
     borg create \
         --compression zstd,15 \
         --exclude-caches \
-        --exclude 'Desktop' \
-        --exclude 'torrent' \
+        --exclude '*Desktop' \
+        --exclude '*My Games' \
+        --exclude '*torrent' \
+        --exclude '*music' \
         --exclude '*.mail' \
         --exclude '*.cache' \
         --exclude '*.wine' \
         --exclude '*.cabal' \
         --exclude '*.stack' \
         --exclude '*.ghcup' \
+        --exclude '*.hoogle' \
+        --exclude '*.rustup' \
         --exclude '*.gradle' \
         --exclude '*.npm' \
+        --exclude '*.java' \
+        --exclude '*.keras' \
         --exclude '*.npm-packages' \
         --exclude '*.cargo' \
+        --exclude '*.local' \
+        --exclude '*.flutter' \
+        --exclude '*.dart' \
+        --exclude '*.dartServer' \
         --exclude '*.AndroidStudio*' \
-        --exclude '*.android*' \
-        "$LOCAL_BORG_REPO"::'{hostname}-{now}' \
+        --exclude '*.eclipse' \
+        --exclude '*.android' \
+        --exclude '*.zoom' \
+        --exclude '*.tor' \
+        --exclude '*.minecraft' \
+        --exclude '*.virtualbox_vms' \
+        --exclude '*VirtualBox VMS' \
+        --exclude '*cinebus.img.gz' \
+        --exclude '*KoboReader*' \
+        --exclude '/home/alx/lab/ninja/server/environment' \
+        "$LOCAL_REPO"::'{hostname}-{now}' \
         "$HOME" \
+        "$HOME/music/from_youtube" \
+
             2>> $LOG_FILE \
             && log "Local backup done" \
             || logerror "Local backup failed"
 
 
-    log "Starting local pruning"
+    log "Starting local pruning at: $LOCAL_REPO"
     borg prune \
         --prefix '{hostname}-' \
         --keep-daily    1 \
-        --keep-weekly   1 \
-        --keep-monthly  1 \
+        --keep-weekly   2 \
+        --keep-monthly  4 \
         --keep-yearly   1 \
-        "$LOCAL_BORG_REPO" \
+        "$LOCAL_REPO"\
             2>> $LOG_FILE \
             && log "Local pruning done" \
             || logerror "Local pruning failed"
 }
+
+
+
+#######################################
+# Networking config dump
+#######################################
+networking_config_dump() {
+    log "Starting Mikrotik dump"
+    ssh admin@cerbero.trantor -o PubkeyAcceptedAlgorithms=+ssh-rsa export >> "$NETWORK_CONFIG/mikrotik_cerbero.export"
+
+    log "Copying Unifi controller backups"
+    cp -rfv /usr/lib/unifi/data/backup "$NETWORK_CONFIG/unifi.backup"
+}
+
 
 
 
@@ -65,6 +109,9 @@ local_backup() {
 #   borg init -e repokey --remote-path=borg1 <USER>@<HOST>:alx/critical
 #######################################
 offsite_critical_backup() {
+
+    networking_config_dump
+
     log "Starting critical off-site backup"
     borg create --remote-path=borg1 \
         --compression zstd,15 \
@@ -76,7 +123,14 @@ offsite_critical_backup() {
         "$HOME/.keystores" \
         "$HOME/.gnupg" \
         "$HOME/.sri" \
-        "$HOME/lab/backupcodes" \
+        "$HOME/.network_config" \
+        "$HOME/.sec" \
+        "$HOME/.intellij_settings" \
+        "$HOME/.insomnia_settings" \
+        "$HOME/.local/share/DBeaverData/workspace6" \
+        "$HOME/lab/ninja/server/ninjarmm/core/core-logic/src/main/resources/.local" \
+        "$HOME/lab/ninja/server/.idea" \
+        "$HOME/lab/ninja/server/ninjarmm/.idea" \
             2>> $LOG_FILE \
             && log "Critical off-site backup done" \
             || logerror "Critical off-site backup failed"
@@ -108,7 +162,10 @@ offsite_noncritical_backup() {
         "$NONCRITICAL_OFFSITE_BORG_REPO"::'alx-noncritical-{now}' \
         "$HOME/books" \
         "$HOME/dotfiles" \
-        "$HOME/uni/master" \
+        "$HOME/lab/datasheets" \
+        "$HOME/music/from_youtube" \
+        "$HOME/.config/calibre" \
+        "$HOME/misc/factorio/saves" \
             2>> $LOG_FILE \
             && log "Non-Critical off-site backup done" \
             || logerror "Non-Critical off-site backup failed"
@@ -133,13 +190,8 @@ all_backup() {
     offsite_critical_backup
     offsite_noncritical_backup
 
-    log "Waking Cerbero up"
-    wol "$CERBERO_MAC"
-    sleep 120
-    local_backup
-    sleep 60
-    log "Shutting Cerbero down"
-    ssh cerbero.hades "doas poweroff"
+    local_backup "$LOCAL_BORG_REPO_1"
+    # local_backup "$LOCAL_BORG_REPO_2"
 }
 
 case "$1" in
@@ -147,7 +199,8 @@ case "$1" in
         all_backup
         ;;
     'local')
-        local_backup
+        local_backup "$LOCAL_BORG_REPO_1"
+        # local_backup "$LOCAL_BORG_REPO_2"
         ;;
     'critical')
         offsite_critical_backup
