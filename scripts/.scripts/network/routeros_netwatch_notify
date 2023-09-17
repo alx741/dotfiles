@@ -1,0 +1,25 @@
+# Email settings
+:global emailFrom "demerezel@sillybytes.net"
+:global emailTo "alx@sillybytes.net"
+:global snmpHost "mail.privateemail.com"
+:global snmpPort "587"
+:global snmpUser "demerezel@sillybytes.net"
+:global snmpPasswd "283hzJ5wB2k7jTe"
+
+# Monitor settings
+:global interval "3m"
+:global timeout "15s"
+
+# Hosts to monitor
+# Grab from .sec/netwatch_hosts
+:global hosts {
+}
+
+/tool e-mail set address=$snmpHost from=$emailFrom password=$snmpPasswd user=$snmpUser port=$snmpPort start-tls=yes
+
+:foreach host,ip in=$hosts do={
+    /tool netwatch add host=$ip interval=$interval timeout=$timeout \
+        comment=$host \
+        up-script="/tool e-mail send to=$emailTo subject=\"$host is back online\" body=\"$host is back online\"" \
+        down-script="/tool e-mail send to=$emailTo subject=\"$host seems down\" body=\"$host found dead\""
+}
