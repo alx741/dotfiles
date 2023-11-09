@@ -49,8 +49,7 @@ urxvt.transparent: false
 urxvt.fading: 0
 urxvt.termName: xterm-256color
 urxvt.loginShell: true
-urxvt.saveLines: 50
-urxvt.lineSpace: 0
+urxvt.saveLines: 2048
 urxvt.title: terminal
 urxvt.scrollstyle: plain
 urxvt.scrollTtyKeypress: true
@@ -59,11 +58,11 @@ urxvt.scrollWithBuffer: false
 urxvt.secondaryScreen: true
 urxvt.secondaryScroll: true
 urxvt.scrollBar: false
-urxvt.cursorBlink: false
+urxvt.cursorBlink: true
 urxvt.cursorUnderline: false
 urxvt.hold: false
 urxvt.urlLauncher: firefox
-urxvt.internalBorder: 3
+urxvt.internalBorder: 8
 urxvt.externalBorder: 0
 urxvt.reverseVideo: false
 
@@ -71,9 +70,15 @@ urxvt.reverseVideo: false
 urxvt.allow_bold: true
 urxvt*font: xft:DejaVuSansMono:pixelsize=14:style=book
 urxvt*boldFont: xft:DejaVuSansMono:pixelsize=14:style=bold
+!*.font: xft:Iosevka:style=Regular:size=12
+!*.boldFont: xft:Iosevka:style=Bold:size=12
+!*.italicFont: xft:Iosevka:style=Italic:size=12
+!*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12
 
 ! Fix font space
 urxvt*letterSpace: -1
+!urxvt*letterSpace: 0
+!urxvt*lineSpace: 0
 
 ! Perl extensions
 urxvt.perl-ext-common: default,matcher,resize-font
