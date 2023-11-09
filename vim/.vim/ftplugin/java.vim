@@ -5,8 +5,8 @@ setlocal foldnestmax=2
 nnoremap <buffer><silent> g<space> :call Getter_and_setter()<CR>
 compiler mvn
 
-nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=mvn mvn compile<CR>
-nnoremap <buffer><silent> gjk :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=mvn mvn test<CR>
+" nnoremap <buffer><silent> gjj :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=mvn mvn compile<CR>
+" nnoremap <buffer><silent> gjk :up<CR>:echo "Type Checking..."<CR>:Dispatch -compiler=mvn mvn test<CR>
 
 function! Getter_and_setter()
     exe "norm! f="

@@ -3,6 +3,8 @@ setlocal spelllang=en
 setlocal commentstring=<!--%s-->
 nnoremap <buffer><silent> gh :call Md_create_header(1)<CR>
 nnoremap <buffer><silent> gH :call Md_create_header(0)<CR>
+nnoremap <buffer><silent> gD :call Md_create_spanish_date_header()<CR>
+nnoremap <buffer><silent> gJ :call Md_create_journal_template()<CR>
 nnoremap <buffer><silent> ]] :call Next_header(0)<CR>
 nnoremap <buffer><silent> [[ :call Next_header(1)<CR>
 nnoremap <buffer><silent> gO :call PDF_open()<CR>
@@ -38,4 +40,22 @@ function! Md_create_header(header)
             exe "norm! x"
         endif
     endif
+endfunction
+
+function! Md_create_date_header()
+    exe 'r!date "+\%A, \%B \%d"'
+    exe "norm! I# \<esc>$"
+endfunction
+
+function! Md_create_spanish_date_header()
+    exe 'r!LANG=es_EC.UTF8 date "+\%A, \%B \%d"'
+    exe "norm! I# \<esc>W~W~$"
+endfunction
+
+function! Md_create_journal_template()
+    exe "norm! o"
+    call Md_create_spanish_date_header()
+    exe "norm! o"
+    exe "r $HOME/.sec/journal_template_1"
+    exe "norm! $"
 endfunction

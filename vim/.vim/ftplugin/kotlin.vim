@@ -15,7 +15,7 @@ hi! haskellImportKeywords ctermfg=136
 "{{{ Mappings
 " General
 nnoremap <buffer><silent> g= :%!ktlint -a -F --stdin 2> /dev/null<CR>
-nnoremap <buffer><silent> gjj :up<CR>:Dispatch make run<CR>
+nnoremap <buffer><silent> gjj :up<CR>:Dispatch make build<CR>
 nnoremap <buffer><silent> gjb :up<CR>:Dispatch make run-device<CR>
 
 " Arrows

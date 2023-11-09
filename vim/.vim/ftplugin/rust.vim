@@ -1,5 +1,6 @@
 setlocal makeprg=cargo
 compiler cargo
+setlocal equalprg=rustfmt
 
 "{{{ Mappings
 nnoremap <buffer><silent> g= :call RustFormat()<CR>
