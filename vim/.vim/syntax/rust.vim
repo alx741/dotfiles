@@ -8,8 +8,10 @@ syntax match rsNote "\v\c<(todo|fixme)>[:]*"
 syntax match rsComment "//.*$" contains=@Spell,rsNote
 syntax region rsCommentBlock start="/\*\%(!\|\*[*/]\@!\)\@!" end="\*/" contains=@Spell,rsNote
 " hi! rsKeywords ctermfg=3
-" hi! rsType ctermfg=13
-hi! rsFn ctermfg=0
+
+" hi! rsType cterm=bold
+hi! rsFn cterm=bold
+hi! rsSymbol cterm=bold
 hi! rsNote cterm=bold ctermfg=13
 " hi! rsString ctermfg=0
 hi! rsComment ctermfg=gray

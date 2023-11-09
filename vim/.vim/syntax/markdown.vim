@@ -5,6 +5,6 @@ syntax match note "\v\c<(todo|fixme)>[:]*"
 syntax match commentLine "\v\<!--.*--\>" contains=@Spell,note
 syntax spell toplevel
 
-hi! header ctermfg=0
+hi! header cterm=bold
 hi! note cterm=bold ctermfg=13
 hi! commentLine ctermfg=gray

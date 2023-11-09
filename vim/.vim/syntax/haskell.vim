@@ -10,7 +10,7 @@ syntax match hsImport "\v\zsimport\s[A-Za-z0-9.]+\ze"
 syntax match hsUndefined "\Cundefined"
 syntax match hsError "\Cerror "
 
-hi! hsTypeDecs ctermfg=0
+hi! hsTypeDecs cterm=bold
 hi! link hsType Normal
 hi! hsNote cterm=bold ctermfg=13
 hi! hsComment ctermfg=gray
