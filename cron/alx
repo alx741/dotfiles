@@ -1,0 +1,6 @@
+# */30 * * * * task sync &> /dev/null
+*/5 * * * * mbsync -V -a &> /dev/null
+0 18 * * * /home/alx/.scripts/backup.sh critical &> /dev/null
+20 18 * * 5 /home/alx/.scripts/backup.sh noncritical
+30 18 * * 5 /home/alx/.scripts/backup.sh local
+00 17 * * 5 doas fstrim /
