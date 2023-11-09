@@ -515,16 +515,16 @@ source /home/alx/.sec/env_vars
         git_repo_name=$(git rev-parse --show-toplevel 2> /dev/null)
         git_repo_name=${git_repo_name##*/}
         if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-            zstyle ':vcs_info:*' formats " %F{normal}[%F{yellow}$git_repo_name%F{normal}|%F{normal}%b%c%u%F{normal}]"
+            zstyle ':vcs_info:*' formats " %F{normal}[$git_repo_name | %F{normal}%b%c%u%F{normal}]"
         } else {
-            zstyle ':vcs_info:*' formats " %F{normal}[%F{yellow}$git_repo_name%F{normal}|%F{normal}%b %c%u%F{red}•%F{normal}]"
+            zstyle ':vcs_info:*' formats " %F{normal}[$git_repo_name | %F{normal}%b %c%u%F{red}•%F{normal}]"
         }
 
         vcs_info
     }
 
-    custom_prompt=$'\n''%{$fg[blue]%} %2~$reset_color${vcs_info_msg_0_}'
-    custom_prompt+="%{$reset_color%}%{$fg[black]%} "
+    custom_prompt=$'\n''%B %2~$reset_color${vcs_info_msg_0_}'
+    custom_prompt+="%{$reset_color%} "
     custom_prompt+="( ͡° ͜ʖ ͡°)%{$reset_color%}"
 
     PS1=$custom_prompt
@@ -595,7 +595,7 @@ source /home/alx/.sec/env_vars
     {
         if [[ "$KEYMAP" == "vicmd" ]];
         then
-            PS1="$custom_prompt %{$fg[red]%}> "
+            PS1="$custom_prompt %{$fg[black]%}> "
         else
             PS1="$custom_prompt   "
         fi
@@ -802,7 +802,8 @@ source /home/alx/.sec/env_vars
     #{{{ Autosuggestions
         bindkey '^ ' autosuggest-accept
         export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=14'
-        export ZSH_AUTOSUGGEST_HISTORY_IGNORE="gpush-force|rm -r*"
+        export ZSH_AUTOSUGGEST_HISTORY_IGNORE="gpush-force|rm -r*|git remote add *"
+        export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="$ZSH_AUTOSUGGEST_HISTORY_IGNORE"
     #}}}
 #}}}
 
@@ -815,6 +816,5 @@ source /home/alx/.sec/env_vars
 
 # Fix Java GUI's
 wmname LG3D
-
 
 # vim:fdm=marker
