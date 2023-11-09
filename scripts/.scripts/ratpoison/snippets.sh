@@ -1,6 +1,6 @@
 #! /bin/sh
 
-SNIP_DIR=~/.snippets
+SNIP_DIR=~/.sec/snippets
 
 
 function snippet_menu
