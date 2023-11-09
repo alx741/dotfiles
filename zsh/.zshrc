@@ -4,6 +4,8 @@
 #           ffmpeg -f x11grab -s 1920x1080 -i :0.0+1920,0 out.mkv
 #           get X509 PEM TLS cert: openssl s_client -connect DOMAIN:443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
 
+source /home/alx/.sec/env_vars
+
 #{{{ Plugins & Zgen
     source "${HOME}/.zgen/zgen.zsh"
 
@@ -95,7 +97,7 @@
     export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
     export _JAVA_AWT_WM_NONREPARENTING=1
     export JAVA_FONTS=/usr/share/fonts/TTF
-    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+    # export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
     export JENA="/mnt/hdd/alx/u/web_semantica/apache-jena-3.6.0/bin"
 
     # Gradle
@@ -192,7 +194,6 @@
     alias bl="borg --remote-path=borg1"
     alias avd="emulator -gpu host -accel on @main"
     alias avdcold="emulator -gpu host -accel on @main -no-snapshot-load"
-    alias ag="rg"
     alias rg="rg -i --colors line:fg:yellow --colors line:style:bold --colors path:fg:green --colors path:style:bold --colors match:fg:black --colors match:bg:yellow --colors match:style:nobold"
     alias am="alsamixer" alsamixer='alsamixer -g -c 0'
     alias artisan="php artisan"
@@ -222,7 +223,8 @@
     alias gc="git commit"
     alias gco="git checkout"
     alias git="hub"
-    alias gl="git log --format=format:'%C(auto)%h %C(green)%aN%Creset %Cblue%cr%Creset %s'"
+    alias gl="git log --format=format:'%C(bold)%h%Creset %cr %C(black)%aN%Creset %s'"
+    alias gcp="git cherry-pick"
     alias grep="grep --line-number --ignore-case --color=auto"
     alias gs="git status -sb"
     alias ls="ls --color"
@@ -281,6 +283,8 @@
     alias yesod="stack exec -- yesod"
     alias hakyll="stack exec site"
     alias shake="stack -- exec shake"
+    alias pwgen="pwgen -N 1 -s -nc 20"
+    alias cbn="git branch --show-current | xclip -i -selection clipboard" # Copy (current) Branch Name
 
     #{{{ Functions
         function md() { pandoc -s -f markdown -t man "$1" | command man -l - }
