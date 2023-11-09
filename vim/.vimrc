@@ -65,6 +65,7 @@ Plug 'thosakwe/vim-flutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'goerz/jupytext.vim'
 Plug 'vim-scripts/Maven-Compiler'
+Plug 'dpelle/vim-LanguageTool'
 "#Plug 'hsanson/vim-android' "TODO: just want the compiler from this!!
 
 let g:ghcid_quickfix_show_only_error_occured = v:true
@@ -100,6 +101,7 @@ call plug#end()
         let g:lengthmatters_excluded=['man', 'info', 'help', 'neoman']
         let g:lengthmatters_excluded+=['html', 'mail', 'pager', 'qf']
         let g:lengthmatters_excluded+=['taskedit', 'vim', 'xml', 'hamlet']
+        let g:lengthmatters_excluded+=['java']
         let g:lengthmatters_highlight_one_column = 1
         call lengthmatters#highlight_link_to('Visual')
     "}}}
@@ -117,7 +119,8 @@ call plug#end()
     "}}}
 
     "{{{ Togglelist
-        let g:toggle_list_no_mappings=1
+        " let g:toggle_list_no_mappings=1
+        let g:toggle_list_copen_command="botright copen"
     "}}}
 
     "{{{ Closetag
@@ -239,8 +242,8 @@ call plug#end()
             \ }
     "}}}
 
-    "{{{ Grammarous
-        let g:grammarous#use_vim_spelllang = 1
+    "{{{ LanguageTool
+        let g:languagetool_cmd='/usr/bin/languagetool --mothertongue ES'
     "}}}
 
     "{{{ ALE
@@ -250,7 +253,8 @@ call plug#end()
         let g:ale_lint_on_save = 0
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_set_highlights = 0
-        let g:grammarous#use_vim_spelllang = 1
+        let g:ale_set_highlights = 0
+        let g:ale_disable_lsp = 1 " Using vim-lsc instead
         nnoremap <silent>gjl :up<CR>:echo "Linting..."<CR>:ALELint<CR>
         nnoremap <silent> gl<space> :call ToggleLocationList()<CR>
         nnoremap <silent> glc :sign unplace *<CR>
@@ -263,10 +267,6 @@ call plug#end()
     "{{{ Vmath
         vmap <expr>  ++  VMATH_YankAndAnalyse()
         nmap         ++  vip++
-    "}}}
-
-    "{{{ Togglelist
-        let g:toggle_list_copen_command="botright copen"
     "}}}
 
     "{{{ Syntastic
@@ -289,12 +289,14 @@ call plug#end()
         let g:lsc_enable_autocomplete = v:false
         let g:lsc_reference_highlights = v:false
         let g:lsc_enable_diagnostics = v:false
+        let g:lsc_trace_level='verbose'
         set omnifunc=lsc#complete#complete
 
         let g:lsc_server_commands = {
             \   'dart': 'dart /opt/dart-sdk/bin/snapshots/analysis_server.dart.snapshot --lsp'
             \ }
-            " \ , 'java': '/usr/bin/java-language-server'
+            " \ , 'java': 'jdtls'
+            " \ , 'kotlin': 'kotlin-language-server'
 
     "}}}
 "}}}
@@ -329,13 +331,13 @@ call plug#end()
 "{{{ Status Line and Color
     set statusline+=\ %f\ %r\ %m
 
-    set statusline+=\ \ \ \ %#error#
-    set statusline+=%{StatuslineTabWarning()}
-    set statusline+=%*
+    " set statusline+=\ \ \ \ %#error#
+    " set statusline+=%{StatuslineTabWarning()}
+    " set statusline+=%*
 
-    set statusline+=\ \ \ \ %#error#
-    set statusline+=%{StatuslineTrailingSpaceWarning()}
-    set statusline+=%*
+    " set statusline+=\ \ \ \ %#error#
+    " set statusline+=%{StatuslineTrailingSpaceWarning()}
+    " set statusline+=%*
 
     set statusline+=%=%c:%l/%L\ %P
 
@@ -416,7 +418,7 @@ call plug#end()
     set laststatus=2
     set lazyredraw
     set linebreak
-    set noesckeys
+    " set noesckeys
     set nojoinspaces
     set ruler
     set secure
@@ -497,10 +499,21 @@ call plug#end()
     nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
     nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
     nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-    nnoremap <silent> <Left>  <nop>
-    nnoremap <silent> <Down>  <nop>
-    nnoremap <silent> <Up>    <nop>
-    nnoremap <silent> <Right> <nop>
+
+    nnoremap <silent> <Left>  <Nop>
+    nnoremap <silent> <Down>  <Nop>
+    nnoremap <silent> <Up>    <Nop>
+    nnoremap <silent> <Right> <Nop>
+
+    inoremap <silent> <Left>  <Nop>
+    inoremap <silent> <Down>  <Nop>
+    inoremap <silent> <Up>    <Nop>
+    inoremap <silent> <Right> <Nop>
+
+    vnoremap <silent> <Left>  <Nop>
+    vnoremap <silent> <Down>  <Nop>
+    vnoremap <silent> <Up>    <Nop>
+    vnoremap <silent> <Right> <Nop>
 "}}}
 
 "{{{ X Clipboard yanking/pasting
@@ -530,7 +543,7 @@ call plug#end()
     nnoremap <leader><CR> mzggg?G`z
     nnoremap <silent> J :call Join()<CR>
     nnoremap <C-c> :noh<CR>
-    nnoremap <esc> :noh<CR>
+    " nnoremap <esc> :noh<CR>
     nnoremap <silent> gl :set opfunc=Listify<CR>g@
     vnoremap <silent> gl :<c-u>call Listify(visualmode(), 1)<CR>
     nnoremap <silent> zs :call Translate(expand("<cword>"), "es")<CR>
@@ -552,7 +565,7 @@ call plug#end()
     nnoremap <silent> <c-_> :FuzzySearch<CR>
     inoremap {{ {<cr>}<esc>kA
     vnoremap {{ <esc>mz'<O{<esc>'>o}<esc>`z
-    " vnoremap t <esc>:'<,'>sort<CR>
+    vnoremap t <esc>:'<,'>sort<CR>
     nnoremap <C-w>+ :resize +5<CR>
     nnoremap <C-w>- :resize -5<CR>
     nnoremap <C-w>> :vertical resize +5<CR>
@@ -575,7 +588,6 @@ function! Format() "{{{
     " * Re-Indent
     "
     " * If: C, CPP, PHP or Java code: format using 'astyle'
-    " * If: Rust code: format using 'rustfmt'
     "
     " * Clear 'formatprg' so `gq` can be used with the default
     "   behavior
@@ -586,9 +598,6 @@ function! Format() "{{{
         silent! execute 'norm! gggqG'
     elseif &ft ==? 'java'
         setlocal formatprg=astyle\ --mode=java\ --style=java
-        silent! execute 'norm! gggqG'
-    elseif &ft ==? 'rust'
-        setlocal formatprg=rustfmt
         silent! execute 'norm! gggqG'
     endif
 
@@ -610,17 +619,20 @@ function! ToggleSpell() "{{{
     if &spell ==? 0
         set spelllang=en
         set spell
+        set thesaurus=/home/alx/.scripts/dict/en_thesaurus
         echom "Spell [EN]"
 
     elseif &spell ==? 1
         if &spelllang ==? 'en'
             set spelllang=es
+            set thesaurus=/home/alx/.scripts/dict/es_thesaurus
             echom "Spell [ES]"
 
         elseif &spelllang ==? 'es'
             set spelllang=en
+            set thesaurus=/home/alx/.scripts/dict/en_thesaurus
             set nospell
-            echom "NO Spell"
+            echom "Spell [OFF]"
         endif
     endif
 endfunction
