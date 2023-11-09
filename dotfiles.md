@@ -19,7 +19,6 @@
 - Ideavim
 - Inkscape
 - Kitty
-- Krita
 - Mbsync
 - Mimi
 - Modprobe
