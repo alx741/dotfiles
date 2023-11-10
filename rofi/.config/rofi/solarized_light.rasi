@@ -78,7 +78,7 @@ listview {
 
 element {
     border:  0;
-    padding: 5px;
+    padding: 10px;
 }
 
 element-text {
