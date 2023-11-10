@@ -1,0 +1,1 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{serial}=="16fd885e8fc9eb11828c8f4f1d69213e", SYMLINK+="ttyUSBZigbeeBridge"
