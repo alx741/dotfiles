@@ -16,6 +16,7 @@ Inbox ~/.mail/inbox
 Channel sillybytes-inbox
 Far :sillybytes-remote:INBOX
 Near :sillybytes-local:
+MaxMessages 500
 Create Both
 Expunge Both
 Sync All
