@@ -9,7 +9,8 @@ while true; do
     then
         # Single tap
         $HOME/.scripts/zigbee/color_signal.sh off
-    else
+    elif [ "$state" == "double" ]
+    then
         # Double tap
         $HOME/.scripts/zigbee/color_signal.sh red
     fi

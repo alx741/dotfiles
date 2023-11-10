@@ -67,12 +67,19 @@
         bind backslash  exec ~/.scripts/ratpoison/volume_control.sh toggle
     #}}}
 
-    #{{{ Color signaling
-        newkmap colorsignaling
-        definekey colorsignaling r exec ~/.scripts/zigbee/color_signal.sh red
-        definekey colorsignaling b exec ~/.scripts/zigbee/color_signal.sh blue
-        definekey colorsignaling o exec ~/.scripts/zigbee/color_signal.sh off
-        bind r readkey colorsignaling
+    #{{{ Physical automation control
+        newkmap automation
+        definekey automation r exec ~/.scripts/zigbee/illumination.sh red
+        definekey automation b exec ~/.scripts/zigbee/illumination.sh lab_illumination bright
+        definekey automation w exec ~/.scripts/zigbee/illumination.sh lab_illumination warm
+        definekey automation n exec ~/.scripts/zigbee/illumination.sh lab_illumination neutral
+        definekey automation l exec ~/.scripts/zigbee/illumination.sh lab_illumination low
+        definekey automation O exec ~/.scripts/zigbee/illumination.sh lab_illumination off
+        definekey automation o exec ~/.scripts/zigbee/illumination.sh off && killall zoom && ratpoison -c "echo Zoom begone" || ratpoison -c "echo Zoom's nowhere"
+        definekey automation u exec ~/.scripts/zigbee/shade.sh open
+        definekey automation d exec ~/.scripts/zigbee/shade.sh close
+        definekey automation s exec ~/.scripts/zigbee/shade.sh shade
+        bind r readkey automation
     #}}}
 
     #{{{ Music control
@@ -122,7 +129,7 @@
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task D exec ~/.scripts/ratpoison/translate.sh de:en:speak
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
-        definekey task C-Return exec doas poweroff
+        definekey task C-Return exec doas systemctl suspend
         definekey task question help task
         bind t readkey task
     #}}}
@@ -219,6 +226,7 @@
 
     # Cameras control
     bind period exec  ~/.scripts/ratpoison/app_select.sh cam 2
+    bind greater exec  ~/.scripts/ratpoison/app_select.sh cam 9
     bind C-period exec  ~/.scripts/ratpoison/app_select.sh cam 2
     bind 1 exec  ~/.scripts/ratpoison/app_select.sh cam 1
     bind 2 exec  ~/.scripts/ratpoison/app_select.sh cam 2
@@ -274,7 +282,6 @@
 
     execf 1 ~/.scripts/ratpoison/app_select.sh bare-terminal
     execf 0 ~/.scripts/ratpoison/app_select.sh firefox
-    execf 2 qbittorrent
 #}}}
 
 
