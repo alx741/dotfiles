@@ -25,7 +25,12 @@ function translate
         exit 0
     fi
 
-    translation=$(trans -w 80 -no-ansi "$1" "$word")
+    if [[ "$2" == speak ]]
+    then
+        translation=$(trans -w 80 -no-ansi --speak "$1" "$word")
+    else
+        translation=$(trans -w 80 -no-ansi "$1" "$word")
+    fi
     ratpoison -c "echo $translation"
 }
 
@@ -38,6 +43,10 @@ case "$1" in
     'en:es')
         translate "en:es"
         ;;
+    'en:es:speak')
+        translate "en:es" speak
+        ;;
+
     'en:de')
         translate "en:de"
         ;;
@@ -55,5 +64,8 @@ case "$1" in
         ;;
     'de:en')
         translate "de:en"
+        ;;
+    'de:en:speak')
+        translate "de:en" speak
         ;;
 esac

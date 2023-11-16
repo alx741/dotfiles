@@ -4,21 +4,24 @@ cd ~
 echo
 echo Updating Mirrorlist
 echo
-sudo reflector --latest 100 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --latest 50 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 echo
 echo Updating System
 echo
 sudo pacman -Syyu --noconfirm
 echo
-echo Cleaning Pacman cache
-echo
-sudo paccache -k 3 -r
-sudo pacman -Sc
-yay -Sc
+
+# echo Cleaning Pacman cache
+# echo
+# sudo paccache -k 3 -r
+# sudo pacman -Sc
+# yay -Sc
+
 #echo
 #echo Updating stack package index
 #echo
 #stack update
+
 echo
 echo Updating cabal package index
 echo

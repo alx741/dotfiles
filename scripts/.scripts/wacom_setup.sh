@@ -2,9 +2,10 @@
 
 WACOM_PEN="Wacom Intuos S Pen stylus"
 WACOM_PAD="Wacom Intuos S Pad pad"
-MAIN_SCREEN="DP2-1"
+MAIN_SCREEN="DisplayPort-1"
 
 xsetwacom set "$WACOM_PEN" MapToOutput "$MAIN_SCREEN"
+xsetwacom set 10 Area 0 0 15200 8550  # 1920x1080 screen aspect ratio
 xsetwacom set "$WACOM_PEN" Button 2 2
 xsetwacom set "$WACOM_PEN" Button 3 3
 

@@ -43,6 +43,9 @@ case $extension in
     dxf)
         librecad "$file"&
         ;;
+    fcstd)
+        freecad "$file"&
+        ;;
     *)
         if is_filetype "text" "$file" && [[ "$extension" != "html" ]];
         then

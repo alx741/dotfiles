@@ -1,8 +1,8 @@
 #!/bin/sh
 
 COMMON_DEPS="\
-    ansible \
     alacritty \
+    ansible \
     ansible-lint \
     arm-none-eabi-binutils \
     arm-none-eabi-gcc \
@@ -48,6 +48,8 @@ COMMON_DEPS="\
     mpc \
     mplayer \
     mpv \
+    msmtp \
+    msmtp-mta \
     mutt \
     ncdu \
     ncmpcpp \
@@ -220,7 +222,6 @@ ARCH_DEPS="\
 AUR_DEPS="\
     acpilight \
     anydesk \
-    cropgui \
     kepubify-bin \
     ktlint \
     mimi-git \

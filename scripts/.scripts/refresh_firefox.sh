@@ -7,5 +7,5 @@ $($HOME/.scripts/ratpoison/app_select.sh "firefox")
 WID=$(xdotool search --name "Mozilla Firefox" | head -1)
 xdotool key --window "$WID" ctrl+r
 
-# Focus Urxvt
+# Focus terminal
 $($HOME/.scripts/ratpoison/app_select.sh "terminal")

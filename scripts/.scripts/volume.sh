@@ -5,7 +5,7 @@ MUSIC="$VOLUME_DIR/music"
 NORMAL="$VOLUME_DIR/normal"
 SELECTED="$VOLUME_DIR/selected_mode"
 
-CARD=1
+CARD=2
 CONTROL=PCM
 
 

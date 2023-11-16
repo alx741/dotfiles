@@ -3,7 +3,9 @@
 # builtin_id=$(xinput -list | grep -i 'AT Translated' | grep -oh 'id=[0-9]*' | cut -d'=' -f 2)
 # venabili_id=$(xinput -list | grep -i 'Venabili' | tail -n 1 | grep -oh 'id=[0-9]*' | cut -d'=' -f 2)
 
-$(dirname "$0")/keyboard_setup_udev.sh
+# $(dirname "$0")/keyboard_setup_udev.sh
+setxkbmap us -variant altgr-intl
+xset r rate 200 50
 killall xbindkeys xcape 2&> /dev/null
 xbindkeys&
 xcape -e 'Super_L=Control_L|G|bracketleft'&

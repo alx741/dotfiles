@@ -58,8 +58,8 @@ function launch_terminal
 #     else
 #         alacritty -e bash -c "tmux -2 -q has-session -t mon &>/dev/null && exec tmux\
 #             attach-session -t mon -d || exec tmux new-session -s mon -n$USER \
-#             ssh -t cerbero.hades tmux a\; new-window ssh -t chia.hades tmux a\; \
-#             new-window ssh -t plotter.hades tmux a"
+#             ssh -t elijah.trantor tmux a\; new-window ssh -t giskard.trantor tmux a\; \
+#             new-window ssh -t miner.trantor tmux a"
 #     fi
 # }
 
@@ -112,13 +112,6 @@ function launch_cam
 }
 
 
-function launch_weechat
-{
-    launch_terminal
-    tmux select-window -t 0
-}
-
-
 case "$1" in
     'firefox')
         launch_firefox
@@ -140,9 +133,6 @@ case "$1" in
         ;;
     'cam')
         launch_cam $2
-        ;;
-    'weechat')
-        launch_weechat
         ;;
     'androidstudio')
         launch_androidstudio

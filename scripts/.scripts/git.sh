@@ -20,42 +20,30 @@ get_current_branch()
     git branch --list --no-color | grep "\*" | sed -e 's/[\*[:space:]]//g'
 }
 
+pushforce()
+{
+    current_branch=$(get_current_branch)
+    echo
+    echo -n "[!] FORCE PUSH to $current_branch? [yes/NO] "
+    read -r push
+    echo
+
+    if [ "$push" = "yes" ];
+    then
+        echo
+        echo "FORCE Pushing to $current_branch"
+        echo
+        git push origin --force "$current_branch"
+    fi
+}
+
 push()
 {
     current_branch=$(get_current_branch)
-
-    if [ "$current_branch" = "master" ];
-    then
-        echo
-        echo "Pushing to master"
-        echo
-        git push origin master
-    elif [ "$current_branch" = "master" ];
-    then
-        echo
-        echo "Pushing to master"
-        echo
-        git push origin master
-    elif [ "$current_branch" = "main" ];
-    then
-        echo
-        echo "Pushing to main"
-        echo
-        git push origin main
-    else
-        echo
-        echo -n "Push to $current_branch? [y/N] "
-        read -r push
-        echo
-
-        if [ "$push" = "y" ];
-        then
-            echo
-            echo "Pushing to $current_branch"
-            echo
-            git push origin "$current_branch"
-        fi
-    fi
+    echo
+    echo "Pushing to $current_branch"
+    echo
+    git push origin "$current_branch"
 }
 
 
@@ -115,6 +103,9 @@ add_upstream()
 case $1 in
     'push')
         push
+        ;;
+    'pushforce')
+        pushforce
         ;;
     'pull')
         pull
