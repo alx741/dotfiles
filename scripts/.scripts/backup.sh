@@ -7,7 +7,7 @@
 
 LOG_FILE=/home/alx/.backup.log
 
-LOCAL_BORG_REPO_1=ssh://alx@borg1.terminus/mnt/backups/borg
+LOCAL_BORG_REPO_1=ssh://alx@cerbero.trantor/mnt/hdd/local_borg_backups
 # LOCAL_BORG_REPO_2=ssh://alx@borg2.trantor/mnt/backups/borg
 
 NETWORK_CONFIG=$HOME/.network_config
@@ -17,7 +17,10 @@ export BORG_PASSPHRASE
 export BORG_RELOCATED_REPO_ACCESS_IS_OK=yes
 
 log() { printf "[%s]  %s\n" "$(date)" "$*" >> "$LOG_FILE"; }
-logerror() { printf "[%s] [error]  %s\n" "$(date)" "$*" >> "$LOG_FILE"; }
+logerror() {
+    printf "[%s] [error]  %s\n" "$(date)" "$*" >> "$LOG_FILE";
+    echo -e "Subject: Backup error\n\n$*" | /usr/bin/sendmail 'alx@sillybytes.net'
+}
 
 
 ########################################
@@ -26,6 +29,11 @@ logerror() { printf "[%s] [error]  %s\n" "$(date)" "$*" >> "$LOG_FILE"; }
 ## Exclude music directory but include 'from_youtube'
 ########################################
 local_backup() {
+
+    # FIXME: enable?
+    # phone_data_dump
+    # kobo_data_dump
+
     LOCAL_REPO="$1"
     log "Starting local backup at: $LOCAL_REPO"
     borg create \
@@ -75,7 +83,7 @@ local_backup() {
 
     log "Starting local pruning at: $LOCAL_REPO"
     borg prune \
-        --prefix '{hostname}-' \
+        --glob-archives '{hostname}-*' \
         --keep-daily    1 \
         --keep-weekly   2 \
         --keep-monthly  4 \
@@ -93,13 +101,42 @@ local_backup() {
 #######################################
 networking_config_dump() {
     log "Starting Mikrotik dump"
-    ssh admin@cerbero.trantor -o PubkeyAcceptedAlgorithms=+ssh-rsa export >> "$NETWORK_CONFIG/mikrotik_cerbero.export"
+    ssh admin@trantorgw.trantor -o PubkeyAcceptedAlgorithms=+ssh-rsa export >> "$NETWORK_CONFIG/mikrotik_trantorgw.export"
 
+    # TODO: Backup from global controller
     log "Copying Unifi controller backups"
     cp -rfv /usr/lib/unifi/data/backup "$NETWORK_CONFIG/unifi.backup"
 }
 
 
+
+#######################################
+# Local server config dump
+#######################################
+local_server_config_dump() {
+    log "Starting local server dump"
+    scp -r alx@cerbero.trantor:/home/alx/zigbee $HOME/.sec/cerbero-local_server/
+}
+
+
+
+#######################################
+# Phone data dump
+#######################################
+phone_data_dump() {
+    log "Starting phone data dump"
+    rsync --update --progress --exclude=Android -e 'ssh' -azv phone.helicon:/storage/emulated/0 /$HOME/.phone_backup
+}
+
+
+
+#######################################
+# Kobo data dump
+#######################################
+kobo_data_dump() {
+    log "Starting Kobo data dump"
+    rsync --update --progress -azv /run/media/alx/KOBOeReader /$HOME/.kobo_backup/
+}
 
 
 #######################################
@@ -111,6 +148,7 @@ networking_config_dump() {
 offsite_critical_backup() {
 
     networking_config_dump
+    local_server_config_dump
 
     log "Starting critical off-site backup"
     borg create --remote-path=borg1 \
@@ -125,6 +163,7 @@ offsite_critical_backup() {
         "$HOME/.sri" \
         "$HOME/.network_config" \
         "$HOME/.sec" \
+        "$HOME/.journal" \
         "$HOME/.intellij_settings" \
         "$HOME/.insomnia_settings" \
         "$HOME/.local/share/DBeaverData/workspace6" \
@@ -138,7 +177,7 @@ offsite_critical_backup() {
 
     log "Starting critical off-site pruning"
     borg prune --remote-path=borg1 \
-        --prefix 'alx-critical' \
+        --glob-archives 'alx-critical*' \
         --keep-daily    2 \
         --keep-weekly   4 \
         --keep-monthly  12 \
@@ -173,7 +212,7 @@ offsite_noncritical_backup() {
 
     log "Starting non-critical off-site pruning"
     borg prune --remote-path=borg1 \
-        --prefix 'alx-noncritical' \
+        --glob-archives 'alx-noncritical*' \
         --keep-daily    1 \
         --keep-weekly   1 \
         --keep-monthly  6 \
@@ -190,7 +229,8 @@ all_backup() {
     offsite_critical_backup
     offsite_noncritical_backup
 
-    local_backup "$LOCAL_BORG_REPO_1"
+    # TODO: new local backup server?
+    # local_backup "$LOCAL_BORG_REPO_1"
     # local_backup "$LOCAL_BORG_REPO_2"
 }
 
