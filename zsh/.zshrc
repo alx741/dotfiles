@@ -221,7 +221,6 @@ source /home/alx/.sec/env_vars
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
-    alias gco="git checkout"
     alias git="hub"
     alias gl="git log --format=format:'%C(bold)%h%Creset %cr %C(black)%aN%Creset %s'"
     alias gcp="git cherry-pick"
@@ -291,6 +290,7 @@ source /home/alx/.sec/env_vars
         function h() { command hoogle $@ | HsColour --tty }
         function hi() { command hoogle --info $@ | HsColour --tty }
         function gd() { git diff --color "$@" | diff-so-fancy | less -RSFXi }
+        function gco() {git checkout $(git branch | fzf | tr -d '[:space:]*') }
 
         function c()
         {
