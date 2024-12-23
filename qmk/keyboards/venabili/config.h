@@ -1,0 +1,2 @@
+#define TAPPING_TERM 130
+#define HOLD_ON_OTHER_KEY_PRESS
