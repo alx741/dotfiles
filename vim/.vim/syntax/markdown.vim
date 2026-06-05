@@ -5,6 +5,7 @@ syntax match commentLine "\v\<!--.*--\>" contains=@Spell
 syntax match bold "\v\*\zs.*\ze\*" contains=@Spell
 syntax match italic "\v_\zs.*\ze_" contains=@Spell
 syntax match code "\v`\zs.*\ze`"
+syntax match note "\vTODO\ze"
 syntax spell toplevel
 
 hi! header cterm=bold
@@ -12,3 +13,4 @@ hi! commentLine ctermfg=gray
 hi! bold cterm=bold
 hi! italic cterm=italic
 hi! code cterm=italic
+hi! note cterm=bold ctermfg=13
