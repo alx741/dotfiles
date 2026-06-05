@@ -2,8 +2,8 @@ IMAPAccount sillybytes
 Host mail.privateemail.com
 User alx@sillybytes.net
 PassCmd "cat ~/.sec/alx@sillybytes.net"
-SSLType IMAPS
-SSLVersions TLSv1.2 TLSv1.3
+TLSType IMAPS
+TLSVersions +1.2 +1.3
 
 IMAPStore sillybytes-remote
 Account sillybytes
@@ -46,6 +46,7 @@ Channel sillybytes-trash
 Far :sillybytes-remote:"Trash"
 Near :sillybytes-local:"trash"
 MaxMessages 50
+ExpireUnread yes
 Create Near
 Expunge Both
 Sync All
