@@ -22,11 +22,11 @@
 #}}}
 
 #{{{ Sync
-    taskd.server=freecinc.com:53589
-    taskd.key=\/home\/alx\/.task\/freecinc.key.pem
-    taskd.certificate=\/home\/alx\/.task\/freecinc.cert.pem
-    taskd.ca=\/home\/alx\/.task\/freecinc.ca.pem
-    taskd.credentials=FreeCinc\/freecinc_4cbf561d\/f2e80a86-426a-4a02-b0ad-453d31aaf17c
+    taskd.server=task.demerzel.sillybytes.net:53599
+    taskd.key=\/home\/alx\/.task\/alx.key.pem
+    taskd.certificate=\/home\/alx\/.task\/alx.cert.pem
+    taskd.ca=\/home\/alx\/.task\/ca.cert.pem
+    taskd.credentials=none/alx/62ed1241-b34a-11ee-877a-6f0acefe97f0
 #}}}
 
 
