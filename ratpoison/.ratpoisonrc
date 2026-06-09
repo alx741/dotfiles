@@ -17,7 +17,7 @@
     set waitcursor 0
     set wingravity c
     set winname class
-    set font dejavusans-11
+    set font FiraCode-10
     set rudeness 12
 #}}}
 
