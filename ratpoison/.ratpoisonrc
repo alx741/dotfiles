@@ -75,10 +75,14 @@
         definekey automation n exec ~/.scripts/zigbee/illumination.sh lab_illumination neutral
         definekey automation l exec ~/.scripts/zigbee/illumination.sh lab_illumination low
         definekey automation O exec ~/.scripts/zigbee/illumination.sh lab_illumination off
-        definekey automation o exec ~/.scripts/zigbee/illumination.sh off && killall zoom && ratpoison -c "echo Zoom begone" || ratpoison -c "echo Zoom's nowhere"
+        definekey automation o exec killall zoom && ratpoison -c "echo Zoom begone" || ratpoison -c "echo Zoom's nowhere" && ~/.scripts/zigbee/illumination.sh off
         definekey automation u exec ~/.scripts/zigbee/shade.sh open
         definekey automation d exec ~/.scripts/zigbee/shade.sh close
         definekey automation s exec ~/.scripts/zigbee/shade.sh shade
+
+        # Configure keyboard
+        definekey automation k exec ~/.scripts/keyboard_setup.sh
+
         bind r readkey automation
     #}}}
 
@@ -129,7 +133,7 @@
         definekey task d exec ~/.scripts/ratpoison/translate.sh de:en
         definekey task D exec ~/.scripts/ratpoison/translate.sh de:en:speak
         definekey task t exec ~/.scripts/ratpoison/translate.sh select
-        definekey task C-Return exec doas systemctl suspend
+        definekey task C-Return exec doas rtcwake -m no -u -t $(date +%s -d 'tomorrow 09:00') && doas systemctl suspend
         definekey task question help task
         bind t readkey task
     #}}}
@@ -145,6 +149,7 @@
         definekey firefox y exec ~/.scripts/ratpoison/firefox.sh youtube_search
         definekey firefox h exec ~/.scripts/ratpoison/firefox.sh hoogle_search hackage
         definekey firefox H exec ~/.scripts/ratpoison/firefox.sh hoogle_search stackage
+        definekey firefox a exec ~/.scripts/ratpoison/firefox.sh android_search
         definekey firefox n exec ~/.scripts/ratpoison/firefox.sh rustdocs_search
         definekey firefox r exec ~/.scripts/ratpoison/firefox.sh rdocs_search
         definekey firefox c exec gpick
@@ -186,9 +191,6 @@
     # Select rat frame
     bind C-c exec ~/.scripts/ratpoison/select_rat_frame.sh
     bind C-v exec ~/.scripts/ratpoison/select_rat_frame.sh
-
-    # Configure keyboard
-    # bind C-k exec ~/.scripts/keyboard_setup.sh
 
     # Show last message
     bind semicolon lastmsg
@@ -260,7 +262,7 @@
     bind parenright exec ~/.scripts/ratpoison/backlight_control.sh inc
     bind parenleft exec ~/.scripts/ratpoison/backlight_control.sh dec
     bind underscore exec ~/.scripts/ratpoison/backlight_control.sh toggle
-    bind S exec killall mpv; sleep 0.5 && xset dpms force off
+    bind S exec killall -q mpv; sleep 0.5 && xset dpms force off
     bind C-i exec ~/.scripts/ratpoison/lock.sh
 
     # Print information
@@ -280,7 +282,7 @@
 #{{{ Startup
     exec wmname LG3D
 
-    execf 1 ~/.scripts/ratpoison/app_select.sh bare-terminal
+    execf 1 ~/.scripts/ratpoison/app_select.sh terminal
     execf 0 ~/.scripts/ratpoison/app_select.sh firefox
 #}}}
 
