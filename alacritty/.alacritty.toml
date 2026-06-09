@@ -1,5 +1,3 @@
-live_config_reload = true
-
 [colors.bright]
 black = "0x002b36"
 blue = "0x839496"
@@ -24,8 +22,15 @@ yellow = "0xb58900"
 background = "0xfdf6e3"
 foreground = "0x657b83"
 
+[colors.cursor]
+cursor = "0x002b36"
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+blink_interval = 500
+
 [font]
-size = 10.0
+size = 9.0
 
 [font.bold]
 family = "FiraCode"
@@ -43,9 +48,9 @@ style = "Oblique"
 family = "FiraCode"
 style = "Regular"
 
-[font.offset]
-x = 0
-y = 2
+# [font.offset]
+# x = 0
+# y = 2
 
 [mouse]
 hide_when_typing = true
@@ -64,3 +69,6 @@ title = "Alacritty"
 [window.padding]
 x = 6
 y = 4
+
+[general]
+live_config_reload = true
