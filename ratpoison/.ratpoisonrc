@@ -227,9 +227,10 @@
     bind comma exec ~/.scripts/ratpoison/app_select.sh mon
 
     # Cameras control
-    bind period exec  ~/.scripts/ratpoison/app_select.sh cam 2
-    bind greater exec  ~/.scripts/ratpoison/app_select.sh cam 9
-    bind C-period exec  ~/.scripts/ratpoison/app_select.sh cam 2
+    bind greater exec  ~/.scripts/ratpoison/app_select.sh cam next
+    bind less exec  ~/.scripts/ratpoison/app_select.sh cam prev
+    bind period exec  ~/.scripts/ratpoison/app_select.sh cam default1
+    bind C-period exec  ~/.scripts/ratpoison/app_select.sh cam default1
     bind 1 exec  ~/.scripts/ratpoison/app_select.sh cam 1
     bind 2 exec  ~/.scripts/ratpoison/app_select.sh cam 2
     bind 3 exec  ~/.scripts/ratpoison/app_select.sh cam 3
