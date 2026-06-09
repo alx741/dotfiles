@@ -253,8 +253,8 @@
     bind Q delete
 
     # Screen shots
-    bind at exec scrot -s -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'xclip -selection clip -t image/png "$f"; mv $f ~/.shots/'
-    bind dollar exec scrot -u -z -q 100 '%Y-%m-%d_%H:%M:%S.jpg' -e 'mv $f ~/.shots/'
+    bind at exec scrot -s -z -q 100 '%Y-%m-%d_%H-%M-%S.jpg' -e 'xclip -selection clip -t image/png "$f"; mv $f ~/.shots/'
+    bind dollar exec scrot -u -z -q 100 '%Y-%m-%d_%H-%M-%S.jpg' -e 'mv $f ~/.shots/'
 
     # Calculator
     bind C exec ~/.scripts/ratpoison/calculator.sh
