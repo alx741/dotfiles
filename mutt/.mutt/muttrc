@@ -62,7 +62,6 @@
     set folder = "~/.mail"
     set spoolfile = "+inbox"
     mailboxes =inbox =sent =spam =trash
-    source ~/.mutt/aliases
 #}}}
 
 #{{{ Key bindings
