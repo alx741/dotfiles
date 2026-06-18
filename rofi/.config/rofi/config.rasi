@@ -1,5 +1,5 @@
 configuration {
-    font: "FireCode 11";
+    font: "DejaVuSans 11";
 }
 
 @theme "./solarized_light.rasi"
