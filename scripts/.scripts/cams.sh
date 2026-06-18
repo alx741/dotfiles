@@ -10,7 +10,7 @@ then
     echo "$DEFAULT_CAM" > "$CAM_SELECT_FILE"
 fi
 
-current_cam=$(cat $CAM_SELECT_FILE)
+current_cam=$(cat "$CAM_SELECT_FILE")
 
 if [ "$1" == "next" ]
 then
@@ -25,26 +25,35 @@ else
     new_cam="$1"
 fi
 
-PID=$(cat $CAM_PID_FILE)
+# Bounds check before launching mpv
+if [ "$new_cam" -ne 1001 ] 2>/dev/null
+then
+    if [ "$new_cam" -lt 1 ]; then
+        new_cam=1
+    elif [ "$new_cam" -gt 8 ]; then
+        new_cam=8
+    fi
+fi
 
-if  ps -p $PID &> /dev/null
+PID=$(cat "$CAM_PID_FILE" 2>/dev/null)
+
+if [ -n "$PID" ] && ps -p "$PID" &> /dev/null
 then
     if [ "$current_cam" == "$new_cam" ]
     then
         exit 0
     else
-        kill $(cat "$CAM_PID_FILE")
+        kill "$PID"
         rm "$CAM_PID_FILE"
     fi
 fi
 
 if [ "$new_cam" == "1001" ]
 then
-    current_cam=1001
-    mpv "rtsp://viewer:CkG4EJ5RzeYfYrXL@dvr.trantor:554/Streaming/Channels/601" \
-        --external-file="rtsp://viewer:CkG4EJ5RzeYfYrXL@dvr.trantor:554/Streaming/Channels/301" \
-        --external-file="rtsp://viewer:CkG4EJ5RzeYfYrXL@dvr.trantor:554/Streaming/Channels/701" \
-        --external-file="rtsp://viewer:CkG4EJ5RzeYfYrXL@dvr.trantor:554/Streaming/Channels/801" \
+    mpv "rtsp://$CAMS_SECRET/Streaming/Channels/601" \
+        --external-file="rtsp://$CAMS_SECRET/Streaming/Channels/301" \
+        --external-file="rtsp://$CAMS_SECRET/Streaming/Channels/701" \
+        --external-file="rtsp://$CAMS_SECRET/Streaming/Channels/801" \
         --lavfi-complex="
             nullsrc=size=1920x1080 [base];
             [vid1] setpts=PTS-STARTPTS, scale=960x540 [upperleft];
@@ -61,23 +70,14 @@ then
         --no-keepaspect &
     echo "$!" > "$CAM_PID_FILE"
 else
-    current_cam="$1"
-    mpv "rtsp://$CAMS_SECRET/Streaming/Channels/${current_cam}01" \
+    mpv "rtsp://$CAMS_SECRET/Streaming/Channels/${new_cam}01" \
         --no-resume-playback --profile=low-latency \
         --untimed --speed=1.01 --no-audio --osc=no \
         --no-keepaspect &
     echo "$!" > "$CAM_PID_FILE"
 fi
 
-if [ "$current_cam" -lt 1 ]
-then
-    current_cam=1
-elif [ "$current_cam" -gt 8 ] && [ "$current_cam" -ne 1001 ]
-then
-    current_cam=8
-fi
-
-echo "$current_cam" > "$CAM_SELECT_FILE"
+echo "$new_cam" > "$CAM_SELECT_FILE"
 
 
 # Remote cams
