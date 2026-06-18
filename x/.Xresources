@@ -1,5 +1,7 @@
 ! xrdb ~/.Xresources
 
+Xcursor.size: 9
+
 ! Color [Solarized] {{{
 
 #define S_base03        #002b36
