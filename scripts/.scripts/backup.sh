@@ -29,7 +29,8 @@ logerror() {
 #######################################
 networking_config_dump() {
     log "Starting Mikrotik dump"
-    ssh admin@trantorgw.trantor -o PubkeyAcceptedAlgorithms=+ssh-rsa export >> "$NETWORK_CONFIG/mikrotik_trantorgw.export"
+    ssh admin@trantorgw.trantor -o PubkeyAcceptedAlgorithms=+ssh-rsa export > "$NETWORK_CONFIG/mikrotik_trantorgw.export" \
+        || logwarning "Mikrotik dump failed"
 }
 
 
@@ -39,7 +40,8 @@ networking_config_dump() {
 #######################################
 local_server_config_dump() {
     log "Starting local server dump"
-    scp -r alx@cerbero.trantor:/home/alx/zigbee $HOME/.sec/cerbero-local_server/
+    scp -r alx@cerbero.trantor:/home/alx/zigbee $HOME/.sec/cerbero-local_server/ \
+        || logwarning "Local server dump failed"
 }
 
 
@@ -101,6 +103,13 @@ local_backup() {
             2>> $LOG_FILE \
             && log "Local pruning done" \
             || logerror "Local pruning failed"
+
+    log "Starting local compact at: $LOCAL_REPO"
+    borg compact \
+        "$LOCAL_REPO" \
+            2>> $LOG_FILE \
+            && log "Local compact done" \
+            || logerror "Local compact failed"
 }
 
 
@@ -145,6 +154,13 @@ offsite_critical_backup() {
             2>> $LOG_FILE \
             && log "Critical off-site pruning done" \
             || logerror "Critical off-site pruning failed"
+
+    log "Starting critical off-site compact"
+    borg compact --remote-path=borg14 \
+        "$CRITICAL_OFFSITE_BORG_REPO" \
+            2>> $LOG_FILE \
+            && log "Critical off-site compact done" \
+            || logerror "Critical off-site compact failed"
 }
 
 
@@ -183,6 +199,13 @@ offsite_noncritical_backup() {
             2>> $LOG_FILE \
             && log "Non-Critical off-site pruning done" \
             || logerror "Non-Critical off-site pruning failed"
+
+    log "Starting non-critical off-site compact"
+    borg compact --remote-path=borg14 \
+        "$NONCRITICAL_OFFSITE_BORG_REPO" \
+            2>> $LOG_FILE \
+            && log "Non-Critical off-site compact done" \
+            || logerror "Non-Critical off-site compact failed"
 }
 
 
