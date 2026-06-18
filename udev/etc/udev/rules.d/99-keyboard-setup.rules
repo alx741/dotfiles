@@ -1,0 +1,1 @@
+SUBSYSTEM=="input", ACTION=="add", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/home/alx/.scripts/keyboard_setup_udev.sh"
