@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 clone_clipboard()
 {
@@ -62,25 +62,17 @@ pull()
 {
     current_branch=$(get_current_branch)
 
-    if [ "$current_branch" != "master" ];
-    then
-        echo
-        echo "[!] Not in master branch, better to do it manually"
-        echo
-        exit 0
-    fi
-
     if is_there_upstream;
     then
         echo
         echo "Pulling from Upstream"
         echo
-        git pull upstream master
+        git pull upstream main
     else
         echo
         echo "Pulling from Origin"
         echo
-        git pull origin master
+        git pull origin main
     fi
 }
 
