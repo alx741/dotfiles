@@ -190,10 +190,6 @@
     bind N inext
     bind P iprev
 
-    # Select rat frame
-    bind C-c exec ~/.scripts/ratpoison/select_rat_frame.sh
-    bind C-v exec ~/.scripts/ratpoison/select_rat_frame.sh
-
     # Show last message
     bind semicolon lastmsg
     bind C-semicolon lastmsg
