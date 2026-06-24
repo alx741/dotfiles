@@ -19,6 +19,7 @@
     set winname class
     set font DejaVuSans-9
     set rudeness 12
+    set ratfocus 1
 #}}}
 
 #{{{ Bindigs
@@ -81,7 +82,8 @@
         definekey automation s exec ~/.scripts/zigbee/shade.sh shade
 
         # Configure keyboard
-        definekey automation k exec ~/.scripts/keyboard_setup.sh
+        # Disabled since udev rules should take care of it now
+        # definekey automation k exec ~/.scripts/keyboard_setup.sh
 
         bind r readkey automation
     #}}}
